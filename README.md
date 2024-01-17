@@ -1,4 +1,4 @@
-# 🙋‍♀️ Authors: s3959666-s3961136-a1
+# 🙋‍♀️ Authors: s3959666-s3961136-a2
 Group 11
 - s3961136 Benjaporn Wongmayura
 - s3959666 Xiaohan Qin
