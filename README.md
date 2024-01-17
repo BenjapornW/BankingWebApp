@@ -1,5 +1,5 @@
 # 🙋‍♀️ Authors: s3959666-s3961136-a2
-Group 11
+Group 9
 - s3961136 Benjaporn Wongmayura
 - s3959666 Xiaohan Qin
 - [GitHub Repository for Assignment 2: [https://github.com/rmit-wdt-summer-2024/s3959666-s3961136-a2](https://github.com/rmit-wdt-summer-2024/s3959666-s3961136-a2)]
