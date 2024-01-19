@@ -1,17 +1,24 @@
 ﻿<Properties StartupConfiguration="{9B526C51-A8A0-412B-8A24-66DD1D82F6D8}|http">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assignment2/.gitignore">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assignment2/Program.cs">
     <Files>
       <File FileName="Assignment2/Assignment2.csproj" />
-      <File FileName="Assignment2/.gitignore" Line="1" Column="1" />
+      <File FileName="Assignment2/.gitignore" />
+      <File FileName="Assignment2/Models/ErrorViewModel.cs" />
+      <File FileName="Assignment2/Models/Account.cs" />
+      <File FileName="Assignment2/Models/Customer.cs" />
+      <File FileName="Assignment2/Models/Login.cs" />
+      <File FileName="Assignment2/appsettings.json" />
+      <File FileName="Assignment2/Program.cs" Line="12" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Assignment2">
-            <Node name="Assignment2">
-              <Node name="Data" selected="True" />
+            <Node name="Assignment2" selected="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>
