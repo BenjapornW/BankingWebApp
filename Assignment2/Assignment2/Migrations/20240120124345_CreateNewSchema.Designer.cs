@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment2.Migrations
 {
     [DbContext(typeof(McbaContext))]
-    [Migration("20240120062801_Init")]
-    partial class Init
+    [Migration("20240120124345_CreateNewSchema")]
+    partial class CreateNewSchema
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,8 +30,8 @@ namespace Assignment2.Migrations
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountType")
-                        .HasColumnType("int");
+                    b.Property<string>("AccountType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Balance")
                         .HasColumnType("money");
@@ -89,7 +89,8 @@ namespace Assignment2.Migrations
 
                     b.HasKey("LoginID");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerID")
+                        .IsUnique();
 
                     b.ToTable("Logins");
                 });
@@ -144,8 +145,8 @@ namespace Assignment2.Migrations
             modelBuilder.Entity("McbaExample.Models.Login", b =>
                 {
                     b.HasOne("McbaExample.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerID")
+                        .WithOne("Login")
+                        .HasForeignKey("McbaExample.Models.Login", "CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -177,6 +178,8 @@ namespace Assignment2.Migrations
             modelBuilder.Entity("McbaExample.Models.Customer", b =>
                 {
                     b.Navigation("Accounts");
+
+                    b.Navigation("Login");
                 });
 #pragma warning restore 612, 618
         }
