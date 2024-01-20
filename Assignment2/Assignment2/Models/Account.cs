@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace McbaExample.Models;
 
-public enum AccountType
-{
-    Checking = 1,
-    Saving = 2
-}
+//public enum AccountType
+//{
+//    Checking = 1,
+//    Saving = 2
+//}
 
 public class Account
 {
@@ -16,7 +16,7 @@ public class Account
     public int AccountNumber { get; set; }
 
     [Display(Name = "Type")]
-    public AccountType AccountType { get; set; }
+    public string AccountType { get; set; }
 
     public int CustomerID { get; set; }
     public virtual Customer Customer { get; set; }
