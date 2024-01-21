@@ -20,3 +20,24 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.image-container {
+    position: relative;
+    text-align: center;
+}
+
+.rounded-image {
+    border-radius: 20px;
+    width: 100%; /* Adjust as necessary */
+    height: auto;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 10%; /* Adjust as necessary for vertical alignment */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Or any color that contrasts well with your image */
+    font-weight: bold;
+    white-space: nowrap;
+}
