@@ -1,9 +1,19 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="image-container text-center">
+    <img src="~/img/flying_note.jpg" alt="bank" class="rounded-image" style="max-width: 100%; height: auto;" />
+    <h1 class="overlay-text display-4">Most Common Bank of Australia</h1>
 </div>
 
+<hr />
+
+<h3>Log in</h3>
+
+<p>
+    <a asp-controller="Login" asp-action="Login">Login link using Tag Helper</a>
+</p>
+<p>
+    @Html.ActionLink("Login link using Html Helper", "Login", "Login")
+</p>
