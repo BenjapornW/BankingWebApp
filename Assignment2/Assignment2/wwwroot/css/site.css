@@ -81,10 +81,19 @@ body {
     /* Other styles for the button */
 }
 
-.btn-primary:hover {
-    background-color: #3bd993; /* Mint color on hover */
-    color: black; /* Text color on hover */
-    border-color: black; /* Maintain black border on hover */
-}
+    .btn-primary:hover {
+        background-color: #3bd993; /* Mint color on hover */
+        color: black; /* Text color on hover */
+        border-color: black; /* Maintain black border on hover */
+    }
 
 /* ... existing styles ... */
+
+/* ... existing styles ... */
+
+.navbar-nav .nav-item {
+    /* Add your specific styles for nav-item here */
+    /* Example: */
+    font-family: 'Roboto', sans-serif;
+    margin-right: 10px;
+}

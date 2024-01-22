@@ -6,6 +6,7 @@ using McbaExample.Models;
 
 namespace Assignment2.Controllers
 {
+    [Route("/Mcba/SecureLogin")]
     public class LoginController : Controller
     {
         private static readonly ISimpleHash s_simpleHash = new SimpleHash();
