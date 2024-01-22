@@ -21,13 +21,21 @@ body {
     margin-bottom: 60px;
 }
 
+.footer {
+    border-top: 1px solid #ddd; /* existing style for border */
+    padding-top: 1rem; /* Adds space above the text */
+    color: #6c757d; /* existing style for text color */
+    margin-top: 1rem; /* Adds an additional space above the border */
+}
+
+
 .image-container {
     position: relative;
     text-align: center;
 }
 
 .rounded-image {
-    border-radius: 20px;
+/*    border-radius: 20px;*/
     width: 100%; /* Adjust as necessary */
     height: auto;
 }
@@ -53,7 +61,7 @@ body {
 }
 
 .rounded-image {
-    border-radius: 20px;
+/*    border-radius: 20px;*/
     width: 100%;
     height: auto;
     display: block;
