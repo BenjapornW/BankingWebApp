@@ -6,7 +6,7 @@ Group 9
 
 # 💸 MCBA (Most Common Bank of Australia)
 <p align="center">
-  <img src="img/MCBA_logo.png" alt="Image" width="500"/>
+  <img src="img/Landing_Page_v1.png" alt="Landing_page"/>
 </p>
 
 ## 🔗 Table of Contents
