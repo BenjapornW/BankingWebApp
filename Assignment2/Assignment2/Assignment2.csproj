@@ -11,12 +11,14 @@
     <None Remove="Data\" />
     <None Remove="Views\Login\" />
     <None Remove="Utilities\" />
+    <None Remove="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Views\Login\" />
     <Folder Include="wwwroot\img\" />
     <Folder Include="Utilities\" />
+    <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />
