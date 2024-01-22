@@ -210,11 +210,11 @@ body {
 }
 
 /* Right side styling */
-.right-side {
+/*.right-side {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+}*/
 
     /* Form container centering */
     .right-side > div {
@@ -230,3 +230,9 @@ body {
 /* Existing CSS ... */
 
 
+.right-side {
+    display: flex;
+    justify-content: center; /* Center horizontally in the right half */
+    align-items: center; /* Center vertically */
+    padding-left: 50px; /* Adjust this value as needed to prevent overlap */
+}
