@@ -9,9 +9,18 @@
   <ItemGroup>
     <None Remove="EmptyTextFile.txt" />
     <None Remove="Data\" />
+    <None Remove="Views\Login\" />
+    <None Remove="Utilities\" />
+    <None Remove="Filters\" />
+    <None Remove="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="wwwroot\img\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />
@@ -21,5 +30,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="SimpleHashing.Net" Version="2.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\img\" />
   </ItemGroup>
 </Project>

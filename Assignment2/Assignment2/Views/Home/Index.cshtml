@@ -1,9 +1,20 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="image-container text-center">
+    <img src="~/img/flying_note.jpg" alt="bank" class="rounded-image" />
+    <h1 class="overlay-text display-4">Most Common Bank of Australia</h1>
+    <div class="overlay-button">
+        <!-- Using Html Helpers -->
+        @using (Html.BeginForm("Login", "Login", FormMethod.Get))
+        {
+            <button type="submit" class="btn btn-primary button-spacing">Login link using Html Helper</button>
+        }
+        <!-- Using Tag Helpers -->
+        <form asp-controller="Login" asp-action="Login" method="get">
+            <button type="submit" class="btn btn-primary button-spacing">Login link using Tag Helper</button>
+        </form>
+    </div>
 </div>
 

@@ -1,32 +1,38 @@
 ﻿<Properties StartupConfiguration="{9B526C51-A8A0-412B-8A24-66DD1D82F6D8}|http">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assignment2/Data/SeedData.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assignment2/Views/Home/Index.cshtml">
     <Files>
       <File FileName="Assignment2/Assignment2.csproj" Line="15" Column="15" />
       <File FileName="Assignment2/.gitignore" />
-      <File FileName="Assignment2/Models/ErrorViewModel.cs" Line="1" Column="1" />
-      <File FileName="Assignment2/Models/Account.cs" Line="9" Column="17" />
-      <File FileName="Assignment2/Models/Customer.cs" Line="19" Column="1" />
-      <File FileName="Assignment2/Models/Login.cs" Line="14" Column="1" />
-      <File FileName="Assignment2/appsettings.json" Line="14" Column="1" />
-      <File FileName="Assignment2/Program.cs" Line="21" Column="2" />
-      <File FileName="Assignment2/Data/McbaContext.cs" Line="3" Column="1" />
-      <File FileName="Assignment2/Data/SeedData.cs" Line="29" Column="53" />
-      <File FileName="Assignment2/Controllers/HomeController.cs" Line="17" Column="6" />
-      <File FileName="Assignment2/Views/Shared/_Layout.cshtml" Line="1" Column="1" />
-      <File FileName="Assignment2/Views/Home/Index.cshtml" Line="2" Column="37" />
-      <File FileName="Assignment2/Views/Home/Privacy.cshtml" Line="1" Column="1" />
-      <File FileName="Assignment2/Models/Transaction.cs" Line="29" Column="40" />
-      <File FileName="Assignment2/Migrations/20240120075657_new.cs" Line="1" Column="1" />
+      <File FileName="Assignment2/Models/ErrorViewModel.cs" />
+      <File FileName="Assignment2/Models/Account.cs" />
+      <File FileName="Assignment2/Models/Customer.cs" />
+      <File FileName="Assignment2/Models/Login.cs" Line="1" Column="1" />
+      <File FileName="Assignment2/appsettings.json" Line="15" Column="1" />
+      <File FileName="Assignment2/Program.cs" Line="8" Column="1" />
+      <File FileName="Assignment2/Controllers/HomeController.cs" Line="32" Column="1" />
+      <File FileName="Assignment2/Data/McbaContext.cs" Line="1" Column="1" />
+      <File FileName="Assignment2/Data/SeedData.cs" Line="25" Column="41" />
+      <File FileName="Assignment2/Migrations/20240121062216_DBforLogin.cs" Line="23" Column="1" />
+      <File FileName="Assignment2/Views/Login/Login.cshtml" Line="29" Column="1" />
+      <File FileName="Assignment2/Controllers/LoginController.cs" Line="34" Column="50" />
+      <File FileName="Assignment2/Views/Home/Index.cshtml" Line="20" Column="1" />
+      <File FileName="Assignment2/wwwroot/css/site.css" Line="44" Column="1" />
+      <File FileName="Assignment2/Controllers/EmptyClass.cs" Line="72" Column="1" />
+      <File FileName="Assignment2/Views/_ViewStart.cshtml" Line="1" Column="1" />
+      <File FileName="Assignment2/Views/_ViewImports.cshtml" Line="1" Column="1" />
       <File FileName="Assignment2/Migrations/McbaContextModelSnapshot.cs" Line="1" Column="1" />
-      <File FileName="Assignment2/Migrations/20240120080825_InitialCreate.cs" Line="1" Column="1" />
-      <File FileName="Assignment2/Migrations/20240120124345_CreateNewSchema.cs" Line="1" Column="1" />
+      <File FileName="Assignment2/Views/Home/Privacy.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Assignment2">
+          <Node name="Assignment2" expanded="True">
             <Node name="Assignment2" expanded="True">
               <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
@@ -35,24 +41,20 @@
               <Node name="Data" expanded="True" />
               <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
+                <Node name="Login" expanded="True" />
               </Node>
-              <Node name="wwwroot" expanded="True" />
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="img" expanded="True" />
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

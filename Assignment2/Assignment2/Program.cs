@@ -11,8 +11,18 @@ builder.Services.AddDbContext<McbaContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Assignment2Context"));
 
     // Enable lazy loading.
-    //options.UseLazyLoadingProxies();
+    options.UseLazyLoadingProxies();
 });
+
+// Store session into Web-Server memory.
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    // Make the session cookie essential.
+    options.Cookie.IsEssential = true;
+});
+
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -36,9 +46,15 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthorization();
+
+app.UseSession();
 
 app.MapDefaultControllerRoute();
 
