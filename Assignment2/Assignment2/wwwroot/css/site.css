@@ -12,96 +12,169 @@
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
 }
 
-.footer {
-    border-top: 1px solid #ddd; /* existing style for border */
-    padding-top: 1rem; /* Adds space above the text */
-    color: #6c757d; /* existing style for text color */
-    margin-top: 1rem; /* Adds an additional space above the border */
+.container {
+    flex: 1;
 }
 
-
-.image-container {
-    position: relative;
-    text-align: center;
-}
-
-.rounded-image {
-/*    border-radius: 20px;*/
-    width: 100%; /* Adjust as necessary */
-    height: auto;
-}
-
-.overlay-text {
+.full-background {
+    background: url('../img/flying_note.jpg') no-repeat center center;
+    background-size: cover;
     position: absolute;
-    top: 10%; /* Adjust as necessary for vertical alignment */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white; /* Or any color that contrasts well with your image */
-    font-weight: bold;
-    white-space: nowrap;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
 }
 
-/* ... existing styles ... */
+/* MCBA text positioned in the middle vertically and to the far left */
+/*.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: white;
+    z-index: 10;
+}*/
 
-.image-container {
-    position: relative;
-    text-align: center;
-    display: block;
-    max-width: 100%;
-    margin: auto;
+/* Adjusted button spacing and positioning */
+/*.overlay-button {
+    position: absolute;
+    left: 0;*/ /* Align to the far left */
+    /*bottom: 10%;*/ /* Adjust as needed */
+    /*transform: translateY(-50%);
+    z-index: 10;
+}*/
+
+/* Button styling */
+.button-spacing {
+    margin: 10px;
 }
 
-.rounded-image {
-/*    border-radius: 20px;*/
+.btn-primary {
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+    color: white;
+    z-index: 10; /* Ensure the button is clickable */
+}
+
+.btn-primary:hover {
+    background-color: #3bd993;
+    color: black;
+    border-color: black;
+}
+
+/* Footer styling */
+.footer {
+    border-top: 1px solid #ddd;
+    padding-top: 0.25rem;
+    color: #6c757d;
+    margin-top: auto;
     width: 100%;
+    background-color: white;
+    z-index: 10; /* Ensure the footer is above the background */
+}
+
+/* Navbar item styling */
+.navbar-nav .nav-item {
+    font-family: 'Roboto', sans-serif;
+    margin-right: 10px;
+}
+
+/* Additional custom styles can be added below */
+
+/* ... other styles ... */
+
+.overlay-logo {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+
+/* ... additional styles ... */
+
+/* ... other styles ... */
+
+.overlay-button {
+    position: absolute;
+    right: 100px; /* Aligns the button to the right with a 30px margin */
+    bottom: 10%; /* Adjust this value as needed */
+    z-index: 10; /* Keep it above other elements */
+
+}
+
+/* ... additional styles ... */
+
+
+/* ... additional styles ... */
+/* ... other styles ... */
+
+.mcba-logo {
+    max-width: 100%;
     height: auto;
     display: block;
+}
+
+.left-aligned-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.tagline, .sub-tagline {
+    color: white;
+    z-index: 10;
+    /* Additional styling for your taglines */
 }
 
 .overlay-button {
     position: absolute;
-    left: 50%;
-    bottom: 25%; /* Positioned 10px from the bottom */
-    transform: translateX(-50%);
-    display: block;
+    right: 0; /* If you want it on the far right */
+    bottom: 10%;
+    z-index: 10; /* Must be higher or equal to other elements for clickability */
 }
 
-/* ... existing styles ... */
+/* ... additional styles ... */
+/* ... other styles ... */
 
-.button-spacing {
-    margin: 10px; /* Adjust the value as needed */
+/* ... other styles ... */
+
+.overlay-text {
+    position: absolute;
+    top: 65%; /* Increase the percentage to move the text down */
+    left: 10%; /* Adjust if necessary to align with the MCBA logo */
+    transform: translateY(-50%);
+    color: white;
+    z-index: 10;
 }
 
-.btn-primary {
-    background-color: black; /* Button background color */
-    border: 2px solid black; /* Black border */
-    border-radius: 20px; /* Rounded corners */
-    color: white; /* Text color */
-    /* Other styles for the button */
+/* ... additional styles ... */
+
+
+/* If the texts have individual classes or are wrapped in divs, you might need to adjust them separately */
+.text-line-one {
+    /* Additional specific styles for the first line of text */
 }
 
-    .btn-primary:hover {
-        background-color: #3bd993; /* Mint color on hover */
-        color: black; /* Text color on hover */
-        border-color: black; /* Maintain black border on hover */
-    }
-
-/* ... existing styles ... */
-
-/* ... existing styles ... */
-
-.navbar-nav .nav-item {
-    /* Add your specific styles for nav-item here */
-    /* Example: */
-    font-family: 'Roboto', sans-serif;
-    margin-right: 10px;
+.text-line-two {
+    /* Additional specific styles for the second line of text */
 }
+
+/* ... additional styles ... */

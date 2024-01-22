@@ -2,16 +2,23 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="image-container text-center">
-    <img src="~/img/flying_note.jpg" alt="bank" class="rounded-image" />
-    <h1 class="overlay-text display-4">Most Common Bank of Australia</h1>
+<div class="full-background">
+    <!-- MCBA Logo -->
+    <div class="overlay-logo">
+        <img src="~/img/MCBA-text.png" alt="MCBA Logo" />
+    </div>
+
+    <!-- Tagline Text -->
+    <div class="overlay-text">
+        <h4 class="text-line-one display-4">Quick, easy, digital</h4>
+        <h6 class="text-line-two display-4">A new era in internet banking</h6>
+    </div>
+
+    <!-- Login Button -->
     <div class="overlay-button">
-        <!-- Using Html Helpers -->
         @using (Html.BeginForm("Login", "Login", FormMethod.Get))
         {
-            <button type="submit" class="btn btn-primary button-spacing">Login</button>
+            <button type="submit" class="btn btn-primary button-spacing">Login →</button>
         }
-        
     </div>
 </div>
-
