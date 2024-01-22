@@ -9,9 +9,16 @@
   <ItemGroup>
     <None Remove="EmptyTextFile.txt" />
     <None Remove="Data\" />
+    <None Remove="Views\Login\" />
+    <None Remove="Utilities\" />
+    <None Remove="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="wwwroot\img\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />
@@ -21,5 +28,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="SimpleHashing.Net" Version="2.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\img\" />
   </ItemGroup>
 </Project>
