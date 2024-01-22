@@ -57,24 +57,7 @@ body {
     z-index: 10;
 }*/
 
-/* Button styling */
-.button-spacing {
-    margin: 10px;
-}
 
-.btn-primary {
-    background-color: black;
-    border: 2px solid black;
-    border-radius: 20px;
-    color: white;
-    z-index: 10; /* Ensure the button is clickable */
-}
-
-.btn-primary:hover {
-    background-color: #3bd993;
-    color: black;
-    border-color: black;
-}
 
 /* Footer styling */
 .footer {
@@ -112,12 +95,30 @@ body {
 
 .overlay-button {
     position: absolute;
-    right: 100px; /* Aligns the button to the right with a 30px margin */
-    bottom: 10%; /* Adjust this value as needed */
-    z-index: 10; /* Keep it above other elements */
-
+    right: 30px; /* Aligns the button to the right with a 30px margin from the right edge */
+    bottom: 10%; /* Position from the bottom */
+    z-index: 1000; /* High z-index to ensure it's on top of other elements */
 }
 
+/* Button styling */
+.button-spacing {
+    margin: 10px;
+}
+
+.btn-primary {
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+    color: white;
+    z-index: 1001;
+    pointer-events: auto;
+}
+
+    .btn-primary:hover {
+        background-color: #3bd993;
+        color: black;
+        border-color: black;
+    }
 /* ... additional styles ... */
 
 
