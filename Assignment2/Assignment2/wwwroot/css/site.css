@@ -81,23 +81,23 @@ body {
 
 /* Button styling */
 .button-spacing {
-    margin: 10px;
+    margin: 15px;
 }
 
 .btn-primary {
     background-color: black;
     border: 2px solid black;
-    border-radius: 20px;
-    color: white;
+    border-radius: 10px;
+    color: #3bd993;
     z-index: 1001;
     pointer-events: auto;
 }
 
-    .btn-primary:hover {
-        background-color: #3bd993;
-        color: black;
-        border-color: black;
-    }
+.btn-primary:hover {
+    background-color: #3bd993;
+    color: black;
+    border-color: black;
+}
 /* ... additional styles ... */
 
 
@@ -153,6 +153,7 @@ body {
     font-size: 45px;
     background-color: black;
     padding-left: 20px;
+    color: #3bd993;
 }
 
 /* ... additional styles ... */
