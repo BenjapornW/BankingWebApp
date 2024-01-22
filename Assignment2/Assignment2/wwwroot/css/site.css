@@ -12,88 +12,176 @@
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
 }
 
-.image-container {
-    position: relative;
-    text-align: center;
+.container {
+    flex: 1;
 }
 
-.rounded-image {
-    border-radius: 20px;
-    width: 100%; /* Adjust as necessary */
-    height: auto;
-}
-
-.overlay-text {
+.full-background {
+    background: url('../img/flying_note.jpg') no-repeat center center;
+    background-size: cover;
     position: absolute;
-    top: 10%; /* Adjust as necessary for vertical alignment */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white; /* Or any color that contrasts well with your image */
-    font-weight: bold;
-    white-space: nowrap;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
 }
 
-/* ... existing styles ... */
-
-.image-container {
-    position: relative;
-    text-align: center;
-    display: block;
-    max-width: 100%;
-    margin: auto;
-}
-
-.rounded-image {
-    border-radius: 20px;
+/* Footer styling */
+.footer {
+    border-top: 1px solid #ddd;
+    padding-top: 0.25rem;
+    color: #6c757d;
+    margin-top: auto;
     width: 100%;
-    height: auto;
-    display: block;
+    background-color: white;
+    z-index: 10; /* Ensure the footer is above the background */
 }
+
+/* Navbar item styling */
+.navbar-nav .nav-item {
+    font-family: 'Roboto', sans-serif;
+    margin-right: 10px;
+}
+
+/* Additional custom styles can be added below */
+
+/* ... other styles ... */
+
+.overlay-logo {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+
+/* ... additional styles ... */
+
+/* ... other styles ... */
 
 .overlay-button {
     position: absolute;
-    left: 50%;
-    bottom: 25%; /* Positioned 10px from the bottom */
-    transform: translateX(-50%);
-    display: block;
+    right: 30px; /* Aligns the button to the right with a 30px margin from the right edge */
+    bottom: 10%; /* Position from the bottom */
+    z-index: 1000; /* High z-index to ensure it's on top of other elements */
 }
 
-/* ... existing styles ... */
-
+/* Button styling */
 .button-spacing {
-    margin: 10px; /* Adjust the value as needed */
+    margin: 15px;
 }
 
 .btn-primary {
-    background-color: black; /* Button background color */
-    border: 2px solid black; /* Black border */
-    border-radius: 20px; /* Rounded corners */
-    color: white; /* Text color */
-    /* Other styles for the button */
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: #3bd993;
+    z-index: 1001;
+    pointer-events: auto;
 }
 
-    .btn-primary:hover {
-        background-color: #3bd993; /* Mint color on hover */
-        color: black; /* Text color on hover */
-        border-color: black; /* Maintain black border on hover */
+.btn-primary:hover {
+    background-color: #3bd993;
+    color: black;
+    border-color: black;
+}
+/* ... additional styles ... */
+
+
+/* ... additional styles ... */
+/* ... other styles ... */
+
+.mcba-logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.left-aligned-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.tagline, .sub-tagline {
+    color: white;
+    z-index: 10;
+    /* Additional styling for your taglines */
+}
+
+
+/* ... additional styles ... */
+/* ... other styles ... */
+
+/* ... other styles ... */
+
+.overlay-text {
+    position: absolute;
+    top: 65%; /* Increase the percentage to move the text down */
+    left: 10%; /* Adjust if necessary to align with the MCBA logo */
+    transform: translateY(-50%);
+    color: white;
+    z-index: 10;
+}
+
+/* ... additional styles ... */
+
+
+/* If the texts have individual classes or are wrapped in divs, you might need to adjust them separately */
+.text-line-one {
+    font-size: 80px;
+    font-style:italic;
+
+}
+
+.text-line-two {
+    font-size: 45px;
+    background-color: black;
+    padding-left: 20px;
+    color: #3bd993;
+}
+
+/* ... additional styles ... */
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
     }
 
-/* ... existing styles ... */
+    to {
+        opacity: 1;
+    }
+}
 
-/* ... existing styles ... */
+/* Apply the animation to your MCBA logo */
+.overlay-logo img {
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
 
-.navbar-nav .nav-item {
-    /* Add your specific styles for nav-item here */
-    /* Example: */
-    font-family: 'Roboto', sans-serif;
-    margin-right: 10px;
+/* Apply the animation to your first line of text with a delay */
+.text-line-one {
+    animation: fadeIn 1.5s ease-in-out forwards;
+    animation-delay: 1s; /* starts the animation 1 second later */
+}
+
+/* Apply the animation to your second line of text with a longer delay */
+.text-line-two {
+    animation: fadeIn 1.5s ease-in-out forwards;
+    animation-delay: 2s;
+
 }
