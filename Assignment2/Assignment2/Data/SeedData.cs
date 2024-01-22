@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Transactions;
 using McbaExample.Models;
 using Newtonsoft.Json;
 
@@ -25,19 +24,19 @@ namespace Assignment2.Data
                 // Insert into database.
                 foreach (var customer in customers)
                 {
-                    // Insert customer
+
+                    foreach (var account in customer.Accounts)
+                    {
+                        var transactions = account.Transactions;
+                        foreach (var transaction in transactions)
+                        {
+                            account.Balance += transaction.Amount;
+                            transaction.TransactionType = TransactionType.Deposit;
+                        }
+                    }
+
                     context.Customers.Add(customer);
                 }
-
-                context.SaveChanges();
-                // Update TransactionType into deposit for all transactions
-                var transactions = context.Transactions.ToList();
-
-                foreach (var transaction in transactions)
-                {
-                    transaction.TransactionType = TransactionType.Deposit;
-                }
-                    
 
                 context.SaveChanges();
             }
@@ -65,6 +64,8 @@ namespace Assignment2.Data
             });
             return customers;
         }
+
+
     }
 
     
