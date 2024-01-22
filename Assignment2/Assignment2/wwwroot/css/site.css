@@ -38,27 +38,6 @@ body {
     z-index: -1;
 }
 
-/* MCBA text positioned in the middle vertically and to the far left */
-/*.overlay-text {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    color: white;
-    z-index: 10;
-}*/
-
-/* Adjusted button spacing and positioning */
-/*.overlay-button {
-    position: absolute;
-    left: 0;*/ /* Align to the far left */
-    /*bottom: 10%;*/ /* Adjust as needed */
-    /*transform: translateY(-50%);
-    z-index: 10;
-}*/
-
-
-
 /* Footer styling */
 .footer {
     border-top: 1px solid #ddd;
@@ -145,12 +124,6 @@ body {
     /* Additional styling for your taglines */
 }
 
-.overlay-button {
-    position: absolute;
-    right: 0; /* If you want it on the far right */
-    bottom: 10%;
-    z-index: 10; /* Must be higher or equal to other elements for clickability */
-}
 
 /* ... additional styles ... */
 /* ... other styles ... */
@@ -171,11 +144,43 @@ body {
 
 /* If the texts have individual classes or are wrapped in divs, you might need to adjust them separately */
 .text-line-one {
-    /* Additional specific styles for the first line of text */
+    font-size: 80px;
+    font-style:italic;
+
 }
 
 .text-line-two {
-    /* Additional specific styles for the second line of text */
+    font-size: 45px;
+    background-color: black;
+    padding-left: 20px;
 }
 
 /* ... additional styles ... */
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Apply the animation to your MCBA logo */
+.overlay-logo img {
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+/* Apply the animation to your first line of text with a delay */
+.text-line-one {
+    animation: fadeIn 1.5s ease-in-out forwards;
+    animation-delay: 1s; /* starts the animation 1 second later */
+}
+
+/* Apply the animation to your second line of text with a longer delay */
+.text-line-two {
+    animation: fadeIn 1.5s ease-in-out forwards;
+    animation-delay: 2s;
+
+}
