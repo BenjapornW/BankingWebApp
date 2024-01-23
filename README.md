@@ -6,7 +6,7 @@ Group 9
 
 # 💸 MCBA (Most Common Bank of Australia)
 <p align="center">
-  <img src="img/MCBA_logo.png" alt="Image" width="500"/>
+  <img src="img/Landing_Page_v1.png" alt="Landing_page"/>
 </p>
 
 ## 🔗 Table of Contents
@@ -25,6 +25,5 @@ The internet banking web application is designed to offer comprehensive banking 
 
 ### 📋 Trello Board Screenshots
 <p align="left">
-  <img src="img/trelloboard/Screenshot 2024-01-19 at 2.09.35 pm.png" alt="Image"/>
-  <img src="img/trelloboard/Screenshot 2024-01-22 at 16.27.28 pm.png" alt="Image"/>
+  <img src="img/trelloboard/Screenshot 2024-01-22 at 23.19.24 pm.png" alt="Image"/>
 </p>

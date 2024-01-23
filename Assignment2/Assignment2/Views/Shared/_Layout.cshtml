@@ -1,5 +1,6 @@
 ﻿@using McbaExample.Models
 @using Microsoft.AspNetCore.Http
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,8 @@
     <title>@ViewData["Title"] - Mcba</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon" href="~/icons8-internet-banking-16.png" type="image/png">
+
 </head>
 <body>
     <header>
@@ -48,16 +51,16 @@
                                 <a class="nav-link text-dark" asp-controller="Customer" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Deposit">Deposit</a>
+                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="SelectAccountToDeposit">Deposit</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Withdraw">Withdraw</a>
+                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="SelectAccountToWithdraw">Withdraw</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Transfer">Transfer</a>
+                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="SelectAccountToTransfer">Transfer</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Statement">My Statement</a>
+                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="SelectAccountForStatement">Statement</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Customer" asp-action="Profile">My Profile</a>
@@ -75,17 +78,6 @@
         </main>
     </div>
 
-    @*<footer class="border-top footer text-muted">
-            <div class="container">
-                <p>
-                    MCBA honours the deep connection between First Nations peoples and their ancestral lands throughout Australia. We offer our respects to the Aboriginal and Torres Strait Islander custodians of the land, and to their Elders past,and present.
-                </p>
-                &copy; 2024 Most Common Bank of Australia ABN 12 123 12 12 1 and Australian credit licence 1234567 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-
-            </div>
-        </footer>*@
-
-    <!-- Place footer outside of the container to ensure it's at the bottom -->
     <footer class="border-top footer text-muted">
         <div class="container">
             @*<p>
@@ -93,10 +85,8 @@
         </p>*@
             &copy; 2024 Most Common Bank of Australia ABN 12 123 12 12 1 - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="color: #3bd993;">Privacy</a>
 
-
         </div>
     </footer>
-
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

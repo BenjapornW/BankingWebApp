@@ -4,6 +4,8 @@ using McbaExample.Models;
 using Microsoft.AspNetCore.Mvc;
 using Assignment2.Utilities;
 using Assignment2.Filters;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace McbaExample.Controllers;
 
@@ -67,6 +69,141 @@ public class CustomerController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+
+    // ... Your existing using directives ...
+    public async Task<IActionResult> SelectAccountToDeposit()
+    {
+        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+        if (!customerID.HasValue)
+        {
+            return RedirectToAction("Login", "Customer");
+        }
+
+        var accounts = await _context.Accounts
+                                     .Where(a => a.CustomerID == customerID.Value)
+                                     .ToListAsync();
+
+        if (accounts == null || !accounts.Any())
+        {
+            return NotFound("No accounts found.");
+        }
+
+        return View(accounts);
+    }
+
+    // Inside CustomerController.cs
+
+    // Action method to display accounts for withdrawal selection
+    public async Task<IActionResult> SelectAccountToWithdraw()
+    {
+        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+        if (!customerID.HasValue)
+        {
+            return RedirectToAction("Login", "Customer");
+        }
+
+        var accounts = await _context.Accounts
+                                     .Where(a => a.CustomerID == customerID.Value)
+                                     .ToListAsync();
+
+        if (accounts == null || !accounts.Any())
+        {
+            return NotFound("No accounts found.");
+        }
+
+        return View(accounts);
+    }
+
+    // Action method to display accounts for transfer selection
+    public async Task<IActionResult> SelectAccountToTransfer()
+    {
+        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+        if (!customerID.HasValue)
+        {
+            return RedirectToAction("Login", "Customer");
+        }
+
+        var accounts = await _context.Accounts
+                                     .Where(a => a.CustomerID == customerID.Value)
+                                     .ToListAsync();
+
+        if (accounts == null || !accounts.Any())
+        {
+            return NotFound("No accounts found.");
+        }
+
+        return View(accounts);
+    }
+
+    public async Task<IActionResult> SelectAccountForStatement()
+    {
+        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+
+        if (!customerID.HasValue)
+            return RedirectToAction("Login", "Customer");
+
+        var customer = await _context.Customers
+                                     .Include(c => c.Accounts)
+                                     .FirstOrDefaultAsync(c => c.CustomerID == customerID.Value);
+
+        if (customer == null)
+            return NotFound();
+
+        return View(customer.Accounts);
+    }
+
+    public async Task<IActionResult> Statement(int accountNumber)
+    {
+        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+
+        if (!customerID.HasValue)
+            return RedirectToAction("Login", "Customer");
+
+        var account = await _context.Accounts
+                                    .Where(a => a.AccountNumber == accountNumber && a.CustomerID == customerID.Value)
+                                    .Include(a => a.Transactions)
+                                    .FirstOrDefaultAsync();
+
+        if (account == null)
+            return NotFound();
+
+        ViewBag.AvailableBalance = CalculateAvailableBalance(account);
+
+        return View("Statement", account.Transactions.OrderByDescending(t => t.TransactionTimeUtc));
+    }
+
+    private decimal CalculateAvailableBalance(Account account)
+    {
+        const decimal minimumBalanceRequiredForChecking = 300m;
+        return account.AccountType == "C" && account.Balance > minimumBalanceRequiredForChecking
+               ? account.Balance - minimumBalanceRequiredForChecking
+               : account.Balance;
+    }
+
+
+    // Profile action method
+    public async Task<IActionResult> Profile()
+    {
+        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+        if (!customerID.HasValue)
+        {
+            return RedirectToAction("Login", "Customer");
+        }
+
+        var customer = await _context.Customers
+                                     .AsNoTracking()
+                                     .FirstOrDefaultAsync(c => c.CustomerID == customerID.Value);
+
+        if (customer == null)
+        {
+            return NotFound();
+        }
+
+        return View(customer);
+    }
+
+
+
     [HttpPost]
     public async Task<IActionResult> Withdraw(int id, decimal amount)
     {
@@ -103,5 +240,6 @@ public class CustomerController : Controller
             ModelState.AddModelError(nameof(amount), "Amount cannot have more than 2 decimal places.");
 
     }
+
 }
 

@@ -185,3 +185,54 @@ body {
     animation-delay: 2s;
 
 }
+
+
+
+
+/* Existing CSS ... */
+
+/* Full viewport height for the container */
+.container.h-100 {
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+}
+
+/* Full height row */
+.row.h-100 {
+    min-height: 100vh;
+}
+
+/* Left side with background image */
+.left-side {
+    background: url('../img/your-image-name.jpg') no-repeat center center; /* Replace with your image path */
+    background-size: cover;
+}
+
+/* Right side styling */
+/*.right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+
+    /* Form container centering */
+    .right-side > div {
+        max-width: 400px; /* Adjust the width of the form as needed */
+        margin: auto;
+    }
+
+/* Form elements right alignment */
+.form-control, .btn-primary {
+    text-align: right;
+}
+
+/* Existing CSS ... */
+
+
+.right-side {
+    display: flex;
+    justify-content: center; /* Center horizontally in the right half */
+    align-items: center; /* Center vertically */
+    padding-left: 50px; /* Adjust this value as needed to prevent overlap */
+}
