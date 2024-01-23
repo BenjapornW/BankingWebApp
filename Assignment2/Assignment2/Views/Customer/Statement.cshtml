@@ -1,55 +1,66 @@
-﻿using System;
-namespace Assignment2.Views.Customer
-
-@model IEnumerable<McbaExample.Models.Transaction>
+﻿@using Assignment2.Utilities
+@using McbaExample.Models
+@model List<Transaction>  // Updated to use List<Transaction>
 
 @{
     ViewData["Title"] = "Statement";
-    var availableBalance = ViewBag.AvailableBalance; // Access the available balance from ViewBag
+    var availableBalance = ViewBag.AvailableBalance;
+    var currentPage = ViewBag.CurrentPage ?? 1;
+    var totalPages = ViewBag.TotalPages ?? 1;
 }
 
 <h2>Statement</h2>
-<h1>@ViewData["Title"]</h1>
-<p>Use this page to detail your statement.</p>
+<h3>Available Balance: @availableBalance.ToString("C")</h3>
 
-@if (!Model.Any())
-{
-    <p>No transactions to display.</p>
-}
-else
-{
-    <h3>Available Balance: @availableBalance.ToString("C")</h3> <!-- Display the available balance -->
-
-    <table class="table">
-        <thead>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Transaction Type</th>
+            <th>Destination</th>
+            <th>Amount</th>
+            <th>Time</th>
+            <th>Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in Model)
+        {
             <tr>
-                <th>ID</th>
-                <th>Transaction Type</th>
-                <th>Destination</th>
-                <th>Amount</th>
-                <th>Time</th>
-                <th>Comment</th>
+                <td>@transaction.TransactionID</td>
+                <td>@Enum.GetName(typeof(TransactionType), transaction.TransactionType)</td>
+                <td>@(transaction.DestinationAccountNumber?.ToString() ?? "N/A")</td>
+                <td>@transaction.Amount.ToString("C")</td>
+                <td>@transaction.TransactionTimeUtc.ToString("dd/MM/yyyy hh:mm tt")</td>
+                <td>@transaction.Comment</td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var transaction in Model)
-            {
-                <tr>
-                    <td>@transaction.TransactionID</td>
-                    <td>@transaction.TransactionType</td>
-                    <td>@transaction.DestinationAccountNumber?.ToString() ?? "N/A"</td>
-                    <td class="@(transaction.TransactionType == McbaExample.Models.TransactionType.Deposit ? "text-success" : "text-danger")">
-                        @transaction.Amount.ToString("C")
-                    </td>
-                    <td>@transaction.TransactionTimeUtc.ToString("M/d/yyyy h:mm:ss tt")</td>
-                    <td>@transaction.Comment</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+        }
+    </tbody>
+</table>
 
-    @* Add pagination here if necessary *@
+<!-- Pagination logic remains the same -->
+
+<a asp-action="Index">Back to Accounts</a>
+
+@if (totalPages > 1)
+{
+    <nav>
+        <ul class="pagination">
+            <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                <a class="page-link" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage - 1)">Previous</a>
+            </li>
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@i">@i</a>
+                </li>
+            }
+            <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                <a class="page-link" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage + 1)">Next</a>
+            </li>
+        </ul>
+    </nav>
 }
 
-@* Add back link or other navigation if necessary *@
+
 <a asp-action="Index">Back to Accounts</a>

@@ -154,25 +154,25 @@ public class CustomerController : Controller
         return View(customer.Accounts);
     }
 
-    public async Task<IActionResult> Statement(int accountNumber)
-    {
-        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+    //public async Task<IActionResult> Statement(int accountNumber)
+    //{
+    //    var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
 
-        if (!customerID.HasValue)
-            return RedirectToAction("Login", "Customer");
+    //    if (!customerID.HasValue)
+    //        return RedirectToAction("Login", "Customer");
 
-        var account = await _context.Accounts
-                                    .Where(a => a.AccountNumber == accountNumber && a.CustomerID == customerID.Value)
-                                    .Include(a => a.Transactions)
-                                    .FirstOrDefaultAsync();
+    //    var account = await _context.Accounts
+    //                                .Where(a => a.AccountNumber == accountNumber && a.CustomerID == customerID.Value)
+    //                                .Include(a => a.Transactions)
+    //                                .FirstOrDefaultAsync();
 
-        if (account == null)
-            return NotFound();
+    //    if (account == null)
+    //        return NotFound();
 
-        ViewBag.AvailableBalance = CalculateAvailableBalance(account);
+    //    ViewBag.AvailableBalance = CalculateAvailableBalance(account);
 
-        return View("Statement", account.Transactions.OrderByDescending(t => t.TransactionTimeUtc));
-    }
+    //    return View("Statement", account.Transactions.OrderByDescending(t => t.TransactionTimeUtc));
+    //}
 
     private decimal CalculateAvailableBalance(Account account)
     {
@@ -182,6 +182,47 @@ public class CustomerController : Controller
                : account.Balance;
     }
 
+    // ... [Other action methods remain unchanged]
+
+    // Updated Statement action method with pagination
+    public async Task<IActionResult> Statement(int accountNumber, int page = 1)
+    {
+        const int PageSize = 4;
+        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+
+        if (!customerID.HasValue)
+            return RedirectToAction("Login", "Customer");
+
+        var account = await _context.Accounts
+                                    .Where(a => a.AccountNumber == accountNumber && a.CustomerID == customerID.Value)
+                                    .FirstOrDefaultAsync();
+
+        if (account == null)
+            return NotFound();
+
+        var transactionsQuery = _context.Transactions
+                                        .Where(t => t.AccountNumber == accountNumber)
+                                        .OrderByDescending(t => t.TransactionTimeUtc);
+
+        // Count the total number of transactions
+        var totalTransactions = await transactionsQuery.CountAsync();
+
+        // Get the page of transactions
+        var transactions = await transactionsQuery.Skip((page - 1) * PageSize).Take(PageSize).ToListAsync();
+
+        ViewBag.AccountNumber = accountNumber; // Add this line in Statement action method
+
+        ViewBag.AvailableBalance = CalculateAvailableBalance(account);
+        ViewBag.CurrentPage = page;
+        ViewBag.TotalPages = (int)Math.Ceiling((double)totalTransactions / PageSize);
+
+        return View(transactions);
+    }
+
+
+
+
+    // ... [Rest of your code]
 
     // Profile action method
     public async Task<IActionResult> Profile()
