@@ -1,5 +1,12 @@
-﻿using Assignment2.Data;
+﻿using System.Globalization;
+using Assignment2.Data;
 using Microsoft.EntityFrameworkCore;
+
+
+// Set the default culture to Australian English.
+var defaultCulture = new CultureInfo("en-AU");
+CultureInfo.DefaultThreadCurrentCulture = defaultCulture;
+CultureInfo.DefaultThreadCurrentUICulture = defaultCulture;
 
 var builder = WebApplication.CreateBuilder(args);
 
