@@ -7,13 +7,17 @@
     var availableBalance = ViewBag.AvailableBalance;
     var currentPage = ViewBag.CurrentPage ?? 1;
     var totalPages = ViewBag.TotalPages ?? 1;
+
+    // Assuming the local time zone is Australian Eastern Time (Sydney)
+    TimeZoneInfo ausEasternTimeZone = TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time");
+
 }
 
 <div class="col-md-6 left-side">
-    <img src="~/img/mcba_black.png" width="250px" alt="Black MCBA Logo" />
+    <!-- Image and header content -->
 </div>
-<h2 class="black-text-green-bg">My Statement</h2>
 
+<h2 class="black-text-green-bg">My Statement</h2>
 <h5 class="black-text-grey-bg">Available Balance: @availableBalance.ToString("C")</h5>
 
 <table class="table">
@@ -21,7 +25,7 @@
         <tr>
             <th>ID</th>
             <th>Transaction Type</th>
-            <th>Account Number</th> <!-- New Column for Account Number -->
+            <th>Account Number</th>
             <th>Destination</th>
             <th>Amount</th>
             <th>Time</th>
@@ -31,22 +35,24 @@
     <tbody>
         @foreach (var transaction in Model)
         {
+            var localTime = TimeZoneInfo.ConvertTimeFromUtc(transaction.TransactionTimeUtc, ausEasternTimeZone);
+
             <tr>
                 <td>@transaction.TransactionID</td>
                 <td>@Enum.GetName(typeof(TransactionType), transaction.TransactionType)</td>
-                <td>@transaction.AccountNumber</td> <!-- Display Account Number -->
+                <td>@transaction.AccountNumber</td>
                 <td>@(transaction.DestinationAccountNumber?.ToString() ?? "N/A")</td>
                 <td>@transaction.Amount.ToString("C")</td>
-                <td>@transaction.TransactionTimeUtc.ToString("dd/MM/yyyy hh:mm tt")</td>
+                <td>@localTime.ToString("dd/MM/yyyy hh:mm tt")</td>
                 <td>@transaction.Comment</td>
             </tr>
         }
+
     </tbody>
 </table>
 
-<!-- Pagination logic and other HTML code... -->
-<!-- Pagination logic remains the same -->
-<!-- ...other HTML code... -->
+<!-- Pagination and other HTML code -->
+
 
 @if (totalPages > 1)
 {
