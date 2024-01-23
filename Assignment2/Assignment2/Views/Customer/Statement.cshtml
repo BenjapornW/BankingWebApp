@@ -1,0 +1,55 @@
+﻿using System;
+namespace Assignment2.Views.Customer
+
+@model IEnumerable<McbaExample.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Statement";
+    var availableBalance = ViewBag.AvailableBalance; // Access the available balance from ViewBag
+}
+
+<h2>Statement</h2>
+<h1>@ViewData["Title"]</h1>
+<p>Use this page to detail your statement.</p>
+
+@if (!Model.Any())
+{
+    <p>No transactions to display.</p>
+}
+else
+{
+    <h3>Available Balance: @availableBalance.ToString("C")</h3> <!-- Display the available balance -->
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Transaction Type</th>
+                <th>Destination</th>
+                <th>Amount</th>
+                <th>Time</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaction in Model)
+            {
+                <tr>
+                    <td>@transaction.TransactionID</td>
+                    <td>@transaction.TransactionType</td>
+                    <td>@transaction.DestinationAccountNumber?.ToString() ?? "N/A"</td>
+                    <td class="@(transaction.TransactionType == McbaExample.Models.TransactionType.Deposit ? "text-success" : "text-danger")">
+                        @transaction.Amount.ToString("C")
+                    </td>
+                    <td>@transaction.TransactionTimeUtc.ToString("M/d/yyyy h:mm:ss tt")</td>
+                    <td>@transaction.Comment</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @* Add pagination here if necessary *@
+}
+
+@* Add back link or other navigation if necessary *@
+<a asp-action="Index">Back to Accounts</a>
