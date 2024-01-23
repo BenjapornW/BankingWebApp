@@ -280,6 +280,12 @@ body {
     background-color: #3bd993;
 }
 
+.black-text-grey-bg {
+    padding-left: 20px;
+    color: black;
+    background-color: #f2f2f2;
+}
+
 
 
 /* Pagination Styling */
