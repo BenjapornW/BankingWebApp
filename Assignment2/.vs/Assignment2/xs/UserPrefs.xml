@@ -6,7 +6,7 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="Assignment2/Views/Login/Login.cshtml">
     <Files>
-      <File FileName="Assignment2/Assignment2.csproj" />
+      <File FileName="Assignment2/Assignment2.csproj" Line="15" Column="15" />
       <File FileName="Assignment2/.gitignore" />
       <File FileName="Assignment2/Models/ErrorViewModel.cs" />
       <File FileName="Assignment2/Models/Account.cs" />

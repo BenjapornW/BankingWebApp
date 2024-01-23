@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - McbaExample</title>
+    <title>@ViewData["Title"] - Mcba</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="icon" href="~/icons8-internet-banking-16.png" type="image/png">
@@ -45,9 +45,6 @@
                         }
                     </ul>
                     <ul class="navbar-nav flex-grow-1 horizontal-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
                         @if (isLoggedIn)
                         {
                             <li class="nav-item">
@@ -97,5 +94,3 @@
     @await RenderSectionAsync("Scripts", false)
 </body>
 </html>
-
-
