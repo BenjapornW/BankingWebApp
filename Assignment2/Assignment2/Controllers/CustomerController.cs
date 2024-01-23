@@ -121,5 +121,27 @@ public class CustomerController : Controller
     }
 
 
+    // Profile action method
+    public async Task<IActionResult> Profile()
+    {
+        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+        if (!customerID.HasValue)
+        {
+            return RedirectToAction("Login", "Customer");
+        }
+
+        var customer = await _context.Customers
+                                     .AsNoTracking()
+                                     .FirstOrDefaultAsync(c => c.CustomerID == customerID.Value);
+
+        if (customer == null)
+        {
+            return NotFound();
+        }
+
+        return View(customer);
+    }
+
+
 }
 
