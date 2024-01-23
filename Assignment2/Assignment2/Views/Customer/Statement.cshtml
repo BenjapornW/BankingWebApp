@@ -1,6 +1,6 @@
 ﻿@using Assignment2.Utilities
 @using McbaExample.Models
-@model List<Transaction>  // Updated to use List<Transaction>
+@model List<Transaction>
 
 @{
     ViewData["Title"] = "Statement";
@@ -14,13 +14,14 @@
 </div>
 <h2 class="black-text-green-bg">My Statement</h2>
 
-<h3>Available Balance: @availableBalance.ToString("C")</h3>
+<h5 class="black-text-grey-bg">Available Balance: @availableBalance.ToString("C")</h5>
 
 <table class="table">
     <thead>
         <tr>
             <th>ID</th>
             <th>Transaction Type</th>
+            <th>Account Number</th> <!-- New Column for Account Number -->
             <th>Destination</th>
             <th>Amount</th>
             <th>Time</th>
@@ -33,6 +34,7 @@
             <tr>
                 <td>@transaction.TransactionID</td>
                 <td>@Enum.GetName(typeof(TransactionType), transaction.TransactionType)</td>
+                <td>@transaction.AccountNumber</td> <!-- Display Account Number -->
                 <td>@(transaction.DestinationAccountNumber?.ToString() ?? "N/A")</td>
                 <td>@transaction.Amount.ToString("C")</td>
                 <td>@transaction.TransactionTimeUtc.ToString("dd/MM/yyyy hh:mm tt")</td>
@@ -42,6 +44,7 @@
     </tbody>
 </table>
 
+<!-- Pagination logic and other HTML code... -->
 <!-- Pagination logic remains the same -->
 <!-- ...other HTML code... -->
 

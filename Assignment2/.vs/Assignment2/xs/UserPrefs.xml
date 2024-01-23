@@ -1,52 +1,59 @@
 ﻿<Properties StartupConfiguration="{9B526C51-A8A0-412B-8A24-66DD1D82F6D8}|http">
-  <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assignment2/Views/Login/Login.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assignment2/Views/Customer/Statement.cshtml">
     <Files>
-      <File FileName="Assignment2/Assignment2.csproj" Line="15" Column="15" />
+      <File FileName="Assignment2/Assignment2.csproj" />
       <File FileName="Assignment2/.gitignore" />
       <File FileName="Assignment2/Models/ErrorViewModel.cs" />
-      <File FileName="Assignment2/Models/Account.cs" />
+      <File FileName="Assignment2/Models/Account.cs" Line="1" Column="1" />
       <File FileName="Assignment2/Models/Customer.cs" />
       <File FileName="Assignment2/Models/Login.cs" />
       <File FileName="Assignment2/appsettings.json" />
-      <File FileName="Assignment2/Program.cs" Line="63" Column="1" />
+      <File FileName="Assignment2/Program.cs" />
       <File FileName="Assignment2/Controllers/HomeController.cs" />
-      <File FileName="Assignment2/Data/McbaContext.cs" />
+      <File FileName="Assignment2/Data/McbaContext.cs" Line="1" Column="1" />
       <File FileName="Assignment2/Data/SeedData.cs" />
       <File FileName="Assignment2/Migrations/20240121062216_DBforLogin.cs" />
-      <File FileName="Assignment2/Views/Login/Login.cshtml" Line="48" Column="23" />
-      <File FileName="Assignment2/Controllers/LoginController.cs" Line="10" Column="1" />
-      <File FileName="Assignment2/Views/Home/Index.cshtml" Line="14" Column="13" />
-      <File FileName="Assignment2/Controllers/CustomerController.cs" />
+      <File FileName="Assignment2/Views/Login/Login.cshtml" Line="9" Column="10" />
+      <File FileName="Assignment2/Controllers/LoginController.cs" />
+      <File FileName="Assignment2/Views/Home/Index.cshtml" />
+      <File FileName="Assignment2/Controllers/CustomerController.cs" Line="44" Column="15" />
       <File FileName="Assignment2/Views/Customer/Index.cshtml" Line="36" Column="1" />
       <File FileName="Assignment2/Views/Customer/Withdraw.cshtml" />
       <File FileName="Assignment2/Views/Customer/Transfer.cshtml" />
-      <File FileName="Assignment2/Views/Shared/_Layout.cshtml" Line="98" Column="1" />
-      <File FileName="Assignment2/Views/Customer/Deposit.cshtml" />
-      <File FileName="Assignment2/Utilities/MiscellaneousExtensionUtilities.cs" />
+      <File FileName="Assignment2/Views/Shared/_Layout.cshtml" Line="12" Column="1" />
+      <File FileName="Assignment2/Views/Customer/Deposit.cshtml" Line="1" Column="1" />
+      <File FileName="Assignment2/Utilities/MiscellaneousExtensionUtilities.cs" Line="38" Column="1" />
       <File FileName="Assignment2/Filters/AuthorizeCustomerAttribute.cs" />
-      <File FileName="Assignment2/wwwroot/css/site.css" Line="152" Column="1" />
-      <File FileName="Assignment2/Views/Home/Privacy.cshtml" Line="1" Column="1" />
-      <File FileName="Assignment2/Views/Shared/_ValidationScriptsPartial.cshtml" Line="1" Column="1" />
+      <File FileName="Assignment2/wwwroot/css/site.css" Line="283" Column="1" />
+      <File FileName="Assignment2/Views/Home/Privacy.cshtml" />
+      <File FileName="Assignment2/Views/Shared/_ValidationScriptsPartial.cshtml" />
+      <File FileName="Assignment2/Views/Customer/SelectAccountForDeposit.cshtml" Line="31" Column="52" />
+      <File FileName="Assignment2/Views/_ViewImports.cshtml" Line="5" Column="1" />
+      <File FileName="Assignment2/Views/Shared/_Layout.cshtml.css" Line="1" Column="1" />
+      <File FileName="Assignment2/Views/Customer/SelectAccountToWithdraw.cshtml" Line="38" Column="14" />
+      <File FileName="Assignment2/Views/Customer/SelectAccountToTransfer.cshtml" Line="42" Column="1" />
+      <File FileName="Assignment2/Views/Customer/Statement.cshtml" Line="11" Column="1" />
+      <File FileName="Assignment2/Views/Customer/Profile.cshtml" Line="33" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Assignment2">
-            <Node name="Assignment2">
-              <Node name="Dependencies" expanded="True" />
+          <Node name="Assignment2" selected="True">
+            <Node name="Assignment2" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Views">
+              <Node name="Data" expanded="True" />
+              <Node name="Filters" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Utilities" expanded="True" />
+              <Node name="Views" expanded="True">
                 <Node name="Customer" expanded="True" />
-                <Node name="Login">
-                  <Node name="Login.cshtml" selected="True" />
+                <Node name="Login" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" expanded="True" />
                 </Node>
               </Node>
-              <Node name="wwwroot">
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
                 <Node name="img" expanded="True" />
               </Node>
             </Node>
@@ -55,6 +62,11 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
