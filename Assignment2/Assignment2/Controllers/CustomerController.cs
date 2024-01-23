@@ -46,10 +46,7 @@ public class CustomerController : Controller
     {
         var account = await _context.Accounts.FindAsync(id);
 
-        if (amount <= 0)
-            ModelState.AddModelError(nameof(amount), "Amount must be positive.");
-        else if (amount.HasMoreThanTwoDecimalPlaces())
-            ModelState.AddModelError(nameof(amount), "Amount cannot have more than 2 decimal places.");
+        amountValidation(amount);
 
         if (!ModelState.IsValid)
         {
@@ -211,6 +208,44 @@ public class CustomerController : Controller
         return View(customer);
     }
 
+
+
+    [HttpPost]
+    public async Task<IActionResult> Withdraw(int id, decimal amount)
+    {
+        var account = await _context.Accounts.FindAsync(id);
+
+        amountValidation(amount);
+
+        if (!ModelState.IsValid)
+        {
+            ViewBag.Amount = amount;
+            return View(account);
+        }
+
+        // Note this code could be moved out of the controller, e.g., into the Model.
+        account.Balance -= amount;
+        account.Transactions.Add(
+            new Transaction
+            {
+                TransactionType = TransactionType.Withdraw,
+                Amount = amount,
+                TransactionTimeUtc = DateTime.UtcNow
+            });
+
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    private void amountValidation(decimal amount)
+    {
+        if (amount <= 0)
+            ModelState.AddModelError(nameof(amount), "Amount must be positive.");
+        else if (amount.HasMoreThanTwoDecimalPlaces())
+            ModelState.AddModelError(nameof(amount), "Amount cannot have more than 2 decimal places.");
+
+    }
 
 }
 
