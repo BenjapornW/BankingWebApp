@@ -72,7 +72,6 @@ public class CustomerController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    // ... Your existing using directives ...
     public async Task<IActionResult> SelectAccountToDeposit()
     {
         var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
@@ -93,9 +92,6 @@ public class CustomerController : Controller
         return View(accounts);
     }
 
-    // Inside CustomerController.cs
-
-    // Action method to display accounts for withdrawal selection
     public async Task<IActionResult> SelectAccountToWithdraw()
     {
         var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
@@ -116,7 +112,6 @@ public class CustomerController : Controller
         return View(accounts);
     }
 
-    // Action method to display accounts for transfer selection
     public async Task<IActionResult> SelectAccountToTransfer()
     {
         var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
@@ -154,26 +149,6 @@ public class CustomerController : Controller
         return View(customer.Accounts);
     }
 
-    //public async Task<IActionResult> Statement(int accountNumber)
-    //{
-    //    var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
-
-    //    if (!customerID.HasValue)
-    //        return RedirectToAction("Login", "Customer");
-
-    //    var account = await _context.Accounts
-    //                                .Where(a => a.AccountNumber == accountNumber && a.CustomerID == customerID.Value)
-    //                                .Include(a => a.Transactions)
-    //                                .FirstOrDefaultAsync();
-
-    //    if (account == null)
-    //        return NotFound();
-
-    //    ViewBag.AvailableBalance = CalculateAvailableBalance(account);
-
-    //    return View("Statement", account.Transactions.OrderByDescending(t => t.TransactionTimeUtc));
-    //}
-
     private decimal CalculateAvailableBalance(Account account)
     {
         const decimal minimumBalanceRequiredForChecking = 300m;
@@ -182,9 +157,6 @@ public class CustomerController : Controller
                : account.Balance;
     }
 
-    // ... [Other action methods remain unchanged]
-
-    // Updated Statement action method with pagination
     public async Task<IActionResult> Statement(int accountNumber, int page = 1)
     {
         const int PageSize = 4;
@@ -219,12 +191,6 @@ public class CustomerController : Controller
         return View(transactions);
     }
 
-
-
-
-    // ... [Rest of your code]
-
-    // Profile action method
     public async Task<IActionResult> Profile()
     {
         var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
