@@ -13,6 +13,8 @@
     <None Remove="Utilities\" />
     <None Remove="Filters\" />
     <None Remove="Views\Customer\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Views\ATM\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -21,6 +23,8 @@
     <Folder Include="Utilities\" />
     <Folder Include="Filters\" />
     <Folder Include="Views\Customer\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\ATM\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />

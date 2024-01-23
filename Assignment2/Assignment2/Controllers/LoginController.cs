@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Assignment2.Data;
 using SimpleHashing.Net;
-using McbaExample.Models;
+using Assignment2.Models;
 
 namespace Assignment2.Controllers
 {

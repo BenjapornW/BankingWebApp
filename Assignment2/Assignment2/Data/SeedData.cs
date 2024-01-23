@@ -1,5 +1,5 @@
 ﻿using System;
-using McbaExample.Models;
+using Assignment2.Models;
 using Newtonsoft.Json;
 
 namespace Assignment2.Data

@@ -1,19 +1,14 @@
-﻿using System;
-namespace Assignment2.Views.Customer;
-
-@model IEnumerable<McbaExample.Models.Account>
+﻿@model IEnumerable<Assignment2.Models.Account>
 
 @{
-    ViewData["Title"] = "Select Account to Deposit";
+    ViewData["Title"] = "Select Account for Statement";
 }
 
 <h2>@ViewData["Title"]</h2>
 
-@if (!Model.Any())
-{
-    <p>You do not have any accounts to display.</p>
-}
-else
+<p>Please select an account to view the statement:</p>
+
+@if (Model.Any())
 {
     <table class="table">
         <thead>
@@ -32,10 +27,16 @@ else
                     <td>@account.AccountType</td>
                     <td>@account.Balance.ToString("C")</td>
                     <td>
-                        <a asp-action="Deposit" asp-route-id="@account.AccountNumber" class="btn btn-primary">Deposit</a>
+                        <a asp-action="Statement"
+                           asp-route-accountNumber="@account.AccountNumber"
+                           class="btn btn-primary">View Statement</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+}
+else
+{
+    <p>You do not have any accounts.</p>
 }

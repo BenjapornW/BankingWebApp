@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{9B526C51-A8A0-412B-8A24-66DD1D82F6D8}|http">
-  <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="Assignment2/Views/Login/Login.cshtml">
     <Files>
-      <File FileName="Assignment2/Assignment2.csproj" Line="15" Column="15" />
+      <File FileName="Assignment2/Assignment2.csproj" />
       <File FileName="Assignment2/.gitignore" />
       <File FileName="Assignment2/Models/ErrorViewModel.cs" />
       <File FileName="Assignment2/Models/Account.cs" />
@@ -49,6 +48,7 @@
               <Node name="wwwroot">
                 <Node name="img" expanded="True" />
               </Node>
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -56,5 +56,8 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

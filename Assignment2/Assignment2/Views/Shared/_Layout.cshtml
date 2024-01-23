@@ -1,4 +1,4 @@
-﻿@using McbaExample.Models
+﻿@using Assignment2.Models
 @using Microsoft.AspNetCore.Http
 
 <!DOCTYPE html>
@@ -51,16 +51,16 @@
                                 <a class="nav-link text-dark" asp-controller="Customer" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="SelectAccountToDeposit">Deposit</a>
+                                <a class="nav-link text-dark" asp-controller="ATM" asp-action="SelectAccountToDeposit">Deposit</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="SelectAccountToWithdraw">Withdraw</a>
+                                <a class="nav-link text-dark" asp-controller="ATM" asp-action="SelectAccountToWithdraw">Withdraw</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="SelectAccountToTransfer">Transfer</a>
+                                <a class="nav-link text-dark" asp-controller="ATM" asp-action="SelectAccountToTransfer">Transfer</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="SelectAccountForStatement">Statement</a>
+                                <a class="nav-link text-dark" asp-controller="ATM" asp-action="SelectAccountForStatement">Statement</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Customer" asp-action="Profile">My Profile</a>
