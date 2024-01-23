@@ -99,6 +99,13 @@ body {
     border-color: black;
 }
 /* ... additional styles ... */
+/* This will ensure that your button-container takes full width */
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* This will align your button to the right */
+    padding-right: 15px; /* Adjust as per your layout's needs */
+    padding-top: 10px; /* Optional: if you want to give some space on the top */
+}
 
 
 /* ... additional styles ... */
@@ -236,3 +243,73 @@ body {
     align-items: center; /* Center vertically */
     padding-left: 50px; /* Adjust this value as needed to prevent overlap */
 }
+
+
+/* Pagination link color */
+.pagination .page-link {
+    color: #3bd993 !important; /* This color is a bright aqua/teal */
+    background-color: #fff !important; /* Assuming you want a white background */
+    border: 1px solid #3bd993 !important; /* Same color for the border */
+}
+
+
+/* Pagination active link color */
+.pagination .page-item.active .page-link {
+    color: white; /* Text color for the active page link */
+    background-color: #3bd993; /* Background color for the active page link */
+    border-color: #3bd993; /* Border color for the active page link */
+}
+
+/* Pagination link hover state */
+.pagination .page-link:hover {
+    color: white; /* Text color on hover */
+    background-color: #2a7d67; /* A darker shade of the main color for hover effect */
+    border-color: #2a7d67; /* A darker shade for border on hover */
+}
+
+/* Optional: Pagination link focus state (when clicked or navigated to via keyboard) */
+.pagination .page-link:focus {
+    box-shadow: 0 0 0 0.2rem rgba(59, 217, 147, 0.5); /* A light, semi-transparent green glow */
+}
+
+
+
+.black-text-green-bg {
+    padding-left: 20px;
+    color: black;
+    background-color: #3bd993;
+}
+
+
+
+/* Pagination Styling */
+.custom-pagination {
+    color: #3bd993; /* Your specified green color */
+    background-color: transparent; /* Optional: Set background color if needed */
+    border-color: #3bd993; /* Green border color */
+}
+
+    .custom-pagination:hover,
+    .custom-pagination:focus {
+        color: #fff; /* White text for hover/focus */
+        background-color: #3bd993; /* Green background for hover/focus */
+        border-color: #3bd993; /* Green border for hover/focus */
+    }
+
+/* Active pagination link */
+.pagination .active .custom-pagination {
+    background-color: #3bd993; /* Green background */
+    border-color: #3bd993; /* Green border */
+    color: white; /* White text */
+}
+
+/* Center the pagination */
+.pagination-container {
+    display: flex;
+    justify-content: center; /* Center the pagination horizontally */
+    align-items: center; /* Center the pagination vertically */
+    margin-top: 20px; /* Adjust the space above the pagination */
+    margin-bottom: 20px; /* Adjust the space below the pagination */
+}
+
+
