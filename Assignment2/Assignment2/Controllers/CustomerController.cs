@@ -73,7 +73,69 @@ public class CustomerController : Controller
     }
 
     // ... Your existing using directives ...
+    public async Task<IActionResult> SelectAccountToDeposit()
+    {
+        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+        if (!customerID.HasValue)
+        {
+            return RedirectToAction("Login", "Customer");
+        }
 
+        var accounts = await _context.Accounts
+                                     .Where(a => a.CustomerID == customerID.Value)
+                                     .ToListAsync();
+
+        if (accounts == null || !accounts.Any())
+        {
+            return NotFound("No accounts found.");
+        }
+
+        return View(accounts);
+    }
+
+    // Inside CustomerController.cs
+
+    // Action method to display accounts for withdrawal selection
+    public async Task<IActionResult> SelectAccountToWithdraw()
+    {
+        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+        if (!customerID.HasValue)
+        {
+            return RedirectToAction("Login", "Customer");
+        }
+
+        var accounts = await _context.Accounts
+                                     .Where(a => a.CustomerID == customerID.Value)
+                                     .ToListAsync();
+
+        if (accounts == null || !accounts.Any())
+        {
+            return NotFound("No accounts found.");
+        }
+
+        return View(accounts);
+    }
+
+    // Action method to display accounts for transfer selection
+    public async Task<IActionResult> SelectAccountToTransfer()
+    {
+        var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+        if (!customerID.HasValue)
+        {
+            return RedirectToAction("Login", "Customer");
+        }
+
+        var accounts = await _context.Accounts
+                                     .Where(a => a.CustomerID == customerID.Value)
+                                     .ToListAsync();
+
+        if (accounts == null || !accounts.Any())
+        {
+            return NotFound("No accounts found.");
+        }
+
+        return View(accounts);
+    }
 
     public async Task<IActionResult> SelectAccountForStatement()
     {
