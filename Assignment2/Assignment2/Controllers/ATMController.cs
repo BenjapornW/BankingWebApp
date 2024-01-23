@@ -7,6 +7,7 @@ using Assignment2.Models;
 using Assignment2.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Assignment2.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -37,7 +38,7 @@ namespace Assignment2.Controllers
         {
             var account = await _context.Accounts.FindAsync(id);
 
-            amountValidation(amount);
+            AmountValidation(amount);
 
             if (!ModelState.IsValid)
             {
@@ -64,22 +65,28 @@ namespace Assignment2.Controllers
         // ... Your existing using directives ...
         public async Task<IActionResult> SelectAccountToDeposit()
         {
-            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
-            if (!customerID.HasValue)
+            //var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+            //if (!customerID.HasValue)
+            //{
+            //    return RedirectToAction("Login", "Customer");
+            //}
+
+            //var accounts = await _context.Accounts
+            //                             .Where(a => a.CustomerID == customerID.Value)
+            //                             .ToListAsync();
+
+            //if (accounts == null || !accounts.Any())
+            //{
+            //    return NotFound("No accounts found.");
+            //}
+            var accounts = await GetAccountsForLoggedInCustomerAsync();
+            var viewModel = new ATMViewModel
             {
-                return RedirectToAction("Login", "Customer");
-            }
+                ActionType = TransactionType.Deposit,
+                Accounts = accounts
+            };
 
-            var accounts = await _context.Accounts
-                                         .Where(a => a.CustomerID == customerID.Value)
-                                         .ToListAsync();
-
-            if (accounts == null || !accounts.Any())
-            {
-                return NotFound("No accounts found.");
-            }
-
-            return View(accounts);
+            return View("ATMSelectAccount",viewModel);
         }
 
         // Inside CustomerController.cs
@@ -87,60 +94,39 @@ namespace Assignment2.Controllers
         // Action method to display accounts for withdrawal selection
         public async Task<IActionResult> SelectAccountToWithdraw()
         {
-            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
-            if (!customerID.HasValue)
+            var accounts = await GetAccountsForLoggedInCustomerAsync();
+            var viewModel = new ATMViewModel
             {
-                return RedirectToAction("Login", "Customer");
-            }
+                ActionType = TransactionType.Withdraw,
+                Accounts = accounts
+            };
 
-            var accounts = await _context.Accounts
-                                         .Where(a => a.CustomerID == customerID.Value)
-                                         .ToListAsync();
-
-            if (accounts == null || !accounts.Any())
-            {
-                return NotFound("No accounts found.");
-            }
-
-            return View(accounts);
+            return View("ATMSelectAccount", viewModel);
         }
 
         // Action method to display accounts for transfer selection
         public async Task<IActionResult> SelectAccountToTransfer()
         {
-            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
-            if (!customerID.HasValue)
+            var accounts = await GetAccountsForLoggedInCustomerAsync();
+            var viewModel = new ATMViewModel
             {
-                return RedirectToAction("Login", "Customer");
-            }
+                ActionType = TransactionType.Transfer,
+                Accounts = accounts
+            };
 
-            var accounts = await _context.Accounts
-                                         .Where(a => a.CustomerID == customerID.Value)
-                                         .ToListAsync();
-
-            if (accounts == null || !accounts.Any())
-            {
-                return NotFound("No accounts found.");
-            }
-
-            return View(accounts);
+            return View("ATMSelectAccount", viewModel);
         }
 
         public async Task<IActionResult> SelectAccountForStatement()
         {
-            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+            var accounts = await GetAccountsForLoggedInCustomerAsync();
+            var viewModel = new ATMViewModel
+            {
+                ActionType = 0,
+                Accounts = accounts
+            };
 
-            if (!customerID.HasValue)
-                return RedirectToAction("Login", "Customer");
-
-            var customer = await _context.Customers
-                                         .Include(c => c.Accounts)
-                                         .FirstOrDefaultAsync(c => c.CustomerID == customerID.Value);
-
-            if (customer == null)
-                return NotFound();
-
-            return View(customer.Accounts);
+            return View("ATMSelectAccount", viewModel);
         }
 
         public async Task<IActionResult> Statement(int accountNumber)
@@ -177,7 +163,7 @@ namespace Assignment2.Controllers
         {
             var account = await _context.Accounts.FindAsync(id);
 
-            amountValidation(amount);
+            AmountValidation(amount);
 
             if (!ModelState.IsValid)
             {
@@ -200,7 +186,7 @@ namespace Assignment2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private void amountValidation(decimal amount)
+        private void AmountValidation(decimal amount)
         {
             if (amount <= 0)
                 ModelState.AddModelError(nameof(amount), "Amount must be positive.");
@@ -208,6 +194,25 @@ namespace Assignment2.Controllers
                 ModelState.AddModelError(nameof(amount), "Amount cannot have more than 2 decimal places.");
 
         }
+
+        private async Task<List<Account>> GetAccountsForLoggedInCustomerAsync()
+        {
+            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+
+            if (!customerID.HasValue)
+            {
+                RedirectToAction("Login", "Customer");
+                return null; // or throw an exception, handle it as appropriate for your application
+            }
+
+            var accounts = await _context.Accounts
+                                         .Where(a => a.CustomerID == customerID.Value)
+                                         .ToListAsync();
+
+            return accounts;
+        }
+
+
     }
 }
 
