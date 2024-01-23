@@ -9,7 +9,11 @@
     var totalPages = ViewBag.TotalPages ?? 1;
 }
 
-<h2>Statement</h2>
+<div class="col-md-6 left-side">
+    <img src="~/img/mcba_black.png" width="250px" alt="Black MCBA Logo" />
+</div>
+<h2 class="green-text-bvk-bg">My Statement</h2>
+
 <h3>Available Balance: @availableBalance.ToString("C")</h3>
 
 <table class="table">
@@ -39,28 +43,29 @@
 </table>
 
 <!-- Pagination logic remains the same -->
-
-<a asp-action="Index">Back to Accounts</a>
+<!-- ...other HTML code... -->
 
 @if (totalPages > 1)
 {
     <nav>
         <ul class="pagination">
             <li class="page-item @(currentPage == 1 ? "disabled" : "")">
-                <a class="page-link" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage - 1)">Previous</a>
+                <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage - 1)">Previous</a>
             </li>
             @for (int i = 1; i <= totalPages; i++)
             {
                 <li class="page-item @(i == currentPage ? "active" : "")">
-                    <a class="page-link" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@i">@i</a>
+                    <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@i">@i</a>
                 </li>
             }
             <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
-                <a class="page-link" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage + 1)">Next</a>
+                <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage + 1)">Next</a>
             </li>
         </ul>
     </nav>
 }
 
+<!-- ...other HTML code... -->
 
-<a asp-action="Index">Back to Accounts</a>
+
+<a asp-action="Index" class="btn btn-primary">Back to Account List</a>
