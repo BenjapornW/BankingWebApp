@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Select Account for Statement";
+
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -21,10 +22,10 @@
         </thead>
         <tbody>
             @foreach (var account in Model)
-            {
+                {
                 <tr>
                     <td>@account.AccountNumber</td>
-                    <td>@account.AccountType</td>
+                    <td>@(account.AccountType == "S" ? "Saving" : "Checking")</td>
                     <td>@account.Balance.ToString("C")</td>
                     <td>
                         <a asp-action="Statement"
