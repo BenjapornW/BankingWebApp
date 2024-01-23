@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using McbaExample.Models;
+using Assignment2.Models;
 
 namespace Assignment2.Data
 {

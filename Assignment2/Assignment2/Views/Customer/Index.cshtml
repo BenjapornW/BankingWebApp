@@ -1,5 +1,5 @@
 ﻿
-@model McbaExample.Models.Customer
+@model Assignment2.Models.Customer
 @{
     ViewData["Title"] = "Accounts";
 }
@@ -18,9 +18,9 @@
         @foreach (var account in Model.Accounts)
         {
             <tr>
-                <td>@Html.DisplayFor(x => account.AccountNumber)</td>
-                <td>@Html.DisplayFor(x => account.AccountType)</td>
-                <td>@Html.DisplayFor(x => account.Balance)</td>
+                <td>@account.AccountNumber</td>
+                <td>@(account.AccountType == "S" ? "Saving" : "Checking")</td>
+                <td>@account.Balance.ToString("C")</td>
                 <td>
                     <a class="btn btn-primary"
                        asp-action="Deposit" asp-route-id="@account.AccountNumber">Deposit</a>

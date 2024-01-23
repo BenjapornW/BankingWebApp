@@ -1,5 +1,5 @@
 ﻿using System;
-using McbaExample.Models;
+using Assignment2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
