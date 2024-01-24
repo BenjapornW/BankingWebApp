@@ -22,14 +22,14 @@
                 <td>@(account.AccountType == "S" ? "Saving" : "Checking")</td>
                 <td>@account.Balance.ToString("C")</td>
                 <td>
-                    <a class="btn btn-primary"
-                       asp-action="Deposit" asp-route-id="@account.AccountNumber">Deposit</a>
-                    <a class="btn btn-primary"
-                       asp-action="Withdraw" asp-route-id="@account.AccountNumber">Withdraw</a>
-                    <a class="btn btn-primary"
-                       asp-action="Transfer" asp-route-id="@account.AccountNumber">Transfer</a>
+                    <a class="btn btn-primary" asp-controller="ATM"
+                       asp-action="TransactionForm" asp-route-id="@account.AccountNumber" asp-route-actionType="Deposit">Deposit</a>
+                    <a class="btn btn-primary" asp-controller="ATM"
+                       asp-action="TransactionForm" asp-route-id="@account.AccountNumber" asp-route-actionType="Withdraw">Withdraw</a>
+                    <a class="btn btn-primary" asp-controller="ATM"
+                       asp-action="TransactionForm" asp-route-id="@account.AccountNumber" asp-route-actionType="Transfer">Transfer</a>
                 </td>
             </tr>
-        }
+         }
     </table>
 </div>
