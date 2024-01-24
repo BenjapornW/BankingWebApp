@@ -42,10 +42,19 @@ namespace Assignment2.Controllers
             return View(viewModel);
         }
 
-
-        public async Task<IActionResult> ConfirmTransaction(int id, decimal amount, string comment)
+        public async Task<IActionResult> ConfirmTransaction(string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment)
         {
-            return View();
+            var viewModel = new ConfirmTransactionViewModel
+            {
+                ActionType = actionType,
+                AccountNumber = accountNumber,
+                Amount = amount,
+                Comment = comment
+            };
+
+            if (actionType == TransactionType.Transfer.ToString())
+                viewModel.DestinationAccountNumber = destinationAccountNumber;
+            return View(viewModel);
         }
 
 
