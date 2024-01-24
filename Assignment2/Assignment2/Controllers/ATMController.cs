@@ -8,6 +8,7 @@ using Assignment2.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Assignment2.ViewModels;
+using Assignment2.Utilities;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -91,7 +92,7 @@ namespace Assignment2.Controllers
                     ProcessTransfer(account, destinationAccountNumber, amount, newTransaction);
                     break;
             }
-
+            account.Transactions.Add(newTransaction);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Customer");
         }
@@ -100,14 +101,15 @@ namespace Assignment2.Controllers
         {
             account.Balance += amount;
             newTransaction.TransactionType = TransactionType.Deposit;
-            account.Transactions.Add(newTransaction);
+            //account.Transactions.Add(newTransaction);
         }
 
         private void ProcessWithdraw(Account account, decimal amount, Transaction newTransaction)
         {
             account.Balance -= amount;
             newTransaction.TransactionType = TransactionType.Withdraw;
-            account.Transactions.Add(newTransaction);
+            ChargeServiceFee(account, 0.05m);
+            //account.Transactions.Add(newTransaction);
         }
 
         private async void ProcessTransfer(Account account, int? destinationAccountNumber, decimal amount, Transaction newTransaction)
@@ -125,9 +127,24 @@ namespace Assignment2.Controllers
                     Amount = amount,
                     TransactionTimeUtc = DateTime.UtcNow
                 });
+                ChargeServiceFee(account, 0.1m);
             }
 
-            account.Transactions.Add(newTransaction);
+            
+        }
+
+        private async void ChargeServiceFee(Account account, decimal serviceFee)
+        {
+            if (!AccountUtilities.AccountQualifiesForFreeServiceFee(account))
+            {
+                account.Balance -= serviceFee;
+                account.Transactions.Add(new Transaction
+                {
+                    TransactionType = TransactionType.ServiceCharge,
+                    Amount = serviceFee,
+                    TransactionTimeUtc = DateTime.UtcNow
+                });
+            }
         }
 
 
