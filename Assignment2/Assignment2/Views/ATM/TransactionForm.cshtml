@@ -5,11 +5,11 @@
     var action = "Deposit";
 }
 
-<h1 class="display-4 md-5">Account Number @Model.CurrentAccount.AccountNumber (@(Model.CurrentAccount.AccountType == "S" ? "Saving" : "Checking"))</h1>
+<h3 class="display-4 md-5">Account Number @Model.CurrentAccount.AccountNumber (@(Model.CurrentAccount.AccountType == "S" ? "Saving" : "Checking"))</h3>
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Deposit">
+        <form asp-action="Deposit" method="get">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @if (Model.ActionType == "Transfer")
             {
@@ -40,9 +40,12 @@
                        data-val-length-max="30" />
                 @Html.ValidationMessage("Comment", new { @class = "text-danger" })
             </div>
+            <input type="hidden" id="ActionType" name="ActionType" value="@Model.ActionType" />
+
             <div class="form-group mb-3">
                 <input type="submit" value="@Model.ActionType" class="btn btn-primary" />
             </div>
+            <!-- Button trigger modal -->
         </form>
     </div>
 </div>

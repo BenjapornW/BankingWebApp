@@ -43,6 +43,12 @@ namespace Assignment2.Controllers
         }
 
 
+        public async Task<IActionResult> ConfirmTransaction(int id, decimal amount, string comment)
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Deposit(int id, decimal amount, string comment)
         {
