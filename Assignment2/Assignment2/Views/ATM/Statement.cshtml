@@ -1,85 +1,55 @@
-﻿@using Assignment2.Utilities
-@using McbaExample.Models
-@model List<Transaction>
+﻿using System;
+namespace Assignment2.Model.Customer
+
+@model IEnumerable<Assignment2.Models.Transaction>
 
 @{
     ViewData["Title"] = "Statement";
-    var availableBalance = ViewBag.AvailableBalance;
-    var currentPage = ViewBag.CurrentPage ?? 1;
-    var totalPages = ViewBag.TotalPages ?? 1;
-
-    // Assuming the local time zone is Australian Eastern Time (Sydney)
-    TimeZoneInfo ausEasternTimeZone = TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time");
-
+    var availableBalance = ViewBag.AvailableBalance; // Access the available balance from ViewBag
 }
 
-<div class="col-md-6 left-side">
-    <img src="~/img/mcba_black.png" width="250px" alt="Black MCBA Logo" />
-</div>
+<h2>Statement</h2>
+<h1>@ViewData["Title"]</h1>
+<p>Use this page to detail your statement.</p>
 
-<h2 class="black-text-green-bg">My Statement</h2>
-<h5 class="black-text-grey-bg">Available Balance: @availableBalance.ToString("C")</h5>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Transaction Type</th>
-            <th>Account Number</th>
-            <th>Destination</th>
-            <th>Amount</th>
-            <th>Time</th>
-            <th>Comment</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var transaction in Model)
-        {
-            var localTime = TimeZoneInfo.ConvertTimeFromUtc(transaction.TransactionTimeUtc, ausEasternTimeZone);
-
-            <tr>
-                <td>@transaction.TransactionID</td>
-                <td>@Enum.GetName(typeof(TransactionType), transaction.TransactionType)</td>
-                <td>@transaction.AccountNumber</td>
-                <td>@(transaction.DestinationAccountNumber?.ToString() ?? "N/A")</td>
-                <td>@transaction.Amount.ToString("C")</td>
-                <td>@localTime.ToString("dd/MM/yyyy hh:mm tt")</td>
-                <td>@transaction.Comment</td>
-            </tr>
-        }
-
-    </tbody>
-</table>
-
-<!-- Pagination and other HTML code -->
-
-
-@if (totalPages > 1)
+@if (!Model.Any())
 {
-    <div class="pagination-container">
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
-                    <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage - 1)">Previous</a>
-                </li>
-                @for (int i = 1; i <= totalPages; i++)
-                {
-                    <li class="page-item @(i == currentPage ? "active" : "")">
-                        <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@i">@i</a>
-                    </li>
-                }
-                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
-                    <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage + 1)">Next</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    <p>No transactions to display.</p>
+}
+else
+{
+    <h3>Available Balance: @availableBalance.ToString("C")</h3> <!-- Display the available balance -->
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Transaction Type</th>
+                <th>Destination</th>
+                <th>Amount</th>
+                <th>Time</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaction in Model)
+            {
+                <tr>
+                    <td>@transaction.TransactionID</td>
+                    <td>@transaction.TransactionType</td>
+                    <td>@transaction.DestinationAccountNumber?.ToString() ?? "N/A"</td>
+                    <td class="@(transaction.TransactionType == Assignment2.Models.TransactionType.Deposit ? "text-success" : "text-danger")">
+                        @transaction.Amount.ToString("C")
+                    </td>
+                    <td>@transaction.TransactionTimeUtc.ToString("M/d/yyyy h:mm:ss tt")</td>
+                    <td>@transaction.Comment</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @* Add pagination here if necessary *@
 }
 
-
-<!-- ...other HTML code... -->
-
-
-<div class="button-container">
-    <a asp-action="Index" class="btn btn-primary">Back to Account List</a>
-</div>
+@* Add back link or other navigation if necessary *@
+<a asp-action="Index">Back to Accounts</a>

@@ -39,6 +39,13 @@ public class CustomerController : Controller
         return View(customer);
     }
 
+    private decimal CalculateAvailableBalance(Account account)
+    {
+        const decimal minimumBalanceRequiredForChecking = 300m;
+        return account.AccountType == "C" && account.Balance > minimumBalanceRequiredForChecking
+               ? account.Balance - minimumBalanceRequiredForChecking
+               : account.Balance;
+    }
 
 
     public async Task<IActionResult> Statement(int accountNumber, int page = 1)
