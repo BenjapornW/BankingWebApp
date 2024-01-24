@@ -34,8 +34,13 @@ namespace Assignment2.Controllers
         public async Task<IActionResult> TransactionForm(int id, string actionType)  {
 
             var account = await _context.Accounts.FindAsync(id);
+            var viewModel = new TransactionFormViewModel
+            {
+                CurrentAccount = account,
+                ActionType = actionType,
+            };
 
-            return View(account);
+            return View(viewModel);
         }
 
         public async Task<IActionResult> Deposit(int id) => View(await _context.Accounts.FindAsync(id));

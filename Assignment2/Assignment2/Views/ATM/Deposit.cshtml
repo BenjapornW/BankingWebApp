@@ -1,7 +1,7 @@
 ﻿
 @model Assignment2.Models.Account
 @{
-    ViewData["Title"] = "Deposit";
+//ViewData["Title"] = "Deposit";
 }
 
 <h1 class="display-4">Account Number @Model.AccountNumber (@Model.AccountType)</h1>
@@ -18,7 +18,7 @@
                 @Html.ValidationMessage("Amount", new { @class = "text-danger" })
             </div>
             <div class="form-group">
-                <input type="submit" value="Deposit" class="btn btn-primary" />
+                <input type="submit" value="@Model.AccountType" class="btn btn-primary" />
             </div>
         </form>
     </div>
