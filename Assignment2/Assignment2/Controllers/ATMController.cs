@@ -90,45 +90,6 @@ namespace Assignment2.Controllers
             return View("ATMSelectAccount",viewModel);
         }
 
-        // Inside CustomerController.cs
-
-        //// Action method to display accounts for withdrawal selection
-        //public async Task<IActionResult> SelectAccountToWithdraw()
-        //{
-        //    var accounts = await GetAccountsForLoggedInCustomerAsync();
-        //    var viewModel = new ATMViewModel
-        //    {
-        //        ActionType = TransactionType.Withdraw,
-        //        Accounts = accounts
-        //    };
-
-        //    return View("ATMSelectAccount", viewModel);
-        //}
-
-        //// Action method to display accounts for transfer selection
-        //public async Task<IActionResult> SelectAccountToTransfer()
-        //{
-        //    var accounts = await GetAccountsForLoggedInCustomerAsync();
-        //    var viewModel = new ATMViewModel
-        //    {
-        //        ActionType = TransactionType.Transfer,
-        //        Accounts = accounts
-        //    };
-
-        //    return View("ATMSelectAccount", viewModel);
-        //}
-
-        //public async Task<IActionResult> SelectAccountForStatement()
-        //{
-        //    var accounts = await GetAccountsForLoggedInCustomerAsync();
-        //    var viewModel = new ATMViewModel
-        //    {
-        //        ActionType = 0,
-        //        Accounts = accounts
-        //    };
-
-        //    return View("ATMSelectAccount", viewModel);
-        //}
 
         public async Task<IActionResult> Statement(int accountNumber)
         {
@@ -196,22 +157,6 @@ namespace Assignment2.Controllers
 
         }
 
-        //private async Task<List<Account>> GetAccountsForLoggedInCustomerAsync()
-        //{
-        //    var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
-
-        //    if (!customerID.HasValue)
-        //    {
-        //        RedirectToAction("Login", "Customer");
-        //        return null; // or throw an exception, handle it as appropriate for your application
-        //    }
-
-        //    var accounts = await _context.Accounts
-        //                                 .Where(a => a.CustomerID == customerID.Value)
-        //                                 .ToListAsync();
-
-        //    return accounts;
-        //}
 
 
     }
