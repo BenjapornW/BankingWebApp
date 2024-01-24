@@ -26,10 +26,12 @@ namespace Assignment2.Controllers
         }
 
         // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        public async Task<IActionResult> TransactionForm(int id) => View(await _context.Accounts.FindAsync(id));
 
         public async Task<IActionResult> Deposit(int id) => View(await _context.Accounts.FindAsync(id));
 

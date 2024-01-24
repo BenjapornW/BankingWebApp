@@ -230,7 +230,7 @@ body {
     }
 
 /* Form elements right alignment */
-.form-control, .btn-primary {
+.btn-primary {
     text-align: right;
 }
 

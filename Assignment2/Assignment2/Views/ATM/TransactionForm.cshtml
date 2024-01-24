@@ -5,27 +5,27 @@
     var action = "Deposit";
 }
 
-<h1 class="display-4">Account Number @Model.AccountNumber (@Model.AccountType)</h1>
+<h1 class="display-4">Account Number @Model.AccountNumber (@(Model.AccountType == "S" ? "Saving" : "Checking"))</h1>
 
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Deposit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label for="Amount" class="control-label">Amount</label>
+            <div class="form-group mb-3">
+                <label for="Amount" class="control-label mb-1">Amount</label>
                 <input id="Amount" name="Amount" class="form-control" value="@ViewBag.Amount?.ToString("0.00")"
                        data-val="true" data-val-number="The field Amount must be a number."
                        data-val-required="The Amount field is required." />
                 @Html.ValidationMessage("Amount", new { @class = "text-danger" })
             </div>
-            <div class="form-group">
-                <label for="Commment" class="control-label">Amount</label>
-                <input id="Commment" name="Commment" class="form-control"
-                       data-val="true" data-val-number="The comment field must be less than 30 characters."
-                       data-val-required="The comment field is required." />
+            <div class="form-group mb-3">
+                <label for="Comment" class="control-label mb-1">Comment</label>
+                <input id="Comment" name="Comment" class="form-control"
+                       data-val="true" data-val-length="The comment field must be less than 30 characters."
+                       data-val-length-max="30" />
                 @Html.ValidationMessage("Comment", new { @class = "text-danger" })
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <input type="submit" value="Deposit" class="btn btn-primary" />
             </div>
         </form>

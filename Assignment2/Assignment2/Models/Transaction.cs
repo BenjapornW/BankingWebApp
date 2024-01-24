@@ -28,7 +28,7 @@ public class Transaction
     [Column(TypeName = "money")]
     public decimal Amount { get; set; }
 
-    [StringLength(30)]
+    [StringLength(30, ErrorMessage = "The comment field must be less than 30 characters.")]
     public string Comment { get; set; }
 
     public DateTime TransactionTimeUtc { get; set; }
