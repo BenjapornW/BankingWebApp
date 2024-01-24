@@ -25,12 +25,6 @@ namespace Assignment2.Controllers
             _context = context;
         }
 
-        // GET: /<controller>/
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
         public async Task<IActionResult> TransactionForm(int id, string actionType)  {
 
             var account = await _context.Accounts.FindAsync(id);
@@ -39,14 +33,18 @@ namespace Assignment2.Controllers
                 CurrentAccount = account,
                 ActionType = actionType,
             };
+            if (actionType == TransactionType.Transfer.ToString())
+            {
+                var accounts = _context.Accounts.Where(account => account.AccountNumber != id).ToList();
+                viewModel.AllAccounts = accounts;
+            }
 
             return View(viewModel);
         }
 
-        public async Task<IActionResult> Deposit(int id) => View(await _context.Accounts.FindAsync(id));
 
         [HttpPost]
-        public async Task<IActionResult> Deposit(int id, decimal amount)
+        public async Task<IActionResult> Deposit(int id, decimal amount, string comment)
         {
             var account = await _context.Accounts.FindAsync(id);
 

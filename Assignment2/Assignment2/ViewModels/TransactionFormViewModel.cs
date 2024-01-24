@@ -7,6 +7,7 @@ namespace Assignment2.ViewModels
 		public Account CurrentAccount{ get; set; }
 		//public int? DestinationAccountNumber { get; set; }
 		public string ActionType { get; set; }
+		public List<Account> AllAccounts { get; set; }
 
 	}
 }
