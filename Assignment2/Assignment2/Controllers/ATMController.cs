@@ -57,6 +57,7 @@ namespace Assignment2.Controllers
             return View(viewModel);
         }
 
+
         [HttpPost]
         public async Task<IActionResult> TransactionForm(string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment)
         {
@@ -68,26 +69,55 @@ namespace Assignment2.Controllers
             {
                 return RedirectToAction("TransactionForm", new { id = accountNumber, actionType = actionType });
             }
+
             var newTransaction = new Transaction
             {
                 Amount = amount,
                 Comment = comment,
                 TransactionTimeUtc = DateTime.UtcNow
             };
-            if (actionType == TransactionType.Deposit.ToString())
+
+            switch (actionType)
             {
-                account.Balance += amount;
-                newTransaction.TransactionType = TransactionType.Deposit;               
-            } else if (actionType == TransactionType.Withdraw.ToString())
-            {
-                account.Balance -= amount;
-                newTransaction.TransactionType = TransactionType.Withdraw;
+                case nameof(TransactionType.Deposit):
+                    ProcessDeposit(account, amount, newTransaction);
+                    break;
+
+                case nameof(TransactionType.Withdraw):
+                    ProcessWithdraw(account, amount, newTransaction);
+                    break;
+
+                case nameof(TransactionType.Transfer):
+                    ProcessTransfer(account, destinationAccountNumber, amount, newTransaction);
+                    break;
             }
-            else if (actionType == TransactionType.Transfer.ToString())
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Customer");
+        }
+
+        private void ProcessDeposit(Account account, decimal amount, Transaction newTransaction)
+        {
+            account.Balance += amount;
+            newTransaction.TransactionType = TransactionType.Deposit;
+            account.Transactions.Add(newTransaction);
+        }
+
+        private void ProcessWithdraw(Account account, decimal amount, Transaction newTransaction)
+        {
+            account.Balance -= amount;
+            newTransaction.TransactionType = TransactionType.Withdraw;
+            account.Transactions.Add(newTransaction);
+        }
+
+        private async void ProcessTransfer(Account account, int? destinationAccountNumber, decimal amount, Transaction newTransaction)
+        {
+            account.Balance -= amount;
+            newTransaction.TransactionType = TransactionType.Transfer;
+
+            if (destinationAccountNumber.HasValue)
             {
-                account.Balance -= amount;
-                newTransaction.TransactionType = TransactionType.Transfer;
-                var destinationAccount = await _context.Accounts.FindAsync(destinationAccountNumber);
+                var destinationAccount = await _context.Accounts.FindAsync(destinationAccountNumber.Value);
                 destinationAccount.Balance += amount;
                 destinationAccount.Transactions.Add(new Transaction
                 {
@@ -96,11 +126,10 @@ namespace Assignment2.Controllers
                     TransactionTimeUtc = DateTime.UtcNow
                 });
             }
-            account.Transactions.Add(newTransaction);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Customer");
 
+            account.Transactions.Add(newTransaction);
         }
+
 
         public async Task<IActionResult> SelectAccount(string actionType)
         {
