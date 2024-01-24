@@ -57,6 +57,33 @@ namespace Assignment2.Controllers
             return View(viewModel);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> TransactionForm(string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment)
+        {
+            var account = await _context.Accounts.FindAsync(accountNumber);
+
+            AmountValidation(amount);
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("TransactionForm", new { id = accountNumber, actionType = actionType });
+            }
+            var newTransaction = new Transaction
+            {
+                Amount = amount,
+                TransactionTimeUtc = DateTime.UtcNow
+            };
+            if (actionType == TransactionType.Deposit.ToString())
+            {
+                account.Balance += amount;
+                newTransaction.TransactionType = TransactionType.Deposit;               
+            }
+            account.Transactions.Add(newTransaction);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Customer");
+
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> Deposit(int id, decimal amount, string comment)

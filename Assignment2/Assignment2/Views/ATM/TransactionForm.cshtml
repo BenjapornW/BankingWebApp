@@ -1,22 +1,16 @@
-﻿
-@model Assignment2.ViewModels.TransactionFormViewModel
-@{
-    //ViewData["Title"] = "Deposit";
-    var action = "Deposit";
-}
-
+﻿@model Assignment2.ViewModels.TransactionFormViewModel
 <h3 class="display-4 md-5">Account Number @Model.CurrentAccount.AccountNumber (@(Model.CurrentAccount.AccountType == "S" ? "Saving" : "Checking"))</h3>
 
 <div class="row">
     <div class="col-md-4">
         <form asp-action="ConfirmTransaction" method="get">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @if (Model.ActionType == "Transfer")
+            @if (Model.ActionType == TransactionType.Transfer.ToString())
             {
                 <div class="form-group mb-3">
                     <label for="DestinationAccountNumber" class="control-label mb-1">Destination Account Number</label>
                     <select id="DestinationAccountNumber" name="DestinationAccountNumber" class="form-select mb-1" data-val="true" data-val-required="The destination account number field is required.">
-                        <option value="" selected>Select one account</option>
+                        <option value="" selected disabled>Select one account</option>
                         @foreach (var account in Model.AllAccounts)
                         {
                             <option value="@account.AccountNumber">Account Number: @account.AccountNumber, Account Type: @(account.AccountType == "S" ? "Saving" : "Checking")</option>

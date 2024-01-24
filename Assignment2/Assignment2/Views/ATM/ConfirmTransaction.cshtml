@@ -1,11 +1,12 @@
-﻿@model Assignment2.ViewModels.ConfirmTransactionViewModel
+﻿@using Assignment2.Models
+@model Assignment2.ViewModels.ConfirmTransactionViewModel
 
 <h3 class="display-4 md-5">Confirm Your Transaction</h3>
 
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Deposit" method="get">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col-md-5">
+        <form asp-action="TransactionForm" method="post">
+
             <div class="form-group mb-3">
                 <label for="ActionType" class="control-label mb-1">Transaction Type</label>
                 <input id="ActionType" name="ActionType" class="form-control mb-1" value="@Model.ActionType" readonly />
@@ -15,7 +16,7 @@
                 <label for="AccountNumber" class="control-label mb-1">Selected Account Number</label>
                 <input id="AccountNumber" name="AccountNumber" class="form-control mb-1" value="@Model.AccountNumber" readonly />
             </div>
-            @if (Model.ActionType == "Transfer")
+            @if (Model.ActionType == TransactionType.Transfer.ToString())
             {
                 <div class="form-group mb-3">
                     <label for="DestinationAccountNumber" class="control-label mb-1">Destination Account Number</label>
@@ -35,7 +36,7 @@
                 <input id="Comment" name="Comment" class="form-control mb-1" value="@Model.Comment" readonly />
             </div>
 
-            <div class="form-group">
+            <div class="form-group buttons-space-between">
                 <input type="submit" value="Comfirm" class="btn btn-primary mr-3" />
                 <a asp-controller="Customer" asp-action="Index" class="btn btn-outline-danger ml-3">Cancel</a>
             </div>
