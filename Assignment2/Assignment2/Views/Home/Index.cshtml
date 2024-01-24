@@ -21,13 +21,13 @@
 
 
 </div>
+
 @if (!isLoggedIn)
+
 {
     <div class="overlay-button">
-        @using (Html.BeginForm("Login", "Login", FormMethod.Get))
-        {
-            <button type="submit" class="btn btn-primary button-spacing">Login →</button>
-        }
+
+        <a href="/Mcba/SecureLogin" class="btn btn-primary button-spacing">Login →</a>
+
     </div>
 }
-

@@ -9,7 +9,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Deposit" method="get">
+        <form asp-action="ConfirmTransaction" method="get">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @if (Model.ActionType == "Transfer")
             {
@@ -41,6 +41,7 @@
                 @Html.ValidationMessage("Comment", new { @class = "text-danger" })
             </div>
             <input type="hidden" id="ActionType" name="ActionType" value="@Model.ActionType" />
+            <input type="hidden" id="AccountNumber" name="AccountNumber" value="@Model.CurrentAccount.AccountNumber" />
 
             <div class="form-group mb-3">
                 <input type="submit" value="@Model.ActionType" class="btn btn-primary" />
