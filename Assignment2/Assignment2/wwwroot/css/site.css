@@ -1,4 +1,10 @@
-﻿html {
+﻿:root {
+    --primary-color: #3bd993;
+    --background-color: rgb(178 252 228);
+}
+
+
+html {
     font-size: 14px;
 }
 
@@ -13,7 +19,7 @@
 }
 
 body, html {
-    height: 100%;
+    height: 100vh;
     margin: 0;
     padding: 0;
 }
@@ -27,6 +33,15 @@ body {
     flex: 1;
 }
 
+/******************************************* heading *****************************************************/
+.heading {
+    padding: 5%;
+    background: var(--background-color);
+    border-radius: 20px;
+    margin-bottom: 30px
+}
+
+/******************************************* Landing Page *****************************************************/
 .full-background {
     background: url('../img/flying_note.jpg') no-repeat center center;
     background-size: cover;
@@ -38,10 +53,10 @@ body {
     z-index: -1;
 }
 
-/* Footer styling */
+/******************************************* Footer *****************************************************/
 .footer {
     border-top: 1px solid #ddd;
-    padding-top: 0.25rem;
+    padding: 20px;
     color: #6c757d;
     margin-top: auto;
     width: 100%;
@@ -49,7 +64,7 @@ body {
     z-index: 10; /* Ensure the footer is above the background */
 }
 
-/* Navbar item styling */
+/******************************************* NavBar *****************************************************/
 .navbar-nav .nav-item {
     font-family: 'Roboto', sans-serif;
     margin-right: 10px;
@@ -88,16 +103,17 @@ body {
     background-color: black;
     border: 2px solid black;
     border-radius: 10px;
-    color: #3bd993;
+    color: var(--primary-color);
     z-index: 1001;
     pointer-events: auto;
 }
 
 .btn-primary:hover {
-    background-color: #3bd993;
+    background-color: var(--primary-color);
     color: black;
     border-color: black;
 }
+
 /* ... additional styles ... */
 /* This will ensure that your button-container takes full width */
 .button-container {
@@ -230,7 +246,7 @@ body {
     }
 
 /* Form elements right alignment */
-.form-control, .btn-primary {
+.btn-primary {
     text-align: right;
 }
 
@@ -288,7 +304,7 @@ body {
 
 
 
-/* Pagination Styling */
+/******************************************* Pagination Styling *****************************************************/
 .custom-pagination {
     color: #3bd993; /* Your specified green color */
     background-color: transparent; /* Optional: Set background color if needed */
@@ -318,4 +334,9 @@ body {
     margin-bottom: 20px; /* Adjust the space below the pagination */
 }
 
-
+/******************************************* Confirm Transaction *****************************************************/
+.buttons-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

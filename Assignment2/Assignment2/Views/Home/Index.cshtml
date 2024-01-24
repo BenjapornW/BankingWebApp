@@ -1,5 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home";
+
+    var isLoggedIn = Context.Session.GetInt32(nameof(Customer.CustomerID)).HasValue;
+
 }
 
 <div class="full-background">
@@ -16,12 +19,15 @@
 
     <!-- Login Button -->
 
-    
+
 </div>
 
-<div class="overlay-button">
-    @using (Html.BeginForm("Login", "Login", FormMethod.Get))
-    {
-        <button type="submit" class="btn btn-primary button-spacing">Login →</button>
-    }
-</div>
+@if (!isLoggedIn)
+
+{
+    <div class="overlay-button">
+
+        <a href="/Mcba/SecureLogin" class="btn btn-primary button-spacing">Login →</a>
+
+    </div>
+}

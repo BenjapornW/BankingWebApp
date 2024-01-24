@@ -1,19 +1,15 @@
 ﻿@model Assignment2.ViewModels.ATMViewModel
 
 @{
-    ViewData["Title"] = "Select Account for Statement";
-    var action = "Statement";
-    var actionType = Model.ActionType;
-    if (actionType == TransactionType.Withdraw)
-        action = "Withdraw";
-    else if (actionType == TransactionType.Deposit)
-        action = "Deposit";
-    else if (actionType == TransactionType.Transfer)
-        action = "Transfer";
-
+    var action = Model.ActionType;
+    var buttonStyle = "btn-primary";
+    if (action == "Withdraw")
+        buttonStyle = "btn-warning";
+    else if (action == "Transfer")
+        buttonStyle = "btn-info";
 }
 
-<h2>Select Account for @action</h2>
+<h2>Select Account for @Model.ActionType</h2>
 
 <p>Please select an account:</p>
 
@@ -30,30 +26,21 @@
         </thead>
         <tbody>
             @foreach (var account in Model.Accounts)
-                {
+            {
                 <tr>
                     <td>@account.AccountNumber</td>
                     <td>@(account.AccountType == "S" ? "Saving" : "Checking")</td>
                     <td>@account.Balance.ToString("C")</td>
                     <td>
-                        @{
-                            if (action == "Statement")
-                            {
-                                <a asp-action="Statement" asp-route-accountNumber="@account.AccountNumber"
-                                   class="btn btn-primary">View Statement</a>
-                            }
-                            else if (action == "Deposit")
-                            {
-                                <a asp-action="Deposit" asp-route-id="@account.AccountNumber" class="btn btn-primary">Deposit</a>
-                            }
-                            else if (action == "Withdraw")
-                            {
-                                <a asp-action="Withdraw" asp-route-id="@account.AccountNumber" class="btn btn-warning">Withdraw</a>
-                            }
-                            else if (action == "Transfer")
-                            {
-                                <a asp-action="Transfer" asp-route-id="@account.AccountNumber" class="btn btn-info">Transfer</a>
-                            }
+                        @if (action == "Statement")
+                        {
+                            <a asp-action="Statement"
+                               asp-route-accountNumber="@account.AccountNumber"
+                               class="btn @buttonStyle">View Statement</a>
+                        } else
+                        {
+                            <a asp-action="TransactionForm" asp-route-id="@account.AccountNumber" asp-route-actionType="@action"
+                            class="btn @buttonStyle">@action</a>
                         }
 
                     </td>

@@ -25,129 +25,139 @@ namespace Assignment2.Controllers
             _context = context;
         }
 
-        // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
+        public async Task<IActionResult> TransactionForm(int id, string actionType)  {
+
+            var account = await _context.Accounts.FindAsync(id);
+            var viewModel = new TransactionFormViewModel
+            {
+                CurrentAccount = account,
+                ActionType = actionType,
+            };
+            if (actionType == TransactionType.Transfer.ToString())
+            {
+                var accounts = _context.Accounts.Where(account => account.AccountNumber != id).ToList();
+                viewModel.AllAccounts = accounts;
+            }
+
+            return View(viewModel);
         }
 
-        public async Task<IActionResult> Deposit(int id) => View(await _context.Accounts.FindAsync(id));
+        public IActionResult ConfirmTransaction(string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment)
+        {
+            var viewModel = new ConfirmTransactionViewModel
+            {
+                ActionType = actionType,
+                AccountNumber = accountNumber,
+                Amount = amount,
+                Comment = comment
+            };
+
+            if (actionType == TransactionType.Transfer.ToString())
+                viewModel.DestinationAccountNumber = destinationAccountNumber;
+            return View(viewModel);
+        }
+
 
         [HttpPost]
-        public async Task<IActionResult> Deposit(int id, decimal amount)
+        public async Task<IActionResult> TransactionForm(string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment)
         {
-            var account = await _context.Accounts.FindAsync(id);
+            var account = await _context.Accounts.FindAsync(accountNumber);
 
             AmountValidation(amount);
 
             if (!ModelState.IsValid)
             {
-                ViewBag.Amount = amount;
-                return View(account);
+                return RedirectToAction("TransactionForm", new { id = accountNumber, actionType = actionType });
             }
 
-            // Note this code could be moved out of the controller, e.g., into the Model.
+            var newTransaction = new Transaction
+            {
+                Amount = amount,
+                Comment = comment,
+                TransactionTimeUtc = DateTime.UtcNow
+            };
+
+            switch (actionType)
+            {
+                case nameof(TransactionType.Deposit):
+                    ProcessDeposit(account, amount, newTransaction);
+                    break;
+
+                case nameof(TransactionType.Withdraw):
+                    ProcessWithdraw(account, amount, newTransaction);
+                    break;
+
+                case nameof(TransactionType.Transfer):
+                    ProcessTransfer(account, destinationAccountNumber, amount, newTransaction);
+                    break;
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Customer");
+        }
+
+        private void ProcessDeposit(Account account, decimal amount, Transaction newTransaction)
+        {
             account.Balance += amount;
-            account.Transactions.Add(
-                new Transaction
+            newTransaction.TransactionType = TransactionType.Deposit;
+            account.Transactions.Add(newTransaction);
+        }
+
+        private void ProcessWithdraw(Account account, decimal amount, Transaction newTransaction)
+        {
+            account.Balance -= amount;
+            newTransaction.TransactionType = TransactionType.Withdraw;
+            account.Transactions.Add(newTransaction);
+        }
+
+        private async void ProcessTransfer(Account account, int? destinationAccountNumber, decimal amount, Transaction newTransaction)
+        {
+            account.Balance -= amount;
+            newTransaction.TransactionType = TransactionType.Transfer;
+
+            if (destinationAccountNumber.HasValue)
+            {
+                var destinationAccount = await _context.Accounts.FindAsync(destinationAccountNumber.Value);
+                destinationAccount.Balance += amount;
+                destinationAccount.Transactions.Add(new Transaction
                 {
-                    TransactionType = TransactionType.Deposit,
+                    TransactionType = TransactionType.IncomingTransfer,
                     Amount = amount,
                     TransactionTimeUtc = DateTime.UtcNow
                 });
+            }
 
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
+            account.Transactions.Add(newTransaction);
         }
 
 
-        // ... Your existing using directives ...
-        public async Task<IActionResult> SelectAccountToDeposit()
+        public async Task<IActionResult> SelectAccount(string actionType)
         {
-            //var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
-            //if (!customerID.HasValue)
-            //{
-            //    return RedirectToAction("Login", "Customer");
-            //}
+            
+            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+            if (!customerID.HasValue)
+            {
+                return RedirectToAction("Login", "Customer");
+            }
 
-            //var accounts = await _context.Accounts
-            //                             .Where(a => a.CustomerID == customerID.Value)
-            //                             .ToListAsync();
+            var accounts = await _context.Accounts
+                                         .Where(a => a.CustomerID == customerID.Value)
+                                         .ToListAsync();
 
-            //if (accounts == null || !accounts.Any())
-            //{
-            //    return NotFound("No accounts found.");
-            //}
-            var accounts = await GetAccountsForLoggedInCustomerAsync();
+            if (accounts == null || !accounts.Any())
+            {
+                return NotFound("No accounts found.");
+            }
+
             var viewModel = new ATMViewModel
             {
-                ActionType = TransactionType.Deposit,
+                ActionType = actionType,
                 Accounts = accounts
             };
 
             return View("ATMSelectAccount",viewModel);
         }
 
-        // Inside CustomerController.cs
-
-        // Action method to display accounts for withdrawal selection
-        public async Task<IActionResult> SelectAccountToWithdraw()
-        {
-            var accounts = await GetAccountsForLoggedInCustomerAsync();
-            var viewModel = new ATMViewModel
-            {
-                ActionType = TransactionType.Withdraw,
-                Accounts = accounts
-            };
-
-            return View("ATMSelectAccount", viewModel);
-        }
-
-        // Action method to display accounts for transfer selection
-        public async Task<IActionResult> SelectAccountToTransfer()
-        {
-            var accounts = await GetAccountsForLoggedInCustomerAsync();
-            var viewModel = new ATMViewModel
-            {
-                ActionType = TransactionType.Transfer,
-                Accounts = accounts
-            };
-
-            return View("ATMSelectAccount", viewModel);
-        }
-
-        public async Task<IActionResult> SelectAccountForStatement()
-        {
-            var accounts = await GetAccountsForLoggedInCustomerAsync();
-            var viewModel = new ATMViewModel
-            {
-                ActionType = 0,
-                Accounts = accounts
-            };
-
-            return View("ATMSelectAccount", viewModel);
-        }
-
-        public async Task<IActionResult> Statement(int accountNumber)
-        {
-            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
-
-            if (!customerID.HasValue)
-                return RedirectToAction("Login", "Customer");
-
-            var account = await _context.Accounts
-                                        .Where(a => a.AccountNumber == accountNumber && a.CustomerID == customerID.Value)
-                                        .Include(a => a.Transactions)
-                                        .FirstOrDefaultAsync();
-
-            if (account == null)
-                return NotFound();
-
-            ViewBag.AvailableBalance = CalculateAvailableBalance(account);
-
-            return View("Statement", account.Transactions.OrderByDescending(t => t.TransactionTimeUtc));
-        }
 
         private decimal CalculateAvailableBalance(Account account)
         {
@@ -158,33 +168,40 @@ namespace Assignment2.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> Withdraw(int id, decimal amount)
+        public async Task<IActionResult> Statement(int accountNumber, int page = 1)
         {
-            var account = await _context.Accounts.FindAsync(id);
+            const int PageSize = 4;
+            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
 
-            AmountValidation(amount);
+            if (!customerID.HasValue)
+                return RedirectToAction("Login", "Customer");
 
-            if (!ModelState.IsValid)
-            {
-                ViewBag.Amount = amount;
-                return View(account);
-            }
+            var account = await _context.Accounts
+                                        .Where(a => a.AccountNumber == accountNumber && a.CustomerID == customerID.Value)
+                                        .FirstOrDefaultAsync();
 
-            // Note this code could be moved out of the controller, e.g., into the Model.
-            account.Balance -= amount;
-            account.Transactions.Add(
-                new Transaction
-                {
-                    TransactionType = TransactionType.Withdraw,
-                    Amount = amount,
-                    TransactionTimeUtc = DateTime.UtcNow
-                });
+            if (account == null)
+                return NotFound();
 
-            await _context.SaveChangesAsync();
+            var transactionsQuery = _context.Transactions
+                                            .Where(t => t.AccountNumber == accountNumber)
+                                            .OrderByDescending(t => t.TransactionTimeUtc);
 
-            return RedirectToAction(nameof(Index));
+            // Count the total number of transactions
+            var totalTransactions = await transactionsQuery.CountAsync();
+
+            // Get the page of transactions
+            var transactions = await transactionsQuery.Skip((page - 1) * PageSize).Take(PageSize).ToListAsync();
+
+            ViewBag.AccountNumber = accountNumber; // Add this line in Statement action method
+
+            ViewBag.AvailableBalance = CalculateAvailableBalance(account);
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalTransactions / PageSize);
+
+            return View(transactions);
         }
+
 
         private void AmountValidation(decimal amount)
         {
@@ -195,22 +212,6 @@ namespace Assignment2.Controllers
 
         }
 
-        private async Task<List<Account>> GetAccountsForLoggedInCustomerAsync()
-        {
-            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
-
-            if (!customerID.HasValue)
-            {
-                RedirectToAction("Login", "Customer");
-                return null; // or throw an exception, handle it as appropriate for your application
-            }
-
-            var accounts = await _context.Accounts
-                                         .Where(a => a.CustomerID == customerID.Value)
-                                         .ToListAsync();
-
-            return accounts;
-        }
 
 
     }

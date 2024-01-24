@@ -13,9 +13,11 @@ public class Account
 {
     [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
     [Display(Name = "Account Number")]
+    [RegularExpression(@"^\d{4}$", ErrorMessage = "Account Number must be 4 digits.")]
     public int AccountNumber { get; set; }
 
     [Display(Name = "Type")]
+    [RegularExpression("^(S|C)$", ErrorMessage = "AccountType must be 'S' or 'C'.")]
     public string AccountType { get; set; }
 
     public int CustomerID { get; set; }

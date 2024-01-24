@@ -8,9 +8,9 @@ namespace Assignment2.Model.Customer
     var availableBalance = ViewBag.AvailableBalance; // Access the available balance from ViewBag
 }
 
-<h2>Statement</h2>
+@*<h2>Statement</h2>
 <h1>@ViewData["Title"]</h1>
-<p>Use this page to detail your statement.</p>
+<p>Use this page to detail your statement.</p>*@
 
 @if (!Model.Any())
 {
@@ -37,8 +37,8 @@ else
                 <tr>
                     <td>@transaction.TransactionID</td>
                     <td>@transaction.TransactionType</td>
-                    <td>@transaction.DestinationAccountNumber?.ToString() ?? "N/A"</td>
-                    <td class="@(transaction.TransactionType == Assignment2.Models.TransactionType.Deposit ? "text-success" : "text-danger")">
+                    <td>@(transaction.DestinationAccountNumber?.ToString() ?? "N/A")</td>
+                    <td class="@(transaction.TransactionType == Assignment2.Models.TransactionType.Deposit || transaction.TransactionType == Assignment2.Models.TransactionType.IncomingTransfer ? "text-success" : "text-danger")">
                         @transaction.Amount.ToString("C")
                     </td>
                     <td>@transaction.TransactionTimeUtc.ToString("M/d/yyyy h:mm:ss tt")</td>
@@ -52,4 +52,4 @@ else
 }
 
 @* Add back link or other navigation if necessary *@
-<a asp-action="Index">Back to Accounts</a>
+<a asp-controller="Customer" asp-action="Index">Back to Accounts</a>
