@@ -57,7 +57,6 @@ namespace Assignment2.Controllers
             return View(viewModel);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> TransactionForm(string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment)
         {
@@ -80,37 +79,37 @@ namespace Assignment2.Controllers
             switch (actionType)
             {
                 case nameof(TransactionType.Deposit):
-                    ProcessDeposit(account, amount, newTransaction);
+                    await ProcessDeposit(account, amount, newTransaction);
                     break;
 
                 case nameof(TransactionType.Withdraw):
-                    ProcessWithdraw(account, amount, newTransaction);
+                    await ProcessWithdraw(account, amount, newTransaction);
                     break;
 
                 case nameof(TransactionType.Transfer):
-                    ProcessTransfer(account, destinationAccountNumber, amount, newTransaction);
+                    await ProcessTransfer(account, destinationAccountNumber, amount, newTransaction);
                     break;
             }
 
+            account.Transactions.Add(newTransaction);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Customer");
         }
 
-        private void ProcessDeposit(Account account, decimal amount, Transaction newTransaction)
+        private async Task ProcessDeposit(Account account, decimal amount, Transaction newTransaction)
         {
             account.Balance += amount;
             newTransaction.TransactionType = TransactionType.Deposit;
-            account.Transactions.Add(newTransaction);
         }
 
-        private void ProcessWithdraw(Account account, decimal amount, Transaction newTransaction)
+        private async Task ProcessWithdraw(Account account, decimal amount, Transaction newTransaction)
         {
             account.Balance -= amount;
             newTransaction.TransactionType = TransactionType.Withdraw;
-            account.Transactions.Add(newTransaction);
+            await ChargeServiceFee(account, 0.05m);
         }
 
-        private async void ProcessTransfer(Account account, int? destinationAccountNumber, decimal amount, Transaction newTransaction)
+        private async Task ProcessTransfer(Account account, int? destinationAccountNumber, decimal amount, Transaction newTransaction)
         {
             account.Balance -= amount;
             newTransaction.TransactionType = TransactionType.Transfer;
@@ -125,10 +124,24 @@ namespace Assignment2.Controllers
                     Amount = amount,
                     TransactionTimeUtc = DateTime.UtcNow
                 });
+                await ChargeServiceFee(account, 0.1m);
             }
-
-            account.Transactions.Add(newTransaction);
         }
+
+        private async Task ChargeServiceFee(Account account, decimal serviceFee)
+        {
+            if (!AccountUtilities.AccountQualifiesForFreeServiceFee(account))
+            {
+                account.Balance -= serviceFee;
+                account.Transactions.Add(new Transaction
+                {
+                    TransactionType = TransactionType.ServiceCharge,
+                    Amount = serviceFee,
+                    TransactionTimeUtc = DateTime.UtcNow
+                });
+            }
+        }
+
 
 
         public async Task<IActionResult> SelectAccount(string actionType)
