@@ -37,8 +37,8 @@ else
                 <tr>
                     <td>@transaction.TransactionID</td>
                     <td>@transaction.TransactionType</td>
-                    <td>@transaction.DestinationAccountNumber?.ToString() ?? "N/A"</td>
-                    <td class="@(transaction.TransactionType == Assignment2.Models.TransactionType.Deposit ? "text-success" : "text-danger")">
+                    <td>@(transaction.DestinationAccountNumber?.ToString() ?? "N/A")</td>
+                    <td class="@(transaction.TransactionType == Assignment2.Models.TransactionType.Deposit || transaction.TransactionType == Assignment2.Models.TransactionType.IncomingTransfer ? "text-success" : "text-danger")">
                         @transaction.Amount.ToString("C")
                     </td>
                     <td>@transaction.TransactionTimeUtc.ToString("M/d/yyyy h:mm:ss tt")</td>

@@ -71,12 +71,30 @@ namespace Assignment2.Controllers
             var newTransaction = new Transaction
             {
                 Amount = amount,
+                Comment = comment,
                 TransactionTimeUtc = DateTime.UtcNow
             };
             if (actionType == TransactionType.Deposit.ToString())
             {
                 account.Balance += amount;
                 newTransaction.TransactionType = TransactionType.Deposit;               
+            } else if (actionType == TransactionType.Withdraw.ToString())
+            {
+                account.Balance -= amount;
+                newTransaction.TransactionType = TransactionType.Withdraw;
+            }
+            else if (actionType == TransactionType.Transfer.ToString())
+            {
+                account.Balance -= amount;
+                newTransaction.TransactionType = TransactionType.Transfer;
+                var destinationAccount = await _context.Accounts.FindAsync(destinationAccountNumber);
+                destinationAccount.Balance += amount;
+                destinationAccount.Transactions.Add(new Transaction
+                {
+                    TransactionType = TransactionType.IncomingTransfer,
+                    Amount = amount,
+                    TransactionTimeUtc = DateTime.UtcNow
+                });
             }
             account.Transactions.Add(newTransaction);
             await _context.SaveChangesAsync();
@@ -84,37 +102,6 @@ namespace Assignment2.Controllers
 
         }
 
-
-        [HttpPost]
-        public async Task<IActionResult> Deposit(int id, decimal amount, string comment)
-        {
-            var account = await _context.Accounts.FindAsync(id);
-
-            AmountValidation(amount);
-
-            if (!ModelState.IsValid)
-            {
-                ViewBag.Amount = amount;
-                return View(account);
-            }
-
-            // Note this code could be moved out of the controller, e.g., into the Model.
-            account.Balance += amount;
-            account.Transactions.Add(
-                new Transaction
-                {
-                    TransactionType = TransactionType.Deposit,
-                    Amount = amount,
-                    TransactionTimeUtc = DateTime.UtcNow
-                });
-
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
-        }
-
-
-        // ... Your existing using directives ...
         public async Task<IActionResult> SelectAccount(string actionType)
         {
             
@@ -143,26 +130,6 @@ namespace Assignment2.Controllers
         }
 
 
-        public async Task<IActionResult> Statement(int accountNumber)
-        {
-            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
-
-            if (!customerID.HasValue)
-                return RedirectToAction("Login", "Customer");
-
-            var account = await _context.Accounts
-                                        .Where(a => a.AccountNumber == accountNumber && a.CustomerID == customerID.Value)
-                                        .Include(a => a.Transactions)
-                                        .FirstOrDefaultAsync();
-
-            if (account == null)
-                return NotFound();
-
-            ViewBag.AvailableBalance = CalculateAvailableBalance(account);
-
-            return View("Statement", account.Transactions.OrderByDescending(t => t.TransactionTimeUtc));
-        }
-
         private decimal CalculateAvailableBalance(Account account)
         {
             const decimal minimumBalanceRequiredForChecking = 300m;
@@ -172,33 +139,40 @@ namespace Assignment2.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> Withdraw(int id, decimal amount)
+        public async Task<IActionResult> Statement(int accountNumber, int page = 1)
         {
-            var account = await _context.Accounts.FindAsync(id);
+            const int PageSize = 4;
+            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
 
-            AmountValidation(amount);
+            if (!customerID.HasValue)
+                return RedirectToAction("Login", "Customer");
 
-            if (!ModelState.IsValid)
-            {
-                ViewBag.Amount = amount;
-                return View(account);
-            }
+            var account = await _context.Accounts
+                                        .Where(a => a.AccountNumber == accountNumber && a.CustomerID == customerID.Value)
+                                        .FirstOrDefaultAsync();
 
-            // Note this code could be moved out of the controller, e.g., into the Model.
-            account.Balance -= amount;
-            account.Transactions.Add(
-                new Transaction
-                {
-                    TransactionType = TransactionType.Withdraw,
-                    Amount = amount,
-                    TransactionTimeUtc = DateTime.UtcNow
-                });
+            if (account == null)
+                return NotFound();
 
-            await _context.SaveChangesAsync();
+            var transactionsQuery = _context.Transactions
+                                            .Where(t => t.AccountNumber == accountNumber)
+                                            .OrderByDescending(t => t.TransactionTimeUtc);
 
-            return RedirectToAction(nameof(Index));
+            // Count the total number of transactions
+            var totalTransactions = await transactionsQuery.CountAsync();
+
+            // Get the page of transactions
+            var transactions = await transactionsQuery.Skip((page - 1) * PageSize).Take(PageSize).ToListAsync();
+
+            ViewBag.AccountNumber = accountNumber; // Add this line in Statement action method
+
+            ViewBag.AvailableBalance = CalculateAvailableBalance(account);
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalTransactions / PageSize);
+
+            return View(transactions);
         }
+
 
         private void AmountValidation(decimal amount)
         {
