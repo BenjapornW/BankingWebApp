@@ -1,19 +1,11 @@
-﻿@model Assignment2.ViewModels.ATMViewModel
+﻿@using Assignment2.ViewModels
+@model Assignment2.ViewModels.ATMViewModel
 
 @{
-    ViewData["Title"] = "Select Account for Statement";
-    var action = "Statement";
-    var actionType = Model.ActionType;
-    if (actionType == TransactionType.Withdraw)
-        action = "Withdraw";
-    else if (actionType == TransactionType.Deposit)
-        action = "Deposit";
-    else if (actionType == TransactionType.Transfer)
-        action = "Transfer";
-
+    var action = Model.ActionType;
 }
 
-<h2>Select Account for @action</h2>
+<h2>Select Account for @Model.ActionType</h2>
 
 <p>Please select an account:</p>
 
@@ -30,7 +22,7 @@
         </thead>
         <tbody>
             @foreach (var account in Model.Accounts)
-                {
+            {
                 <tr>
                     <td>@account.AccountNumber</td>
                     <td>@(account.AccountType == "S" ? "Saving" : "Checking")</td>

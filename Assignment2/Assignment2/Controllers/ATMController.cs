@@ -63,26 +63,27 @@ namespace Assignment2.Controllers
 
 
         // ... Your existing using directives ...
-        public async Task<IActionResult> SelectAccountToDeposit()
+        public async Task<IActionResult> SelectAccount(string actionType)
         {
-            //var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
-            //if (!customerID.HasValue)
-            //{
-            //    return RedirectToAction("Login", "Customer");
-            //}
+            
+            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+            if (!customerID.HasValue)
+            {
+                return RedirectToAction("Login", "Customer");
+            }
 
-            //var accounts = await _context.Accounts
-            //                             .Where(a => a.CustomerID == customerID.Value)
-            //                             .ToListAsync();
+            var accounts = await _context.Accounts
+                                         .Where(a => a.CustomerID == customerID.Value)
+                                         .ToListAsync();
 
-            //if (accounts == null || !accounts.Any())
-            //{
-            //    return NotFound("No accounts found.");
-            //}
-            var accounts = await GetAccountsForLoggedInCustomerAsync();
+            if (accounts == null || !accounts.Any())
+            {
+                return NotFound("No accounts found.");
+            }
+
             var viewModel = new ATMViewModel
             {
-                ActionType = TransactionType.Deposit,
+                ActionType = actionType,
                 Accounts = accounts
             };
 
@@ -91,43 +92,43 @@ namespace Assignment2.Controllers
 
         // Inside CustomerController.cs
 
-        // Action method to display accounts for withdrawal selection
-        public async Task<IActionResult> SelectAccountToWithdraw()
-        {
-            var accounts = await GetAccountsForLoggedInCustomerAsync();
-            var viewModel = new ATMViewModel
-            {
-                ActionType = TransactionType.Withdraw,
-                Accounts = accounts
-            };
+        //// Action method to display accounts for withdrawal selection
+        //public async Task<IActionResult> SelectAccountToWithdraw()
+        //{
+        //    var accounts = await GetAccountsForLoggedInCustomerAsync();
+        //    var viewModel = new ATMViewModel
+        //    {
+        //        ActionType = TransactionType.Withdraw,
+        //        Accounts = accounts
+        //    };
 
-            return View("ATMSelectAccount", viewModel);
-        }
+        //    return View("ATMSelectAccount", viewModel);
+        //}
 
-        // Action method to display accounts for transfer selection
-        public async Task<IActionResult> SelectAccountToTransfer()
-        {
-            var accounts = await GetAccountsForLoggedInCustomerAsync();
-            var viewModel = new ATMViewModel
-            {
-                ActionType = TransactionType.Transfer,
-                Accounts = accounts
-            };
+        //// Action method to display accounts for transfer selection
+        //public async Task<IActionResult> SelectAccountToTransfer()
+        //{
+        //    var accounts = await GetAccountsForLoggedInCustomerAsync();
+        //    var viewModel = new ATMViewModel
+        //    {
+        //        ActionType = TransactionType.Transfer,
+        //        Accounts = accounts
+        //    };
 
-            return View("ATMSelectAccount", viewModel);
-        }
+        //    return View("ATMSelectAccount", viewModel);
+        //}
 
-        public async Task<IActionResult> SelectAccountForStatement()
-        {
-            var accounts = await GetAccountsForLoggedInCustomerAsync();
-            var viewModel = new ATMViewModel
-            {
-                ActionType = 0,
-                Accounts = accounts
-            };
+        //public async Task<IActionResult> SelectAccountForStatement()
+        //{
+        //    var accounts = await GetAccountsForLoggedInCustomerAsync();
+        //    var viewModel = new ATMViewModel
+        //    {
+        //        ActionType = 0,
+        //        Accounts = accounts
+        //    };
 
-            return View("ATMSelectAccount", viewModel);
-        }
+        //    return View("ATMSelectAccount", viewModel);
+        //}
 
         public async Task<IActionResult> Statement(int accountNumber)
         {
@@ -195,22 +196,22 @@ namespace Assignment2.Controllers
 
         }
 
-        private async Task<List<Account>> GetAccountsForLoggedInCustomerAsync()
-        {
-            var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+        //private async Task<List<Account>> GetAccountsForLoggedInCustomerAsync()
+        //{
+        //    var customerID = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
 
-            if (!customerID.HasValue)
-            {
-                RedirectToAction("Login", "Customer");
-                return null; // or throw an exception, handle it as appropriate for your application
-            }
+        //    if (!customerID.HasValue)
+        //    {
+        //        RedirectToAction("Login", "Customer");
+        //        return null; // or throw an exception, handle it as appropriate for your application
+        //    }
 
-            var accounts = await _context.Accounts
-                                         .Where(a => a.CustomerID == customerID.Value)
-                                         .ToListAsync();
+        //    var accounts = await _context.Accounts
+        //                                 .Where(a => a.CustomerID == customerID.Value)
+        //                                 .ToListAsync();
 
-            return accounts;
-        }
+        //    return accounts;
+        //}
 
 
     }

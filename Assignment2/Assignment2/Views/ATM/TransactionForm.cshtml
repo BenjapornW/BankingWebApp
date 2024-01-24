@@ -1,6 +1,42 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
+@model Assignment2.Models.Account
 @{
+    ViewData["Title"] = "Deposit";
+    var action = "Deposit";
 }
 
+<h1 class="display-4">Account Number @Model.AccountNumber (@Model.AccountType)</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Deposit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label for="Amount" class="control-label">Amount</label>
+                <input id="Amount" name="Amount" class="form-control" value="@ViewBag.Amount?.ToString("0.00")"
+                       data-val="true" data-val-number="The field Amount must be a number."
+                       data-val-required="The Amount field is required." />
+                @Html.ValidationMessage("Amount", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="Commment" class="control-label">Amount</label>
+                <input id="Commment" name="Commment" class="form-control"
+                       data-val="true" data-val-number="The comment field must be less than 30 characters."
+                       data-val-required="The comment field is required." />
+                @Html.ValidationMessage("Comment", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Deposit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Accounts</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    @{ /* await Html.RenderPartialAsync("_ValidationScriptsPartial"); */ }
+}
