@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Assignment2.Utilities;
 using Assignment2.Filters;
 using Microsoft.EntityFrameworkCore;
+using Assignment2.ViewModels;
+using SimpleHashing.Net;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace Assignment2.Controllers;
@@ -60,12 +63,63 @@ public class CustomerController : Controller
     }
 
     [HttpPost]
+    public async Task<IActionResult> UpdateProfile(string name, string TFN,
+        string address, string city, string state, string postCode, string mobile)
+    {
+        var customer = await _context.Customers.FindAsync(CustomerID);
+
+        if (!ModelState.IsValid)
+        {
+            return RedirectToAction("Profile");
+        }
+        customer.Name = name;
+        if (TFN != "")
+            customer.TFN = TFN;
+        if (address != "")
+            customer.Address = address;
+        if (city != "")
+            customer.City = city;
+        if (state != "")
+            customer.State = state;
+        if (postCode != "")
+            customer.PostCode = postCode;
+        if (mobile != "")
+            customer.Mobile = mobile;
+
+        await _context.SaveChangesAsync();
+        var viewModel = new MessageViewModel
+        {
+            Success = true,
+            Message = "Your profile has been updated successfully!"
+        };
+        return View("Message", viewModel);
+
+    }
+
+    [HttpPost]
     public async Task<IActionResult> UpdatePassword(string oldPassword, string newPassword)
     {
+        var login = await _context.Logins.FirstOrDefaultAsync(x => x.CustomerID == CustomerID);
+        ISimpleHash simpleHash = new SimpleHash();
+        if (simpleHash.Verify(oldPassword, login.PasswordHash))
+        {
+            login.PasswordHash = simpleHash.Compute(newPassword);
+            await _context.SaveChangesAsync();
+            var viewModel = new MessageViewModel
+            {
+                Success = true,
+                Message = "Your password has been changed successfully!"
+            };
+            return View("Message", viewModel);
+        }
 
-
-        return RedirectToAction("Index", "Customer");
+        return View("Message", new MessageViewModel
+        {
+            Success = false,
+            Message = "Incorrect password. Updated unsuccessfully!"
+        });
     }
+
 
 
 }
