@@ -97,7 +97,7 @@ public class CustomerController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> UpdatePassword(string oldPassword, string newPassword, string passwordConfirm)
+    public async Task<IActionResult> UpdatePassword(string oldPassword, string newPassword)
     {
         var login = await _context.Logins.FirstOrDefaultAsync(x => x.CustomerID == CustomerID);
         ISimpleHash simpleHash = new SimpleHash();

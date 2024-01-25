@@ -15,7 +15,7 @@
             <div class="form-group row mb-2">
                 <label for="Name" class="col-sm-6 col-form-label fw-bold mb-1">Name</label>
                 <div class="col-sm-6">
-                    <input id="Name" name="Name" readonly class="form-control-plaintext"
+                    <input id="Name" name="Name" readonly class="form-control-plaintext" 
                            value="@Model.Name" data-val="true" data-val-required="The Name is required.">
                 </div>
                 @Html.ValidationMessage("Name", new { @class = "text-danger" })
@@ -31,7 +31,7 @@
             <div class="form-group row mb-2">
                 <label for="Address" class="col-sm-6 col-form-label fw-bold mb-1">Address</label>
                 <div class="col-sm-6">
-                    <input id="Address" name="Address" readonly class="form-control-plaintext" value="@Model.Address" />
+                    <input id="Address" name="Address" readonly class="form-control-plaintext" value="@Model.Address"/>
                     @Html.ValidationMessage("Address", new { @class = "text-danger" })
                 </div>
             </div>
@@ -39,13 +39,13 @@
             <div class="form-group row mb-2">
                 <label for="City" class="col-sm-6 col-form-label fw-bold mb-1">City</label>
                 <div class="col-sm-6">
-                    <input id="City" name="City" readonly class="form-control-plaintext" value="@Model.City" />
+                    <input id="City" name="City" readonly class="form-control-plaintext" value="@Model.City"/>
                     @Html.ValidationMessage("City", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group row mb-2">
-                <label for="State" class="col-sm-6 col-form-label fw-bold mb-1">TFN</label>
+                <label for="State" class="col-sm-6 col-form-label fw-bold mb-1">State</label>
                 <div class="col-sm-6">
                     <input id="State" name="State" readonly class="form-control-plaintext" value="@Model.State"
                            data-val="true" />
@@ -70,10 +70,11 @@
                     @Html.ValidationMessage("Mobile", new { @class = "text-danger" })
                 </div>
             </div>
-            <button class="form-btn">Edit</button>
-            <div class="form-group mb-3">
-
-                <input type="submit" value="Update" class="form-btn" />
+            
+            <div class="form-group mb-3 profile-btns">
+                <button type="button" id="cancel-btn" class="cancel-button" style="display: none;">Cancel</button>
+                <button type="button" id="edit-btn" class="form-btn">Edit</button>
+                <input type="submit" value="Update" class="form-btn profile-update-btn" style="display: none;" />
             </div>
         </form>
 
@@ -93,22 +94,44 @@
 
 @section Scripts {
     <script>$(document).ready(function () {
-            // Click event for the Details button
-            $("#details-btn").click(function () {
-                $(this).addClass("active");
-                $("#security-btn").removeClass("active");
-                $("#details-form").addClass("display");
-                $("#security-form").removeClass("display");
-            });
+        // Click event for the Details button
+        $("#details-btn").click(function () {
+            $(this).addClass("active");
+            $("#security-btn").removeClass("active");
+            $("#details-form").addClass("display");
+            $("#security-form").removeClass("display");
+        });
 
-            // Click event for the Security button
-            $("#security-btn").click(function () {
-                $(this).addClass("active");
-                $("#details-btn").removeClass("active");
-                $("#security-form").addClass("display");
-                $("#details-form").removeClass("display");
-            });
-        });</script>
+        // Click event for the Security button
+        $("#security-btn").click(function () {
+            $(this).addClass("active");
+            $("#details-btn").removeClass("active");
+            $("#security-form").addClass("display");
+            $("#details-form").removeClass("display");
+        });
+
+        $("#edit-btn").click(function () {
+            $("#details-form input[readonly]").toggleClass("form-control-plaintext form-control");
+            // Toggle readonly attribute for input fields
+            $("#details-form input[readonly]").prop("readonly", false);
+            // Show the Update and Cancel button
+            $("#cancel-btn").show();
+            $("input[type='submit']").show();
+            $(this).hide();
+        });
+
+    $("#cancel-btn").click(function () {
+        // Toggle readonly attribute for input fields
+        $("#details-form input").prop("readonly", true);
+        // Toggle input class name
+        $("#details-form input").toggleClass("form-control-plaintext form-control");
+        // Hide the Update and Cancel button
+        $("#cancel-btn").hide();
+        $("input[type='submit']").hide();
+        $("#edit-btn").show();
+    });
+            
+    });</script>
     <partial name="_ValidationScriptsPartial" />
 }
 

@@ -461,3 +461,13 @@ a, a:hover {
 .message-container p {
     margin-bottom: 40px;
 }
+
+.profile-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+#details-form input[type=text] {
+    padding: 5px;
+}
+
