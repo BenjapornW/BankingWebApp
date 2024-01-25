@@ -22,6 +22,10 @@ public class Customer
     [StringLength(40)]
     public string City { get; set; }
 
+    [StringLength(3)]
+    [RegularExpression(@"^(?:ACT|NSW|NT|QLD|SA|TAS|VIC|WA)$", ErrorMessage = "Invalid Australian state.")]
+    public string State { get; set; }
+
     [StringLength(4), RegularExpression(@"^\d{4}$", ErrorMessage = "PostCode must be 4 digits.")]
     public string PostCode { get; set; }
 
