@@ -4,51 +4,126 @@
     ViewData["Title"] = "Profile";
 }
 
-<div class="border-style border-corner mb-3">
-    <h2 class="display-5 subheading border-corner mb-3">My Profile</h2>
 
-    <div>
-        <form>
-            <div class="form-group row mb-2">
-                <label for="Name" class="col-sm-2 col-form-label mb-1">Name</label>
-                <div class="col-sm-10">
-                    <input id="Name" name="Name" readonly class="form-control-plaintext"
-                           value="@Model.Name" data-val="true" data-val-required="The Name is required.">
-                </div>
-                @Html.ValidationMessage("Name", new { @class = "text-danger" })
+    <h2 class="display-5 subheading border-corner mb-3">My Profile</h2>
+    <div class="row">
+        <div class="col">
+            <div class="border-style border-corner mb-3">
+                <h3>Details</h3>
+                <form class="center-form">
+                    <div class="form-group row mb-2">
+                        <label for="Name" class="col-sm-6 col-form-label fw-bold mb-1">Name</label>
+                        <div class="col-sm-6">
+                            <input id="Name" name="Name" readonly class="form-control-plaintext"
+                                   value="@Model.Name" data-val="true" data-val-required="The Name is required.">
+                        </div>
+                        @Html.ValidationMessage("Name", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="TFN" class="col-sm-6 col-form-label fw-bold mb-1">TFN</label>
+                        <div class="col-sm-6">
+                            <input id="TFN" name="TFN" readonly class="form-control-plaintext" value="@Model.TFN"
+                                   data-val="true" data-val-number="The field TFN must be a number." />
+                            @Html.ValidationMessage("TFN", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="Address" class="col-sm-6 col-form-label fw-bold mb-1">Address</label>
+                        <div class="col-sm-6">
+                            <input id="Address" name="Address" readonly class="form-control-plaintext" value="@Model.Address" />
+                            @Html.ValidationMessage("TFN", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label for="City" class="col-sm-6 col-form-label fw-bold mb-1">City</label>
+                        <div class="col-sm-6">
+                            <input id="City" name="City" readonly class="form-control-plaintext" value="@Model.City" />
+                            @Html.ValidationMessage("City", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label for="State" class="col-sm-6 col-form-label fw-bold mb-1">TFN</label>
+                        <div class="col-sm-6">
+                            <input id="State" name="State" readonly class="form-control-plaintext" value="@Model.State"
+                                   data-val="true" />
+                            @Html.ValidationMessage("State", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label for="PostCode" class="col-sm-6 col-form-label fw-bold mb-1">PostCode</label>
+                        <div class="col-sm-6">
+                            <input id="PostCode" name="PostCode" readonly class="form-control-plaintext" value="@Model.PostCode"
+                                   data-val="true" />
+                            @Html.ValidationMessage("PostCode", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label for="PostCode" class="col-sm-6 col-form-label fw-bold mb-1">Mobile</label>
+                        <div class="col-sm-6">
+                            <input id="Mobile" name="Mobile" readonly class="form-control-plaintext" value="@Model.Mobile"
+                                   data-val="true" />
+                            @Html.ValidationMessage("Mobile", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <input type="submit" value="Update" class="form-btn" />
+                    </div>
+                </form>
+
             </div>
-            <div class="form-group row mb-2">
-                <label for="TFN" class="col-sm-2 col-form-label mb-1">TFN</label>
-                <div class="col-sm-10">
-                    <input id="TFN" name="TFN" readonly class="form-control-plaintext" value="@Model.TFN"
-                           data-val="true" data-val-number="The field TFN must be a number."
-                           />
-                    @Html.ValidationMessage("TFN", new { @class = "text-danger" })
+        </div>
+        
+@*------------------------------------- change password form-------------------------------*@
+    <div class="col">
+        <div class="border-style border-corner col mb-3 profile-grid">
+            <h3>Change Password</h3>
+            @*<form class="center-form">
+                <div class="form-group row mb-2">
+                    <label for="OldPassword" class="col-sm-6 col-form-label fw-bold mb-1">Old Password</label>
+                    <div class="col-sm-6">
+                        <input id="OldPassword" name="OldPassword" class="form-control"
+                               data-val="true" data-val-required="The Old Password is required.">
+                    </div>
+                    @Html.ValidationMessage("OldPassword", new { @class = "text-danger" })
                 </div>
-            </div>
-</form>
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Address)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Address)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.City)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.City)
-            </dd>
-        </dl>
+                <div class="form-group row mb-2">
+                    <label for="NewPassword" class="col-sm-6 col-form-label fw-bold mb-1">New password</label>
+                    <div class="col-sm-6">
+                        <input id="NewPassword" name="NewPassword" readonly class="form-control"
+                               data-val="true" data-val-required="The new password is required." />
+                        @Html.ValidationMessage("NewPassword", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label for="PasswordConfirm" class="col-sm-6 col-form-label fw-bold mb-1">Password Confirm</label>
+                    <div class="col-sm-6">
+                        <input id="PasswordConfirm" name="PasswordConfirm" readonly class="form-control"
+                               data-val="true" data-val-required="The password confirm is required." />
+                        @Html.ValidationMessage("PasswordConfirm", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group mb-3">
+                    <input type="submit" value="Update Password" class="form-btn" />
+                </div>
+            </form>*@
+        </div>
     </div>
+
+   
 </div>
 
+   
 
-<a asp-action="Index" class="btn btn-primary">Back to Account List</a>
+
+<div class="button-container">
+    <a asp-action="Index" class="btn btn-primary">Back to Account List</a>
+</div>
+
