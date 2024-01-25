@@ -70,8 +70,9 @@
                     @Html.ValidationMessage("Mobile", new { @class = "text-danger" })
                 </div>
             </div>
+            <button class="form-btn">Edit</button>
+            <div class="form-group mb-3">
 
-            <div class="form-group mb-3" >
                 <input type="submit" value="Update" class="form-btn" />
             </div>
         </form>
@@ -87,30 +88,28 @@
 
 
 <div class="button-container">
-    <a asp-action="Index" class="btn btn-primary">Back to Home</a>
+    <a asp-controller="Customer" asp-action="Index" class="btn btn-primary">Back to Home</a>
 </div>
 
 @section Scripts {
-    <script>
-    $(document).ready(function () {
-        // Click event for the Details button
-        $("#details-btn").click(function () {
-            $(this).addClass("active");
-            $("#security-btn").removeClass("active");
-            $("#details-form").addClass("display");
-            $("#security-form").removeClass("display");
-        });
+    <script>$(document).ready(function () {
+            // Click event for the Details button
+            $("#details-btn").click(function () {
+                $(this).addClass("active");
+                $("#security-btn").removeClass("active");
+                $("#details-form").addClass("display");
+                $("#security-form").removeClass("display");
+            });
 
-        // Click event for the Security button
-        $("#security-btn").click(function () {
-            $(this).addClass("active"); 
-            $("#details-btn").removeClass("active");
-            $("#security-form").addClass("display");
-            $("#details-form").removeClass("display");
-        });
-    });
-    </script>
-
+            // Click event for the Security button
+            $("#security-btn").click(function () {
+                $(this).addClass("active");
+                $("#details-btn").removeClass("active");
+                $("#security-form").addClass("display");
+                $("#details-form").removeClass("display");
+            });
+        });</script>
+    <partial name="_ValidationScriptsPartial" />
 }
 
 

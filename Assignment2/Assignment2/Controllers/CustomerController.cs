@@ -116,7 +116,7 @@ public class CustomerController : Controller
         return View("Message", new MessageViewModel
         {
             Success = false,
-            Message = "Your password updated unsuccessfully!"
+            Message = "Incorrect password. Updated unsuccessfully!"
         });
     }
 
