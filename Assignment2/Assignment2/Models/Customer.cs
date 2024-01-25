@@ -32,8 +32,8 @@ public class Customer
     [StringLength(12), RegularExpression(@"^04\d{2} \d{3} \d{3}$", ErrorMessage = "Mobile Number must be in format: 04XX XXX XXX")]
     public string Mobile { get; set; }
 
-    public bool Locked { get; set; }   // for admin part
-
     public virtual List<Account> Accounts { get; set; }
+
+    [NotMapped]
     public virtual Login Login { get; set; }
 }

@@ -425,4 +425,27 @@ a, a:hover {
 
 }
 /******************************************* Profile *****************************************************/
+.tabs {
+    display: inline-block;
+}
 
+.tab-btn {
+    background-color: transparent; 
+    border: none; 
+    outline: none;
+    padding: 15px 7px;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.tab-btn.active {
+    border-bottom: 4px solid black;
+}
+
+.tab-content.display {
+    display: block;
+}
+
+.tab-content {
+    display:none
+}
