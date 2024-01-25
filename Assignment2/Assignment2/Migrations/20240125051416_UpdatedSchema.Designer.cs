@@ -4,6 +4,7 @@ using Assignment2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment2.Migrations
 {
     [DbContext(typeof(McbaContext))]
-    partial class McbaContextModelSnapshot : ModelSnapshot
+    [Migration("20240125051416_UpdatedSchema")]
+    partial class UpdatedSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,38 +49,6 @@ namespace Assignment2.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.BillPay", b =>
-                {
-                    b.Property<int>("BillPayID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BillPayID"));
-
-                    b.Property<int>("AccountNumber")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("money");
-
-                    b.Property<int>("PayeeID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ScheduleTimeUtc")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("period")
-                        .HasColumnType("int");
-
-                    b.HasKey("BillPayID");
-
-                    b.HasIndex("AccountNumber");
-
-                    b.HasIndex("PayeeID");
-
-                    b.ToTable("BillPay");
-                });
-
             modelBuilder.Entity("Assignment2.Models.Customer", b =>
                 {
                     b.Property<int>("CustomerID")
@@ -91,9 +62,6 @@ namespace Assignment2.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<bool>("Locked")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Mobile")
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
@@ -106,10 +74,6 @@ namespace Assignment2.Migrations
                     b.Property<string>("PostCode")
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("State")
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
 
                     b.Property<string>("TFN")
                         .HasMaxLength(11)
@@ -140,43 +104,6 @@ namespace Assignment2.Migrations
                         .IsUnique();
 
                     b.ToTable("Logins");
-                });
-
-            modelBuilder.Entity("Assignment2.Models.Payee", b =>
-                {
-                    b.Property<int>("PayeeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PayeeID"));
-
-                    b.Property<string>("Address")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("City")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Phone")
-                        .HasMaxLength(14)
-                        .HasColumnType("nvarchar(14)");
-
-                    b.Property<string>("PostCode")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("State")
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
-
-                    b.HasKey("PayeeID");
-
-                    b.ToTable("Payee");
                 });
 
             modelBuilder.Entity("Assignment2.Models.Transaction", b =>
@@ -226,25 +153,6 @@ namespace Assignment2.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.BillPay", b =>
-                {
-                    b.HasOne("Assignment2.Models.Account", "Account")
-                        .WithMany("BillPays")
-                        .HasForeignKey("AccountNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Assignment2.Models.Payee", "Payee")
-                        .WithMany("BillPays")
-                        .HasForeignKey("PayeeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-
-                    b.Navigation("Payee");
-                });
-
             modelBuilder.Entity("Assignment2.Models.Login", b =>
                 {
                     b.HasOne("Assignment2.Models.Customer", "Customer")
@@ -275,8 +183,6 @@ namespace Assignment2.Migrations
 
             modelBuilder.Entity("Assignment2.Models.Account", b =>
                 {
-                    b.Navigation("BillPays");
-
                     b.Navigation("Transactions");
                 });
 
@@ -285,11 +191,6 @@ namespace Assignment2.Migrations
                     b.Navigation("Accounts");
 
                     b.Navigation("Login");
-                });
-
-            modelBuilder.Entity("Assignment2.Models.Payee", b =>
-                {
-                    b.Navigation("BillPays");
                 });
 #pragma warning restore 612, 618
         }
