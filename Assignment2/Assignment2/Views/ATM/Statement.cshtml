@@ -13,68 +13,72 @@
 
 }
 
-<div class="col-md-6 left-side">
+<div class="mint-background-color border-corner mb-3 logo-heading">
     <img src="~/img/mcba_black.png" width="250px" alt="Black MCBA Logo" />
 </div>
+@*<div class="border-style border-corner">*@
+    <h2 class="black-text-green-bg">My Statement</h2>
+    <h5 class="black-text-grey-bg">Available Balance: @availableBalance.ToString("C")</h5>
 
-<h2 class="black-text-green-bg">My Statement</h2>
-<h5 class="black-text-grey-bg">Available Balance: @availableBalance.ToString("C")</h5>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Transaction Type</th>
-            <th>Account Number</th>
-            <th>Destination</th>
-            <th>Amount</th>
-            <th>Time</th>
-            <th>Comment</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var transaction in Model)
-        {
-            var localTime = TimeZoneInfo.ConvertTimeFromUtc(transaction.TransactionTimeUtc, ausEasternTimeZone);
-
+    <table class="table">
+        <thead>
             <tr>
-                <td>@transaction.TransactionID</td>
-                <td>@Enum.GetName(typeof(TransactionType), transaction.TransactionType)</td>
-                <td>@transaction.AccountNumber</td>
-                <td>@(transaction.DestinationAccountNumber?.ToString() ?? "N/A")</td>
-                <td>@transaction.Amount.ToString("C")</td>
-                <td>@localTime.ToString("dd/MM/yyyy hh:mm tt")</td>
-                <td>@transaction.Comment</td>
+                <th>ID</th>
+                <th>Transaction Type</th>
+                <th>Account Number</th>
+                <th>Destination</th>
+                <th>Amount</th>
+                <th>Time</th>
+                <th>Comment</th>
             </tr>
-        }
+        </thead>
+        <tbody>
+            @foreach (var transaction in Model)
+            {
+                var localTime = TimeZoneInfo.ConvertTimeFromUtc(transaction.TransactionTimeUtc, ausEasternTimeZone);
 
-    </tbody>
-</table>
+                <tr>
+                    <td>@transaction.TransactionID</td>
+                    <td>@Enum.GetName(typeof(TransactionType), transaction.TransactionType)</td>
+                    <td>@transaction.AccountNumber</td>
+                    <td>@(transaction.DestinationAccountNumber?.ToString() ?? "N/A")</td>
+                    <td>@transaction.Amount.ToString("C")</td>
+                    <td>@localTime.ToString("dd/MM/yyyy hh:mm tt")</td>
+                    <td>@transaction.Comment</td>
+                </tr>
+            }
 
-<!-- Pagination and other HTML code -->
+        </tbody>
+    </table>
+
+    <!-- Pagination and other HTML code -->
 
 
-@if (totalPages > 1)
-{
-    <div class="pagination-container">
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
-                    <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage - 1)">Previous</a>
-                </li>
-                @for (int i = 1; i <= totalPages; i++)
-                {
-                    <li class="page-item @(i == currentPage ? "active" : "")">
-                        <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@i">@i</a>
+    @if (totalPages > 1)
+    {
+        <div class="pagination-container">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                        <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage - 1)">Previous</a>
                     </li>
-                }
-                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
-                    <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage + 1)">Next</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-}
+                    @for (int i = 1; i <= totalPages; i++)
+                    {
+                        <li class="page-item @(i == currentPage ? "active" : "")">
+                            <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@i">@i</a>
+                        </li>
+                    }
+                    <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                        <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@(currentPage + 1)">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    }
+@*</div>*@
+
+
+
 
 
 <!-- ...other HTML code... -->
