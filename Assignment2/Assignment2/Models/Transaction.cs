@@ -13,6 +13,12 @@ public enum TransactionType
     IncomingTransfer = 6
 }
 
+public static class ServiceFee
+{
+    public const decimal Withdraw = 0.05m;
+    public const decimal Transfer = 0.1m;
+}
+
 public class Transaction
 {
     public int TransactionID { get; set; }
