@@ -11,7 +11,7 @@
         <button class="tab-btn" id="security-btn">Change Password</button>
     </div>
     <div class="tab-content display mb-3" id="details-form">
-        <form class="center-form">
+        <form class="center-form" asp-action="UpdateProfile">
             <div class="form-group row mb-2">
                 <label for="Name" class="col-sm-6 col-form-label fw-bold mb-1">Name</label>
                 <div class="col-sm-6">
@@ -32,7 +32,7 @@
                 <label for="Address" class="col-sm-6 col-form-label fw-bold mb-1">Address</label>
                 <div class="col-sm-6">
                     <input id="Address" name="Address" readonly class="form-control-plaintext" value="@Model.Address" />
-                    @Html.ValidationMessage("TFN", new { @class = "text-danger" })
+                    @Html.ValidationMessage("Address", new { @class = "text-danger" })
                 </div>
             </div>
 

@@ -452,12 +452,12 @@ a, a:hover {
 /******************************************* Profile *****************************************************/
 .message-container {
     padding: 30px;
-    font-size: 23px;
+    font-size: 20px;
     width: 60%;
-    margin: 50px auto 20px;
+    margin: 70px auto 20px;
     margin-bottom: 20px;
 }
 
 .message-container p {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
