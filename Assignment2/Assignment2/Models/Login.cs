@@ -15,4 +15,6 @@ public class Login
     [Column(TypeName = "char")]
     [Required, StringLength(94)]
     public string PasswordHash { get; set; }
+
+    public bool Locked { get; set; }   // for admin part
 }

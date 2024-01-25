@@ -40,17 +40,16 @@
                 <input type="hidden" id="AccountNumber" name="AccountNumber" value="@Model.CurrentAccount.AccountNumber" />
 
                 <div class="form-group mb-3">
-                    <input type="submit" value="@Model.ActionType" class="btn btn-primary" />
+                    <input type="submit" value="@Model.ActionType" class="form-btn" />
                 </div>
-                <!-- Button trigger modal -->
             </form>
         </div>
     </div>
 
 
 
-<div>
-    <a asp-controller="Customer" asp-action="Index">Back to Accounts</a>
+<div class="button-container">
+    <a asp-action="Index" class="btn btn-primary">Back to Accounts</a>
 </div>
 
 @section Scripts {

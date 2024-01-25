@@ -42,9 +42,24 @@ a, a:hover {
     background: var(--background-color);
 }
 
+/******************************************* form *****************************************************/
 .center-form {
     width: 40%;
     margin: auto
+}
+
+.form-btn {
+    background: black;
+    color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.form-btn {
+    background: black;
+    color: white;
 }
 /******************************************* border *****************************************************/
 .border-corner {
@@ -385,20 +400,20 @@ a, a:hover {
 }
 
 .cancel-button {
-    background-color: #f2f2f2;
-    color: #333;
+    background-color: #ccc;
+    color: black;
     border: 2px solid #ccc;
     border-radius: 8px;
     padding: 6px 12px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    font-size: 14px;
 }
 
-.cancel-button:hover {
-    background-color: #ccc;
-    color: #f2f2f2;
-}
 
+.comfirm-form-container {
+    width: 50%;
+    margin:auto;
+}
 /******************************************* Confirm Transaction *****************************************************/
 .login-form {
     width: 70%;
@@ -409,4 +424,40 @@ a, a:hover {
     padding: 5%;
 
 }
+/******************************************* Profile *****************************************************/
+.tabs {
+    display: inline-block;
+}
 
+.tab-btn {
+    background-color: transparent; 
+    border: none; 
+    outline: none;
+    padding: 15px 7px;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.tab-btn.active {
+    border-bottom: 4px solid black;
+}
+
+.tab-content.display {
+    display: block;
+}
+
+.tab-content {
+    display: none;
+}
+/******************************************* Profile *****************************************************/
+.message-container {
+    padding: 30px;
+    font-size: 23px;
+    width: 60%;
+    margin: 50px auto 20px;
+    margin-bottom: 20px;
+}
+
+.message-container p {
+    margin-bottom: 30px;
+}
