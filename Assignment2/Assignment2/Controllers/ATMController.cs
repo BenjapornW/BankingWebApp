@@ -93,7 +93,12 @@ namespace Assignment2.Controllers
 
             account.Transactions.Add(newTransaction);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Customer");
+            var viewModel = new MessageViewModel
+            {
+                Success = true,
+                Message = "Your transation has been processed successfully!"
+            };
+            return View("Message", viewModel);
         }
 
         private async Task ProcessDeposit(Account account, decimal amount, Transaction newTransaction)

@@ -1,0 +1,11 @@
+﻿@model Assignment2.ViewModels.MessageViewModel
+
+<div class="mint-background-color border-corner mb-3 logo-heading center-heading">
+    <img src="~/img/mcba_black.png" width="250px" alt="Black MCBA Logo" />
+</div>
+
+<div class="border-style border-corner center-heading message-container">
+    <p>@(Model.Success ? "😊" : "🥹") @Model.Message</p>
+
+        <a asp-action="Index" class="btn btn-primary">Back to Home</a>
+</div>

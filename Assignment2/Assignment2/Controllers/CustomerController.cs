@@ -59,5 +59,13 @@ public class CustomerController : Controller
         return View(customer);
     }
 
+    [HttpPost]
+    public async Task<IActionResult> UpdatePassword(string oldPassword, string newPassword)
+    {
+
+
+        return RedirectToAction("Index", "Customer");
+    }
+
 
 }

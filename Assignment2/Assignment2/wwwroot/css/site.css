@@ -447,5 +447,17 @@ a, a:hover {
 }
 
 .tab-content {
-    display:none
+    display: none;
+}
+/******************************************* Profile *****************************************************/
+.message-container {
+    padding: 30px;
+    font-size: 23px;
+    width: 60%;
+    margin: 50px auto 20px;
+    margin-bottom: 20px;
+}
+
+.message-container p {
+    margin-bottom: 30px;
 }
