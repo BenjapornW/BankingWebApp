@@ -106,7 +106,7 @@ namespace Assignment2.Controllers
         {
             account.Balance -= amount;
             newTransaction.TransactionType = TransactionType.Withdraw;
-            await ChargeServiceFee(account, 0.05m);
+            await ChargeServiceFee(account, ServiceFee.Withdraw);
         }
 
         private async Task ProcessTransfer(Account account, int? destinationAccountNumber, decimal amount, Transaction newTransaction)
@@ -124,7 +124,7 @@ namespace Assignment2.Controllers
                     Amount = amount,
                     TransactionTimeUtc = DateTime.UtcNow
                 });
-                await ChargeServiceFee(account, 0.1m);
+                await ChargeServiceFee(account, ServiceFee.Transfer);
             }
         }
 

@@ -3,11 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Assignment2.Models;
 
-//public enum AccountType
-//{
-//    Checking = 1,
-//    Saving = 2
-//}
+
+public static class AccountType
+{
+    public const string Cheching = "C";
+    public const string Saving = "S";
+}
 
 public class Account
 {
