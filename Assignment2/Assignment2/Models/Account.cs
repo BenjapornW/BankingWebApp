@@ -6,7 +6,7 @@ namespace Assignment2.Models;
 
 public static class AccountType
 {
-    public const string Cheching = "C";
+    public const string Checking = "C";
     public const string Saving = "S";
 }
 

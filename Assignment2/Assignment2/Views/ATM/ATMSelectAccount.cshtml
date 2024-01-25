@@ -29,7 +29,7 @@
             {
                 <tr>
                     <td>@account.AccountNumber</td>
-                    <td>@(account.AccountType == "S" ? "Saving" : "Checking")</td>
+                    <td>@(account.AccountType == AccountType.Saving ? "Saving" : "Checking")</td>
                     <td>@account.Balance.ToString("C")</td>
                     <td>
                         @if (action == "Statement")
