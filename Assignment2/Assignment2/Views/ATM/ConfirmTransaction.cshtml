@@ -1,9 +1,9 @@
 ﻿@using Assignment2.Models
 @model Assignment2.ViewModels.ConfirmTransactionViewModel
 
-<div class="border-style border-corner">
-        <h3 class="display-4 confirm-title subheading border-corner">Confirm Your Transaction</h3>
-        <div class="center-container confirm-form">
+<div class="border-style border-corner mb-3">
+        <h3 class="display-6 confirm-title subheading border-corner mb-3">Confirm Your Transaction</h3>
+        <div class="center-container center-form">
             <form asp-action="TransactionForm" method="post">
 
                 <div class="form-group mb-3">
@@ -35,8 +35,8 @@
                     <input id="Comment" name="Comment" class="form-control mb-1" value="@Model.Comment" readonly />
                 </div>
 
-                <div class="form-group buttons-space-between">
-                    <input type="submit" value="Comfirm" class="btn btn-primary mr-3" />
+                <div class="form-group buttons-space-between mb-3">
+                    <input type="submit" value="Comfirm" class="form-btn mr-3" />
                     <a asp-controller="Customer" asp-action="Index" class="btn cancel-button">Cancel</a>
                 </div>
                 <!-- Button trigger modal -->

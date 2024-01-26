@@ -26,9 +26,12 @@ public class Account
 
     [Column(TypeName = "money")]
     [DataType(DataType.Currency)]
+    [Range(0, double.MaxValue, ErrorMessage = "The balance must be a positive value.")]
     public decimal Balance { get; set; }
 
     // Set ambiguous navigation property with InverseProperty annotation or Fluent-API in the McbaContext.cs file.
     [InverseProperty("Account")]
     public virtual List<Transaction> Transactions { get; set; }
+
+    public virtual List<BillPay> BillPays { get; set; }
 }

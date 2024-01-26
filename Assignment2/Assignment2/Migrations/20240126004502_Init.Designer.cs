@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment2.Migrations
 {
     [DbContext(typeof(McbaContext))]
-    [Migration("20240120124345_CreateNewSchema")]
-    partial class CreateNewSchema
+    [Migration("20240126004502_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,11 +21,14 @@ namespace Assignment2.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.1")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("McbaExample.Models.Account", b =>
+            modelBuilder.Entity("Assignment2.Models.Account", b =>
                 {
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
@@ -46,7 +49,39 @@ namespace Assignment2.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("McbaExample.Models.Customer", b =>
+            modelBuilder.Entity("Assignment2.Models.BillPay", b =>
+                {
+                    b.Property<int>("BillPayID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BillPayID"));
+
+                    b.Property<int>("AccountNumber")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("money");
+
+                    b.Property<int>("PayeeID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ScheduleTimeUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("period")
+                        .HasColumnType("int");
+
+                    b.HasKey("BillPayID");
+
+                    b.HasIndex("AccountNumber");
+
+                    b.HasIndex("PayeeID");
+
+                    b.ToTable("BillPays");
+                });
+
+            modelBuilder.Entity("Assignment2.Models.Customer", b =>
                 {
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
@@ -59,6 +94,10 @@ namespace Assignment2.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
+                    b.Property<string>("Mobile")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -68,12 +107,20 @@ namespace Assignment2.Migrations
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
 
+                    b.Property<string>("State")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TFN")
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
                     b.HasKey("CustomerID");
 
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("McbaExample.Models.Login", b =>
+            modelBuilder.Entity("Assignment2.Models.Login", b =>
                 {
                     b.Property<string>("LoginID")
                         .HasMaxLength(8)
@@ -82,6 +129,9 @@ namespace Assignment2.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Locked")
+                        .HasColumnType("bit");
+
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasMaxLength(94)
@@ -89,13 +139,49 @@ namespace Assignment2.Migrations
 
                     b.HasKey("LoginID");
 
-                    b.HasIndex("CustomerID")
-                        .IsUnique();
+                    b.HasIndex("CustomerID");
 
                     b.ToTable("Logins");
                 });
 
-            modelBuilder.Entity("McbaExample.Models.Transaction", b =>
+            modelBuilder.Entity("Assignment2.Models.Payee", b =>
+                {
+                    b.Property<int>("PayeeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PayeeID"));
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("City")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar(14)");
+
+                    b.Property<string>("PostCode")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("State")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.HasKey("PayeeID");
+
+                    b.ToTable("Payees");
+                });
+
+            modelBuilder.Entity("Assignment2.Models.Transaction", b =>
                 {
                     b.Property<int>("TransactionID")
                         .ValueGeneratedOnAdd()
@@ -131,9 +217,9 @@ namespace Assignment2.Migrations
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("McbaExample.Models.Account", b =>
+            modelBuilder.Entity("Assignment2.Models.Account", b =>
                 {
-                    b.HasOne("McbaExample.Models.Customer", "Customer")
+                    b.HasOne("Assignment2.Models.Customer", "Customer")
                         .WithMany("Accounts")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -142,26 +228,45 @@ namespace Assignment2.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("McbaExample.Models.Login", b =>
+            modelBuilder.Entity("Assignment2.Models.BillPay", b =>
                 {
-                    b.HasOne("McbaExample.Models.Customer", "Customer")
-                        .WithOne("Login")
-                        .HasForeignKey("McbaExample.Models.Login", "CustomerID")
+                    b.HasOne("Assignment2.Models.Account", "Account")
+                        .WithMany("BillPays")
+                        .HasForeignKey("AccountNumber")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Assignment2.Models.Payee", "Payee")
+                        .WithMany("BillPays")
+                        .HasForeignKey("PayeeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("Payee");
+                });
+
+            modelBuilder.Entity("Assignment2.Models.Login", b =>
+                {
+                    b.HasOne("Assignment2.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("McbaExample.Models.Transaction", b =>
+            modelBuilder.Entity("Assignment2.Models.Transaction", b =>
                 {
-                    b.HasOne("McbaExample.Models.Account", "Account")
+                    b.HasOne("Assignment2.Models.Account", "Account")
                         .WithMany("Transactions")
                         .HasForeignKey("AccountNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("McbaExample.Models.Account", "DestinationAccount")
+                    b.HasOne("Assignment2.Models.Account", "DestinationAccount")
                         .WithMany()
                         .HasForeignKey("DestinationAccountNumber");
 
@@ -170,16 +275,21 @@ namespace Assignment2.Migrations
                     b.Navigation("DestinationAccount");
                 });
 
-            modelBuilder.Entity("McbaExample.Models.Account", b =>
+            modelBuilder.Entity("Assignment2.Models.Account", b =>
                 {
+                    b.Navigation("BillPays");
+
                     b.Navigation("Transactions");
                 });
 
-            modelBuilder.Entity("McbaExample.Models.Customer", b =>
+            modelBuilder.Entity("Assignment2.Models.Customer", b =>
                 {
                     b.Navigation("Accounts");
+                });
 
-                    b.Navigation("Login");
+            modelBuilder.Entity("Assignment2.Models.Payee", b =>
+                {
+                    b.Navigation("BillPays");
                 });
 #pragma warning restore 612, 618
         }

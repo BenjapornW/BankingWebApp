@@ -6,7 +6,7 @@ namespace Assignment2.Models;
 public class Login
 {
     [Column(TypeName = "char")]
-    [StringLength(8)]
+    [StringLength(8), RegularExpression(@"^\d{8}$", ErrorMessage = "LoginID must be 8 digits.")]
     public string LoginID { get; set; }
 
     public int CustomerID { get; set; }
@@ -15,4 +15,6 @@ public class Login
     [Column(TypeName = "char")]
     [Required, StringLength(94)]
     public string PasswordHash { get; set; }
+
+    public bool Locked { get; set; }   // for admin part
 }
