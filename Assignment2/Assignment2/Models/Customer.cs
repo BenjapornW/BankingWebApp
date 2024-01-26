@@ -34,6 +34,6 @@ public class Customer
 
     public virtual List<Account> Accounts { get; set; }
 
-    [NotMapped]
+    //[NotMapped]
     public virtual Login Login { get; set; }
 }
