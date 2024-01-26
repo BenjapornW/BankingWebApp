@@ -15,8 +15,36 @@ namespace Assignment2.Data
 
                 // Look for customers.
 
+                // Look for customers.
                 if (context.Customers.Any())
                     return; // DB has already been seeded.
+
+                if (context.Payees.Any())
+                    return; // DB has already been seeded.
+
+                // Create Payees
+                var payee1 = new Payee
+                {
+                    Name = "Greater Western Water",
+                    Address = "123 Payee St",
+                    City = "Melbourne",
+                    State = "VIC",
+                    PostCode = "3000",
+                    Phone = "(03) 1234 5678"
+                };
+
+                var payee2 = new Payee
+                {
+                    Name = "Optus",
+                    Address = "456 Payee Rd",
+                    City = "Sydney",
+                    State = "NSW",
+                    PostCode = "2000",
+                    Phone = "(02) 9876 5432"
+                };
+
+                // Insert Payees into the context
+                context.Payees.AddRange(payee1, payee2);
 
                 // load json
                 var customers = LoadJSON();
