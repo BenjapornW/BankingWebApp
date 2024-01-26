@@ -28,7 +28,7 @@ public class BillPay
 
     public DateTime ScheduleTimeUtc { get; set; }
 
-    public PeriodType period { get; set; }
+    public PeriodType Period { get; set; }
 
 }
 
