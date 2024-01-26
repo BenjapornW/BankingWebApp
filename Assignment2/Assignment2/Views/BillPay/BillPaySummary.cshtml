@@ -1,0 +1,53 @@
+﻿
+@model Assignment2.ViewModels.BillPaySummaryViewModel
+
+@{
+    ViewData["Title"] = "Bill Payments Summary";
+}
+<div class="border-style border-corner">
+    <h2 class="display-6 subheading border-corner mb-3">@ViewData["Title"]</h2>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Current Month Total:</h3>
+            <p>@Model.CurrentMonthTotal.ToString("C")</p>
+        </div>
+        <div class="col-md-6">
+            <h3>Next Month Total:</h3>
+            <p>@Model.NextMonthTotal.ToString("C")</p>
+        </div>
+    </div>
+
+    <h3>Upcoming Payments:</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Payee</th>
+                <th>Amount</th>
+                <th>Schedule Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var payment in Model.UpcomingPayments)
+            {
+                <tr>
+                    <td>@payment.Payee.Name</td>
+                    <td>@payment.Amount.ToString("C")</td>
+                    <td>@payment.ScheduleTimeUtc.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="button-container right-side">
+        <a asp-controller="BillPay" asp-action="Create" class="btn btn-primary">New Bill Payment</a>
+    </div>
+</div>
+
+
+<div class="button-container">
+    <a asp-controller="Customer" asp-action="Index" class="btn btn-primary">Back to Home</a>
+</div>
+
+

@@ -358,6 +358,12 @@ a, a:hover {
     background-color: #f2f2f2;
 }
 
+/* Add this to your site.css file */
+.btn-right {
+    float: right;
+    margin-right: 5px; /* You can adjust the margin as needed */
+}
+
 
 
 /******************************************* Pagination Styling *****************************************************/

@@ -1,0 +1,56 @@
+﻿@model Assignment2.Models.BillPay
+
+@{
+    ViewData["Title"] = "Create Bill Payment";
+}
+
+
+
+<div class="border-style border-corner mb-3">
+    <h3 class="display-6 md-5 account-heading border-corner center-heading">Create Bill Payment</h3>
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="AccountNumber">Account Number</label>
+            <input asp-for="AccountNumber" class="form-control" />
+            <span asp-validation-for="AccountNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PayeeID">Payee</label>
+            <select asp-for="PayeeID" class="form-control">
+                <option value="">Select Payee</option>
+                <!-- You can populate the Payee options here based on your data -->
+            </select>
+            <span asp-validation-for="PayeeID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Amount">Amount</label>
+            <input asp-for="Amount" class="form-control" />
+            <span asp-validation-for="Amount" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ScheduleTimeUtc">Schedule Date</label>
+            <input asp-for="ScheduleTimeUtc" type="date" class="form-control" />
+            <span asp-validation-for="ScheduleTimeUtc" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Period">Payment Period</label>
+            <select asp-for="Period" class="form-control">
+                <option value="1">One Off</option>
+                <option value="2">Monthly</option>
+            </select>
+            <span asp-validation-for="Period" class="text-danger"></span>
+        </div>
+        <div class="button-container right-side">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+    <a asp-controller="BillPay" asp-action="Index" class="btn btn-primary">Back to Bill Payments</a>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
