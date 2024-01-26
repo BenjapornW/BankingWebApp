@@ -32,6 +32,7 @@ namespace Assignment2.Controllers
             {
                 CurrentAccount = account,
                 ActionType = actionType,
+                AccountNumber = id
             };
             if (actionType == TransactionType.Transfer.ToString())
             {
@@ -41,19 +42,29 @@ namespace Assignment2.Controllers
 
             return View(viewModel);
         }
-
-        public IActionResult ConfirmTransaction(string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment)
+        //, string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment
+        [HttpPost]
+        public IActionResult ConfirmTransaction(TransactionFormViewModel viewModel)
         {
-            var viewModel = new ConfirmTransactionViewModel
+            //if (viewModel.Amount <= 0)
+            //{
+            //    ModelState.AddModelError("Amount", "Please enter a positive amount.");
+            //    return View(viewModel);
+            //}
+            if (!ModelState.IsValid)
             {
-                ActionType = actionType,
-                AccountNumber = accountNumber,
-                Amount = amount,
-                Comment = comment
-            };
+                return RedirectToAction("Message", new { success = false, message = "Something go wrong!" });
+            }
+            //var nextViewModel = new TransactionFormViewModel
+            //{
+            //    ActionType = viewModel.ActionType,
+            //    AccountNumber = viewModel.CurrentAccount.AccountNumber,
+            //    Amount = viewModel.Amount,
+            //    Comment = viewModel.Comment
+            //};
 
-            if (actionType == TransactionType.Transfer.ToString())
-                viewModel.DestinationAccountNumber = destinationAccountNumber;
+            //if (viewModel.ActionType == TransactionType.Transfer.ToString())
+            //    nextViewModel.DestinationAccountNumber = viewModel.DestinationAccountNumber;
             return View(viewModel);
         }
 

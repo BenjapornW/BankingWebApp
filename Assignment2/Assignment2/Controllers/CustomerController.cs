@@ -76,11 +76,11 @@ public class CustomerController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateProfile(Customer viewModel)
     {
-        var customer = await _context.Customers.FindAsync(CustomerID);
+        var customer = await _context.Customers.FindAsync(viewModel.CustomerID);
 
         if (!ModelState.IsValid)
         {
-            return RedirectToAction("Message", new { success = false, message = "Your profile did not updated successfully!" });
+            return RedirectToAction("Message", new { success = false, message = "Your profile updated unsuccessfully!" });
         }
         customer.Name = viewModel.Name;
         if (viewModel.TFN != "")
@@ -126,7 +126,7 @@ public class CustomerController : Controller
 
             return RedirectToAction("Message", new { success = true, message = "Your password has been changed successfully!" });
         }
-        return RedirectToAction("Message", new { success = true, message = "Incorrect password. Updated unsuccessfully!" });
+        return RedirectToAction("Message", new { success = false, message = "Incorrect password. Updated unsuccessfully!" });
     }
 }
 

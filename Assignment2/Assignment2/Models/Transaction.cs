@@ -34,7 +34,7 @@ public class Transaction
     public virtual Account DestinationAccount { get; set; }
 
     [Column(TypeName = "money")]
-    [Range(0, double.MaxValue, ErrorMessage = "The amount must be a positive number.")]
+    [Range(double.Epsilon, double.MaxValue, ErrorMessage = "The amount must be a positive number.")]
     public decimal Amount { get; set; }
 
     [StringLength(30, ErrorMessage = "The comment field must be less than 30 characters.")]
