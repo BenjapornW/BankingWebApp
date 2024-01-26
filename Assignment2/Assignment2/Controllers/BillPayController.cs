@@ -45,7 +45,7 @@ namespace Assignment2.Controllers
         }
 
         // Additional CRUD operations can be added here if needed
-        public async Task<IActionResult> Summary()
+        public async Task<IActionResult> BillPaySummary()
         {
             // Calculate the total estimated payments for the current and next month
             var today = DateTime.Today;
