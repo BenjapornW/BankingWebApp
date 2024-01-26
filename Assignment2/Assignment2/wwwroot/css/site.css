@@ -443,12 +443,14 @@ a, a:hover {
 }
 
 .tab-content.display {
+    margin: 30px;
     display: block;
 }
 
 .tab-content {
     display: none;
 }
+
 /******************************************* Profile *****************************************************/
 .message-container {
     padding: 30px;
@@ -463,6 +465,7 @@ a, a:hover {
 }
 
 .profile-btns {
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;
 }
@@ -470,4 +473,5 @@ a, a:hover {
 #details-form input[type=text] {
     padding: 5px;
 }
+
 

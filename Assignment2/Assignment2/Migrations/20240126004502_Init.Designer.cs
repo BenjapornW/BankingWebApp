@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment2.Migrations
 {
     [DbContext(typeof(McbaContext))]
-    [Migration("20240125052051_UpdatedSchemaAmount")]
-    partial class UpdatedSchemaAmount
+    [Migration("20240126004502_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,7 +78,7 @@ namespace Assignment2.Migrations
 
                     b.HasIndex("PayeeID");
 
-                    b.ToTable("BillPay");
+                    b.ToTable("BillPays");
                 });
 
             modelBuilder.Entity("Assignment2.Models.Customer", b =>
@@ -94,9 +94,6 @@ namespace Assignment2.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<bool>("Locked")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Mobile")
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
@@ -109,6 +106,10 @@ namespace Assignment2.Migrations
                     b.Property<string>("PostCode")
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("State")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
 
                     b.Property<string>("TFN")
                         .HasMaxLength(11)
@@ -128,6 +129,9 @@ namespace Assignment2.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Locked")
+                        .HasColumnType("bit");
+
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasMaxLength(94)
@@ -135,8 +139,7 @@ namespace Assignment2.Migrations
 
                     b.HasKey("LoginID");
 
-                    b.HasIndex("CustomerID")
-                        .IsUnique();
+                    b.HasIndex("CustomerID");
 
                     b.ToTable("Logins");
                 });
@@ -175,7 +178,7 @@ namespace Assignment2.Migrations
 
                     b.HasKey("PayeeID");
 
-                    b.ToTable("Payee");
+                    b.ToTable("Payees");
                 });
 
             modelBuilder.Entity("Assignment2.Models.Transaction", b =>
@@ -247,8 +250,8 @@ namespace Assignment2.Migrations
             modelBuilder.Entity("Assignment2.Models.Login", b =>
                 {
                     b.HasOne("Assignment2.Models.Customer", "Customer")
-                        .WithOne("Login")
-                        .HasForeignKey("Assignment2.Models.Login", "CustomerID")
+                        .WithMany()
+                        .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -282,8 +285,6 @@ namespace Assignment2.Migrations
             modelBuilder.Entity("Assignment2.Models.Customer", b =>
                 {
                     b.Navigation("Accounts");
-
-                    b.Navigation("Login");
                 });
 
             modelBuilder.Entity("Assignment2.Models.Payee", b =>

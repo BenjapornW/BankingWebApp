@@ -75,7 +75,7 @@ namespace Assignment2.Migrations
 
                     b.HasIndex("PayeeID");
 
-                    b.ToTable("BillPay");
+                    b.ToTable("BillPays");
                 });
 
             modelBuilder.Entity("Assignment2.Models.Customer", b =>
@@ -175,7 +175,7 @@ namespace Assignment2.Migrations
 
                     b.HasKey("PayeeID");
 
-                    b.ToTable("Payee");
+                    b.ToTable("Payees");
                 });
 
             modelBuilder.Entity("Assignment2.Models.Transaction", b =>
