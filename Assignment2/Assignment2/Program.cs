@@ -1,6 +1,8 @@
 ﻿using System.Globalization;
 using Assignment2.Data;
+using Assignment2.Services;
 using Microsoft.EntityFrameworkCore;
+using Hangfire;
 
 
 // Set the default culture to Australian English.
@@ -9,13 +11,13 @@ CultureInfo.DefaultThreadCurrentCulture = defaultCulture;
 CultureInfo.DefaultThreadCurrentUICulture = defaultCulture;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var connectionString = builder.Configuration.GetConnectionString("Assignment2Context");
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<McbaContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Assignment2Context"));
+    options.UseSqlServer(connectionString);
 
     // Enable lazy loading.
     options.UseLazyLoadingProxies();
@@ -30,6 +32,13 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddControllersWithViews();
+
+// add hangfire services
+builder.Services.AddHangfire((sp, config) =>
+{
+    config.UseSqlServerStorage(connectionString);
+});
+builder.Services.AddHangfireServer();
 
 var app = builder.Build();
 
@@ -58,10 +67,17 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseHangfireDashboard();
 
-app.UseAuthorization();
 
 app.UseSession();
+
+// Bill pay runs every minute
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<McbaContext>(); 
+    BillPayService.RecurringBillPayJob(dbContext);
+}
 
 app.MapDefaultControllerRoute();
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Assignment2.Data;
 using Assignment2.Models;
@@ -77,3 +77,4 @@ namespace Assignment2.Controllers
         }
     }
 }
+
