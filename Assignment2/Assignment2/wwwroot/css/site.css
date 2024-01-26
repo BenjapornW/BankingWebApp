@@ -416,11 +416,11 @@ a, a:hover {
 }
 /******************************************* Confirm Transaction *****************************************************/
 .login-form {
-    width: 55%;
-    padding: 15px;
+    width: 70%;
+    padding: 20px;
 }
 .login-img {
-    width: 90%;
+    width: 80%;
 }
 .login-img, .login-form {
     margin: auto;
