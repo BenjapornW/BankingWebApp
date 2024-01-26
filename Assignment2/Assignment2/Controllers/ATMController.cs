@@ -42,63 +42,50 @@ namespace Assignment2.Controllers
 
             return View(viewModel);
         }
-        //, string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment
+        
         [HttpPost]
-        public IActionResult ConfirmTransaction(TransactionFormViewModel viewModel)
+        public async Task<IActionResult> ConfirmTransaction(TransactionFormViewModel viewModel)
         {
-            //if (viewModel.Amount <= 0)
-            //{
-            //    ModelState.AddModelError("Amount", "Please enter a positive amount.");
-            //    return View(viewModel);
-            //}
+            
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Message", new { success = false, message = "Something go wrong!" });
+                var account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
+                viewModel.CurrentAccount = account;
+                return View("TransactionForm", viewModel);
             }
-            //var nextViewModel = new TransactionFormViewModel
-            //{
-            //    ActionType = viewModel.ActionType,
-            //    AccountNumber = viewModel.CurrentAccount.AccountNumber,
-            //    Amount = viewModel.Amount,
-            //    Comment = viewModel.Comment
-            //};
 
-            //if (viewModel.ActionType == TransactionType.Transfer.ToString())
-            //    nextViewModel.DestinationAccountNumber = viewModel.DestinationAccountNumber;
             return View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> TransactionForm(string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment)
+        public async Task<IActionResult> TransactionForm(TransactionFormViewModel viewModel)
         {
-            var account = await _context.Accounts.FindAsync(accountNumber);
-
-            AmountValidation(amount);
+            var account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
 
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("TransactionForm", new { id = accountNumber, actionType = actionType });
+                return RedirectToAction("TransactionForm", new { id = viewModel.AccountNumber, actionType = viewModel.ActionType });
             }
 
             var newTransaction = new Transaction
             {
-                Amount = amount,
-                Comment = comment,
+                Amount = viewModel.Amount,
+                Comment = viewModel.Comment,
                 TransactionTimeUtc = DateTime.UtcNow
             };
 
-            switch (actionType)
+            switch (viewModel.ActionType)
             {
                 case nameof(TransactionType.Deposit):
-                    await ProcessDeposit(account, amount, newTransaction);
+                    await ProcessDeposit(account, viewModel.Amount, newTransaction);
                     break;
 
                 case nameof(TransactionType.Withdraw):
-                    await ProcessWithdraw(account, amount, newTransaction);
+                    await ProcessWithdraw(account, viewModel.Amount, newTransaction);
                     break;
 
                 case nameof(TransactionType.Transfer):
-                    await ProcessTransfer(account, destinationAccountNumber, amount, newTransaction);
+                    await ProcessTransfer(account, viewModel.DestinationAccountNumber, viewModel.Amount, newTransaction);
                     break;
             }
 
@@ -228,14 +215,7 @@ namespace Assignment2.Controllers
         }
 
 
-        private void AmountValidation(decimal amount)
-        {
-            if (amount <= 0)
-                ModelState.AddModelError(nameof(amount), "Amount must be positive.");
-            else if (amount.HasMoreThanTwoDecimalPlaces())
-                ModelState.AddModelError(nameof(amount), "Amount cannot have more than 2 decimal places.");
-
-        }
+        
 
 
 
