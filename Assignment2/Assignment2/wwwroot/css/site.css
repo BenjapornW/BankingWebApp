@@ -416,13 +416,22 @@ a, a:hover {
 }
 /******************************************* Confirm Transaction *****************************************************/
 .login-form {
-    width: 70%;
-    padding: 20px;
+    width: 55%;
+    padding: 15px;
 }
-
+.login-img {
+    width: 90%;
+}
+.login-img, .login-form {
+    margin: auto;
+}
 .login-form h1 {
     padding: 5%;
+}
 
+.login-col {
+    display:flex;
+    align-items: center;
 }
 /******************************************* Profile *****************************************************/
 .tabs {

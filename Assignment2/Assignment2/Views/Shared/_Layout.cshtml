@@ -53,6 +53,10 @@
                         @if (isLoggedIn)
                         {
                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="ATM" asp-action="SelectAccount" asp-route-actionType="Deposit">Deposit</a>
                             </li>
                             <li class="nav-item">
