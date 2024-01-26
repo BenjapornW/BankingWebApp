@@ -1,4 +1,4 @@
-﻿<Properties StartupConfiguration="{9B526C51-A8A0-412B-8A24-66DD1D82F6D8}|http">
+<Properties StartupConfiguration="{9B526C51-A8A0-412B-8A24-66DD1D82F6D8}|http">
   <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
@@ -46,10 +46,12 @@
       <File FileName="Assignment2/ViewModels/ErrorViewModel.cs" Line="5" Column="18" />
       <File FileName="Assignment2/Models/Customer.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="Assignment2/wwwroot/css/site.css" Line="440" Column="1" NotebookId="1" />
+
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
+
           <Node name="Assignment2">
             <Node name="Assignment2">
               <Node name="Dependencies" expanded="True" />
@@ -61,6 +63,7 @@
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Views">
+
                 <Node name="Customer" expanded="True" />
                 <Node name="Login" expanded="True" />
                 <Node name="Shared" expanded="True" />
@@ -74,5 +77,8 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
