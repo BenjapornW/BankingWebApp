@@ -62,6 +62,17 @@ public class CustomerController : Controller
         return View(customer);
     }
 
+    public async Task<IActionResult> Message(bool success, string message)
+    {
+        var viewModel = new MessageViewModel
+        {
+            Success = success,
+            Message = message
+        };
+
+        return View("Message", viewModel);
+    }
+
     [HttpPost]
     public async Task<IActionResult> UpdateProfile(string name, string TFN,
         string address, string city, string state, string postCode, string mobile)
@@ -87,12 +98,8 @@ public class CustomerController : Controller
             customer.Mobile = mobile;
 
         await _context.SaveChangesAsync();
-        var viewModel = new MessageViewModel
-        {
-            Success = true,
-            Message = "Your profile has been updated successfully!"
-        };
-        return View("Message", viewModel);
+
+        return RedirectToAction("Message", new {success = true, message = "Your profile has been updated successfully!" });
 
     }
 
@@ -105,21 +112,13 @@ public class CustomerController : Controller
         {
             login.PasswordHash = simpleHash.Compute(newPassword);
             await _context.SaveChangesAsync();
-            var viewModel = new MessageViewModel
-            {
-                Success = true,
-                Message = "Your password has been changed successfully!"
-            };
-            return View("Message", viewModel);
+
+            return RedirectToAction("Message", new { success = true, message = "Your password has been changed successfully!" });
         }
-
-        return View("Message", new MessageViewModel
-        {
-            Success = false,
-            Message = "Incorrect password. Updated unsuccessfully!"
-        });
+        return RedirectToAction("Message", new { success = true, message = "Incorrect password. Updated unsuccessfully!" });
     }
-
-
-
 }
+
+
+
+
