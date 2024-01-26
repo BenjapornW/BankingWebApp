@@ -66,8 +66,19 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseHangfireDashboard();
 
-app.UseAuthorization();
+// Enqueue background job when the application starts
+BackgroundJob.Enqueue(() => Console.WriteLine("Background job triggered on application start"));
+
+// Schedule job to run 5 seconds after application starts
+var scheduleDateTime = DateTime.UtcNow.AddSeconds(5);
+var dateTimeOffset = new DateTimeOffset(scheduleDateTime);
+BackgroundJob.Schedule(() => Console.WriteLine("Scheduled job triggered on application start"), dateTimeOffset);
+
+// Recurring job runs every minute
+RecurringJob.AddOrUpdate("RecurringJob", () => Console.WriteLine("Recurring job triggered every minute"), Cron.Minutely);
+
 
 app.UseSession();
 
