@@ -1,45 +1,43 @@
-﻿@using Assignment2.Models
-@model Assignment2.ViewModels.ConfirmTransactionViewModel
+﻿@model Assignment2.ViewModels.TransactionFormViewModel
 
 <div class="border-style border-corner mb-3">
-        <h3 class="display-6 confirm-title subheading border-corner mb-3">Confirm Your Transaction</h3>
-        <div class="center-container center-form">
-            <form asp-action="TransactionForm" method="post">
+    <h3 class="display-6 confirm-title subheading border-corner mb-3">Confirm Your Transaction</h3>
+    <div class="center-container center-form">
+        <form asp-action="TransactionForm" method="post">
 
-                <div class="form-group mb-3">
-                    <label for="ActionType" class="control-label mb-1">Transaction Type</label>
-                    <input id="ActionType" name="ActionType" class="form-control mb-1" value="@Model.ActionType" readonly />
-                </div>
+            <div class="form-group mb-3">
+                <label asp-for="ActionType" class="control-label mb-1">Transaction Type</label>
+                <input asp-for="ActionType" name="ActionType" class="form-control mb-1" value="@Model.ActionType" readonly />
+            </div>
 
+            <div class="form-group mb-3">
+                <label asp-for="AccountNumber" class="control-label mb-1">Selected Account Number</label>
+                <input asp-for="AccountNumber" name="AccountNumber" class="form-control mb-1" value="@Model.AccountNumber" readonly />
+            </div>
+            @if (Model.ActionType == TransactionType.Transfer.ToString())
+            {
                 <div class="form-group mb-3">
-                    <label for="AccountNumber" class="control-label mb-1">Selected Account Number</label>
-                    <input id="AccountNumber" name="AccountNumber" class="form-control mb-1" value="@Model.AccountNumber" readonly />
-                </div>
-                @if (Model.ActionType == TransactionType.Transfer.ToString())
-                {
-                    <div class="form-group mb-3">
-                        <label for="DestinationAccountNumber" class="control-label mb-1">Destination Account Number</label>
-                        <label for="DestinationAccountNumber" class="control-label mb-1">Amount</label>
-                        <input id="DestinationAccountNumber" name="DestinationAccountNumber" class="form-control mb-1" value="@Model.DestinationAccountNumber"
-                               readonly />
-                    </div>
-                }
-
-                <div class="form-group mb-3">
-                    <label for="Amount" class="control-label mb-1">Amount</label>
-                    <input id="Amount" name="Amount" class="form-control mb-1" value="@Model.Amount.ToString("0.00")"
+                    <label asp-for="DestinationAccountNumber" class="control-label mb-1">Destination Account Number</label>
+                    <input asp-for="DestinationAccountNumber" name="DestinationAccountNumber" class="form-control mb-1" value="@Model.DestinationAccountNumber"
                            readonly />
                 </div>
-                <div class="form-group mb-3">
-                    <label for="Comment" class="control-label mb-1">Comment</label>
-                    <input id="Comment" name="Comment" class="form-control mb-1" value="@Model.Comment" readonly />
-                </div>
+            }
 
-                <div class="form-group buttons-space-between mb-3">
-                    <input type="submit" value="Comfirm" class="form-btn mr-3" />
-                    <a asp-controller="Customer" asp-action="Index" class="btn cancel-button">Cancel</a>
-                </div>
-                <!-- Button trigger modal -->
-            </form>
-        </div>
+            <div class="form-group mb-3">
+                <label asp-for="Amount" class="control-label mb-1">Amount</label>
+                <input asp-for="Amount" name="Amount" class="form-control mb-1" value="@Model.Amount.ToString("0.00")"
+                       readonly />
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Comment" class="control-label mb-1">Comment</label>
+                <input asp-for="Comment" name="Comment" class="form-control mb-1" value="@Model.Comment" readonly />
+            </div>
+
+            <div class="form-group buttons-space-between mb-3">
+                <input type="submit" value="Comfirm" class="form-btn mr-3" />
+                <a asp-controller="Customer" asp-action="Index" class="btn cancel-button">Cancel</a>
+            </div>
+            <!-- Button trigger modal -->
+        </form>
     </div>
+</div>
