@@ -10,12 +10,12 @@
         <button class="tab-btn active" id="details-btn">Details</button>
         <button class="tab-btn" id="security-btn">Change Password</button>
     </div>
-    <div class="tab-content display mb-3" id="details-form">
+    <div class="tab-content display border-corner" id="details-form">
         <form class="center-form" asp-action="UpdateProfile">
             <div class="form-group row mb-2">
                 <label for="Name" class="col-sm-6 col-form-label fw-bold mb-1">Name</label>
                 <div class="col-sm-6">
-                    <input id="Name" name="Name" readonly class="form-control-plaintext" 
+                    <input id="Name" name="Name" readonly class="form-control-plaintext" data-original-value="@Model.Name"
                            value="@Model.Name" data-val="true" data-val-required="The Name is required.">
                 </div>
                 @Html.ValidationMessage("Name", new { @class = "text-danger" })
@@ -23,7 +23,7 @@
             <div class="form-group row mb-2">
                 <label for="TFN" class="col-sm-6 col-form-label fw-bold mb-1">TFN</label>
                 <div class="col-sm-6">
-                    <input id="TFN" name="TFN" readonly class="form-control-plaintext" value="@Model.TFN"
+                    <input id="TFN" name="TFN" readonly class="form-control-plaintext" data-original-value="@Model.TFN" value="@Model.TFN" 
                            data-val="true" data-val-number="The field TFN must be a number." />
                     @Html.ValidationMessage("TFN", new { @class = "text-danger" })
                 </div>
@@ -31,7 +31,7 @@
             <div class="form-group row mb-2">
                 <label for="Address" class="col-sm-6 col-form-label fw-bold mb-1">Address</label>
                 <div class="col-sm-6">
-                    <input id="Address" name="Address" readonly class="form-control-plaintext" value="@Model.Address"/>
+                    <input id="Address" name="Address" readonly class="form-control-plaintext" data-original-value="@Model.Address" value="@Model.Address"/>
                     @Html.ValidationMessage("Address", new { @class = "text-danger" })
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="form-group row mb-2">
                 <label for="City" class="col-sm-6 col-form-label fw-bold mb-1">City</label>
                 <div class="col-sm-6">
-                    <input id="City" name="City" readonly class="form-control-plaintext" value="@Model.City"/>
+                    <input id="City" name="City" readonly class="form-control-plaintext" data-original-value="@Model.City" value="@Model.City"/>
                     @Html.ValidationMessage("City", new { @class = "text-danger" })
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="form-group row mb-2">
                 <label for="State" class="col-sm-6 col-form-label fw-bold mb-1">State</label>
                 <div class="col-sm-6">
-                    <input id="State" name="State" readonly class="form-control-plaintext" value="@Model.State"
+                    <input id="State" name="State" readonly class="form-control-plaintext" data-original-value="@Model.State" value="@Model.State"
                            data-val="true" />
                     @Html.ValidationMessage("State", new { @class = "text-danger" })
                 </div>
@@ -56,7 +56,7 @@
             <div class="form-group row mb-2">
                 <label for="PostCode" class="col-sm-6 col-form-label fw-bold mb-1">PostCode</label>
                 <div class="col-sm-6">
-                    <input id="PostCode" name="PostCode" readonly class="form-control-plaintext" value="@Model.PostCode"
+                    <input id="PostCode" name="PostCode" readonly class="form-control-plaintext" data-original-value="@Model.PostCode" value="@Model.PostCode"
                            data-val="true" />
                     @Html.ValidationMessage("PostCode", new { @class = "text-danger" })
                 </div>
@@ -65,7 +65,7 @@
             <div class="form-group row mb-2">
                 <label for="PostCode" class="col-sm-6 col-form-label fw-bold mb-1">Mobile</label>
                 <div class="col-sm-6">
-                    <input id="Mobile" name="Mobile" readonly class="form-control-plaintext" value="@Model.Mobile"
+                    <input id="Mobile" name="Mobile" readonly class="form-control-plaintext" data-original-value="@Model.Mobile" value="@Model.Mobile"
                            data-val="true" />
                     @Html.ValidationMessage("Mobile", new { @class = "text-danger" })
                 </div>
@@ -74,7 +74,7 @@
             <div class="form-group mb-3 profile-btns">
                 <button type="button" id="cancel-btn" class="cancel-button" style="display: none;">Cancel</button>
                 <button type="button" id="edit-btn" class="form-btn">Edit</button>
-                <input type="submit" value="Update" class="form-btn profile-update-btn" style="display: none;" />
+                <input type="submit" data-original-value="Update" value="Update" class="form-btn profile-update-btn" style="display: none;" />
             </div>
         </form>
 
@@ -123,6 +123,11 @@
     $("#cancel-btn").click(function () {
         // Toggle readonly attribute for input fields
         $("#details-form input").prop("readonly", true);
+        // Reset input fields to their original values
+        $("#details-form input").each(function () {
+            $(this).val($(this).data("original-value"));
+        });
+
         // Toggle input class name
         $("#details-form input").toggleClass("form-control-plaintext form-control");
         // Hide the Update and Cancel button

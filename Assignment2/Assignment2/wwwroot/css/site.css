@@ -443,6 +443,7 @@ a, a:hover {
 }
 
 .tab-content.display {
+    margin: 30px;
     display: block;
 }
 
@@ -463,6 +464,7 @@ a, a:hover {
 }
 
 .profile-btns {
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;
 }
@@ -470,4 +472,5 @@ a, a:hover {
 #details-form input[type=text] {
     padding: 5px;
 }
+
 
