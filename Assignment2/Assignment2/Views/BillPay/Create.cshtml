@@ -1,0 +1,23 @@
+﻿@model Assignment2.Models.BillPay
+
+@{
+    ViewData["Title"] = "Create Bill Payment";
+}
+
+<h2>Create Bill Payment</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="AccountNumber"></label>
+        <input asp-for="AccountNumber" class="form-control" />
+        <span asp-validation-for="AccountNumber" class="text-danger"></span>
+    </div>
+
+    <!-- ... Additional form fields for PayeeID, Amount, ScheduleTimeUtc, etc. ... -->
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
