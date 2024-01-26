@@ -74,28 +74,39 @@ public class CustomerController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> UpdateProfile(string name, string TFN,
-        string address, string city, string state, string postCode, string mobile)
+    public async Task<IActionResult> UpdateProfile(Customer viewModel)
     {
-        var customer = await _context.Customers.FindAsync(CustomerID);
+        var customer = await _context.Customers.FindAsync(viewModel.CustomerID);
 
         if (!ModelState.IsValid)
         {
-            return RedirectToAction("Profile");
+            return RedirectToAction("Message", new { success = false, message = "Your profile updated unsuccessfully!" });
         }
-        customer.Name = name;
-        if (TFN != "")
-            customer.TFN = TFN;
-        if (address != "")
-            customer.Address = address;
-        if (city != "")
-            customer.City = city;
-        if (state != "")
-            customer.State = state;
-        if (postCode != "")
-            customer.PostCode = postCode;
-        if (mobile != "")
-            customer.Mobile = mobile;
+        customer.Name = viewModel.Name;
+        if (viewModel.TFN != "")
+            customer.TFN = viewModel.TFN;
+        else
+            customer.TFN = null;
+        if (viewModel.Address != "")
+            customer.Address = viewModel.Address;
+        else
+            customer.Address = null;
+        if (viewModel.City != "")
+            customer.City = viewModel.City;
+        else
+            customer.City = null;
+        if (viewModel.State != "")
+            customer.State = viewModel.State;
+        else
+            customer.State = null;
+        if (viewModel.PostCode != "")
+            customer.PostCode = viewModel.PostCode;
+        else
+            customer.PostCode = null;
+        if (viewModel.Mobile != "")
+            customer.Mobile = viewModel.Mobile;
+        else
+            customer.Mobile = null;
 
         await _context.SaveChangesAsync();
 
@@ -115,7 +126,7 @@ public class CustomerController : Controller
 
             return RedirectToAction("Message", new { success = true, message = "Your password has been changed successfully!" });
         }
-        return RedirectToAction("Message", new { success = true, message = "Incorrect password. Updated unsuccessfully!" });
+        return RedirectToAction("Message", new { success = false, message = "Incorrect password. Updated unsuccessfully!" });
     }
 }
 

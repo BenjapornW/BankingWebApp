@@ -32,6 +32,7 @@ namespace Assignment2.Controllers
             {
                 CurrentAccount = account,
                 ActionType = actionType,
+                AccountNumber = id
             };
             if (actionType == TransactionType.Transfer.ToString())
             {
@@ -41,53 +42,59 @@ namespace Assignment2.Controllers
 
             return View(viewModel);
         }
-
-        public IActionResult ConfirmTransaction(string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment)
-        {
-            var viewModel = new ConfirmTransactionViewModel
-            {
-                ActionType = actionType,
-                AccountNumber = accountNumber,
-                Amount = amount,
-                Comment = comment
-            };
-
-            if (actionType == TransactionType.Transfer.ToString())
-                viewModel.DestinationAccountNumber = destinationAccountNumber;
-            return View(viewModel);
-        }
-
+        
         [HttpPost]
-        public async Task<IActionResult> TransactionForm(string actionType, int accountNumber, int? destinationAccountNumber, decimal amount, string comment)
+        public async Task<IActionResult> ConfirmTransaction(TransactionFormViewModel viewModel)
         {
-            var account = await _context.Accounts.FindAsync(accountNumber);
-
-            AmountValidation(amount);
 
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("TransactionForm", new { id = accountNumber, actionType = actionType });
+                var account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
+                viewModel.CurrentAccount = account;
+                if (viewModel.ActionType == TransactionType.Transfer.ToString())
+                {
+                    var accounts = _context.Accounts.Where(account => account.AccountNumber != viewModel.AccountNumber).ToList();
+                    viewModel.AllAccounts = accounts;
+                }
+                return View("TransactionForm", viewModel);
+
+            }
+
+            return View("ConfirmTransaction", viewModel);
+        }
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> TransactionForm(TransactionFormViewModel viewModel)
+        {
+            var account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("TransactionForm", new { id = viewModel.AccountNumber, actionType = viewModel.ActionType });
             }
 
             var newTransaction = new Transaction
             {
-                Amount = amount,
-                Comment = comment,
+                Amount = viewModel.Amount,
+                Comment = viewModel.Comment,
                 TransactionTimeUtc = DateTime.UtcNow
             };
 
-            switch (actionType)
+            switch (viewModel.ActionType)
             {
                 case nameof(TransactionType.Deposit):
-                    await ProcessDeposit(account, amount, newTransaction);
+                    await ProcessDeposit(account, viewModel.Amount, newTransaction);
                     break;
 
                 case nameof(TransactionType.Withdraw):
-                    await ProcessWithdraw(account, amount, newTransaction);
+                    await ProcessWithdraw(account, viewModel.Amount, newTransaction);
                     break;
 
                 case nameof(TransactionType.Transfer):
-                    await ProcessTransfer(account, destinationAccountNumber, amount, newTransaction);
+                    await ProcessTransfer(account, viewModel.DestinationAccountNumber, viewModel.Amount, newTransaction);
                     break;
             }
 
@@ -217,14 +224,7 @@ namespace Assignment2.Controllers
         }
 
 
-        private void AmountValidation(decimal amount)
-        {
-            if (amount <= 0)
-                ModelState.AddModelError(nameof(amount), "Amount must be positive.");
-            else if (amount.HasMoreThanTwoDecimalPlaces())
-                ModelState.AddModelError(nameof(amount), "Amount cannot have more than 2 decimal places.");
-
-        }
+        
 
 
 

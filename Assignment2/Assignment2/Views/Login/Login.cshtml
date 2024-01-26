@@ -4,56 +4,52 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="container h-100">
-    <div class="row h-100">
-        <div class="col-md-6 left-side">
+<div class="container ">
+    <div class="row ">
+        <div class="col-sm-6 login-col">
             <!-- This div will hold the background image -->
-            <img class="border-corner"src="~/img/login_side2.jpg" alt="Login side" height="700px" />
+            <img class="border-corner login-img" src="~/img/login_side2.jpg" alt="Login side"/>
         </div>
-       
+        <div class="col-sm-6 login-col">
+            <div class="border-style border-corner login-form">
+                <h1 class="display-6 subheading border-corner center-heading mb-3">Sign in</h1>
+                <form asp-action="Login">
+                    <div class="form-group mb-3">
+                        <label asp-for="LoginID" class="control-label mb-1">Login ID</label>
+                        <input asp-for="LoginID" class="form-control" data-val="true" data-val-required="The Login ID is required." />
+                        @Html.ValidationMessage("LoginID", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="Password" class="control-label mb-1">Password</label>
+                        <input id="Password" name="Password" type="password" class="form-control"
+                               data-val="true" data-val-required="The Password is required." />
+                        @Html.ValidationMessage("Password", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group button-spacing mb-3">
+                        <input type="submit" value="Login" class="btn btn-primary" />
+                    </div>
+                    @Html.ValidationMessage("LoginFailed", new { @class = "text-danger" })
+                </form>
+                <div>
+                    <li>
+                        Protection for unauthorised transaction
+                    </li>
+                    <li>
+                        Instant money transfer
+                    </li>
+                    <li>
+                        Use any card
+                    </li>
+                    <li>
+                        Bill Payment
+                    </li>
+                </div>
 
-    </div>
-    <div class="col-md-6 right-side d-flex align-items-center justify-content-center">
-        <div class="border-style border-corner login-form">
-            <h1 class="display-6 subheading border-corner center-heading mb-3">Sign in</h1>
-            <form asp-action="Login">
-                <div class="form-group mb-3">
-                    <label asp-for="LoginID" class="control-label mb-1">Login ID</label>
-                    <input asp-for="LoginID" class="form-control" data-val="true" data-val-required="The Login ID is required." />
-                    @Html.ValidationMessage("LoginID", new { @class = "text-danger" })
-                </div>
-                <div class="form-group mb-3">
-                    <label for="Password" class="control-label mb-1">Password</label>
-                    <input id="Password" name="Password" type="password" class="form-control"
-                           data-val="true" data-val-required="The Password is required." />
-                    @Html.ValidationMessage("Password", new { @class = "text-danger" })
-                </div>
-                <div class="form-group button-spacing mb-3">
-                    <input type="submit" value="Login" class="btn btn-primary" />
-                </div>
-                @Html.ValidationMessage("LoginFailed", new { @class = "text-danger" })
-            </form>
-            <div>
-                <li>
-                    Protection for unauthorised transaction
-                </li>
-                <li>
-                    Instant money transfer
-                </li>
-                <li>
-                    Use any card
-                </li>
-                <li>
-                    Bill Payment
-                </li>
+
             </div>
 
-
         </div>
-        
 
-
-        
 
 
     </div>
