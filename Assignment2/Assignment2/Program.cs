@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using Assignment2.Data;
+using Assignment2.Services;
 using Microsoft.EntityFrameworkCore;
 using Hangfire;
 
@@ -68,19 +69,15 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseHangfireDashboard();
 
-// Enqueue background job when the application starts
-BackgroundJob.Enqueue(() => Console.WriteLine("Background job triggered on application start"));
-
-// Schedule job to run 5 seconds after application starts
-var scheduleDateTime = DateTime.UtcNow.AddSeconds(5);
-var dateTimeOffset = new DateTimeOffset(scheduleDateTime);
-BackgroundJob.Schedule(() => Console.WriteLine("Scheduled job triggered on application start"), dateTimeOffset);
-
-// Recurring job runs every minute
-RecurringJob.AddOrUpdate("RecurringJob", () => Console.WriteLine("Recurring job triggered every minute"), Cron.Minutely);
-
 
 app.UseSession();
+
+// Bill pay runs every minute
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<McbaContext>(); 
+    BillPayService.RecurringBillPayJob(dbContext);
+}
 
 app.MapDefaultControllerRoute();
 
