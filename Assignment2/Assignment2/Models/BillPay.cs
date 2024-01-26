@@ -23,7 +23,7 @@ public class BillPay
     public virtual Payee Payee { get; set; }
 
     [Column(TypeName = "money")]
-    [Range(0, double.MaxValue, ErrorMessage = "The amount must be a positive number.")]
+    [Range(double.Epsilon, double.MaxValue, ErrorMessage = "The amount must be a positive number.")]
     public decimal Amount { get; set; }
 
     public DateTime ScheduleTimeUtc { get; set; }

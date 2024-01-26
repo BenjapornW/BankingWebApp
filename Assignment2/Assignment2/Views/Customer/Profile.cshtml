@@ -11,66 +11,70 @@
         <button class="tab-btn" id="security-btn">Change Password</button>
     </div>
     <div class="tab-content display border-corner" id="details-form">
-        <form class="center-form" asp-action="UpdateProfile">
+        <form class="center-form" asp-action="UpdateProfile" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group row mb-2">
-                <label for="Name" class="col-sm-6 col-form-label fw-bold mb-1">Name</label>
-                <div class="col-sm-6">
-                    <input id="Name" name="Name" readonly class="form-control-plaintext" data-original-value="@Model.Name"
+                <label asp-for="Name" class="col-sm-4 col-form-label fw-bold mb-1">Name</label>
+                <div class="col-sm-8">
+                    <input asp-for="Name" readonly class="form-control-plaintext" data-original-value="@Model.Name"
                            value="@Model.Name" data-val="true" data-val-required="The Name is required.">
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
-                @Html.ValidationMessage("Name", new { @class = "text-danger" })
-            </div>
-            <div class="form-group row mb-2">
-                <label for="TFN" class="col-sm-6 col-form-label fw-bold mb-1">TFN</label>
-                <div class="col-sm-6">
-                    <input id="TFN" name="TFN" readonly class="form-control-plaintext" data-original-value="@Model.TFN" value="@Model.TFN" 
-                           data-val="true" data-val-number="The field TFN must be a number." />
-                    @Html.ValidationMessage("TFN", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group row mb-2">
-                <label for="Address" class="col-sm-6 col-form-label fw-bold mb-1">Address</label>
-                <div class="col-sm-6">
-                    <input id="Address" name="Address" readonly class="form-control-plaintext" data-original-value="@Model.Address" value="@Model.Address"/>
-                    @Html.ValidationMessage("Address", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-group row mb-2">
-                <label for="City" class="col-sm-6 col-form-label fw-bold mb-1">City</label>
-                <div class="col-sm-6">
-                    <input id="City" name="City" readonly class="form-control-plaintext" data-original-value="@Model.City" value="@Model.City"/>
-                    @Html.ValidationMessage("City", new { @class = "text-danger" })
-                </div>
             </div>
-
             <div class="form-group row mb-2">
-                <label for="State" class="col-sm-6 col-form-label fw-bold mb-1">State</label>
-                <div class="col-sm-6">
-                    <input id="State" name="State" readonly class="form-control-plaintext" data-original-value="@Model.State" value="@Model.State"
+                <label asp-for="TFN" class="col-sm-4 col-form-label fw-bold mb-1">TFN</label>
+                <div class="col-sm-8">
+                    <input asp-for="TFN" readonly class="form-control-plaintext" data-original-value="@Model.TFN" value="@Model.TFN"
                            data-val="true" />
-                    @Html.ValidationMessage("State", new { @class = "text-danger" })
+                    <span asp-validation-for="TFN" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="form-group row mb-2">
+                <label asp-for="Address" class="col-sm-4 col-form-label fw-bold mb-1">Address</label>
+                <div class="col-sm-8">
+                    <input asp-for="Address" readonly class="form-control-plaintext" data-original-value="@Model.Address" value="@Model.Address" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="form-group row mb-2">
-                <label for="PostCode" class="col-sm-6 col-form-label fw-bold mb-1">PostCode</label>
-                <div class="col-sm-6">
-                    <input id="PostCode" name="PostCode" readonly class="form-control-plaintext" data-original-value="@Model.PostCode" value="@Model.PostCode"
-                           data-val="true" />
-                    @Html.ValidationMessage("PostCode", new { @class = "text-danger" })
+                <label asp-for="City" class="col-sm-4 col-form-label fw-bold mb-1">City</label>
+                <div class="col-sm-8">
+                    <input asp-for="City" readonly class="form-control-plaintext" data-original-value="@Model.City" value="@Model.City" />
+                    <span asp-validation-for="City" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="form-group row mb-2">
-                <label for="PostCode" class="col-sm-6 col-form-label fw-bold mb-1">Mobile</label>
-                <div class="col-sm-6">
-                    <input id="Mobile" name="Mobile" readonly class="form-control-plaintext" data-original-value="@Model.Mobile" value="@Model.Mobile"
+                <label asp-for="State" class="col-sm-4 col-form-label fw-bold mb-1">State</label>
+                <div class="col-sm-8">
+                    <input asp-for="State" readonly class="form-control-plaintext" data-original-value="@Model.State" value="@Model.State"
                            data-val="true" />
-                    @Html.ValidationMessage("Mobile", new { @class = "text-danger" })
+                    <span asp-validation-for="State" class="text-danger"></span>
                 </div>
             </div>
-            
+
+            <div class="form-group row mb-2">
+                <label asp-for="PostCode" class="col-sm-4 col-form-label fw-bold mb-1">PostCode</label>
+                <div class="col-sm-8">
+                    <input asp-for="PostCode" readonly class="form-control-plaintext" data-original-value="@Model.PostCode" value="@Model.PostCode"
+                           data-val="true" />
+                    <span asp-validation-for="PostCode" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label asp-for="PostCode" class="col-sm-4 col-form-label fw-bold mb-1">Mobile</label>
+                <div class="col-sm-8">
+                    <input asp-for="Mobile" readonly class="form-control-plaintext" data-original-value="@Model.Mobile" value="@Model.Mobile"
+                           data-val="true" />
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                </div>
+            </div>
+            <input type="hidden" asp-for="CustomerID" value="@Model.CustomerID" />
+
             <div class="form-group mb-3 profile-btns">
                 <button type="button" id="cancel-btn" class="cancel-button" style="display: none;">Cancel</button>
                 <button type="button" id="edit-btn" class="form-btn">Edit</button>
@@ -121,6 +125,8 @@
         });
 
     $("#cancel-btn").click(function () {
+        // Remove validation error messages
+        $("#details-form .text-danger").html('');
         // Toggle readonly attribute for input fields
         $("#details-form input").prop("readonly", true);
         // Reset input fields to their original values
