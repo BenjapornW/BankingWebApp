@@ -1,69 +1,64 @@
 ﻿<Properties StartupConfiguration="{9B526C51-A8A0-412B-8A24-66DD1D82F6D8}|http">
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assignment2/Views/Customer/Statement.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assignment2/Models/Account.cs">
     <Files>
       <File FileName="Assignment2/Assignment2.csproj" />
       <File FileName="Assignment2/.gitignore" />
-      <File FileName="Assignment2/Models/ErrorViewModel.cs" />
-      <File FileName="Assignment2/Models/Account.cs" />
+      <File FileName="Assignment2/Models/Account.cs" Line="10" Column="38" />
       <File FileName="Assignment2/Models/Customer.cs" />
       <File FileName="Assignment2/Models/Login.cs" />
       <File FileName="Assignment2/appsettings.json" />
-      <File FileName="Assignment2/Program.cs" Line="13" Column="34" />
-      <File FileName="Assignment2/Controllers/HomeController.cs" />
+      <File FileName="Assignment2/Program.cs" />
       <File FileName="Assignment2/Data/McbaContext.cs" />
-      <File FileName="Assignment2/Data/SeedData.cs" />
-      <File FileName="Assignment2/Migrations/20240121062216_DBforLogin.cs" />
-      <File FileName="Assignment2/Views/Login/Login.cshtml" />
-      <File FileName="Assignment2/Controllers/LoginController.cs" />
-      <File FileName="Assignment2/Views/Home/Index.cshtml" />
-      <File FileName="Assignment2/Controllers/CustomerController.cs" Line="97" Column="33" />
-      <File FileName="Assignment2/Views/Customer/Index.cshtml" />
-      <File FileName="Assignment2/Views/Customer/Withdraw.cshtml" />
-      <File FileName="Assignment2/Views/Customer/Transfer.cshtml" />
+      <File FileName="Assignment2/Controllers/HomeController.cs" />
       <File FileName="Assignment2/Views/Shared/_Layout.cshtml" />
-      <File FileName="Assignment2/Views/Customer/Deposit.cshtml" />
-      <File FileName="Assignment2/Utilities/MiscellaneousExtensionUtilities.cs" />
-      <File FileName="Assignment2/Filters/AuthorizeCustomerAttribute.cs" />
-      <File FileName="Assignment2/wwwroot/css/site.css" Line="287" Column="2" />
+      <File FileName="Assignment2/Views/Home/Index.cshtml" />
       <File FileName="Assignment2/Views/Home/Privacy.cshtml" />
+      <File FileName="Assignment2/Models/Transaction.cs" />
+      <File FileName="Assignment2/Migrations/McbaContextModelSnapshot.cs" />
       <File FileName="Assignment2/Views/Shared/_ValidationScriptsPartial.cshtml" />
+      <File FileName="Assignment2/Data/SeedData.cs" />
+      <File FileName="Assignment2/Controllers/CustomerController.cs" />
+      <File FileName="Assignment2/Views/Customer/Index.cshtml" />
+      <File FileName="Assignment2/Views/Login/Login.cshtml" />
+      <File FileName="Assignment2/Controllers/ATMController.cs" />
+      <File FileName="Assignment2/Utilities/MiscellaneousExtensionUtilities.cs" />
       <File FileName="Assignment2/Views/_ViewImports.cshtml" />
-      <File FileName="Assignment2/Views/Shared/_Layout.cshtml.css" />
-      <File FileName="Assignment2/Views/Customer/SelectAccountToWithdraw.cshtml" />
-      <File FileName="Assignment2/Views/Customer/SelectAccountToTransfer.cshtml" />
-      <File FileName="Assignment2/Views/Customer/Statement.cshtml" Line="48" Column="1" />
+      <File FileName="Assignment2/Views/_ViewStart.cshtml" />
+      <File FileName="Assignment2/ViewModels/ATMViewModel.cs" />
+      <File FileName="Assignment2/Views/Shared/Error.cshtml" />
+      <File FileName="Assignment2/Controllers/LoginController.cs" />
+      <File FileName="Assignment2/Filters/AuthorizeCustomerAttribute.cs" />
+      <File FileName="Assignment2/Properties/launchSettings.json" />
+      <File FileName="Assignment2/Views/ATM/TransactionForm.cshtml" />
+      <File FileName="Assignment2/ViewModels/TransactionFormViewModel.cs" />
+      <File FileName="Assignment2/Views/ATM/ConfirmTransaction.cshtml" />
+      <File FileName="Assignment2/Utilities/AccountUtilities.cs" />
+      <File FileName="Assignment2/ViewModels/ConfirmTransactionViewModel.cs" />
+      <File FileName="Assignment2/Models/BillPay.cs" />
+      <File FileName="Assignment2/Models/Payee.cs" />
       <File FileName="Assignment2/Views/Customer/Profile.cshtml" />
+      <File FileName="Assignment2/Views/Customer/Password.cshtml" />
+      <File FileName="Assignment2/ViewModels/MessageViewModel.cs" />
+      <File FileName="Assignment2/Migrations/20240126004502_Init.cs" Line="85" Column="53" />
+      <File FileName="Assignment2/wwwroot/css/site.css" Line="440" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Assignment2">
-            <Node name="Assignment2">
+            <Node name="Assignment2" expanded="True">
+              <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
-              <Node name="Filters" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Utilities" expanded="True" />
-              <Node name="Views">
-                <Node name="Customer">
-                  <Node name="Statement.cshtml" selected="True" />
-                </Node>
-                <Node name="Login" expanded="True" />
-                <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" expanded="True" />
-                </Node>
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Account.cs" selected="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
-                <Node name="img" expanded="True" />
               </Node>
-              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -72,7 +67,9 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/wwwroot/css/site.css" relfile="Assignment2/wwwroot/css/site.css" line="438" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
