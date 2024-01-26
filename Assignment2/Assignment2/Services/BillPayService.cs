@@ -1,31 +1,35 @@
 ﻿using System;
 using Assignment2.Data;
+using Assignment2.Models;
 using Hangfire;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Assignment2.Services
 {
-	public static class BillPayService
+	public class BillPayService
 	{
-        public static void CreateBackgroundJob()
+        private readonly IServiceProvider _serviceProvider;
+
+        // ReSharper disable once PossibleInvalidOperationException
+ 
+        public BillPayService(IServiceProvider serviceProvider)
         {
-            BackgroundJob.Enqueue(() => Console.WriteLine("Background job Triggered"));
+            _serviceProvider = serviceProvider;
         }
 
-        public static void CreateScheduledJob()
+        public void PayScheduledBills()
         {
-            var scheduleDateTime = DateTime.UtcNow.AddSeconds(5);
-            var dateTimeOffset = new DateTimeOffset(scheduleDateTime);
-            BackgroundJob.Schedule(() => Console.WriteLine("Scheduled Job Triggered"), dateTimeOffset);
+            using (IServiceScope scope = _serviceProvider.CreateScope())
+            using (var context = scope.ServiceProvider.GetRequiredService<McbaContext>())
+            {
+                var logins = context.Logins.ToList();
 
-        }
-
-        public static void RecurringBillPayJob(McbaContext context)
-        {
-            RecurringJob.AddOrUpdate("PayBills", () => PayScheduledBills(context), "* * * * *");
-        }
-
-        private static void PayScheduledBills(McbaContext context)
-        {
-            Console.WriteLine("Recurring Job Triggered");
+                foreach (var login in logins)
+                {
+                    Console.WriteLine(login.LoginID);
+                }
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using Hangfire.AspNetCore;
 using Assignment2.Data;
 using Assignment2.Services;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +39,7 @@ builder.Services.AddHangfire((sp, config) =>
 {
     config.UseSqlServerStorage(connectionString);
 });
+
 builder.Services.AddHangfireServer();
 
 var app = builder.Build();
@@ -69,15 +71,12 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseHangfireDashboard();
 
-
 app.UseSession();
 
 // Bill pay runs every minute
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<McbaContext>(); 
-    BillPayService.RecurringBillPayJob(dbContext);
-}
+
+RecurringJob.AddOrUpdate<BillPayService>(x => x.PayScheduledBills(), "* * * * *");
+
 
 app.MapDefaultControllerRoute();
 
