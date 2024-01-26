@@ -9,22 +9,28 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="icon" href="~/icons8-internet-banking-16.png" type="image/png">
-
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index" style="font-weight: bold;">MCBA</a>
+                @{
+                    var isLoggedIn = Context.Session.GetInt32(nameof(Customer.CustomerID)).HasValue;
+                    if (isLoggedIn)
+                    {
+                        <span class="navbar-brand" style="font-weight: bold; pointer-events: none; cursor: default;">MCBA</span>
+                    }
+                    else
+                    {
+                        <a class="navbar-brand" asp-controller="Home" asp-action="Index" style="font-weight: bold;">MCBA</a>
+                    }
+                }
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav">
-                        @{
-                            var isLoggedIn = Context.Session.GetInt32(nameof(Customer.CustomerID)).HasValue;
-                        }
                         @if (isLoggedIn)
                         {
                             <li class="nav-item">
@@ -43,12 +49,9 @@
                             </li>
                         }
                     </ul>
-                    <ul class="navbar-nav flex-grow-1 horizontal-nav">
+                    <ul class="navbar-nav flex-grow-1">
                         @if (isLoggedIn)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Index">Home</a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="ATM" asp-action="SelectAccount" asp-route-actionType="Deposit">Deposit</a>
                             </li>
@@ -66,7 +69,6 @@
                             </li>
                         }
                     </ul>
-
                 </div>
             </div>
         </nav>
@@ -76,20 +78,15 @@
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
-            @*<p>
-            MCBA honours the deep connection between First Nations peoples and their ancestral lands throughout Australia. We offer our respects to the Aboriginal and Torres Strait Islander custodians of the land, and to their Elders past, and present.
-        </p>*@
             &copy; 2024 Most Common Bank of Australia ABN 12 123 12 12 1 - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="color: #3bd993;">Privacy</a>
-
         </div>
     </footer>
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", false)
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
