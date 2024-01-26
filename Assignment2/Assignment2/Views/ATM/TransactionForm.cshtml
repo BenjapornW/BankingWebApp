@@ -1,8 +1,7 @@
 ﻿@using Assignment2.Utilities
 @model Assignment2.ViewModels.TransactionFormViewModel
-
 @{
-    var freeService = AccountUtilities.AccountQualifiesForFreeServiceFee(@Model.CurrentAccount);
+    string freeService = AccountUtilities.AccountQualifiesForFreeServiceFee(@Model.CurrentAccount) ? "free" : "notFree";
 }
 
 <div class="border-style border-corner mb-3">
@@ -46,6 +45,7 @@
             <input type="hidden" id="AccountType" name="AccountType" value="@Model.CurrentAccount.AccountType" />
             <input type="hidden" id="Balance" name="Balance" value="@Model.CurrentAccount.Balance" />
             <input type="hidden" id="FreeService" name="FreeService" value="@freeService" />
+
             <div class="form-group mb-3">
                 <input type="submit" value="@Model.ActionType" class="form-btn" />
             </div>
@@ -56,7 +56,7 @@
 
 
 <div class="button-container">
-    <a asp-action="Index" class="btn btn-primary">Back to Accounts</a>
+    <a asp-controller="Customer" asp-action="Index" class="btn btn-primary">Back to Accounts</a>
 </div>
 
 

@@ -62,7 +62,7 @@ public class CustomerController : Controller
         return View(customer);
     }
 
-    public IActionResult Message(bool success, string message)
+    public async Task<IActionResult> Message(bool success, string message)
     {
         var viewModel = new MessageViewModel
         {

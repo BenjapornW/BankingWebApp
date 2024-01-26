@@ -46,16 +46,25 @@ namespace Assignment2.Controllers
         [HttpPost]
         public async Task<IActionResult> ConfirmTransaction(TransactionFormViewModel viewModel)
         {
-            
+
             if (!ModelState.IsValid)
             {
                 var account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
                 viewModel.CurrentAccount = account;
+                if (viewModel.ActionType == TransactionType.Transfer.ToString())
+                {
+                    var accounts = _context.Accounts.Where(account => account.AccountNumber != viewModel.AccountNumber).ToList();
+                    viewModel.AllAccounts = accounts;
+                }
                 return View("TransactionForm", viewModel);
+
             }
 
-            return View(viewModel);
+            return View("ConfirmTransaction", viewModel);
         }
+
+
+
 
         [HttpPost]
         public async Task<IActionResult> TransactionForm(TransactionFormViewModel viewModel)

@@ -7,13 +7,11 @@ namespace Assignment2.ViewModels
 	public class TransactionFormViewModel 
     {
 		public Account CurrentAccount{ get; set; }
-		//public int? DestinationAccountNumber { get; set; }
 		public string ActionType { get; set; }
 		public List<Account> AllAccounts { get; set; }
-        //public Transaction NewTransaction { get; set; }
 
         [Range(double.Epsilon, double.MaxValue, ErrorMessage = "The amount must be a positive number.")]
-        [ValidAmounts]
+        [Required, ValidAmounts]
         public decimal Amount { get; set; }
 
         [StringLength(30, ErrorMessage = "The comment field must be less than 30 characters.")]
@@ -27,7 +25,7 @@ namespace Assignment2.ViewModels
 
         public decimal Balance { get; set; }
 
-        public bool FreeService { get; set; }
+        public string FreeService { get; set; }
 
 
 

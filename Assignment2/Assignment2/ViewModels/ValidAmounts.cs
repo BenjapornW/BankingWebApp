@@ -9,7 +9,6 @@ namespace Assignment2.ViewModels;
 
 public class ValidAmounts : ValidationAttribute
 {
-    private readonly McbaContext _context;
 
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
     {
@@ -25,27 +24,26 @@ public class ValidAmounts : ValidationAttribute
         if (viewModel.ActionType != TransactionType.Deposit.ToString())
         {
 
-
             decimal balance = viewModel.Balance;
 
             decimal feeAmount = viewModel.ActionType == TransactionType.Withdraw.ToString() ? ServiceFee.Withdraw : ServiceFee.Transfer;
 
-            if (!viewModel.FreeService && amount + feeAmount > balance)
+            if (viewModel.FreeService == "notFree" && amount + feeAmount > balance)
             {
-                return new ValidationResult($"Insufficient balance because of service fee ${feeAmount:F2}");
+                return new ValidationResult($"Insufficient balance (This transaction includes service fee ${feeAmount:F2})");
             }
             else if (amount > balance)
             {
                 return new ValidationResult("Insufficient funds.");
               
             }
-            else if (!viewModel.FreeService && viewModel.AccountType == AccountType.Checking && amount + feeAmount > balance - 300)
+            else if (viewModel.FreeService == "notFree" && viewModel.AccountType == AccountType.Checking && amount + feeAmount > balance - 300)
             {
-                return new ValidationResult($"Insufficient funds because the minimum balance of checking account is $300 and service fee charge ${feeAmount:F2}");
+                return new ValidationResult($"Insufficient funds (The minimum balance of checking account is $300 and service fee charge ${feeAmount:F2} this time");
             }
             else if (viewModel.AccountType == AccountType.Checking && amount > balance - 300)
             {
-                return new ValidationResult($"Insufficient funds because the minimum balance of checking account is $300");
+                return new ValidationResult($"Insufficient funds (The minimum balance of checking account is $300)");
       
             }
         }
