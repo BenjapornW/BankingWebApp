@@ -1,22 +1,25 @@
 ﻿@model Assignment2.Models.BillPay
 
+
 @{
     ViewData["Title"] = "Create Bill Payment";
 }
+<div class="border-style border-corner">
+    <h3 class="display-6 md-5 account-heading border-corner center-heading">@ViewData["Title"]</h3>
 
-
-
-<div class="border-style border-corner mb-3">
-    <h3 class="display-6 md-5 account-heading border-corner center-heading">Create Bill Payment</h3>
     <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
         <div class="form-group">
-            <label asp-for="AccountNumber">Account Number</label>
-            <input asp-for="AccountNumber" class="form-control" />
+            <label asp-for="AccountNumber" class="control-label">Account Number</label>
+            <select asp-for="AccountNumber" class="form-control" asp-items="ViewBag.AccountNumber">
+                <option value="">-- Select Account --</option>
+            </select>
             <span asp-validation-for="AccountNumber" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="PayeeID" class="control-label"></label>
+            <label asp-for="PayeeID" class="control-label">Payee</label>
             <select asp-for="PayeeID" class="form-control" asp-items="ViewBag.PayeeID">
                 <option value="">-- Select Payee --</option>
             </select>
@@ -24,32 +27,36 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="Amount">Amount</label>
+            <label asp-for="Amount" class="control-label">Amount</label>
             <input asp-for="Amount" class="form-control" />
             <span asp-validation-for="Amount" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="ScheduleTimeUtc">Schedule Date</label>
-            <input asp-for="ScheduleTimeUtc" type="date" class="form-control" />
+            <label asp-for="ScheduleTimeUtc" class="control-label">Schedule Date</label>
+            <input asp-for="ScheduleTimeUtc" type="datetime-local" class="form-control" min="@DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm")" />
             <span asp-validation-for="ScheduleTimeUtc" class="text-danger"></span>
         </div>
 
+
         <div class="form-group">
-            <label asp-for="Period">Payment Period</label>
+            <label asp-for="Period" class="control-label">Payment Period</label>
             <select asp-for="Period" class="form-control">
+                <option value="">-- Select Period --</option>
                 <option value="1">One Off</option>
                 <option value="2">Monthly</option>
             </select>
             <span asp-validation-for="Period" class="text-danger"></span>
         </div>
-        <div class="button-container right-side">
+
+        <div class="form-group">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
 </div>
-    <a asp-controller="BillPay" asp-action="BillPaySummary" class="btn btn-primary">Back to Bill Payments</a>
+    <a asp-action="Index" asp-controller="BillPay" class="btn btn-primary">Back to Bill Payments</a>
 
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
+
