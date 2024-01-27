@@ -29,7 +29,9 @@
                 <thead>
                     <tr>
                         <th>Payee</th>
+                        <th>Account</th>
                         <th>Amount</th>
+                        <th>Payment Period</th>
                         <th>Schedule Date</th>
                         <th>Action</th>
                     </tr>
@@ -39,8 +41,12 @@
                     {
                         <tr>
                             <td>@payment.Payee.Name</td>
+                            <td>@payment.Account.AccountNumber</td>
                             <td>@payment.Amount.ToString("C")</td>
+                            <td>@payment.Period </td>
                             <td>@payment.ScheduleTimeUtc.ToShortDateString()</td>
+
+
                             <td>
                                 <form asp-action="CancelBill" method="post">
                                     @Html.AntiForgeryToken()
