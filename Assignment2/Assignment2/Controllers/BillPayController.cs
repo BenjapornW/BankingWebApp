@@ -11,6 +11,7 @@ namespace Assignment2.Controllers
     public class BillPayController : Controller
     {
         private readonly McbaContext _context;
+        private int CustomerID => HttpContext.Session.GetInt32(nameof(Customer.CustomerID)).Value;
 
         public BillPayController(McbaContext context)
         {
@@ -20,7 +21,18 @@ namespace Assignment2.Controllers
         // GET: BillPay/Create
         public IActionResult Create()
         {
-            return View(new BillPay());
+            // list account number and payee
+            var payees = _context.Payees.ToList();
+            var accounts = _context.Accounts.Where(account => account.CustomerID == CustomerID);
+            ViewBag.Payees = payees;
+            ViewBag.Accounts = accounts;
+            var viewModel = new BillPay
+            {
+                // Set the default value to the current date and time
+                ScheduleTimeUtc = DateTime.UtcNow.Date.AddHours(DateTime.UtcNow.Hour).AddMinutes(DateTime.UtcNow.Minute)
+            };
+
+            return View(viewModel);
         }
 
         // POST: BillPay/Create
@@ -30,9 +42,10 @@ namespace Assignment2.Controllers
         {
             if (ModelState.IsValid)
             {
+                billPay.Status = StatusType.Scheduled;
                 _context.Add(billPay);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Message", "Customer", new { success = true, message = "Your bill pay has been scheduled successfully!" });
             }
             return View(billPay);
         }

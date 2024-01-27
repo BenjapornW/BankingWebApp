@@ -55,7 +55,7 @@ namespace Assignment2.Services
 
                                 // update status
                                 if (periodType == PeriodType.OneOff)
-                                    billPays.Remove(bill);
+                                    context.BillPays.Remove(bill);
                                 else
                                     bill.Status = StatusType.Paid;
 
@@ -64,6 +64,7 @@ namespace Assignment2.Services
                             else
                             {
                                 bill.Status = StatusType.InsufficientBalance;
+                                Console.WriteLine($"Bill {bill.BillPayID} ({bill.Period.ToString()}) fail (InsufficientBalance)");
                             }
                         }
                         catch (Exception ex)
