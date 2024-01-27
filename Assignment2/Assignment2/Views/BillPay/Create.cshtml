@@ -16,10 +16,9 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="PayeeID">Payee</label>
-            <select asp-for="PayeeID" class="form-control">
-                <option value="">Select Payee</option>
-                <!-- You can populate the Payee options here based on your data -->
+            <label asp-for="PayeeID" class="control-label"></label>
+            <select asp-for="PayeeID" class="form-control" asp-items="ViewBag.PayeeID">
+                <option value="">-- Select Payee --</option>
             </select>
             <span asp-validation-for="PayeeID" class="text-danger"></span>
         </div>
