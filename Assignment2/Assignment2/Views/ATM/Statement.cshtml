@@ -13,11 +13,11 @@
 
 }
 <div class="border-style border-corner">
-<div class="mint-background-color border-corner mb-3 logo-heading center-heading">
-    <img src="~/img/mcba_black.png" width="250px" alt="Black MCBA Logo" />
-</div>
-@*<div class="border-style border-corner">*@
-    <h2>My Statement</h2>
+    <div class="mint-background-color border-corner mb-3 logo-heading center-heading">
+        <img src="~/img/mcba_black.png" width="250px" alt="Black MCBA Logo" />
+    </div>
+
+    <h2 class="border-corner black-text-grey-bg">My Statement</h2>
     <h5 class="border-corner black-text-grey-bg">Available Balance: @availableBalance.ToString("C")</h5>
 
     <table class="table">
@@ -65,7 +65,7 @@
                     @for (int i = 1; i <= totalPages; i++)
                     {
                         <li class="page-item @(i == currentPage ? "active" : "")">
-                            <a class="page-link custom-pagination" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@i">@i</a>
+                            <a class="page-link custom-pagination @(i == currentPage ? "active-page" : "")" asp-action="Statement" asp-route-accountNumber="@ViewBag.AccountNumber" asp-route-page="@i">@i</a>
                         </li>
                     }
                     <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
@@ -74,16 +74,9 @@
                 </ul>
             </nav>
         </div>
+
     }
-@*</div>*@
 
-
-
-
-
-<!-- ...other HTML code... -->
-
-
-<div class="button-container">
-    <a asp-controller="Customer" asp-action="Index" class="btn btn-primary">Back to Home</a>
-</div>
+    <div class="button-container">
+        <a asp-controller="Customer" asp-action="Index" class="btn btn-primary">Back to Home</a>
+    </div>

@@ -324,32 +324,6 @@ a, a:hover {
 }
 
 
-/* Pagination link color */
-.pagination .page-link {
-    color: #3bd993 !important; /* This color is a bright aqua/teal */
-    background-color: #fff !important; /* Assuming you want a white background */
-    border: 1px solid #3bd993 !important; /* Same color for the border */
-}
-
-
-/* Pagination active link color */
-.pagination .page-item.active .page-link {
-    color: white; /* Text color for the active page link */
-    background-color: #3bd993; /* Background color for the active page link */
-    border-color: #3bd993; /* Border color for the active page link */
-}
-
-/* Pagination link hover state */
-.pagination .page-link:hover {
-    color: white; /* Text color on hover */
-    background-color: #2a7d67; /* A darker shade of the main color for hover effect */
-    border-color: #2a7d67; /* A darker shade for border on hover */
-}
-
-/* Optional: Pagination link focus state (when clicked or navigated to via keyboard) */
-.pagination .page-link:focus {
-    box-shadow: 0 0 0 0.2rem rgba(59, 217, 147, 0.5); /* A light, semi-transparent green glow */
-}
 
 
 
@@ -387,11 +361,11 @@ a, a:hover {
         border-color: #3bd993; /* Green border for hover/focus */
     }
 
-/* Active pagination link */
-.pagination .active .custom-pagination {
-    background-color: #3bd993; /* Green background */
-    border-color: #3bd993; /* Green border */
-    color: white; /* White text */
+/* Custom active page link */
+.active-page {
+    background-color: #3bd993 !important; /* Green background */
+    color: white !important; /* White text */
+    border-color: #3bd993 !important; /* Green border */
 }
 
 /* Center the pagination */
