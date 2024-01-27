@@ -1,14 +1,16 @@
 ﻿using DataModelLibrary.Data;
 using Microsoft.EntityFrameworkCore;
+using AdminWebAPI.Models.DataManager;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Add services to the container.
 builder.Services.AddDbContext<McbaContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Assignment2Context")));
 
-builder.Services.AddScoped<McbaContext>();
+builder.Services.AddScoped<CustomerManager>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -16,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

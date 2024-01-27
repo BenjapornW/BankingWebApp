@@ -46,7 +46,7 @@ namespace Assignment2.Controllers
 
             // Login customer.
             HttpContext.Session.SetInt32(nameof(Customer.CustomerID), login.CustomerID);
-            //HttpContext.Session.SetString(nameof(Customer.Name), login.Customer.Name);
+            HttpContext.Session.SetString(nameof(Customer.Name), login.Customer.Name);
 
             return RedirectToAction("Index", "Customer");
         }

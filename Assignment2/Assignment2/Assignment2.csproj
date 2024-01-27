@@ -20,7 +20,6 @@
 
     <None Remove="Views\BillPay\" />
 
-    <None Remove="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -36,7 +35,6 @@
 
     <Folder Include="Views\BillPay\" />
 
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />
@@ -53,9 +51,9 @@
   <ItemGroup>
     <Content Remove="wwwroot\img\" />
   </ItemGroup>
-<!--  <ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\DataModelLibrary\DataModelLibrary.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-  </ItemGroup>-->
+  </ItemGroup>
 </Project>

@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <!--<Nullable>enable</Nullable>-->
     <ImplicitUsings>enable</ImplicitUsings>
-    <InvariantGlobalization>true</InvariantGlobalization>
+    <InvariantGlobalization>false</InvariantGlobalization>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
@@ -27,5 +27,7 @@
     <Folder Include="Models\" />
     <Folder Include="Models\DataManager\" />
     <Folder Include="Models\Repository\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>

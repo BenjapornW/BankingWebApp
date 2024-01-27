@@ -546,7 +546,7 @@
       },
       "DataModelLibrary/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "8.0.1"
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.1"
         },
         "runtime": {
           "DataModelLibrary.dll": {}

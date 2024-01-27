@@ -16,11 +16,13 @@ namespace AdminWebAPI.Models.DataManager
 
         public Customer Get(int id)
         {
+        
             return _context.Customers.Find(id);
         }
 
         public IEnumerable<Customer> GetAll()
         {
+            //Console.WriteLine(_context.Customers.ToList());
             return _context.Customers.ToList();
         }
 
@@ -57,7 +59,7 @@ namespace AdminWebAPI.Models.DataManager
                     customer.Locked = true;
                 else
                     customer.Locked = false;
-                
+            _context.SaveChanges();
             return id;
         }
 
