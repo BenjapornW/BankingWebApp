@@ -73,6 +73,10 @@ app.UseHangfireDashboard();
 
 app.UseSession();
 
+// reset monthly bills pay runs every minute
+//RecurringJob.AddOrUpdate<BillPayService>(x => x.UpdateMonthlyBillStatus(), "0 0 1 * *");
+RecurringJob.AddOrUpdate<BillPayService>(x => x.UpdateMonthlyBillStatus(), "0 */5 * * *");
+
 // Bill pay runs every minute
 RecurringJob.AddOrUpdate<BillPayService>(x => x.PayScheduledBills(), "* * * * *");
 
