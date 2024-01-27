@@ -69,6 +69,8 @@ namespace Assignment2.Controllers
             return View(billPay);
         }
 
+
+
         // POST: BillPay/SubmitBill
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -119,6 +121,29 @@ namespace Assignment2.Controllers
         }
 
 
+        // POST: BillPay/CancelBill
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CancelBill(int billPayId)
+        {
+            var billPay = await _context.BillPays
+                .Include(bp => bp.Account)
+                .FirstOrDefaultAsync(bp => bp.BillPayID == billPayId && bp.Account.CustomerID == CustomerID);
+
+            if (billPay == null)
+            {
+                // BillPay not found or does not belong to the current customer
+                return NotFound();
+            }
+
+            _context.BillPays.Remove(billPay);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(BillPaySummary));
+        }
+
+
+
         // Additional CRUD operations can be added here if needed
         public async Task<IActionResult> BillPaySummary()
         {
@@ -140,6 +165,9 @@ namespace Assignment2.Controllers
                 .Where(bp => bp.ScheduleTimeUtc >= today)
                 .OrderBy(bp => bp.ScheduleTimeUtc)
                 .ToListAsync();
+
+            // check if there are any upcoming payments here and set a flag
+            ViewBag.HasBillsToShow = upcomingPayments.Any();
 
             var model = new BillPaySummaryViewModel
             {

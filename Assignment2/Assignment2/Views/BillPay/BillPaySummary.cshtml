@@ -3,7 +3,10 @@
 
 @{
     ViewData["Title"] = "Bill Payments Summary";
+    bool hasBillsToShow = ViewBag.HasBillsToShow;
 }
+
+
 <div class="border-style border-corner mb-4">
     <h2 class="display-6 subheading border-corner mb-4">@ViewData["Title"]</h2>
 
@@ -20,27 +23,43 @@
         </div>
 
         <h3>Upcoming Payments:</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Payee</th>
-                    <th>Amount</th>
-                    <th>Schedule Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var payment in Model.UpcomingPayments)
-                {
+        @if (hasBillsToShow)
+        {
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>@payment.Payee.Name</td>
-                        <td>@payment.Amount.ToString("C")</td>
-                        <td>@payment.ScheduleTimeUtc.ToShortDateString()</td>
+                        <th>Payee</th>
+                        <th>Amount</th>
+                        <th>Schedule Date</th>
+                        <th>Action</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var payment in Model.UpcomingPayments)
+                    {
+                        <tr>
+                            <td>@payment.Payee.Name</td>
+                            <td>@payment.Amount.ToString("C")</td>
+                            <td>@payment.ScheduleTimeUtc.ToShortDateString()</td>
+                            <td>
+                                <form asp-action="CancelBill" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="billPayId" value="@payment.BillPayID" />
+                                    <input type="submit" value="Cancel Bill" class="btn cancel-button" />
+                                </form>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No bills to show.</p>
+        }
     </div>
-    
+
 
     <div class="button-container right-side">
         <a asp-controller="BillPay" asp-action="Create" class="btn btn-primary">New Bill Payment</a>
