@@ -46,6 +46,18 @@ namespace Assignment2.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
+            if (billPay.ScheduleTimeUtc <= DateTime.UtcNow)
+            {
+                ModelState.AddModelError("ScheduleTimeUtc", "The schedule time must be in the future.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(billPay);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
             // TODO: Replace with actual retrieval of the logged-in user's CustomerID
             int customerId = GetLoggedInCustomerId();
 
