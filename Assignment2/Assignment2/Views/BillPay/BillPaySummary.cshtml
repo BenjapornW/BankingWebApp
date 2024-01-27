@@ -38,7 +38,7 @@
                         <td>@payment.ScheduleTimeUtc.ToShortDateString()</td>
                         <td>
                             <form asp-action="CancelBill" asp-controller="BillPay" asp-route-billPayId="@payment.BillPayID" method="post">
-                                <input type="submit" value="Cancel Bill" class="btn btn-danger" />
+                                <input type="submit" value="Cancel Bill" class="btn cancel-button" />
                             </form>
                         </td>
                     </tr>
