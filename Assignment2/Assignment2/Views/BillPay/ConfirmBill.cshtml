@@ -5,31 +5,57 @@
 }
 
 <div class="border-style border-corner">
-    <h3 class="display-6 md-5 account-heading border-corner center-heading">@ViewData["Title"]</h3>
+    <h3 class="display-6 md-5 account-heading border-corner center-heading mb-4">@ViewData["Title"]</h3>
 
-    <form asp-controller="BillPay" asp-action="SubmitBill" method="post">
+    <form asp-controller="BillPay" asp-action="SubmitBill" method="post" class="center-form">
+
         @Html.AntiForgeryToken()
 
-        @Html.HiddenFor(model => model.AccountNumber)
+        @Html.HiddenFor(model => model.Status)
         @Html.HiddenFor(model => model.PayeeID)
         @Html.HiddenFor(model => model.Amount)
         @Html.HiddenFor(model => model.ScheduleTimeUtc)
         @Html.HiddenFor(model => model.Period)
-        @Html.HiddenFor(model => model.Status)
-
-        <p>Please confirm your bill payment:</p>
-
-        <div><strong>Account Number:</strong> @Model.AccountNumber</div>
-        <div><strong>Payee:</strong> @(Model.Payee?.Name ?? "Not available")</div>
-        <div><strong>Amount:</strong> @Model.Amount.ToString("C")</div>
-        <div><strong>Schedule Date:</strong> @Model.ScheduleTimeUtc.ToString("g")</div>
-        <div><strong>Payment Period:</strong> @Model.Period.ToString()</div>
-
-        <div class="button-container right-side">
-            <div class="form-group text-center">
-                <button type="submit" class="form-btn">Confirm</button>
-                <a asp-controller="BillPay" asp-action="Create" class="cancel-button">Cancel</a>
+        <div class="form-group row mb-2">
+            <label class="col-sm-6 col-form-label fw-bold mb-1">Account Number:</label>
+            <div class="col-sm-6">
+                <input asp-for="AccountNumber" readonly class="form-control-plaintext"
+                       value="@Model.AccountNumber">
             </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label class="col-sm-6 col-form-label fw-bold mb-1">Payee:</label>
+            <div class="col-sm-6">
+                <p>@(Model.Payee?.Name ?? "Not available")"</p>
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label class="col-sm-6 col-form-label fw-bold mb-1">Amount:</label>
+            <div class="col-sm-6">
+                <p>@Model.Amount.ToString("C")</p>
+            </div>
+        </div>
+
+        <div class="form-group row mb-2">
+            <label class="col-sm-6 col-form-label fw-bold mb-1">Schedule Time:</label>
+            <div class="col-sm-6">
+                <p>@Model.ScheduleTimeUtc.ToString("g")</p>
+            </div>
+        </div>
+
+        <div class="form-group row mb-5">
+            <label class="col-sm-6 col-form-label fw-bold mb-1">Payment Period</label>
+            <div class="col-sm-6">
+                <p>@Model.Period.ToString()"</p>
+            </div>
+        </div>
+
+        <div class="form-group bill-comfirm-btns mb-4">
+            <button type="submit" class="form-btn">Confirm</button>
+
+            <a asp-controller="BillPay" asp-action="Create" class="cancel-button">Cancel</a>
+
+
         </div>
     </form>
 </div>

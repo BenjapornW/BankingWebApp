@@ -30,9 +30,9 @@ body {
     flex-direction: column;
 }
 
-a, a:hover {
+/*a, a:hover {
     color: var(--primary-color);
-}
+}*/
 
 .container {
     flex: 1;
@@ -57,10 +57,10 @@ a, a:hover {
     font-size: 14px;
 }
 
-.form-btn {
+/*.form-btn {
     background: black;
     color: white;
-}
+}*/
 /******************************************* border *****************************************************/
 .border-corner {
     border-radius: 20px;
@@ -470,4 +470,16 @@ a, a:hover {
     padding: 5px;
 }
 
+/******************************************* Comfirm Bill *****************************************************/
+.bill-comfirm-btns {
+    display: flex;
+    justify-content: space-evenly;
+}
 
+.bill-comfirm-btns a {
+    text-decoration: none;
+}
+
+.bill-comfirm-btns a:hover {
+    color: black;
+}
