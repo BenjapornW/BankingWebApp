@@ -27,4 +27,8 @@ The internet banking web application is designed to offer comprehensive banking 
 <p align="left">
   <img src="img/trelloboard/Screenshot 2024-01-22 at 23.19.24 pm.png"/>
   <img src="img/trelloboard/Screenshot 2024-01-23 at 22.45.56pm.png"/>
+  <img src="img/trelloboard/Screenshot 2024-01-22 at 23.19.24 pm.png"/>
+  <img src="img/trelloboard/Screenshot 2024-01-25 at 11.44.44 am.png"/>
+  <img src="img/trelloboard/Screenshot 2024-01-25 at 11.47.21 am.png"/>
+  <img src="img/trelloboard/Screenshot 2024-01-27 at 22.27.47 pm.png"/>
 </p>
