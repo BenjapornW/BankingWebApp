@@ -1,5 +1,6 @@
 ﻿using System;
-using Assignment2.Models;
+using DataModelLibrary.Models;
+using DataModelLibrary.Data;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -7,9 +8,9 @@ namespace Assignment2.Data
 {
     public static class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        public static void Initialize(McbaContext context)
         {
-            var context = serviceProvider.GetRequiredService<McbaContext>();
+            //var context = serviceProvider.GetRequiredService<McbaContext>();
             SeedCustomers(context);
             SeedPayees(context);
 

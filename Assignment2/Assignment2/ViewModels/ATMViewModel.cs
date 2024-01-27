@@ -1,5 +1,5 @@
 ﻿using System;
-using Assignment2.Models;
+using DataModelLibrary.Models;
 
 namespace Assignment2.ViewModels
 {

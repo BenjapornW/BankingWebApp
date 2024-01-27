@@ -51,4 +51,9 @@
   <ItemGroup>
     <Content Remove="wwwroot\img\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataModelLibrary\DataModelLibrary.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Assignment2.Migrations;
-using Assignment2.Models;
+using DataModelLibrary.Models;
 namespace Assignment2.ViewModels
 {
 	public class TransactionFormViewModel 
