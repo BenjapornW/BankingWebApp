@@ -29,27 +29,30 @@ namespace AdminWebAPI.Controllers
 
         // GET api/customers/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Customer Get(int id)
         {
-            return "value";
+            return _repo.Get(id);
         }
 
         // POST api/customers
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody] Customer customer)
         {
+            _repo.Add(customer);
         }
 
         // PUT api/customers/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] Customer customer)
         {
+            _repo.Update(id, customer);
         }
 
         // DELETE api/customers/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public int Delete(int id)
         {
+            return _repo.Delete(id);
         }
     }
 }
