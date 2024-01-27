@@ -26,6 +26,7 @@
                     <th>Payee</th>
                     <th>Amount</th>
                     <th>Schedule Date</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +36,13 @@
                         <td>@payment.Payee.Name</td>
                         <td>@payment.Amount.ToString("C")</td>
                         <td>@payment.ScheduleTimeUtc.ToShortDateString()</td>
+                        <td>
+                            <form asp-action="CancelBill" asp-controller="BillPay" asp-route-billPayId="@payment.BillPayID" method="post">
+                                <input type="submit" value="Cancel Bill" class="btn btn-danger" />
+                            </form>
+                        </td>
                     </tr>
+                    
                 }
             </tbody>
         </table>

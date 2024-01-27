@@ -69,6 +69,8 @@ namespace Assignment2.Controllers
             return View(billPay);
         }
 
+
+
         // POST: BillPay/SubmitBill
         [HttpPost]
         [ValidateAntiForgeryToken]
