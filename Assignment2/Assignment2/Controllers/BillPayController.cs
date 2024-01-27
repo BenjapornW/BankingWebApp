@@ -29,8 +29,13 @@ namespace Assignment2.Controllers
             var accounts = _context.Accounts.Where(account => account.CustomerID == CustomerID);
             ViewBag.Payees = payees;
             ViewBag.Accounts = accounts;
+            var viewModel = new BillPay
+            {
+                // Set the default value to the current date and time
+                ScheduleTimeUtc = DateTime.UtcNow.Date.AddHours(DateTime.UtcNow.Hour).AddMinutes(DateTime.UtcNow.Minute)
+            };
 
-            return View(new BillPay()); // Pass a new BillPay object to the view
+            return View(viewModel);
         }
 
         // POST: BillPay/Create
