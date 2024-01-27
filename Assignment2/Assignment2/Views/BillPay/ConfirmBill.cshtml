@@ -8,6 +8,8 @@
     <h3 class="display-6 md-5 account-heading border-corner center-heading">@ViewData["Title"]</h3>
 
     <form asp-controller="BillPay" asp-action="SubmitBill" method="post">
+        @Html.AntiForgeryToken()
+
         @Html.HiddenFor(model => model.AccountNumber)
         @Html.HiddenFor(model => model.PayeeID)
         @Html.HiddenFor(model => model.Amount)
@@ -18,13 +20,16 @@
         <p>Please confirm your bill payment:</p>
 
         <div><strong>Account Number:</strong> @Model.AccountNumber</div>
-        <div><strong>Payee:</strong> @Model.Payee.Name</div>
+        <div><strong>Payee:</strong> @(Model.Payee?.Name ?? "Not available")</div>
         <div><strong>Amount:</strong> @Model.Amount.ToString("C")</div>
         <div><strong>Schedule Date:</strong> @Model.ScheduleTimeUtc.ToString("g")</div>
-        <div><strong>Payment Period:</strong> @Model.Period</div>
+        <div><strong>Payment Period:</strong> @Model.Period.ToString()</div>
 
         <div class="button-container right-side">
-            <button type="submit" class="btn btn-primary">Confirm Bill</button>
+            <div class="form-group text-center">
+                <button type="submit" class="form-btn">Confirm</button>
+                <a asp-controller="BillPay" asp-action="Create" class="cancel-button">Cancel</a>
+            </div>
         </div>
     </form>
 </div>

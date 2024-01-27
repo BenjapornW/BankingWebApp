@@ -61,23 +61,34 @@ namespace Assignment2.Controllers
             return View(billPay);
         }
 
-
-
-        
-
+        // POST: BillPay/SubmitBill
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SubmitBill(BillPay billPay)
         {
+            // Load the Payee again since it's not included in the form submission
+            billPay.Payee = _context.Payees.Find(billPay.PayeeID);
+
             if (ModelState.IsValid)
             {
-                _context.Add(billPay);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("BillPaySummary");
+                try
+                {
+                    _context.Add(billPay);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(BillPaySummary));
+                }
+                catch (Exception ex)
+                {
+                    // Log the exception here
+                    ModelState.AddModelError("", "An error occurred while saving the bill payment.");
+                }
             }
-
+            // If ModelState is not valid or an exception occurred, return to the view with the current model
             return View("ConfirmBill", billPay);
         }
+
+
+
 
 
         private int GetLoggedInCustomerId()
@@ -132,34 +143,27 @@ namespace Assignment2.Controllers
         }
 
         // GET: BillPay/ConfirmBill
-        // This action is only for displaying the confirmation page.
         [HttpGet]
         public IActionResult ConfirmBill()
         {
             if (TempData["BillPay"] is string serializedBillPay)
             {
                 var billPay = JsonConvert.DeserializeObject<BillPay>(serializedBillPay);
-
-                // Load the Payee object for the billPay
+                // Load the related Payee data from the database
                 billPay.Payee = _context.Payees.Find(billPay.PayeeID);
-
                 if (billPay.Payee == null)
                 {
-                    // Handle the case where Payee is not found, maybe redirect back with an error message.
-                    TempData["Error"] = "Payee not found. Please select a valid Payee.";
+                    // If Payee is null, handle it by redirecting or showing an error
+                    ModelState.AddModelError("", "The payee could not be found.");
                     return RedirectToAction("Create");
                 }
-
                 return View(billPay);
             }
-
-            // Handle the case where TempData does not have the BillPay object.
             return RedirectToAction("Create");
         }
 
 
         // POST: BillPay/ConfirmBill
-        // This action is for actually processing the confirmation.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmBill(BillPay billPay)
@@ -171,11 +175,11 @@ namespace Assignment2.Controllers
                 return RedirectToAction("BillPaySummary");
             }
 
-            // If the validation fails, re-display the confirmation page with validation errors.
             return View(billPay);
         }
 
 
+
+
     }
 }
-
