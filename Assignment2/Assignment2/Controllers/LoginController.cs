@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Assignment2.Data;
+using DataModelLibrary.Data;
 using SimpleHashing.Net;
-using Assignment2.Models;
+using DataModelLibrary.Models;
 
 namespace Assignment2.Controllers
 {

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "sL0lep/OSUIERfxx7beR4vYGXRYdtFKyKlDEpThfOHJYgsWDvfe7JSFQHo2bf1wnI8zM2FWoCAp5lDvOopjylg==",
+  "success": true,
+  "projectFilePath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj",
+  "expectedPackageFiles": [
+    "/Users/xiaohanqin/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/xiaohanqin/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/xiaohanqin/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "/Users/xiaohanqin/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "/Users/xiaohanqin/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "/Users/xiaohanqin/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
