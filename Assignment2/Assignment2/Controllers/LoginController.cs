@@ -24,9 +24,22 @@ namespace Assignment2.Controllers
         public async Task<IActionResult> Login(string loginID, string password)
         {
             var login = await _context.Logins.FindAsync(loginID);
-            if (login == null || string.IsNullOrEmpty(password) || !s_simpleHash.Verify(password, login.PasswordHash))
+            //if (login == null || string.IsNullOrEmpty(password) || !s_simpleHash.Verify(password, login.PasswordHash))
+            //{
+            //    ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
+            //    return View(new Login { LoginID = loginID });
+            //}
+            // Check if loginID is invalid.
+            if (login == null)
             {
-                ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
+                ModelState.AddModelError("LoginFailed", "Login failed, invalid loginID.");
+                return View(new Login { LoginID = loginID });
+            }
+
+            // Check if password is invalid.
+            if (string.IsNullOrEmpty(password) || !s_simpleHash.Verify(password, login.PasswordHash))
+            {
+                ModelState.AddModelError("LoginFailed", "Login failed, invalid Password.");
                 return View(new Login { LoginID = loginID });
             }
 
