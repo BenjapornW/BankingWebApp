@@ -10,32 +10,6 @@ namespace Assignment2.Data
         public static void Initialize(IServiceProvider serviceProvider)
         {
             var context = serviceProvider.GetRequiredService<McbaContext>();
-
-            // Look for customers.
-            //if (context.Customers.Any())
-            //    return; // DB has already been seeded.
-
-            //// load json
-            //var customers = LoadJSON();
-
-            //// Insert into database.
-            //foreach (var customer in customers)
-            //{
-
-            //    foreach (var account in customer.Accounts)
-            //    {
-            //        var transactions = account.Transactions;
-            //        foreach (var transaction in transactions)
-            //        {
-            //            account.Balance += transaction.Amount;
-            //            transaction.TransactionType = TransactionType.Deposit;
-            //        }
-            //    }
-
-            //    context.Customers.Add(customer);
-            //}
-
-            //context.SaveChanges();
             SeedCustomers(context);
             SeedPayees(context);
 
