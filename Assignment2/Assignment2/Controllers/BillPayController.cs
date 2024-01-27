@@ -40,13 +40,21 @@ namespace Assignment2.Controllers
 
         // POST: BillPay/Create
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(BillPay billPay)
         {
+            // Check if the scheduled time is in the future
             if (billPay.ScheduleTimeUtc <= DateTime.UtcNow)
             {
                 ModelState.AddModelError("ScheduleTimeUtc", "The schedule time must be in the future.");
             }
+
+            // Check if the amount is greater than or equal to $0.01
+            if (billPay.Amount < 0.01m)
+            {
+                ModelState.AddModelError("Amount", "The amount must be at least $0.01.");
+            }
+
 
             if (ModelState.IsValid)
             {
@@ -68,6 +76,8 @@ namespace Assignment2.Controllers
 
             return View(billPay);
         }
+
+
 
         // POST: BillPay/SubmitBill
         [HttpPost]
@@ -119,6 +129,29 @@ namespace Assignment2.Controllers
         }
 
 
+        // POST: BillPay/CancelBill
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CancelBill(int billPayId)
+        {
+            var billPay = await _context.BillPays
+                .Include(bp => bp.Account)
+                .FirstOrDefaultAsync(bp => bp.BillPayID == billPayId && bp.Account.CustomerID == CustomerID);
+
+            if (billPay == null)
+            {
+                // BillPay not found or does not belong to the current customer
+                return NotFound();
+            }
+
+            _context.BillPays.Remove(billPay);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(BillPaySummary));
+        }
+
+
+
         // Additional CRUD operations can be added here if needed
         public async Task<IActionResult> BillPaySummary()
         {
@@ -140,6 +173,9 @@ namespace Assignment2.Controllers
                 .Where(bp => bp.ScheduleTimeUtc >= today)
                 .OrderBy(bp => bp.ScheduleTimeUtc)
                 .ToListAsync();
+
+            // check if there are any upcoming payments here and set a flag
+            ViewBag.HasBillsToShow = upcomingPayments.Any();
 
             var model = new BillPaySummaryViewModel
             {
