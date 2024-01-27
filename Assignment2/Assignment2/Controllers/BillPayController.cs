@@ -13,6 +13,7 @@ namespace Assignment2.Controllers
     public class BillPayController : Controller
     {
         private readonly McbaContext _context;
+        private int CustomerID => HttpContext.Session.GetInt32(nameof(Customer.CustomerID)).Value;
 
         public BillPayController(McbaContext context)
         {
@@ -22,15 +23,12 @@ namespace Assignment2.Controllers
         // GET: BillPay/Create
         public IActionResult Create()
         {
-            // TODO: Replace with actual retrieval of the logged-in user's CustomerID
-            int customerId = GetLoggedInCustomerId();
 
-            // Populate the Account dropdown list for the specified customer
-            ViewData["AccountNumber"] = new SelectList(_context.Accounts
-                .Where(a => a.CustomerID == customerId), "AccountNumber", "AccountNumber");
-
-            // Populate the Payee dropdown list
-            ViewData["PayeeID"] = new SelectList(_context.Payees, "PayeeID", "Name");
+            // list account number and payee
+            var payees = _context.Payees.ToList();
+            var accounts = _context.Accounts.Where(account => account.CustomerID == CustomerID);
+            ViewBag.Payees = payees;
+            ViewBag.Accounts = accounts;
 
             return View(new BillPay()); // Pass a new BillPay object to the view
         }
@@ -47,9 +45,16 @@ namespace Assignment2.Controllers
 
             if (ModelState.IsValid)
             {
+
+//                 billPay.Status = StatusType.Scheduled;
+//                 _context.Add(billPay);
+//                 await _context.SaveChangesAsync();
+//                 return RedirectToAction("Message", "Customer", new { success = true, message = "Your bill pay has been scheduled successfully!" });
+
                 // Pass the BillPay object to the ConfirmBill action via TempData.
                 TempData["BillPay"] = JsonConvert.SerializeObject(billPay);
                 return RedirectToAction("ConfirmBill");
+
             }
 
             // Repopulate dropdown lists if we return to the view with validation errors
