@@ -3,61 +3,72 @@
 @{
     ViewData["Title"] = "Create Bill Payment";
 }
-<div class="border-style border-corner">
-    <h3 class="display-6 md-5 account-heading border-corner center-heading">@ViewData["Title"]</h3>
 
-    <form asp-controller="BillPay" asp-action="Create" method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        <div class="form-group">
-            <label asp-for="AccountNumber" class="control-label">Account Number</label>
-            <select asp-for="AccountNumber" class="form-control" asp-items="ViewBag.AccountNumber">
-                <option value="">-- Select Account --</option>
-            </select>
-            <span asp-validation-for="AccountNumber" class="text-danger"></span>
-        </div>
 
-        <div class="form-group">
-            <label asp-for="PayeeID" class="control-label">Payee</label>
-            <select asp-for="PayeeID" class="form-control" asp-items="ViewBag.PayeeID">
-                <option value="">-- Select Payee --</option>
-            </select>
-            <span asp-validation-for="PayeeID" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Amount" class="control-label">Amount</label>
-            <input asp-for="Amount" class="form-control" />
-            <span asp-validation-for="Amount" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="ScheduleTimeUtc" class="control-label">Schedule Date</label>
-            <input asp-for="ScheduleTimeUtc" type="datetime-local" class="form-control" min="@DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm")" />
-            <span asp-validation-for="ScheduleTimeUtc" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Period" class="control-label">Payment Period</label>
-            <select asp-for="Period" class="form-control">
-                <option value="">-- Select Period --</option>
-                <option value="1">One Off</option>
-                <option value="2">Monthly</option>
-            </select>
-            <span asp-validation-for="Period" class="text-danger"></span>
-        </div>
-
-        <div class="button-container right-side">
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Next</button>
+<div class="border-style border-corner mb-3">
+    <h3 class="display-6 md-5 account-heading border-corner center-heading mb-4">Create Bill Payment</h3>
+    <div class="center-form">
+        <form asp-action="Create" method="post">
+            <div class="form-group mb-3">
+                <label asp-for="AccountNumber" class="control-label mb-1">Destination Account Number</label>
+                <select asp-for="AccountNumber" name="AccountNumber" class="form-select mb-1" data-val="true" data-val-required="The account number is required.">
+                    <option value="" selected disabled>-- Select Account --</option>
+                    @foreach (var account in ViewBag.Accounts)
+                    {
+                        <option value="@account.AccountNumber">Account Number: @account.AccountNumber, Account Type: @(account.AccountType == "S" ? "Saving" : "Checking")</option>
+                    }
+                </select>
+                <span asp-validation-for="AccountNumber" class="text-danger"></span>
             </div>
-        </div>
-    </form>
+
+            <div class="form-group mb-3">
+                <label asp-for="PayeeID" class="control-label mb-1">Payee</label>
+                <select asp-for="PayeeID" class="form-select mb-1" data-val="true" data-val-required="The Payee is required.">
+                    <option value="" selected disabled>-- Select Payee --</option>
+                    @foreach (var payee in ViewBag.Payees)
+                    {
+                        <option value="@payee.PayeeID">@payee.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="PayeeID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Amount" class="control-label mb-1">Amount</label>
+                <input asp-for="Amount" class="form-control" data-val="true" data-val-required="The Payee ID is required."/>
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3" >
+                <label asp-for="ScheduleTimeUtc" class="control-label mb-1">Schedule Date</label>
+                <input asp-for="ScheduleTimeUtc" type="datetime-local" class="form-control" min="@DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm")" />
+                <span asp-validation-for="ScheduleTimeUtc" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Period" class="control-label mb-1">Payment Period</label>
+                <select asp-for="Period" class="form-select mb-1" data-val="true" data-val-required="The payment period is required.">
+                    <option value="" selected disabled>-- Select Period --</option>
+                    <option value="1">One Off</option>
+                    <option value="2">Monthly</option>
+                </select>
+                <span asp-validation-for="Period" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+
 </div>
+
 <div class="button-container">
-    <a asp-action="Index" asp-controller="BillPay" class="btn btn-primary ">Back to Bill Payments</a>
+    <a asp-controller="BillPay" asp-action="Index" class="btn btn-primary">Back to Bill Payments</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    @*@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}*@
+    <partial name="_ValidationScriptsPartial" />
+
 }
