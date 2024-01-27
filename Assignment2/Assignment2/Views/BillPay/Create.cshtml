@@ -48,14 +48,17 @@
             </select>
             <span asp-validation-for="Period" class="text-danger"></span>
         </div>
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="button-container">
+        <div class="button-container right-side">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </div>
     </form>
 </div>
+<div class="button-container">
     <a asp-action="Index" asp-controller="BillPay" class="btn btn-primary">Back to Bill Payments</a>
-
+</div>
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
