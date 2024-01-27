@@ -13,7 +13,6 @@ public enum PeriodType
 public enum StatusType
 {
     Scheduled = 1,
-    Paid = 2,
     InsufficientBalance = 3,
     Fail = 4
 }

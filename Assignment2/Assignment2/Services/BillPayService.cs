@@ -23,11 +23,11 @@ namespace Assignment2.Services
             using (IServiceScope scope = _serviceProvider.CreateScope())
             using (var context = scope.ServiceProvider.GetRequiredService<McbaContext>())
             {
-                var logins = context.Logins.ToList();
-
-                foreach (var login in logins)
+                var billPays = context.BillPays.Where(bill => bill.Status != StatusType.Paid).ToList();
+                // find the bill that need to pay
+                foreach (var bill in billPays)
                 {
-                    Console.WriteLine(login.LoginID);
+                   
                 }
             }
         }
