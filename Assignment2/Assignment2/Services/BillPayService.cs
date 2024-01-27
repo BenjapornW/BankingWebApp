@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Assignment2.Data;
 using Assignment2.Models;
 using Hangfire;

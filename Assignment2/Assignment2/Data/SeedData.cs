@@ -15,6 +15,7 @@ namespace Assignment2.Data
 
         }
 
+
         private static void SeedCustomers(McbaContext context)
         {
             // Look for customers.
