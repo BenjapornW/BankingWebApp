@@ -6,6 +6,7 @@ using Assignment2.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Assignment2.Controllers
 {
@@ -37,15 +38,8 @@ namespace Assignment2.Controllers
         // POST: BillPay/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AccountNumber,PayeeID,Amount,ScheduleTimeUtc,Period,Status")] BillPay billPay)
+        public IActionResult Create([Bind("AccountNumber,PayeeID,Amount,ScheduleTimeUtc,Period,Status")] BillPay billPay)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(billPay);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-
             if (billPay.ScheduleTimeUtc <= DateTime.UtcNow)
             {
                 ModelState.AddModelError("ScheduleTimeUtc", "The schedule time must be in the future.");
@@ -53,21 +47,38 @@ namespace Assignment2.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Add(billPay);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Pass the BillPay object to the ConfirmBill action via TempData.
+                TempData["BillPay"] = JsonConvert.SerializeObject(billPay);
+                return RedirectToAction("ConfirmBill");
             }
 
-            // TODO: Replace with actual retrieval of the logged-in user's CustomerID
-            int customerId = GetLoggedInCustomerId();
-
             // Repopulate dropdown lists if we return to the view with validation errors
+            int customerId = GetLoggedInCustomerId();
             ViewData["AccountNumber"] = new SelectList(_context.Accounts
                 .Where(a => a.CustomerID == customerId), "AccountNumber", "AccountNumber", billPay.AccountNumber);
             ViewData["PayeeID"] = new SelectList(_context.Payees, "PayeeID", "Name", billPay.PayeeID);
 
             return View(billPay);
         }
+
+
+
+        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SubmitBill(BillPay billPay)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(billPay);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("BillPaySummary");
+            }
+
+            return View("ConfirmBill", billPay);
+        }
+
 
         private int GetLoggedInCustomerId()
         {
@@ -119,6 +130,51 @@ namespace Assignment2.Controllers
 
             return View(model);
         }
+
+        // GET: BillPay/ConfirmBill
+        // This action is only for displaying the confirmation page.
+        [HttpGet]
+        public IActionResult ConfirmBill()
+        {
+            if (TempData["BillPay"] is string serializedBillPay)
+            {
+                var billPay = JsonConvert.DeserializeObject<BillPay>(serializedBillPay);
+
+                // Load the Payee object for the billPay
+                billPay.Payee = _context.Payees.Find(billPay.PayeeID);
+
+                if (billPay.Payee == null)
+                {
+                    // Handle the case where Payee is not found, maybe redirect back with an error message.
+                    TempData["Error"] = "Payee not found. Please select a valid Payee.";
+                    return RedirectToAction("Create");
+                }
+
+                return View(billPay);
+            }
+
+            // Handle the case where TempData does not have the BillPay object.
+            return RedirectToAction("Create");
+        }
+
+
+        // POST: BillPay/ConfirmBill
+        // This action is for actually processing the confirmation.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmBill(BillPay billPay)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(billPay);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("BillPaySummary");
+            }
+
+            // If the validation fails, re-display the confirmation page with validation errors.
+            return View(billPay);
+        }
+
 
     }
 }
