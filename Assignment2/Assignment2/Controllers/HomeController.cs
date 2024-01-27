@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Assignment2.Models;
+using Assignment2.ViewModels;
 
 namespace Assignment2.Controllers;
 

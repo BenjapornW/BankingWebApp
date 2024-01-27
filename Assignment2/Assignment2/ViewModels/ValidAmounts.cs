@@ -1,9 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using DataModelLibrary.Data;
 using DataModelLibrary.Models;
 using Assignment2.Utilities;
-using Microsoft.EntityFrameworkCore;
 
 namespace Assignment2.ViewModels;
 
