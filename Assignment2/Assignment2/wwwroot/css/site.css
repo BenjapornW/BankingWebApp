@@ -153,6 +153,13 @@ a, a:hover {
 /* Button styling */
 .button-spacing {
     margin: 15px;
+    display: block;
+}
+
+.centered-button {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Ensures the div takes full width of its parent */
 }
 
 .btn-primary {
