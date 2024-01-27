@@ -74,7 +74,6 @@ app.UseHangfireDashboard();
 app.UseSession();
 
 // Bill pay runs every minute
-
 RecurringJob.AddOrUpdate<BillPayService>(x => x.PayScheduledBills(), "* * * * *");
 
 
