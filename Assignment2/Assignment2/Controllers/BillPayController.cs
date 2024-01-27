@@ -40,13 +40,21 @@ namespace Assignment2.Controllers
 
         // POST: BillPay/Create
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(BillPay billPay)
         {
+            // Check if the scheduled time is in the future
             if (billPay.ScheduleTimeUtc <= DateTime.UtcNow)
             {
                 ModelState.AddModelError("ScheduleTimeUtc", "The schedule time must be in the future.");
             }
+
+            // Check if the amount is greater than or equal to $0.01
+            if (billPay.Amount < 0.01m)
+            {
+                ModelState.AddModelError("Amount", "The amount must be at least $0.01.");
+            }
+
 
             if (ModelState.IsValid)
             {
