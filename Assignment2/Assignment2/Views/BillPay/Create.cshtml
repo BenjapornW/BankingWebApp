@@ -41,7 +41,7 @@
             </div>
             <div class="form-group mb-3" >
                 <label asp-for="ScheduleTimeUtc" class="control-label mb-1">Schedule Date</label>
-                <input asp-for="ScheduleTimeUtc" type="datetime-local" class="form-control"/>
+                <input asp-for="ScheduleTimeUtc" type="datetime-local" class="form-control" min="@DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm")" />
                 <span asp-validation-for="ScheduleTimeUtc" class="text-danger"></span>
             </div>
 
