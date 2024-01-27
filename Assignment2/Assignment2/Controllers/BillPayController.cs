@@ -40,8 +40,8 @@ namespace Assignment2.Controllers
 
         // POST: BillPay/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("AccountNumber,PayeeID,Amount,ScheduleTimeUtc,Period,Status")] BillPay billPay)
+        //[ValidateAntiForgeryToken]
+        public IActionResult Create(BillPay billPay)
         {
             if (billPay.ScheduleTimeUtc <= DateTime.UtcNow)
             {
@@ -51,22 +51,20 @@ namespace Assignment2.Controllers
             if (ModelState.IsValid)
             {
 
-//                 billPay.Status = StatusType.Scheduled;
-//                 _context.Add(billPay);
-//                 await _context.SaveChangesAsync();
-//                 return RedirectToAction("Message", "Customer", new { success = true, message = "Your bill pay has been scheduled successfully!" });
-
-                // Pass the BillPay object to the ConfirmBill action via TempData.
+                billPay.Status = StatusType.Scheduled;
                 TempData["BillPay"] = JsonConvert.SerializeObject(billPay);
-                return RedirectToAction("ConfirmBill");
+                return RedirectToAction("ConfirmBill", billPay);
 
             }
 
+   
+
             // Repopulate dropdown lists if we return to the view with validation errors
-            int customerId = GetLoggedInCustomerId();
-            ViewData["AccountNumber"] = new SelectList(_context.Accounts
-                .Where(a => a.CustomerID == customerId), "AccountNumber", "AccountNumber", billPay.AccountNumber);
-            ViewData["PayeeID"] = new SelectList(_context.Payees, "PayeeID", "Name", billPay.PayeeID);
+            // list account number and payee
+            var payees = _context.Payees.ToList();
+            var accounts = _context.Accounts.Where(account => account.CustomerID == CustomerID);
+            ViewBag.Payees = payees;
+            ViewBag.Accounts = accounts;
 
             return View(billPay);
         }
@@ -76,25 +74,26 @@ namespace Assignment2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SubmitBill(BillPay billPay)
         {
-            // Load the Payee again since it's not included in the form submission
-            billPay.Payee = _context.Payees.Find(billPay.PayeeID);
+            //// Load the Payee again since it's not included in the form submission
 
             if (ModelState.IsValid)
             {
-                try
+                _context.Add(billPay);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Message", "Customer", new { success = true, message = "Your bill pay has been scheduled successfully!" });
+
+            }
+
+            foreach (var key in ModelState.Keys)
+            {
+                var errorMessages = ModelState[key].Errors.Select(e => e.ErrorMessage);
+                foreach (var errorMessage in errorMessages)
                 {
-                    _context.Add(billPay);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(BillPaySummary));
-                }
-                catch (Exception ex)
-                {
-                    // Log the exception here
-                    ModelState.AddModelError("", "An error occurred while saving the bill payment.");
+                    Console.WriteLine($"Key: {key}, Error: {errorMessage}");
                 }
             }
-            // If ModelState is not valid or an exception occurred, return to the view with the current model
-            return View("ConfirmBill", billPay);
+            //If ModelState is not valid or an exception occurred, return to the view with the current model
+            return RedirectToAction("Message", "Customer", new { success = false, message = "Something weng wrong! please try again!" });
         }
 
 
@@ -152,8 +151,6 @@ namespace Assignment2.Controllers
             return View(model);
         }
 
-        // GET: BillPay/ConfirmBill
-        [HttpGet]
         public IActionResult ConfirmBill()
         {
             if (TempData["BillPay"] is string serializedBillPay)
