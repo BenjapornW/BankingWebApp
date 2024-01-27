@@ -48,6 +48,13 @@ namespace AdminWebAPI.Controllers
             _repo.Update(id, customer);
         }
 
+        // PUT api/customers/5
+        [HttpPut("toggle-lock/{id}")]
+        public void ToggleLock(int id)
+        {
+            _repo.ToggleLockCustomer(id);
+        }
+
         // DELETE api/customers/5
         [HttpDelete("{id}")]
         public int Delete(int id)

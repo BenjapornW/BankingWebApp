@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment2.Migrations
 {
     [DbContext(typeof(McbaContext))]
-    [Migration("20240126004502_Init")]
-    partial class Init
+    [Migration("20240127170112_UpdateLockColumn")]
+    partial class UpdateLockColumn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,7 @@ namespace Assignment2.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Assignment2.Models.Account", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.Account", b =>
                 {
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
@@ -49,7 +49,7 @@ namespace Assignment2.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.BillPay", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.BillPay", b =>
                 {
                     b.Property<int>("BillPayID")
                         .ValueGeneratedOnAdd()
@@ -66,10 +66,13 @@ namespace Assignment2.Migrations
                     b.Property<int>("PayeeID")
                         .HasColumnType("int");
 
+                    b.Property<int>("Period")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("ScheduleTimeUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("period")
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("BillPayID");
@@ -81,7 +84,7 @@ namespace Assignment2.Migrations
                     b.ToTable("BillPays");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.Customer", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.Customer", b =>
                 {
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
@@ -93,6 +96,9 @@ namespace Assignment2.Migrations
                     b.Property<string>("City")
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
+
+                    b.Property<bool>("Locked")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Mobile")
                         .HasMaxLength(12)
@@ -120,7 +126,7 @@ namespace Assignment2.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.Login", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.Login", b =>
                 {
                     b.Property<string>("LoginID")
                         .HasMaxLength(8)
@@ -129,9 +135,6 @@ namespace Assignment2.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Locked")
-                        .HasColumnType("bit");
-
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasMaxLength(94)
@@ -139,12 +142,13 @@ namespace Assignment2.Migrations
 
                     b.HasKey("LoginID");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerID")
+                        .IsUnique();
 
                     b.ToTable("Logins");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.Payee", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.Payee", b =>
                 {
                     b.Property<int>("PayeeID")
                         .ValueGeneratedOnAdd()
@@ -181,7 +185,7 @@ namespace Assignment2.Migrations
                     b.ToTable("Payees");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.Transaction", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.Transaction", b =>
                 {
                     b.Property<int>("TransactionID")
                         .ValueGeneratedOnAdd()
@@ -217,9 +221,9 @@ namespace Assignment2.Migrations
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.Account", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.Account", b =>
                 {
-                    b.HasOne("Assignment2.Models.Customer", "Customer")
+                    b.HasOne("DataModelLibrary.Models.Customer", "Customer")
                         .WithMany("Accounts")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -228,15 +232,15 @@ namespace Assignment2.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.BillPay", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.BillPay", b =>
                 {
-                    b.HasOne("Assignment2.Models.Account", "Account")
+                    b.HasOne("DataModelLibrary.Models.Account", "Account")
                         .WithMany("BillPays")
                         .HasForeignKey("AccountNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Assignment2.Models.Payee", "Payee")
+                    b.HasOne("DataModelLibrary.Models.Payee", "Payee")
                         .WithMany("BillPays")
                         .HasForeignKey("PayeeID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -247,26 +251,26 @@ namespace Assignment2.Migrations
                     b.Navigation("Payee");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.Login", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.Login", b =>
                 {
-                    b.HasOne("Assignment2.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerID")
+                    b.HasOne("DataModelLibrary.Models.Customer", "Customer")
+                        .WithOne("Login")
+                        .HasForeignKey("DataModelLibrary.Models.Login", "CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.Transaction", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.Transaction", b =>
                 {
-                    b.HasOne("Assignment2.Models.Account", "Account")
+                    b.HasOne("DataModelLibrary.Models.Account", "Account")
                         .WithMany("Transactions")
                         .HasForeignKey("AccountNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Assignment2.Models.Account", "DestinationAccount")
+                    b.HasOne("DataModelLibrary.Models.Account", "DestinationAccount")
                         .WithMany()
                         .HasForeignKey("DestinationAccountNumber");
 
@@ -275,19 +279,21 @@ namespace Assignment2.Migrations
                     b.Navigation("DestinationAccount");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.Account", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.Account", b =>
                 {
                     b.Navigation("BillPays");
 
                     b.Navigation("Transactions");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.Customer", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.Customer", b =>
                 {
                     b.Navigation("Accounts");
+
+                    b.Navigation("Login");
                 });
 
-            modelBuilder.Entity("Assignment2.Models.Payee", b =>
+            modelBuilder.Entity("DataModelLibrary.Models.Payee", b =>
                 {
                     b.Navigation("BillPays");
                 });

@@ -50,12 +50,15 @@ namespace AdminWebAPI.Models.DataManager
 
         public int ToggleLockCustomer(int id)
         {
-            var login = _context.Logins.First(x => x.CustomerID == id);
-            if (!login.Locked)
-                login.Locked = true;
-            else
-                login.Locked = false;
-            return id;            
+            var customer = _context.Customers.Find(id);
+            //var login = _context.Logins.First(x => x.CustomerID == id);
+            if (customer != null)
+                if (!customer.Locked)
+                    customer.Locked = true;
+                else
+                    customer.Locked = false;
+                
+            return id;
         }
 
 

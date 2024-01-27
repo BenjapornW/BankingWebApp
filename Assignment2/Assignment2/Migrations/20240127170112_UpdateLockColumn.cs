@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Assignment2.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class UpdateLockColumn : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,7 +22,8 @@ namespace Assignment2.Migrations
                     City = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
                     State = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: true),
                     PostCode = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: true),
-                    Mobile = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: true)
+                    Mobile = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: true),
+                    Locked = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,8 +74,7 @@ namespace Assignment2.Migrations
                 {
                     LoginID = table.Column<string>(type: "char(8)", maxLength: 8, nullable: false),
                     CustomerID = table.Column<int>(type: "int", nullable: false),
-                    PasswordHash = table.Column<string>(type: "char(94)", maxLength: 94, nullable: false),
-                    Locked = table.Column<bool>(type: "bit", nullable: false)
+                    PasswordHash = table.Column<string>(type: "char(94)", maxLength: 94, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -97,7 +97,8 @@ namespace Assignment2.Migrations
                     PayeeID = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<decimal>(type: "money", nullable: false),
                     ScheduleTimeUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    period = table.Column<int>(type: "int", nullable: false)
+                    Period = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -163,7 +164,8 @@ namespace Assignment2.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Logins_CustomerID",
                 table: "Logins",
-                column: "CustomerID");
+                column: "CustomerID",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Transactions_AccountNumber",
