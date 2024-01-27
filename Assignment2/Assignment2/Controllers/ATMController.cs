@@ -67,34 +67,43 @@ namespace Assignment2.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> TransactionForm(TransactionFormViewModel viewModel)
+        public async Task<IActionResult> TransactionForm(int accountNumber, decimal amount, string comment, string actionType, int? destinationAccountNumber)
         {
-            var account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
+            var account = await _context.Accounts.FindAsync(accountNumber);
 
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("TransactionForm", new { id = viewModel.AccountNumber, actionType = viewModel.ActionType });
+                //foreach (var key in ModelState.Keys)
+                //{
+                //    var errors = ModelState[key].Errors;
+                //    foreach (var error in errors)
+                //    {
+                //        var errorMessage = error.ErrorMessage;
+                //        Console.WriteLine($"Property: {key}, Error: {errorMessage}");
+                //    }
+                //}
+                return RedirectToAction("Message", "Customer", new { success = false, message = "Something went wrong!" });
             }
 
             var newTransaction = new Transaction
             {
-                Amount = viewModel.Amount,
-                Comment = viewModel.Comment,
+                Amount = amount,
+                Comment = comment,
                 TransactionTimeUtc = DateTime.UtcNow
             };
 
-            switch (viewModel.ActionType)
+            switch (actionType)
             {
                 case nameof(TransactionType.Deposit):
-                    await ProcessDeposit(account, viewModel.Amount, newTransaction);
+                    await ProcessDeposit(account, amount, newTransaction);
                     break;
 
                 case nameof(TransactionType.Withdraw):
-                    await ProcessWithdraw(account, viewModel.Amount, newTransaction);
+                    await ProcessWithdraw(account, amount, newTransaction);
                     break;
 
                 case nameof(TransactionType.Transfer):
-                    await ProcessTransfer(account, viewModel.DestinationAccountNumber, viewModel.Amount, newTransaction);
+                    await ProcessTransfer(account, destinationAccountNumber, amount, newTransaction);
                     break;
             }
 
@@ -149,8 +158,6 @@ namespace Assignment2.Controllers
                 });
             }
         }
-
-
 
         public async Task<IActionResult> SelectAccount(string actionType)
         {
