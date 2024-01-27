@@ -18,38 +18,19 @@ namespace Assignment2.Controllers
             _context = context;
         }
 
-        //// GET: BillPay/Create
-        //public IActionResult Create()
-        //{
-        //    return View(new BillPay());
-        //}
-
-        //// POST: BillPay/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create(BillPay billPay)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(billPay);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(billPay);
-        //}
-
-        //// GET: BillPay/Index
-        //public async Task<IActionResult> Index()
-        //{
-        //    var billPays = await _context.BillPays.ToListAsync();
-        //    return View(billPays);
-        //}
-
         // GET: BillPay/Create
         public IActionResult Create()
         {
+            // TODO: Replace with actual retrieval of the logged-in user's CustomerID
+            int customerId = GetLoggedInCustomerId();
+
+            // Populate the Account dropdown list for the specified customer
+            ViewData["AccountNumber"] = new SelectList(_context.Accounts
+                .Where(a => a.CustomerID == customerId), "AccountNumber", "AccountNumber");
+
             // Populate the Payee dropdown list
             ViewData["PayeeID"] = new SelectList(_context.Payees, "PayeeID", "Name");
+
             return View(new BillPay()); // Pass a new BillPay object to the view
         }
 
@@ -62,19 +43,36 @@ namespace Assignment2.Controllers
             {
                 _context.Add(billPay);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index"); // Replace with the name of your listing page
+                return RedirectToAction(nameof(Index));
             }
-            // Repopulate the Payee dropdown list if we return to the view
+
+            // TODO: Replace with actual retrieval of the logged-in user's CustomerID
+            int customerId = GetLoggedInCustomerId();
+
+            // Repopulate dropdown lists if we return to the view with validation errors
+            ViewData["AccountNumber"] = new SelectList(_context.Accounts
+                .Where(a => a.CustomerID == customerId), "AccountNumber", "AccountNumber", billPay.AccountNumber);
             ViewData["PayeeID"] = new SelectList(_context.Payees, "PayeeID", "Name", billPay.PayeeID);
+
             return View(billPay);
         }
 
-        // GET: BillPay/Index
-        public async Task<IActionResult> Index()
+        private int GetLoggedInCustomerId()
         {
-            // Replace with the logic you need for your index view
-            var billPays = await _context.BillPays.ToListAsync();
-            return View(billPays);
+            // Assuming you store the logged-in customer ID in the session upon login
+            var loggedInCustomerId = HttpContext.Session.GetInt32(nameof(Customer.CustomerID));
+
+            if (!loggedInCustomerId.HasValue)
+            {
+                // Handle the case where the customer ID is not in the session, which could mean the user is not logged in.
+                // You might want to redirect to the login page or handle it as per your application's flow.
+                // For example:
+                // return RedirectToAction("Login", "Customer");
+
+                throw new Exception("User is not logged in."); // Or handle this scenario appropriately.
+            }
+
+            return loggedInCustomerId.Value;
         }
 
 
@@ -109,6 +107,7 @@ namespace Assignment2.Controllers
 
             return View(model);
         }
+
     }
 }
 
