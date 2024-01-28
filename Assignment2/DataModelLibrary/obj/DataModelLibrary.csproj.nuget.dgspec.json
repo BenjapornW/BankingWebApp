@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {}
+    "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {}
   },
   "projects": {
-    "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {
+    "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj",
+        "projectUniqueName": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj",
         "projectName": "DataModelLibrary",
-        "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj",
-        "packagesPath": "/Users/oilxgriffon/.nuget/packages/",
-        "outputPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/obj/",
+        "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj",
+        "packagesPath": "/Users/xiaohanqin/.nuget/packages/",
+        "outputPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/oilxgriffon/.nuget/NuGet/NuGet.Config"
+          "/Users/xiaohanqin/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -38,6 +38,12 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.CodeAnalysis.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.3.4, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

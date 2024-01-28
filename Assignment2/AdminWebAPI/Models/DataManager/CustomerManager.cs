@@ -44,10 +44,39 @@ namespace AdminWebAPI.Models.DataManager
 
         public int Update(int id, Customer customer)
         {
-            _context.Update(customer);
-            _context.SaveChanges();
+            var selectCustomer = _context.Customers.Find(id);
+            if (selectCustomer != null)
+            {
+                selectCustomer.Name = customer.Name;
+                if (customer.TFN != "")
+                    selectCustomer.TFN = customer.TFN;
+                else
+                    selectCustomer.TFN = null;
+                if (customer.Address != "")
+                    selectCustomer.Address = customer.Address;
+                else
+                    selectCustomer.Address = null;
+                if (customer.City != "")
+                    selectCustomer.City = customer.City;
+                else
+                    selectCustomer.City = null;
+                if (customer.State != "")
+                    selectCustomer.State = customer.State;
+                else
+                    selectCustomer.State = null;
+                if (customer.PostCode != "")
+                    selectCustomer.PostCode = customer.PostCode;
+                else
+                    selectCustomer.PostCode = null;
+                if (customer.Mobile != "")
+                    selectCustomer.Mobile = customer.Mobile;
+                else
+                    selectCustomer.Mobile = null;
+                _context.SaveChanges();
 
-            return id;
+                return id;
+            }
+            return 0;
         }
 
         public int ToggleLockCustomer(int id)
