@@ -45,16 +45,28 @@
                             <td>@payment.Account.AccountNumber</td>
                             <td>@payment.Amount.ToString("C")</td>
                             <td>@payment.Period </td>
+                            <td>@payment.ScheduleTimeUtc.ToString("dd/MM/yyyy HH:mm:ss")</td>
                             <td>@payment.Status</td>
-                            <td>@payment.ScheduleTimeUtc.ToShortDateString()</td>
-
-
                             <td>
-                                <form asp-action="CancelBill" method="post">
-                                    @Html.AntiForgeryToken()
-                                    <input type="hidden" name="billPayId" value="@payment.BillPayID" />
-                                    <input type="submit" value="Cancel Bill" class="btn cancel-button" />
-                                </form>
+                                @if (payment.Status == StatusType.Fail || payment.Status == StatusType.InsufficientBalance)
+                                {
+                                    <!-- Retry Button -->
+                                    <form asp-action="RetryBill" method="post" style="display: inline;">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="billPayId" value="@payment.BillPayID" />
+                                        <input type="submit" value="Retry" class="btn btn-primary" />
+                                    </form>
+                                }
+
+                                @if (payment.Status != StatusType.InsufficientBalance)
+                                {
+                                    <!-- Cancel Button -->
+                                    <form asp-action="CancelBill" method="post" style="display: inline;">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="billPayId" value="@payment.BillPayID" />
+                                        <input type="submit" value="Cancel Bill" class="btn cancel-button" />
+                                    </form>
+                                }
                             </td>
                         </tr>
 
@@ -65,6 +77,59 @@
         else
         {
             <p>No bills to show.</p>
+        }
+
+        <h3>All Payments:</h3>
+        @if (hasBillsToShow)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Payee</th>
+                        <th>Account</th>
+                        <th>Amount</th>
+                        <th>Payment Period</th>
+                        <th>Schedule Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var payment in Model.AllPayments)
+                    {
+                        <tr>
+                            <td>@payment.Payee.Name</td>
+                            <td>@payment.Account.AccountNumber</td>
+                            <td>@payment.Amount.ToString("C")</td>
+                            <td>@payment.Period </td>
+                            <td>@payment.ScheduleTimeUtc.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                            <td>@payment.Status</td>
+                            <td>
+                                @if (payment.Status == StatusType.Fail || payment.Status == StatusType.InsufficientBalance)
+                                {
+                                    <!-- Retry Button -->
+                                    <form asp-action="RetryBill" method="post" style="display: inline;">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="billPayId" value="@payment.BillPayID" />
+                                        <input type="submit" value="Retry" class="btn btn-primary" />
+                                    </form>
+                                }
+
+                                @if (payment.Status != StatusType.InsufficientBalance)
+                                {
+                                    <!-- Cancel Button -->
+                                    <form asp-action="CancelBill" method="post" style="display: inline;">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="billPayId" value="@payment.BillPayID" />
+                                        <input type="submit" value="Cancel Bill" class="btn cancel-button" />
+                                    </form>
+                                }
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
         }
     </div>
 
