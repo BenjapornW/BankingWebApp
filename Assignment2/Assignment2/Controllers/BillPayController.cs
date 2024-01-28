@@ -229,6 +229,82 @@ namespace Assignment2.Controllers
         }
 
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RetryBill(int billPayId)
+        {
+            var bill = await _context.BillPays
+                .Include(bp => bp.Account)
+                .ThenInclude(a => a.Transactions) // Assuming Transactions is a navigation property
+                .FirstOrDefaultAsync(bp => bp.BillPayID == billPayId);
+
+            if (bill == null)
+            {
+                return NotFound();
+            }
+
+            var currentTime = DateTime.UtcNow; // Use UTC to be consistent with your time comparisons
+            var scheduledTime = bill.ScheduleTimeUtc;
+            var periodType = bill.Period;
+
+            // Check if it's time to pay the bill
+            if ((periodType == PeriodType.OneOff && scheduledTime <= currentTime) ||
+                (periodType == PeriodType.Monthly && IsTimeToPayMonthlyBill(scheduledTime, currentTime)))
+            {
+                // Check if there's enough balance to pay the bill
+                decimal amount = bill.Amount;
+                var account = bill.Account;
+                if ((account.AccountType == AccountType.Saving && account.Balance - amount >= 0) ||
+                    (account.AccountType == AccountType.Checking && account.Balance - amount >= 300))
+                {
+                    // Pay the bill
+                    account.Balance -= amount;
+                    bill.Status = StatusType.Paid; // Update the bill status
+
+                    // Add a transaction for the bill payment
+                    account.Transactions.Add(new Transaction
+                    {
+                        TransactionType = TransactionType.BillPay,
+                        Amount = amount,
+                        TransactionTimeUtc = DateTime.UtcNow
+                    });
+
+                    _context.Update(account);
+                    if (periodType == PeriodType.OneOff)
+                    {
+                        _context.BillPays.Remove(bill);
+                    }
+
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = $"Bill {bill.BillPayID} has been paid successfully.";
+                    TempData["Success"] = true;
+                }
+                else
+                {
+                    // Insufficient balance
+                    bill.Status = StatusType.InsufficientBalance;
+                    TempData["Message"] = $"Bill {bill.BillPayID} could not be paid due to insufficient balance.";
+                    TempData["Success"] = false;
+                }
+            }
+            else
+            {
+                // Not yet time to pay the bill or already paid
+                TempData["Message"] = $"Bill {bill.BillPayID} is either already paid or not yet due.";
+                TempData["Success"] = false;
+            }
+
+            return RedirectToAction(nameof(BillPaySummary));
+        }
+
+        // Helper method to determine if it's time to pay a monthly bill
+        private bool IsTimeToPayMonthlyBill(DateTime scheduledTime, DateTime currentTime)
+        {
+            return (scheduledTime.Day < currentTime.Day || (scheduledTime.Day == currentTime.Day && scheduledTime.TimeOfDay <= currentTime.TimeOfDay));
+        }
+
+
+
 
 
     }
