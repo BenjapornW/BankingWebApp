@@ -16,9 +16,11 @@
     <div class="mint-background-color border-corner mb-3 logo-heading center-heading">
         <img src="~/img/mcba_black.png" width="250px" alt="Black MCBA Logo" />
     </div>
-
-    <h2 class="border-corner black-text-grey-bg">My Statement</h2>
-    <h5 class="border-corner black-text-grey-bg">Available Balance: @availableBalance.ToString("C")</h5>
+    <div class="border-corner black-text-grey-bg statement-heading">
+        <h3>My Statement</h3>
+        <h5>Available Balance: @availableBalance.ToString("C")</h5>
+    </div>
+    
 
     <table class="table">
         <thead>
@@ -76,6 +78,8 @@
         </div>
 
     }
+
+    </div>
 
     <div class="button-container">
         <a asp-controller="Customer" asp-action="Index" class="btn btn-primary">Back to Home</a>

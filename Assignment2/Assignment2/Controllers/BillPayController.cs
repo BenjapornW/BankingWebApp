@@ -248,8 +248,7 @@ namespace Assignment2.Controllers
             var periodType = bill.Period;
 
             // Check if it's time to pay the bill
-            if ((periodType == PeriodType.OneOff && scheduledTime <= currentTime) ||
-                (periodType == PeriodType.Monthly && IsTimeToPayMonthlyBill(scheduledTime, currentTime)))
+            if (scheduledTime <= currentTime)
             {
                 // Check if there's enough balance to pay the bill
                 decimal amount = bill.Amount;
@@ -259,7 +258,6 @@ namespace Assignment2.Controllers
                 {
                     // Pay the bill
                     account.Balance -= amount;
-                    bill.Status = StatusType.Paid; // Update the bill status
 
                     // Add a transaction for the bill payment
                     account.Transactions.Add(new Transaction
@@ -271,9 +269,9 @@ namespace Assignment2.Controllers
 
                     _context.Update(account);
                     if (periodType == PeriodType.OneOff)
-                    {
                         _context.BillPays.Remove(bill);
-                    }
+                    else
+                        bill.ScheduleTimeUtc.AddMonths(1);
 
                     await _context.SaveChangesAsync();
                     TempData["Message"] = $"Bill {bill.BillPayID} has been paid successfully.";
