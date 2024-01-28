@@ -11,11 +11,9 @@ using System.Text;
 using AdminWebAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace AdminWebAPI.Controllers;
 
-[Route("token/[controller]")]
+[Route("security/[controller]")]
 public class TokenController : Controller
 {
     private readonly IConfiguration _configuration;
@@ -25,7 +23,10 @@ public class TokenController : Controller
         _configuration = configuration;
     }
 
-
+    // HTTP Method: POST
+    // Url: token/create
+    // generated authentication token by enter correct username and password
+    // (e.g. username: admin, password: admin)
     [HttpPost("create")]
     [AllowAnonymous]
     public IActionResult CreateToken(User user)

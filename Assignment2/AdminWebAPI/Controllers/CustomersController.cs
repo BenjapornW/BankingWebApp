@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AdminWebAPI.Controllers
 {
+    // pass the authentication token as header when calling from api/customers
     [Route("api/[controller]")]
     public class CustomersController : Controller
     {
@@ -22,7 +23,9 @@ namespace AdminWebAPI.Controllers
             _repo = repo;
         }
 
-        // GET: api/customers
+        // HTTP Method: GET
+        // Url: api/customers
+        // Can fetch all the customers in the database
         [HttpGet]
         [Authorize]
         public IEnumerable<Customer> Get()
@@ -30,7 +33,9 @@ namespace AdminWebAPI.Controllers
             return _repo.GetAll();
         }
 
-        // GET api/customers/5
+        // HTTP Method: GET
+        // Url: api/customers/{id}
+        // Find a customer with an valid customer ID
         [HttpGet("{id}")]
         [Authorize]
         public Customer Get(int id)
@@ -38,7 +43,9 @@ namespace AdminWebAPI.Controllers
             return _repo.Get(id);
         }
 
-        // POST api/customers
+        // HTTP Method: POST
+        // Url: api/customers
+        // Insert a new customer into database
         [HttpPost]
         [Authorize]
         public void Post([FromBody] Customer customer)
@@ -46,7 +53,9 @@ namespace AdminWebAPI.Controllers
             _repo.Add(customer);
         }
 
-        // PUT api/customers/5
+        // HTTP Method: PUT
+        // Url: api/customers/{id}
+        // Update a customer's profile by customer ID
         [HttpPut("{id}")]
         [Authorize]
         public void Put(int id, [FromBody] Customer customer)
@@ -54,7 +63,9 @@ namespace AdminWebAPI.Controllers
             _repo.Update(id, customer);
         }
 
-        // PUT api/customers/5
+        // HTTP Method: PUT
+        // Url: api/customers/{id}
+        // Toggle to lock or unlock a customer by customer ID
         [HttpPut("toggle-lock/{id}")]
         [Authorize]
         public void ToggleLock(int id)
@@ -62,7 +73,9 @@ namespace AdminWebAPI.Controllers
             _repo.ToggleLockCustomer(id);
         }
 
-        // DELETE api/customers/5
+        // HTTP Method:DELETE
+        // Url: api/customers/{id}
+        // Delete a customer by customer ID
         [HttpDelete("{id}")]
         [Authorize]
         public int Delete(int id)
