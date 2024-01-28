@@ -137,3 +137,4 @@
 /Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/obj/Debug/net8.0/AdminWebAPI.pdb
 /Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/obj/Debug/net8.0/AdminWebAPI.genruntimeconfig.cache
 /Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/obj/Debug/net8.0/ref/AdminWebAPI.dll
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
