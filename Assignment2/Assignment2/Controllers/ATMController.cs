@@ -89,7 +89,7 @@ namespace Assignment2.Controllers
             {
                 Amount = amount,
                 Comment = comment,
-                TransactionTimeUtc = DateTime.UtcNow
+                TransactionTimeUtc = DateTime.Now
             };
 
             switch (actionType)
@@ -139,7 +139,7 @@ namespace Assignment2.Controllers
                 {
                     TransactionType = TransactionType.IncomingTransfer,
                     Amount = amount,
-                    TransactionTimeUtc = DateTime.UtcNow
+                    TransactionTimeUtc = DateTime.Now
                 });
                 await ChargeServiceFee(account, ServiceFee.Transfer);
             }
@@ -154,7 +154,7 @@ namespace Assignment2.Controllers
                 {
                     TransactionType = TransactionType.ServiceCharge,
                     Amount = serviceFee,
-                    TransactionTimeUtc = DateTime.UtcNow
+                    TransactionTimeUtc = DateTime.Now
                 });
             }
         }
