@@ -19,4 +19,7 @@
     <None Remove="Views\Login\" />
     <None Remove="Views\Customer\" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SimpleHashing.Net" Version="2.1.0" />
+  </ItemGroup>
 </Project>

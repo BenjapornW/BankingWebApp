@@ -1,11 +1,36 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "SimpleHashing.Net/2.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SimpleHashing.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SimpleHashing.Net.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SimpleHashing.Net/2.1.0": {
+      "sha512": "mx9W9YjQxEP8Lma/RVbDsS0dHKV5lEb3vldWdxgvD4o625To0XtxWroNcDR8cPdtANgTTo9QKjryZzHDjbonhg==",
+      "type": "package",
+      "path": "simplehashing.net/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/SimpleHashing.Net.dll",
+        "simplehashing.net.2.1.0.nupkg.sha512",
+        "simplehashing.net.nuspec"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "SimpleHashing.Net >= 2.1.0"
+    ]
   },
   "packageFolders": {
     "/Users/oilxgriffon/.nuget/packages/": {}
@@ -43,6 +68,12 @@
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
+        "dependencies": {
+          "SimpleHashing.Net": {
+            "target": "Package",
+            "version": "[2.1.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
