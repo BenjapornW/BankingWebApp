@@ -84,12 +84,16 @@ namespace AdminWebAPI.Models.DataManager
             var customer = _context.Customers.Find(id);
             //var login = _context.Logins.First(x => x.CustomerID == id);
             if (customer != null)
+            {
                 if (!customer.Locked)
                     customer.Locked = true;
                 else
                     customer.Locked = false;
-            _context.SaveChanges();
-            return id;
+                _context.SaveChanges();
+                return id;
+            }
+            return 0;    
+            
         }
 
 

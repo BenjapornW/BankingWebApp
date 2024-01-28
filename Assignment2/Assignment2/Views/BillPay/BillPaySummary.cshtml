@@ -1,5 +1,4 @@
-﻿
-@model Assignment2.ViewModels.BillPaySummaryViewModel
+﻿@model Assignment2.ViewModels.BillPaySummaryViewModel
 
 @{
     ViewData["Title"] = "Bill Payments Summary";
@@ -64,7 +63,7 @@
                                     <form asp-action="CancelBill" method="post" style="display: inline;">
                                         @Html.AntiForgeryToken()
                                         <input type="hidden" name="billPayId" value="@payment.BillPayID" />
-                                        <input type="submit" value="Cancel Bill" class="btn cancel-button" />
+                                        <input type="submit" value="Cancel" class="btn cancel-button" />
                                     </form>
                                 }
                             </td>
@@ -121,7 +120,7 @@
                                     <form asp-action="CancelBill" method="post" style="display: inline;">
                                         @Html.AntiForgeryToken()
                                         <input type="hidden" name="billPayId" value="@payment.BillPayID" />
-                                        <input type="submit" value="Cancel Bill" class="btn cancel-button" />
+                                        <input type="submit" value="Cancel" class="btn cancel-button" />
                                     </form>
                                 }
                             </td>
@@ -143,5 +142,3 @@
 <div class="button-container">
     <a asp-controller="Customer" asp-action="Index" class="btn btn-primary">Back to Home</a>
 </div>
-
-

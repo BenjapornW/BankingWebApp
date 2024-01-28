@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AdminWebAPI.Controllers
 {
+    // pass the authentication token as header when calling from api/customers
     [Route("api/[controller]")]
     public class CustomersController : Controller
     {
@@ -22,52 +23,84 @@ namespace AdminWebAPI.Controllers
             _repo = repo;
         }
 
-        // GET: api/customers
+        // HTTP Method: GET
+        // Url: api/customers
+        // Can fetch all the customers in the database
         [HttpGet]
         [Authorize]
-        public IEnumerable<Customer> Get()
+        public IActionResult Get()
         {
-            return _repo.GetAll();
+            var customers = _repo.GetAll();
+            if (customers == null)
+            {
+                return NotFound(); // Return 404 Not Found if no customers found
+            }
+            return Ok(customers);
         }
 
-        // GET api/customers/5
+        // HTTP Method: GET
+        // Url: api/customers/{id}
+        // Find a customer with an valid customer ID
         [HttpGet("{id}")]
         [Authorize]
-        public Customer Get(int id)
+        public IActionResult Get(int id)
         {
-            return _repo.Get(id);
+            var customer = _repo.Get(id);
+            if (customer == null)
+                return NotFound(); // Return 404 Not Found if customer not found
+            return Ok(customer);
         }
 
-        // POST api/customers
+        // HTTP Method: POST
+        // Url: api/customers
+        // Insert a new customer into database
         [HttpPost]
         [Authorize]
-        public void Post([FromBody] Customer customer)
+        public IActionResult Post([FromBody] Customer customer)
         {
+            if (customer == null)
+                return BadRequest("Customer object is null."); // Return 400 Bad Request if customer object is null
             _repo.Add(customer);
+            return Ok();
         }
 
-        // PUT api/customers/5
+        // HTTP Method: PUT
+        // Url: api/customers/{id}
+        // Update a customer's profile by customer ID
         [HttpPut("{id}")]
         [Authorize]
-        public void Put(int id, [FromBody] Customer customer)
+        public IActionResult Put(int id, [FromBody] Customer customer)
         {
+            if (id != customer.CustomerID || customer == null)
+                return BadRequest("Customer ID mismatch."); // Return 400 Bad Request if customer ID mismatch
             _repo.Update(id, customer);
+            return Ok();
         }
 
-        // PUT api/customers/5
+        // HTTP Method: PUT
+        // Url: api/customers/{id}
+        // Toggle to lock or unlock a customer by customer ID
         [HttpPut("toggle-lock/{id}")]
         [Authorize]
-        public void ToggleLock(int id)
+        public IActionResult ToggleLock(int id)
         {
-            _repo.ToggleLockCustomer(id);
+            var toggleCustomerId = _repo.ToggleLockCustomer(id);
+            if (toggleCustomerId == 0)
+                return NotFound(); // Return 404 Not Found if customer not found
+            return Ok();
         }
 
-        // DELETE api/customers/5
+        // HTTP Method:DELETE
+        // Url: api/customers/{id}
+        // Delete a customer by customer ID
         [HttpDelete("{id}")]
         [Authorize]
-        public int Delete(int id)
+        public IActionResult Delete(int id)
         {
-            return _repo.Delete(id);
+            var deletedCustomerId = _repo.Delete(id);
+            if (deletedCustomerId == 0)
+                return NotFound(); // Return 404 Not Found if customer not found
+            return Ok(deletedCustomerId);
         }
     }
 }
