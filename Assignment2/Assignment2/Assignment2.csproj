@@ -8,7 +8,6 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
     <None Remove="EmptyTextFile.txt" />
-    <None Remove="Data\" />
     <None Remove="Views\Login\" />
     <None Remove="Utilities\" />
     <None Remove="Filters\" />
@@ -20,9 +19,9 @@
 
     <None Remove="Views\BillPay\" />
 
+    <None Remove="Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Views\Login\" />
     <Folder Include="wwwroot\img\" />
     <Folder Include="Utilities\" />
@@ -35,6 +34,7 @@
 
     <Folder Include="Views\BillPay\" />
 
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />

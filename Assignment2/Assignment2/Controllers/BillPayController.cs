@@ -177,12 +177,19 @@ namespace Assignment2.Controllers
             // check if there are any upcoming payments here and set a flag
             ViewBag.HasBillsToShow = upcomingPayments.Any();
 
+            // Retrieve all bill payments, not just upcoming ones
+            var allPayments = await _context.BillPays
+                .OrderByDescending(bp => bp.ScheduleTimeUtc)
+                .ToListAsync();
+
             var model = new BillPaySummaryViewModel
             {
                 CurrentMonthTotal = currentMonthPayments,
                 NextMonthTotal = nextMonthPayments,
-                UpcomingPayments = upcomingPayments
+                UpcomingPayments = upcomingPayments,
+                AllPayments = allPayments // Add this line
             };
+
 
             return View(model);
         }
