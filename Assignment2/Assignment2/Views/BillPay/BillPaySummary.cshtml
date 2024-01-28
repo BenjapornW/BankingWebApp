@@ -45,7 +45,7 @@
                             <td>@payment.Account.AccountNumber</td>
                             <td>@payment.Amount.ToString("C")</td>
                             <td>@payment.Period </td>
-                            <td>@payment.ScheduleTimeUtc.ToShortDateString()</td>
+                            <td>@payment.ScheduleTimeUtc.ToString("dd/MM/yyyy HH:mm:ss")</td>
                             <td>@payment.Status</td>
                             <td>
                                 @if (payment.Status == StatusType.Fail || payment.Status == StatusType.InsufficientBalance)
@@ -68,15 +68,6 @@
                                     </form>
                                 }
                             </td>
-
-
-                            @*<td>
-                                <form asp-action="CancelBill" method="post">
-                                    @Html.AntiForgeryToken()
-                                    <input type="hidden" name="billPayId" value="@payment.BillPayID" />
-                                    <input type="submit" value="Cancel Bill" class="btn cancel-button" />
-                                </form>
-                            </td>*@
                         </tr>
 
                     }
