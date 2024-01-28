@@ -97,6 +97,5 @@ namespace Assignment2.Data
 
     }
 
-    
-}
 
+}
