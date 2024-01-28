@@ -1,5 +1,488 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿//:root {
+--primary - color: #3bd993;
+--background - color: rgb(178 252 228);
+--sub - color: #DEFCF9;
+}
 
-// Write your JavaScript code.
 
+html {
+    font - size: 14px;
+}
+
+@media(min - width: 768px) {
+    html {
+        font - size: 16px;
+    }
+}
+
+.btn: focus, .btn: active: focus, .btn - link.nav - link: focus, .form - control: focus, .form - check - input:focus {
+    box - shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+body, html {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex - direction: column;
+}
+
+/*a, a:hover {
+    color: var(--primary-color);
+}*/
+
+.container {
+    flex: 1;
+}
+
+.mint - background - color {
+    background: var(--background - color);
+}
+
+/******************************************* form *****************************************************/
+.center - form {
+    width: 40 %;
+    margin: auto
+}
+
+.form - btn {
+    background: black;
+    color: white;
+    border: 2px solid black;
+    border - radius: 10px;
+    padding: 6px 12px;
+    font - size: 14px;
+}
+
+/*.form-btn {
+    background: black;
+    color: white;
+}*/
+/******************************************* border *****************************************************/
+.border - corner {
+    border - radius: 20px;
+}
+
+.border - style {
+    border: 0.8px solid black;
+    padding: 15px;
+}
+
+
+/******************************************* heading *****************************************************/
+.heading {
+    padding: 5 %;
+    background: var(--background - color);
+    margin - bottom: 30px
+}
+
+.subheading {
+    padding: 3 %;
+    background: var(--background - color);
+}
+
+.account - heading {
+    background: var(--sub - color);
+    padding: 2 %;
+}
+
+.logo - heading {
+    padding - left: 20px;
+}
+
+.center - heading {
+    text - align: center;
+}
+
+.statement - heading {
+    padding: 16px 0;
+}
+/******************************************* Landing Page *****************************************************/
+.full - background {
+    background: url('../img/admin_landing.jpg') no - repeat center center;
+    background - size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z - index: -1;
+}
+
+/******************************************* Footer *****************************************************/
+.footer {
+    border - top: 1px solid #ddd;
+    padding: 20px;
+    color: #6c757d;
+    margin - top: auto;
+    width: 100 %;
+    background - color: white;
+    z - index: 10; /* Ensure the footer is above the background */
+}
+
+/******************************************* NavBar *****************************************************/
+.navbar - nav.nav - item {
+    font - family: 'Roboto', sans - serif;
+    margin - right: 10px;
+}
+
+/* Additional custom styles can be added below */
+
+/* ... other styles ... */
+
+.overlay - logo {
+    position: absolute;
+    top: 50 %;
+    left: 0;
+    transform: translateY(-50 %);
+    z - index: 10;
+}
+
+
+/* ... additional styles ... */
+
+/* ... other styles ... */
+
+.overlay - button {
+    position: absolute;
+    right: 30px; /* Aligns the button to the right with a 30px margin from the right edge */
+    bottom: 10 %; /* Position from the bottom */
+    z - index: 1000; /* High z-index to ensure it's on top of other elements */
+}
+
+/* Button styling */
+.button - spacing {
+    margin: 15px;
+    display: block;
+}
+
+.centered - button {
+    display: flex;
+    justify - content: center;
+    width: 100 %; /* Ensures the div takes full width of its parent */
+}
+
+.btn - primary {
+    background - color: black;
+    border: 2px solid black;
+    border - radius: 10px;
+    color: var(--primary - color);
+    z - index: 1001;
+    pointer - events: auto;
+}
+
+.btn - primary:hover {
+    background - color: var(--primary - color);
+    color: black;
+    border - color: black;
+}
+
+/* ... additional styles ... */
+/* This will ensure that your button-container takes full width */
+.button - container {
+    display: flex;
+    justify - content: flex - end; /* This will align your button to the right */
+    padding - right: 15px; /* Adjust as per your layout's needs */
+    padding - top: 10px; /* Optional: if you want to give some space on the top */
+}
+
+
+/* ... additional styles ... */
+/* ... other styles ... */
+
+.mcba - logo {
+    max - width: 100 %;
+    height: auto;
+    display: block;
+}
+
+.left - aligned - container {
+    position: absolute;
+    top: 50 %;
+    left: 0;
+    transform: translateY(-50 %);
+    z - index: 10;
+}
+
+.tagline, .sub - tagline {
+    color: white;
+    z - index: 10;
+    /* Additional styling for your taglines */
+}
+
+
+/* ... additional styles ... */
+/* ... other styles ... */
+
+/* ... other styles ... */
+
+.overlay - text {
+    position: absolute;
+    top: 65 %; /* Increase the percentage to move the text down */
+    left: 10 %; /* Adjust if necessary to align with the MCBA logo */
+    transform: translateY(-50 %);
+    color: white;
+    z - index: 10;
+}
+
+/* ... additional styles ... */
+
+
+/* If the texts have individual classes or are wrapped in divs, you might need to adjust them separately */
+.text - line - one {
+    font - size: 80px;
+    font - style: italic;
+
+}
+
+.text - line - two {
+    font - size: 45px;
+    background - color: black;
+    padding - left: 20px;
+    color: #3bd993;
+}
+
+/* ... additional styles ... */
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Apply the animation to your MCBA logo */
+.overlay - logo img {
+    animation: fadeIn 1.5s ease -in -out forwards;
+}
+
+/* Apply the animation to your first line of text with a delay */
+.text - line - one {
+    animation: fadeIn 1.5s ease -in -out forwards;
+    animation - delay: 1s; /* starts the animation 1 second later */
+}
+
+/* Apply the animation to your second line of text with a longer delay */
+.text - line - two {
+    animation: fadeIn 1.5s ease -in -out forwards;
+    animation - delay: 2s;
+
+}
+
+
+
+
+/* Existing CSS ... */
+
+/* Full viewport height for the container */
+.container.h - 100 {
+    min - height: 100vh;
+    display: flex;
+    align - items: stretch;
+}
+
+/* Full height row */
+.row.h - 100 {
+    min - height: 100vh;
+}
+
+/* Left side with background image */
+.left - side {
+    background: url('../img/your-image-name.jpg') no - repeat center center; /* Replace with your image path */
+    background - size: cover;
+}
+
+/* Right side styling */
+/*.right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+
+    /* Form container centering */
+    .right - side > div {
+    max - width: 400px; /* Adjust the width of the form as needed */
+    margin: auto;
+}
+
+/* Form elements right alignment */
+.btn - primary {
+    text - align: right;
+}
+
+/* Existing CSS ... */
+
+
+.right - side {
+    display: flex;
+    justify - content: center; /* Center horizontally in the right half */
+    align - items: center; /* Center vertically */
+    padding - left: 50px; /* Adjust this value as needed to prevent overlap */
+}
+
+
+
+
+
+.black - text - green - bg {
+    padding - left: 20px;
+    color: black;
+    background - color: #3bd993;
+}
+
+.black - text - grey - bg {
+    padding - left: 20px;
+    color: black;
+    background - color: #f2f2f2;
+}
+
+/* Add this to your site.css file */
+.btn - right {
+    float: right;
+    margin - right: 5px; /* You can adjust the margin as needed */
+}
+
+
+
+/******************************************* Pagination Styling *****************************************************/
+.custom - pagination {
+    color: #3bd993; /* Your specified green color */
+    background - color: transparent; /* Optional: Set background color if needed */
+    border - color: #3bd993; /* Green border color */
+}
+
+    .custom - pagination: hover,
+    .custom - pagination:focus {
+    color: #fff; /* White text for hover/focus */
+    background - color: #3bd993; /* Green background for hover/focus */
+    border - color: #3bd993; /* Green border for hover/focus */
+}
+
+/* Custom active page link */
+.active - page {
+    background - color: #3bd993!important; /* Green background */
+    color: white!important; /* White text */
+    border - color: #3bd993!important; /* Green border */
+}
+
+/* Center the pagination */
+.pagination - container {
+    display: flex;
+    justify - content: center; /* Center the pagination horizontally */
+    align - items: center; /* Center the pagination vertically */
+    margin: 20px 0;
+}
+
+/******************************************* Confirm Transaction *****************************************************/
+.confirm - title {
+    text - align: center;
+}
+.buttons - space - between {
+    display: flex;
+    justify - content: space - around;
+    align - items: center;
+}
+
+.cancel - button {
+    background - color: #ccc;
+    color: black;
+    border: 2px solid #ccc;
+    border - radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font - size: 14px;
+}
+
+
+.comfirm - form - container {
+    width: 50 %;
+    margin: auto;
+}
+/******************************************* Confirm Transaction *****************************************************/
+.login - form {
+    width: 70 %;
+    padding: 20px;
+}
+.login - img {
+    width: 80 %;
+}
+.login - img, .login - form {
+    margin: auto;
+}
+.login - form h1 {
+    padding: 5 %;
+}
+
+.login - col {
+    display: flex;
+    align - items: center;
+}
+/******************************************* Profile *****************************************************/
+.tabs {
+    display: inline - block;
+}
+
+.tab - btn {
+    background - color: transparent;
+    border: none;
+    outline: none;
+    padding: 15px 7px;
+    font - size: 16px;
+    margin - left: 10px;
+}
+
+.tab - btn.active {
+    border - bottom: 4px solid black;
+}
+
+.tab - content.display {
+    margin: 30px;
+    display: block;
+}
+
+.tab - content {
+    display: none;
+}
+
+/******************************************* Profile *****************************************************/
+.message - container {
+    padding: 30px;
+    font - size: 22px;
+    width: 60 %;
+    margin: 70px auto 20px;
+    margin - bottom: 20px;
+}
+
+.message - container p {
+    margin - bottom: 40px;
+}
+
+.profile - btns {
+    margin - top: 30px;
+    display: flex;
+    justify - content: space - between;
+}
+
+#details - form input[type = text] {
+    padding: 5px;
+}
+
+/******************************************* Comfirm Bill *****************************************************/
+.bill - comfirm - btns {
+    display: flex;
+    justify - content: space - evenly;
+}
+
+.bill - comfirm - btns a {
+    text - decoration: none;
+}
+
+.bill - comfirm - btns a:hover {
+    color: black;
+}
