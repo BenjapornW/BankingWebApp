@@ -34,7 +34,13 @@ namespace Assignment2.Controllers
             if (login == null)
             {
                 ModelState.AddModelError("LoginFailed", "Login failed, invalid loginID.");
-                return View(new Login { LoginID = loginID });
+                return View();
+            }
+            //var customer = await _context.Customers.FindAsync(login.)
+            if (login.Customer.Locked)
+            {
+                ModelState.AddModelError("LoginFailed", "Your account has been locked by admin");
+                return View();
             }
 
             // Check if password is invalid.
