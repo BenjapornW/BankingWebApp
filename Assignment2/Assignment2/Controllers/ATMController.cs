@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Assignment2.Data;
-using Assignment2.Models;
+using DataModelLibrary.Data;
+using DataModelLibrary.Models;
 using Assignment2.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

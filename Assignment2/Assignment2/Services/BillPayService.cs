@@ -1,6 +1,6 @@
 using System;
-using Assignment2.Data;
-using Assignment2.Models;
+using DataModelLibrary.Data;
+using DataModelLibrary.Models;
 using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

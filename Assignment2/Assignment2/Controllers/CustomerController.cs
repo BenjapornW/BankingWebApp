@@ -1,6 +1,6 @@
 ﻿using System;
-using Assignment2.Data;
-using Assignment2.Models;
+using DataModelLibrary.Data;
+using DataModelLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Assignment2.Utilities;
 using Assignment2.Filters;

@@ -1,66 +1,90 @@
-﻿<Properties StartupConfiguration="{9B526C51-A8A0-412B-8A24-66DD1D82F6D8}|http">
+﻿<Properties StartupConfiguration="{361084A9-876B-4E00-827E-DF60F9F749CF}|http">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.AdminWebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
+
+  <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="Assignment2/Controllers/BillPayController.cs">
     <Files>
       <File FileName="Assignment2/.gitignore" />
-      <File FileName="Assignment2/Models/Account.cs" />
-      <File FileName="Assignment2/Models/Login.cs" />
-      <File FileName="Assignment2/appsettings.json" Line="1" Column="1" />
-      <File FileName="Assignment2/Program.cs" Line="85" Column="1" />
-      <File FileName="Assignment2/Data/McbaContext.cs" />
-      <File FileName="Assignment2/Controllers/HomeController.cs" />
-      <File FileName="Assignment2/Views/Home/Index.cshtml" />
-      <File FileName="Assignment2/Views/Home/Privacy.cshtml" />
-      <File FileName="Assignment2/Models/Transaction.cs" />
-      <File FileName="Assignment2/Migrations/McbaContextModelSnapshot.cs" />
-      <File FileName="Assignment2/Views/Shared/_ValidationScriptsPartial.cshtml" />
-      <File FileName="Assignment2/Data/SeedData.cs" />
+      <File FileName="Assignment2/appsettings.json" Line="12" Column="4" />
+      <File FileName="Assignment2/Program.cs" Line="5" Column="28" />
+      <File FileName="Assignment2/Controllers/HomeController.cs" Line="3" Column="30" />
+      <File FileName="Assignment2/Views/Home/Index.cshtml" Line="1" Column="1" />
+      <File FileName="Assignment2/Views/Home/Privacy.cshtml" Line="8" Column="1" />
+      <File FileName="Assignment2/Views/Shared/_ValidationScriptsPartial.cshtml" Line="1" Column="1" />
+      <File FileName="Assignment2/Data/SeedData.cs" Line="17" Column="10" />
       <File FileName="Assignment2/Controllers/CustomerController.cs" />
-      <File FileName="Assignment2/Views/Customer/Index.cshtml" />
-      <File FileName="Assignment2/Views/Login/Login.cshtml" />
+      <File FileName="Assignment2/Views/Customer/Index.cshtml" Line="2" Column="24" />
+      <File FileName="Assignment2/Views/Login/Login.cshtml" Line="27" Column="27" />
       <File FileName="Assignment2/Controllers/ATMController.cs" />
       <File FileName="Assignment2/Utilities/MiscellaneousExtensionUtilities.cs" />
-      <File FileName="Assignment2/Views/_ViewImports.cshtml" />
-      <File FileName="Assignment2/Views/_ViewStart.cshtml" />
-      <File FileName="Assignment2/ViewModels/ATMViewModel.cs" />
-      <File FileName="Assignment2/Views/Shared/Error.cshtml" />
-      <File FileName="Assignment2/Controllers/LoginController.cs" />
-      <File FileName="Assignment2/Filters/AuthorizeCustomerAttribute.cs" />
+      <File FileName="Assignment2/Views/_ViewImports.cshtml" Line="5" Column="1" />
+      <File FileName="Assignment2/Views/_ViewStart.cshtml" Line="1" Column="1" />
+      <File FileName="Assignment2/ViewModels/ATMViewModel.cs" Line="13" Column="1" />
+      <File FileName="Assignment2/Views/Shared/Error.cshtml" Line="1" Column="45" />
+      <File FileName="Assignment2/Controllers/LoginController.cs" Line="53" Column="1" />
+      <File FileName="Assignment2/Filters/AuthorizeCustomerAttribute.cs" Line="4" Column="40" />
       <File FileName="Assignment2/Properties/launchSettings.json" />
-      <File FileName="Assignment2/Views/ATM/TransactionForm.cshtml" />
-      <File FileName="Assignment2/ViewModels/TransactionFormViewModel.cs" />
+      <File FileName="Assignment2/Views/ATM/TransactionForm.cshtml" Line="16" Column="2" />
+      <File FileName="Assignment2/ViewModels/TransactionFormViewModel.cs" Line="2" Column="45" />
       <File FileName="Assignment2/Utilities/AccountUtilities.cs" />
-      <File FileName="Assignment2/Models/BillPay.cs" />
-      <File FileName="Assignment2/Models/Payee.cs" />
-      <File FileName="Assignment2/Views/Customer/Profile.cshtml" />
-      <File FileName="Assignment2/Views/Customer/Password.cshtml" />
-      <File FileName="Assignment2/Views/ATM/ATMSelectAccount.cshtml" />
-      <File FileName="Assignment2/Views/ATM/ConfirmTransaction.cshtml" />
-      <File FileName="Assignment2/ViewModels/ErrorViewModel.cs" />
-      <File FileName="Assignment2/ViewModels/ValidAmounts.cs" />
+      <File FileName="Assignment2/Views/Customer/Profile.cshtml" Line="1" Column="24" />
+      <File FileName="Assignment2/Views/Customer/Password.cshtml" Line="1" Column="24" />
+      <File FileName="Assignment2/Views/ATM/ATMSelectAccount.cshtml" Line="1" Column="1" />
+      <File FileName="Assignment2/Views/ATM/ConfirmTransaction.cshtml" Line="34" Column="19" />
+      <File FileName="Assignment2/ViewModels/ErrorViewModel.cs" Line="3" Column="28" />
+      <File FileName="Assignment2/ViewModels/ValidAmounts.cs" Line="4" Column="29" />
       <File FileName="../../../../.nuget/packages/hangfire/1.8.9/readme.txt" />
-      <File FileName="Assignment2/Services/BillPayService.cs" Line="15" Column="1" />
-      <File FileName="Assignment2/Controllers/BillPayController.cs" Line="123" Column="87" />
-      <File FileName="Assignment2/Views/BillPay/BillPaySummary.cshtml" Line="1" Column="1" />
-      <File FileName="Assignment2/Views/BillPay/ConfirmBill.cshtml" Line="27" Column="78" />
-      <File FileName="Assignment2/Views/BillPay/Create.cshtml" Line="31" Column="26" />
-      <File FileName="Assignment2/Views/ATM/Statement.cshtml" Line="23" Column="26" />
-      <File FileName="Assignment2/Models/Customer.cs" NotebookId="1" />
-      <File FileName="Assignment2/Views/Shared/_Layout.cshtml" NotebookId="1" />
-      <File FileName="Assignment2/wwwroot/css/site.css" Line="425" Column="14" NotebookId="1" />
+      <File FileName="Assignment2/Services/BillPayService.cs" />
+      <File FileName="Assignment2/Controllers/BillPayController.cs" Line="3" Column="29" />
+      <File FileName="Assignment2/Views/BillPay/BillPaySummary.cshtml" Line="19" Column="19" />
+      <File FileName="Assignment2/Views/BillPay/Create.cshtml" Line="1" Column="24" />
+      <File FileName="Assignment2/Views/ATM/Statement.cshtml" Line="28" Column="9" />
+      <File FileName="Assignment2/Views/BillPay/ConfirmBill.cshtml" Line="51" Column="15" />
+      <File FileName="Assignment2/ViewModels/BillPaySummaryViewmodel.cs" Line="3" Column="1" />
+      <File FileName="DataModelLibrary/Data/McbaContext.cs" />
+      <File FileName="DataModelLibrary/Models/Account.cs" Line="4" Column="27" />
+      <File FileName="DataModelLibrary/Models/BillPay.cs" Line="27" Column="28" />
+      <File FileName="DataModelLibrary/Models/Customer.cs" Line="42" Column="2" />
+      <File FileName="DataModelLibrary/Models/Login.cs" Line="18" Column="1" />
+      <File FileName="DataModelLibrary/Models/Payee.cs" />
+      <File FileName="DataModelLibrary/Models/Transaction.cs" />
+      <File FileName="Assignment2/Migrations/20240126004502_Init.Designer.cs" />
+      <File FileName="Assignment2/Migrations/20240126150457_UpdateBillPay.Designer.cs" />
+      <File FileName="Assignment2/Assignment2.csproj" Line="61" Column="11" />
+      <File FileName="Assignment2/ViewModels/MessageViewModel.cs" Line="1" Column="1" />
+      <File FileName="Assignment2/Views/Shared/Message.cshtml" Line="1" Column="1" />
+      <File FileName="Assignment2/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="AdminWebAPI/appsettings.json" Line="10" Column="5" />
+      <File FileName="AdminWebAPI/Controllers/CustomersController.cs" Line="55" Column="42" />
+      <File FileName="AdminWebAPI/Models/DataManager/CustomerManager.cs" Line="60" Column="17" />
+      <File FileName="AdminWebAPI/Models/Repository/IDataRepository.cs" Line="13" Column="1" />
+      <File FileName="AdminWebAPI/AdminWebAPI.http" Line="1" Column="1" />
+      <File FileName="Assignment2/Models/Account.cs" Line="1" Column="1" />
+      <File FileName="Assignment2/Models/Customer.cs" Line="42" Column="2" />
+      <File FileName="Assignment2/Models/Login.cs" Line="1" Column="1" />
+      <File FileName="Assignment2/Views/Shared/_Layout.cshtml" Line="4" Column="16" NotebookId="1" />
+      <File FileName="Assignment2/wwwroot/css/site.css" Line="500" Column="1" NotebookId="1" />
+
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
+
           <Node name="Assignment2">
             <Node name="Assignment2">
               <Node name="Controllers" expanded="True">
                 <Node name="BillPayController.cs" selected="True" />
               </Node>
+
               <Node name="Data" expanded="True" />
-              <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
+
               <Node name="Properties" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True">
@@ -69,16 +93,24 @@
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
+
               </Node>
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+            <Node name="DataModelLibrary" expanded="True">
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+
   <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+
 </Properties>

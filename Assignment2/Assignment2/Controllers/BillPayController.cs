@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Assignment2.Data;
-using Assignment2.Models;
+using DataModelLibrary.Data;
+using DataModelLibrary.Models;
 using Assignment2.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;

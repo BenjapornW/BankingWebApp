@@ -1,9 +1,11 @@
 ﻿using System.Globalization;
 using Hangfire.AspNetCore;
+using DataModelLibrary.Data;
 using Assignment2.Data;
 using Assignment2.Services;
 using Microsoft.EntityFrameworkCore;
 using Hangfire;
+using Microsoft.Extensions.DependencyInjection;
 
 
 // Set the default culture to Australian English.
@@ -50,7 +52,8 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     try
     {
-        SeedData.Initialize(services);
+        var context = services.GetRequiredService<McbaContext>();
+        SeedData.Initialize(context);
     }
     catch (Exception ex)
     {
@@ -76,11 +79,12 @@ app.UseSession();
 app.MapDefaultControllerRoute();
 
 // reset monthly bills pay runs every minute
-RecurringJob.AddOrUpdate<BillPayService>(x => x.UpdateMonthlyBillStatus(), "0 0 1 * *");
-RecurringJob.AddOrUpdate<BillPayService>(x => x.UpdateMonthlyBillStatus(), "*/5 * * * * ");
+//RecurringJob.AddOrUpdate<BillPayService>(x => x.UpdateMonthlyBillStatus(), "0 0 1 * *");
+RecurringJob.AddOrUpdate<BillPayService>(x => x.UpdateMonthlyBillStatus(), "*/5 * * * *");
 
-//// Bill pay runs every minute
+// Bill pay runs every minute
 RecurringJob.AddOrUpdate<BillPayService>(x => x.PayScheduledBills(), "* * * * *");
 
 app.Run();
+
 

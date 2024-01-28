@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Assignment2.Data;
+using DataModelLibrary.Data;
 using SimpleHashing.Net;
-using Assignment2.Models;
+using DataModelLibrary.Models;
 
 namespace Assignment2.Controllers
 {
@@ -30,6 +30,7 @@ namespace Assignment2.Controllers
             //    return View(new Login { LoginID = loginID });
             //}
             // Check if loginID is invalid.
+
             if (login == null)
             {
                 ModelState.AddModelError("LoginFailed", "Login failed, invalid loginID.");

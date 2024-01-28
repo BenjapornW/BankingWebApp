@@ -1,5 +1,5 @@
 ﻿using System;
-using Assignment2.Models;
+using DataModelLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
