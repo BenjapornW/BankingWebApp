@@ -2,6 +2,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.AdminWebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
+
   <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -69,22 +70,30 @@
       <File FileName="Assignment2/Models/Login.cs" Line="1" Column="1" />
       <File FileName="Assignment2/Views/Shared/_Layout.cshtml" Line="4" Column="16" NotebookId="1" />
       <File FileName="Assignment2/wwwroot/css/site.css" Line="500" Column="1" NotebookId="1" />
+
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Assignment2" expanded="True">
-            <Node name="Assignment2" expanded="True">
-              <Node name="Controllers" expanded="True" />
+
+          <Node name="Assignment2">
+            <Node name="Assignment2">
+              <Node name="Controllers" expanded="True">
+                <Node name="BillPayController.cs" selected="True" />
+              </Node>
+
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="ViewModels" expanded="True" />
+
+              <Node name="Properties" expanded="True" />
+              <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="ATM" expanded="True" />
                 <Node name="BillPay" expanded="True" />
-                <Node name="Customer" expanded="True" />
-                <Node name="Home" expanded="True" />
-                <Node name="Login" expanded="True" />
-                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+
               </Node>
               <Node name="appsettings.json" expanded="True" />
             </Node>
@@ -95,9 +104,13 @@
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+
+  <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+
 </Properties>

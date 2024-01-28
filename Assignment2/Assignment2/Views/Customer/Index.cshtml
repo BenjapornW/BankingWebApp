@@ -6,30 +6,31 @@
 
 <div>
     <h1 class="display-4 heading border-corner">Welcome, @Model.Name</h1>
-
-    <h3 >Account Overview</h3>
-    <table class="table">
-        <tr>
-            <th>@Html.DisplayNameFor(x => x.Accounts[0].AccountNumber)</th>
-            <th>@Html.DisplayNameFor(x => x.Accounts[0].AccountType)</th>
-            <th>@Html.DisplayNameFor(x => x.Accounts[0].Balance)</th>
-            <th></th>
-        </tr>
-        @foreach (var account in Model.Accounts)
-        {
+    <div class="border-style border-corner">
+        <h3>Account Overview</h3>
+        <table class="table">
             <tr>
-                <td>@account.AccountNumber</td>
-                <td>@(account.AccountType == AccountType.Saving ? "Saving" : "Checking")</td>
-                <td>@account.Balance.ToString("C")</td>
-                <td>
-                    <a class="btn btn-primary" asp-controller="ATM"
-                       asp-action="TransactionForm" asp-route-id="@account.AccountNumber" asp-route-actionType="Deposit">Deposit</a>
-                    <a class="btn btn-primary" asp-controller="ATM"
-                       asp-action="TransactionForm" asp-route-id="@account.AccountNumber" asp-route-actionType="Withdraw">Withdraw</a>
-                    <a class="btn btn-primary" asp-controller="ATM"
-                       asp-action="TransactionForm" asp-route-id="@account.AccountNumber" asp-route-actionType="Transfer">Transfer</a>
-                </td>
+                <th>@Html.DisplayNameFor(x => x.Accounts[0].AccountNumber)</th>
+                <th>@Html.DisplayNameFor(x => x.Accounts[0].AccountType)</th>
+                <th>@Html.DisplayNameFor(x => x.Accounts[0].Balance)</th>
+                <th></th>
             </tr>
-         }
-    </table>
+            @foreach (var account in Model.Accounts)
+            {
+                <tr>
+                    <td>@account.AccountNumber</td>
+                    <td>@(account.AccountType == AccountType.Saving ? "Saving" : "Checking")</td>
+                    <td>@account.Balance.ToString("C")</td>
+                    <td>
+                        <a class="btn btn-primary" asp-controller="ATM"
+                           asp-action="TransactionForm" asp-route-id="@account.AccountNumber" asp-route-actionType="Deposit">Deposit</a>
+                        <a class="btn btn-primary" asp-controller="ATM"
+                           asp-action="TransactionForm" asp-route-id="@account.AccountNumber" asp-route-actionType="Withdraw">Withdraw</a>
+                        <a class="btn btn-primary" asp-controller="ATM"
+                           asp-action="TransactionForm" asp-route-id="@account.AccountNumber" asp-route-actionType="Transfer">Transfer</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 </div>
