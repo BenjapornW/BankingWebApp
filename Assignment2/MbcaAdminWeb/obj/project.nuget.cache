@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UgToZZ0yLtFaCIsE04LjwhkRIhvtd0wjze+WQdRtgLnyks2qtxaHiuNqDE5J8yZk9nuv8fiGfon6Ch283I8zxQ==",
+  "dgSpecHash": "YorzfcRr/uv8K92LP0ZDj1GG5i77S2PavuU6mRB2CgSwMUV+ZZ3xinIutF0OP2Ifw35XO0QpBeE1wZFnmkdwLA==",
   "success": true,
   "projectFilePath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/MbcaAdminWeb.csproj",
   "expectedPackageFiles": [
@@ -45,6 +45,7 @@
     "/Users/oilxgriffon/.nuget/packages/microsoft.sqlserver.server/1.0.0/microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "/Users/oilxgriffon/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "/Users/oilxgriffon/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
+    "/Users/oilxgriffon/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/Users/oilxgriffon/.nuget/packages/simplehashing.net/2.1.0/simplehashing.net.2.1.0.nupkg.sha512",
     "/Users/oilxgriffon/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
     "/Users/oilxgriffon/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
