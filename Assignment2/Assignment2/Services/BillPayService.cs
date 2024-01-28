@@ -24,15 +24,17 @@ namespace Assignment2.Services
             using (var context = scope.ServiceProvider.GetRequiredService<McbaContext>())
             {
                 var billPays = context.BillPays.Where(x => x.Status != StatusType.Paid).ToList();
-                var currentTime = DateTime.UtcNow;
+                var currentTime = DateTime.Now;
                 Console.WriteLine("Bill paid test");
                 // find the bill that need to pay
                 foreach (var bill in billPays)
                 {
                     var scheduledTime = bill.ScheduleTimeUtc;
                     var periodType = bill.Period;
+                    Console.WriteLine($"Current time {currentTime}, scheduled time {scheduledTime}");
                     // process bills and missing bills
-                    if ((periodType == PeriodType.OneOff && bill.ScheduleTimeUtc <= currentTime) ||
+                    Console.WriteLine((periodType == PeriodType.OneOff && scheduledTime <= currentTime));
+                    if ((periodType == PeriodType.OneOff && scheduledTime <= currentTime) ||
                         (periodType == PeriodType.Monthly &&
                         (scheduledTime.Day < currentTime.Day || (scheduledTime.Day == currentTime.Day && scheduledTime.TimeOfDay <= currentTime.TimeOfDay))))
                     {
@@ -63,6 +65,7 @@ namespace Assignment2.Services
                             }
                             else
                             {
+                      
                                 bill.Status = StatusType.InsufficientBalance;
                                 Console.WriteLine($"Bill {bill.BillPayID} ({bill.Period.ToString()}) fail (InsufficientBalance)");
                             }
@@ -77,6 +80,7 @@ namespace Assignment2.Services
                             await context.SaveChangesAsync();
                         }
                     }
+                    Console.WriteLine("Bill paid test finish");
 
 
                 }

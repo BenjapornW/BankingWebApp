@@ -32,7 +32,7 @@ namespace Assignment2.Controllers
             var viewModel = new BillPay
             {
                 // Set the default value to the current date and time
-                ScheduleTimeUtc = DateTime.UtcNow.Date.AddHours(DateTime.UtcNow.Hour).AddMinutes(DateTime.UtcNow.Minute)
+                ScheduleTimeUtc = DateTime.Now.Date.AddHours(DateTime.Now.Hour).AddMinutes(DateTime.Now.Minute)
             };
 
             return View(viewModel);
