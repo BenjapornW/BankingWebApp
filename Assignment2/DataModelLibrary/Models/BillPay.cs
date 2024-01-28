@@ -13,9 +13,8 @@ public enum PeriodType
 public enum StatusType
 {
     Scheduled = 1,
-    Paid = 2,
-    InsufficientBalance = 3,
-    Fail = 4
+    InsufficientBalance = 2,
+    Fail = 3
 }
 
 public class BillPay

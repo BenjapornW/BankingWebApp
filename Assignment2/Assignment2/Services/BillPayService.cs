@@ -23,7 +23,7 @@ namespace Assignment2.Services
             using (IServiceScope scope = _serviceProvider.CreateScope())
             using (var context = scope.ServiceProvider.GetRequiredService<McbaContext>())
             {
-                var billPays = context.BillPays.Where(x => x.Status != StatusType.Paid).ToList();
+                var billPays = context.BillPays.ToList();
                 var currentTime = DateTime.Now;
                 Console.WriteLine("Bill paid test");
                 // find the bill that need to pay
@@ -34,9 +34,7 @@ namespace Assignment2.Services
                     Console.WriteLine($"Current time {currentTime}, scheduled time {scheduledTime}");
                     // process bills and missing bills
                     Console.WriteLine((periodType == PeriodType.OneOff && scheduledTime <= currentTime));
-                    if ((periodType == PeriodType.OneOff && scheduledTime <= currentTime) ||
-                        (periodType == PeriodType.Monthly &&
-                        (scheduledTime.Day < currentTime.Day || (scheduledTime.Day == currentTime.Day && scheduledTime.TimeOfDay <= currentTime.TimeOfDay))))
+                    if (scheduledTime <= currentTime)
                     {
                         try
                         {
@@ -59,7 +57,8 @@ namespace Assignment2.Services
                                 if (periodType == PeriodType.OneOff)
                                     context.BillPays.Remove(bill);
                                 else
-                                    bill.Status = StatusType.Paid;
+                                    bill.ScheduleTimeUtc = bill.ScheduleTimeUtc.AddMonths(1); // add 1 month after paid
+                                    //bill.Status = StatusType.Paid;
 
                                 Console.WriteLine($"Bill {bill.BillPayID} ({bill.Period.ToString()}) has been paid");
                             }
@@ -87,23 +86,23 @@ namespace Assignment2.Services
             }
         }
 
-        public async Task UpdateMonthlyBillStatus()
-        {
-            using (IServiceScope scope = _serviceProvider.CreateScope())
-            using (var context = scope.ServiceProvider.GetRequiredService<McbaContext>())
-            {
-                Console.WriteLine("Update Monthly paid test");
-                var billPays = context.BillPays.Where(bill => bill.Status == StatusType.Paid).ToList();
-                if (billPays.Count != 0)
-                {
-                    foreach (var bill in billPays)
-                    {
-                        bill.Status = StatusType.Scheduled;
-                    }
-                    await context.SaveChangesAsync();
-                }
-            }
-        }
+        //public async Task UpdateMonthlyBillStatus()
+        //{
+        //    using (IServiceScope scope = _serviceProvider.CreateScope())
+        //    using (var context = scope.ServiceProvider.GetRequiredService<McbaContext>())
+        //    {
+        //        Console.WriteLine("Update Monthly paid test");
+        //        var billPays = context.BillPays.Where(bill => bill.Status == StatusType.Paid).ToList();
+        //        if (billPays.Count != 0)
+        //        {
+        //            foreach (var bill in billPays)
+        //            {
+        //                bill.Status = StatusType.Scheduled;
+        //            }
+        //            await context.SaveChangesAsync();
+        //        }
+        //    }
+        //}
 
     }
 }
