@@ -12,5 +12,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\Customer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Login\" />
+    <None Remove="Views\Customer\" />
   </ItemGroup>
 </Project>

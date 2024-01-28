@@ -1,7 +1,9 @@
-﻿@{
+﻿
+
+@{
     ViewData["Title"] = "Home";
 
-    @*var isLoggedIn = Context.Session.GetInt32(nameof(Customer.CustomerID)).HasValue;*@
+    //var isLoggedIn = Context.Session.GetInt32(nameof(Customer.CustomerID)).HasValue;
 
 }
 
@@ -24,10 +26,10 @@
 
 @*@if (!isLoggedIn)
 
-{
+{*@
     <div class="overlay-button">
 
         <a href="/Mcba/SecureLogin" class="btn btn-primary button-spacing">Login →</a>
 
     </div>
-}*@
+@*}*@
