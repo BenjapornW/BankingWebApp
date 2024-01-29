@@ -278,3 +278,4 @@
 /Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/obj/Debug/net8.0/MbcaAdminWeb.pdb
 /Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/obj/Debug/net8.0/MbcaAdminWeb.genruntimeconfig.cache
 /Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/obj/Debug/net8.0/ref/MbcaAdminWeb.dll
+/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/bin/Debug/net8.0/Newtonsoft.Json.dll

@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using DataModelLibrary.Models;
 using DataModelLibrary.Data;
+using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
+using System.Net.Http.Headers;
 
 namespace MbcaAdminWeb.Controllers
 {
@@ -13,15 +16,78 @@ namespace MbcaAdminWeb.Controllers
         private readonly IHttpClientFactory _clientFactory;
         private HttpClient Client => _clientFactory.CreateClient("api");
 
-        public CustomerController(IHttpClientFactory clientFactory)
+        private readonly ILogger<CustomerController> _logger; // Add logger definition
+
+        public CustomerController(IHttpClientFactory clientFactory, ILogger<CustomerController> logger)
         {
             _clientFactory = clientFactory;
+            _logger = logger;
         }
 
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        //public async Task<IActionResult> Index()
+        //{
+        //    var response = await Client.GetAsync("api/customers");
+        //    //var response = await MovieApi.InitializeClient().GetAsync("api/movies");
+
+        //    if (!response.IsSuccessStatusCode)
+        //        throw new Exception();
+
+        //    // Storing the response details received from web api.
+        //    var result = await response.Content.ReadAsStringAsync();
+
+        //    // Deserializing the response received from web api and storing into a list.
+        //    var customers = JsonConvert.DeserializeObject<List<Customer>>(result);
+
+        //    return View(customers);
+        //}
+
+
+        private async Task<string> GetJwtToken(string username, string password)
         {
-            return View();
+            var client = _clientFactory.CreateClient("api");
+            var response = await client.PostAsJsonAsync("/security/token/create", new { UserName = username, Password = password });
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jwtToken = await response.Content.ReadAsStringAsync();
+                return jwtToken;
+            }
+            else
+            {
+                _logger.LogError("Failed to retrieve JWT token.");
+                return null;
+            }
         }
+
+        public async Task<IActionResult> Index()
+        {
+            var jwtToken = await GetJwtToken("admin", "admin"); // Assuming admin/admin is correct
+            if (string.IsNullOrEmpty(jwtToken))
+            {
+                return Unauthorized(); // Or redirect to a login page
+            }
+
+            var client = _clientFactory.CreateClient("api");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+            var response = await client.GetAsync("api/customers");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogError("Failed to retrieve customers.");
+                return View("Error"); // Or any other error handling
+            }
+
+            var result = await response.Content.ReadAsStringAsync();
+            var customers = JsonConvert.DeserializeObject<List<Customer>>(result);
+
+            return View(customers);
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> EditCustDetail(int id, Customer customer)
