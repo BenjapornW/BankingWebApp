@@ -410,7 +410,8 @@ body {
 }
 
 .login-img {
-    width: 80%;
+
+    height: 80vh;
 }
 
 .login-img, .login-form {

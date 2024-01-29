@@ -1,5 +1,5 @@
 ﻿using System;
-namespace AdminWebAPI.Models;
+namespace DataModelLibrary.Models;
 
 public class User
 {

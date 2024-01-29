@@ -21,28 +21,28 @@ namespace MbcaAdminWeb.Controllers
             // If already logged in, redirect to the dashboard
             if (HttpContext.Session.GetString("AdminLoggedIn") == "true")
             {
-                return RedirectToAction("Index", "Dashboard"); // Replace "Dashboard" with your dashboard controller's name
+                return RedirectToAction("Index", "Customer"); // Replace "Dashboard" with your dashboard controller's name
             }
 
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(string loginID, string password)
+        public IActionResult Login(User user)
         {
             // Admin credentials check
-            if (loginID == "admin" && password == "admin")
+            if (user.UserName == UserLogin.UserName && user.Password == UserLogin.Password)
             {
                 // Set session to keep admin logged in
                 HttpContext.Session.SetString("AdminLoggedIn", "true");
 
                 // Redirect to the admin dashboard or the modify customer page
-                return RedirectToAction("Index", "Dashboard"); // Replace "Dashboard" with your dashboard controller's name
+                return RedirectToAction("Index", "Customer"); 
             }
             else
             {
-                ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
-                return View();
+                ModelState.AddModelError("LoginFailed", "Incorrect username or password");
+                return View("Login");
             }
         }
 

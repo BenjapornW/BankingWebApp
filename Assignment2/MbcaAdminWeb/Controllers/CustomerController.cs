@@ -18,6 +18,11 @@ namespace MbcaAdminWeb.Controllers
             _clientFactory = clientFactory;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> EditCustDetail(int id, Customer customer)
         {
