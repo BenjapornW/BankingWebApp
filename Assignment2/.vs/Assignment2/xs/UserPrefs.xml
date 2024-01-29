@@ -1,5 +1,11 @@
 ﻿<Properties StartupConfiguration="{9B526C51-A8A0-412B-8A24-66DD1D82F6D8}|http">
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../../../usr/local/share/dotnet/sdk/8.0.100/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.AdminWebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AdminWebAPI.Test/CustomersControllerTests.cs">
     <Files>
       <File FileName="Assignment2/.gitignore" />
       <File FileName="Assignment2/appsettings.json" />
@@ -49,8 +55,8 @@
       <File FileName="Assignment2/Views/Shared/Message.cshtml" />
       <File FileName="Assignment2/appsettings.Development.json" />
       <File FileName="AdminWebAPI/appsettings.json" />
-      <File FileName="AdminWebAPI/Controllers/CustomersController.cs" />
-      <File FileName="AdminWebAPI/Models/DataManager/CustomerManager.cs" />
+      <File FileName="AdminWebAPI/Controllers/CustomersController.cs" Line="1" Column="1" />
+      <File FileName="AdminWebAPI/Models/DataManager/CustomerManager.cs" Line="1" Column="1" />
       <File FileName="AdminWebAPI/Models/Repository/IDataRepository.cs" />
       <File FileName="AdminWebAPI/AdminWebAPI.http" />
       <File FileName="AdminWebAPI/Program.cs" />
@@ -59,27 +65,30 @@
       <File FileName="DataModelLibrary/DataModelLibrary.csproj" />
       <File FileName="AdminWebAPI/appsettings.Development.json" />
       <File FileName="AdminWebAPI/Properties/launchSettings.json" />
-      <File FileName="../../../../../../usr/local/share/dotnet/sdk/8.0.100/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" Line="264" Column="7" />
-      <File FileName="AdminWebAPI/Models/User.cs" />
-      <File FileName="AdminWebAPI/Controllers/TokenController.cs" Line="15" Column="1" />
-      <File FileName="Assignment2/Views/Shared/_Layout.cshtml" NotebookId="1" />
-      <File FileName="Assignment2/wwwroot/css/site.css" Line="99" Column="1" NotebookId="1" />
+      <File FileName="../../../../../../usr/local/share/dotnet/sdk/8.0.100/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" />
+      <File FileName="AdminWebAPI/Controllers/TokenController.cs" />
+      <File FileName="MbcaAdminWeb/Controllers/CustomerController.cs" />
+      <File FileName="MbcaAdminWeb/Controllers/HomeController.cs" />
+      <File FileName="MbcaAdminWeb/wwwroot/css/site.css" />
+      <File FileName="AdminWebAPI.Test/CustomersControllerClassTests.cs" />
+      <File FileName="AdminWebAPI.Test/Class1.cs" Line="1" Column="1" />
+      <File FileName="AdminWebAPI.Test/CustomersControllerTests.cs" Line="9" Column="4" />
+      <File FileName="DataModelLibrary/.gitignore" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Assignment2" expanded="True">
-            <Node name="MbcaAdminWeb" selected="True" />
+          <Node name="Assignment2">
+            <Node name="DataModelLibrary" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+            </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.AdminWebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.AdminWebAPI.Test FirstBuild="True" />
-  <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
