@@ -25,10 +25,14 @@ The internet banking web application is designed to offer comprehensive banking 
 
 ### 📋 Trello Board Screenshots
 <p align="left">
+  <img src="img/trelloboard/Screenshot 2024-01-19 at 2.07.41 pm.png"/>
+  <img src="img/trelloboard/Screenshot 2024-01-21 at 12.03.54 am.png"/>
   <img src="img/trelloboard/Screenshot 2024-01-22 at 23.19.24 pm.png"/>
   <img src="img/trelloboard/Screenshot 2024-01-23 at 22.45.56pm.png"/>
   <img src="img/trelloboard/Screenshot 2024-01-22 at 23.19.24 pm.png"/>
   <img src="img/trelloboard/Screenshot 2024-01-25 at 11.44.44 am.png"/>
   <img src="img/trelloboard/Screenshot 2024-01-25 at 11.47.21 am.png"/>
   <img src="img/trelloboard/Screenshot 2024-01-27 at 22.27.47 pm.png"/>
+  <img src="img/trelloboard/Screenshot 2024-01-28 at 6.46.02 pm.png"/>
+  <img src="img/trelloboard/Screenshot 2524-01-29 at 16.35.18 pm.png"/>
 </p>
