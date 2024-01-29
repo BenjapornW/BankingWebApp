@@ -9,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AdminWebAPI.Models;
+using DataModelLibrary.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace AdminWebAPI.Controllers;
