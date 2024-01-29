@@ -243,7 +243,7 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var currentTime = DateTime.UtcNow; // Use UTC to be consistent with your time comparisons
+            var currentTime = DateTime.Now; // Use UTC to be consistent with your time comparisons
             var scheduledTime = bill.ScheduleTimeUtc;
             var periodType = bill.Period;
 
