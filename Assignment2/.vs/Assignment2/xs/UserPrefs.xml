@@ -1,9 +1,9 @@
-﻿<Properties StartupConfiguration="{9B526C51-A8A0-412B-8A24-66DD1D82F6D8}|http">
+﻿<Properties StartupConfiguration="{361084A9-876B-4E00-827E-DF60F9F749CF}|http">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assignment2.Test FirstBuild="True" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.AdminWebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="AdminWebAPI.Test/CustomersControllerTests.cs">
     <Files>
@@ -56,7 +56,7 @@
       <File FileName="Assignment2/appsettings.Development.json" />
       <File FileName="AdminWebAPI/appsettings.json" />
       <File FileName="AdminWebAPI/Controllers/CustomersController.cs" Line="1" Column="1" />
-      <File FileName="AdminWebAPI/Models/DataManager/CustomerManager.cs" Line="1" Column="1" />
+      <File FileName="AdminWebAPI/Models/DataManager/CustomerManager.cs" />
       <File FileName="AdminWebAPI/Models/Repository/IDataRepository.cs" />
       <File FileName="AdminWebAPI/AdminWebAPI.http" />
       <File FileName="AdminWebAPI/Program.cs" />
@@ -67,58 +67,33 @@
       <File FileName="AdminWebAPI/Properties/launchSettings.json" />
       <File FileName="../../../../../../usr/local/share/dotnet/sdk/8.0.100/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" />
       <File FileName="AdminWebAPI/Controllers/TokenController.cs" />
-      <File FileName="MbcaAdminWeb/Controllers/CustomerController.cs" />
+      <File FileName="MbcaAdminWeb/Controllers/CustomerController.cs" Line="38" Column="17" />
       <File FileName="MbcaAdminWeb/Controllers/HomeController.cs" />
       <File FileName="MbcaAdminWeb/wwwroot/css/site.css" />
-      <File FileName="AdminWebAPI.Test/CustomersControllerClassTests.cs" />
-      <File FileName="AdminWebAPI.Test/Class1.cs" Line="1" Column="1" />
-
-      <File FileName="AdminWebAPI.Test/CustomersControllerTests.cs" Line="9" Column="4" />
-      <File FileName="DataModelLibrary/.gitignore" Line="1" Column="1" />
-
+      <File FileName="AdminWebAPI.Test/CustomersControllerTests.cs" Line="38" Column="44" />
+      <File FileName="DataModelLibrary/.gitignore" />
+      <File FileName="MbcaAdminWeb/appsettings.json" />
+      <File FileName="MbcaAdminWeb/Views/Customer/Index.cshtml" />
+      <File FileName="MbcaAdminWeb/Program.cs" Line="25" Column="2" />
+      <File FileName="MbcaAdminWeb/Models/ErrorViewModel.cs" Line="8" Column="1" />
+      <File FileName="MbcaAdminWeb/Views/Shared/Error.cshtml" Line="27" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Assignment2">
-
+          <Node name="Assignment2" expanded="True">
             <Node name="AdminWebAPI" expanded="True">
+              <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="DataManager" expanded="True" />
-                <Node name="Repository" expanded="True" />
-              </Node>
+              <Node name="appsettings.json" expanded="True" />
             </Node>
             <Node name="AdminWebAPI.Test" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-              <Node name="CustomersControllerTests.cs" selected="True" />
+              <Node name="Dependencies" expanded="True" selected="True" />
             </Node>
-            <Node name="Assignment2" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Services" expanded="True" />
-              <Node name="Utilities" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Shared" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="DataModelLibrary" expanded="True">
-              <Node name="Data" expanded="True" />
-              <Node name="Models" expanded="True" />
-
-            </Node>
+            <Node name="Assignment2" expanded="True" />
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="Assignment2" expanded="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

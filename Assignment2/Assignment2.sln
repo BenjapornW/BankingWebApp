@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MbcaAdminWeb", "MbcaAdminWe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminWebAPI.Test", "AdminWebAPI.Test\AdminWebAPI.Test.csproj", "{4F4AEFDE-D8D6-4B71-93C1-059E074E6AD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment2.Test", "Assignment2.Test\Assignment2.Test.csproj", "{316B0E26-A762-483F-AE5F-431000E0AD5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{4F4AEFDE-D8D6-4B71-93C1-059E074E6AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F4AEFDE-D8D6-4B71-93C1-059E074E6AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F4AEFDE-D8D6-4B71-93C1-059E074E6AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{316B0E26-A762-483F-AE5F-431000E0AD5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{316B0E26-A762-483F-AE5F-431000E0AD5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{316B0E26-A762-483F-AE5F-431000E0AD5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{316B0E26-A762-483F-AE5F-431000E0AD5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

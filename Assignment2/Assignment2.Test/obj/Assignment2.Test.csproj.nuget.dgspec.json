@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj": {}
+    "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/Assignment2.Test.csproj": {}
   },
   "projects": {
-    "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj": {
+    "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/Assignment2.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj",
-        "projectName": "AdminWebAPI",
-        "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj",
+        "projectUniqueName": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/Assignment2.Test.csproj",
+        "projectName": "Assignment2.Test",
+        "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/Assignment2.Test.csproj",
         "packagesPath": "/Users/oilxgriffon/.nuget/packages/",
-        "outputPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/obj/",
+        "outputPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/oilxgriffon/.nuget/NuGet/NuGet.Config"
@@ -28,9 +28,6 @@
             "projectReferences": {
               "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/Assignment2.csproj": {
                 "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/Assignment2.csproj"
-              },
-              "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {
-                "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj"
               }
             }
           }
@@ -45,23 +42,47 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.1, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
               "version": "[8.0.1, )"
             },
-            "Swashbuckle.AspNetCore": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "SimpleHashing.Net": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.5, )"
             }
           },
           "imports": [
@@ -76,9 +97,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
