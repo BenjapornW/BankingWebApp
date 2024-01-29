@@ -10,6 +10,7 @@
         "dependencies": {
           "Assignment2": "1.0.0",
           "Microsoft.EntityFrameworkCore.Design": "8.0.1",
+          "Microsoft.EntityFrameworkCore.InMemory": "8.0.1",
           "Microsoft.EntityFrameworkCore.Proxies": "8.0.1",
           "Microsoft.EntityFrameworkCore.Sqlite": "8.0.1",
           "Microsoft.NET.Test.Sdk": "17.6.0",
@@ -527,6 +528,17 @@
         },
         "runtime": {
           "lib/net8.0/Microsoft.EntityFrameworkCore.Design.dll": {
+            "assemblyVersion": "8.0.1.0",
+            "fileVersion": "8.0.123.58002"
+          }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.InMemory/8.0.1": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
             "assemblyVersion": "8.0.1.0",
             "fileVersion": "8.0.123.58002"
           }
@@ -2381,6 +2393,13 @@
       "sha512": "sha512-bu64mscf31BC9Nj4QAktliBnjfZIoc3rIExW7FvxDofkqboE4+j8GwJYjc1KePOwXGrR8yw/ajhr7jZdKI4UyA==",
       "path": "microsoft.entityframeworkcore.design/8.0.1",
       "hashPath": "microsoft.entityframeworkcore.design.8.0.1.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.InMemory/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5tnwnCekLhXv9AKkE/TXOx2tGnLePgxXYlfBXLOLg/JEr8C5MxdSnWDNosnUm81KsD3bskzi59AZjioWX+tA5g==",
+      "path": "microsoft.entityframeworkcore.inmemory/8.0.1",
+      "hashPath": "microsoft.entityframeworkcore.inmemory.8.0.1.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Proxies/8.0.1": {
       "type": "package",

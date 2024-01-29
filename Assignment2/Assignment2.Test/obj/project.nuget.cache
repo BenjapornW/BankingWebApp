@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OmwxDoa+aiBNJsFgd34o2hmZSOOawiuFxEjFuG1/JfiororHiHxOR5ZiSBqDreJw5VWn37zFqlgJ0IYdlyCMgg==",
+  "dgSpecHash": "OCMA6FocfBZIqnpthRKYiQ3QhIo54YFp+41hWMvXUolATNNIRZBiA9J3jYqbzwiVv5O9u1HVSbxo+DoBdHDqCA==",
   "success": true,
   "projectFilePath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/Assignment2.Test.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,7 @@
     "/Users/oilxgriffon/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.1/microsoft.entityframeworkcore.abstractions.8.0.1.nupkg.sha512",
     "/Users/oilxgriffon/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.1/microsoft.entityframeworkcore.analyzers.8.0.1.nupkg.sha512",
     "/Users/oilxgriffon/.nuget/packages/microsoft.entityframeworkcore.design/8.0.1/microsoft.entityframeworkcore.design.8.0.1.nupkg.sha512",
+    "/Users/oilxgriffon/.nuget/packages/microsoft.entityframeworkcore.inmemory/8.0.1/microsoft.entityframeworkcore.inmemory.8.0.1.nupkg.sha512",
     "/Users/oilxgriffon/.nuget/packages/microsoft.entityframeworkcore.proxies/8.0.1/microsoft.entityframeworkcore.proxies.8.0.1.nupkg.sha512",
     "/Users/oilxgriffon/.nuget/packages/microsoft.entityframeworkcore.relational/8.0.1/microsoft.entityframeworkcore.relational.8.0.1.nupkg.sha512",
     "/Users/oilxgriffon/.nuget/packages/microsoft.entityframeworkcore.sqlite/8.0.1/microsoft.entityframeworkcore.sqlite.8.0.1.nupkg.sha512",

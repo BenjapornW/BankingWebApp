@@ -263,3 +263,4 @@
 /Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/obj/Debug/net8.0/Assignment2.Test.pdb
 /Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/obj/Debug/net8.0/Assignment2.Test.genruntimeconfig.cache
 /Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/obj/Debug/net8.0/ref/Assignment2.Test.dll
+/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll
