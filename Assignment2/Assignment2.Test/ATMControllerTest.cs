@@ -8,6 +8,7 @@ using Assignment2.Controllers;
 using Assignment2.ViewModels;
 using DataModelLibrary.Data;
 using Microsoft.EntityFrameworkCore;
+using DataModelLibrary.Models;
 
 namespace Assignment2.Test;
 
@@ -74,6 +75,7 @@ public class ATMControllerTests
         var viewResult = Assert.IsType<ViewResult>(result);
         var resultViewModel = Assert.IsType<TransactionFormViewModel>(viewResult.Model);
     }
+
 
 
     public class FakeSession : ISession

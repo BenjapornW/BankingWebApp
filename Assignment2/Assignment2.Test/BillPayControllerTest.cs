@@ -5,6 +5,7 @@ using DataModelLibrary.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using DataModelLibrary.Models;
+using Assignment2.ViewModels;
 
 namespace Assignment2.Test
 {
@@ -39,6 +40,16 @@ namespace Assignment2.Test
             Assert.IsAssignableFrom<BillPay>(viewResult.ViewData.Model);
         }
 
-        
+        [Fact]
+        public async Task BillPaySummary_ReturnsViewWithModel()
+        {
+            // Arrange & Act
+            var result = await _controller.BillPaySummary();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.IsAssignableFrom<BillPaySummaryViewModel>(viewResult.ViewData.Model);
+        }
+
     }
 }
