@@ -72,19 +72,49 @@
       <File FileName="MbcaAdminWeb/wwwroot/css/site.css" />
       <File FileName="AdminWebAPI.Test/CustomersControllerClassTests.cs" />
       <File FileName="AdminWebAPI.Test/Class1.cs" Line="1" Column="1" />
+
       <File FileName="AdminWebAPI.Test/CustomersControllerTests.cs" Line="9" Column="4" />
       <File FileName="DataModelLibrary/.gitignore" Line="1" Column="1" />
+
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Assignment2">
-            <Node name="DataModelLibrary" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
+
+            <Node name="AdminWebAPI" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="DataManager" expanded="True" />
+                <Node name="Repository" expanded="True" />
               </Node>
             </Node>
+            <Node name="AdminWebAPI.Test" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="CustomersControllerTests.cs" selected="True" />
+            </Node>
+            <Node name="Assignment2" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="Utilities" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="DataModelLibrary" expanded="True">
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
+
+            </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Assignment2" expanded="True" />
         </State>
       </Pad>
     </Pads>
