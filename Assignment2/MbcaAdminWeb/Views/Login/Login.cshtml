@@ -1,10 +1,4 @@
-﻿using System;
-using DataModelLibrary.Models;
-using DataModelLibrary.Data;
-using Microsoft.EntityFrameworkCore;
-
-
-@model DataModelLibrary.Models.Login
+﻿@model DataModelLibrary.Models.Login
 @{
     ViewData["Title"] = "Login";
 }
@@ -17,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
         </div>
         <div class="col-sm-5 login-col">
             <div class="border-style border-corner login-form">
-                <h1 class="display-6 subheading border-corner center-heading mb-3">Sign in</h1>
+                <h1 class="display-6 subheading border-corner center-heading mb-3">Admin Sign in</h1>
                 @if (ViewData.ModelState["LoginFailed"]?.Errors.Count > 0)
                 {
                     <div class="text-danger mb-1">
@@ -26,8 +20,8 @@ using Microsoft.EntityFrameworkCore;
                 }
                 <form asp-action="Login">
                     <div class="form-group mb-3">
-                        @*<label asp-for="LoginID" class="control-label mb-1">Login ID</label>*@
-                        @*<input asp-for="LoginID" class="form-control" data-val="true" data-val-required="The Login ID is required." />*@
+                        <label asp-for="LoginID" class="control-label mb-1">Login ID</label>
+                        <input asp-for="LoginID" class="form-control" data-val="true" data-val-required="The Login ID is required." />
                         @Html.ValidationMessage("LoginID", new { @class = "text-danger" })
                     </div>
                     <div class="form-group mb-3">
@@ -41,24 +35,8 @@ using Microsoft.EntityFrameworkCore;
                         <input type="submit" value="Login" class="btn btn-primary" />
                     </div>
 
-
-
                 </form>
-                <div>
-                    <li>
-                        Protection for unauthorised transaction
-                    </li>
-                    <li>
-                        Instant money transfer
-                    </li>
-                    <li>
-                        Use any card
-                    </li>
-                    <li>
-                        Bill Payment
-                    </li>
-                </div>
-
+                
 
             </div>
 
