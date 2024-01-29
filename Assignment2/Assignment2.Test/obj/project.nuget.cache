@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "OCMA6FocfBZIqnpthRKYiQ3QhIo54YFp+41hWMvXUolATNNIRZBiA9J3jYqbzwiVv5O9u1HVSbxo+DoBdHDqCA==",
   "success": true,
-  "projectFilePath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/Assignment2.Test.csproj",
+  "projectFilePath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/Assignment2.Test.csproj",
   "expectedPackageFiles": [
     "/Users/oilxgriffon/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/oilxgriffon/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",

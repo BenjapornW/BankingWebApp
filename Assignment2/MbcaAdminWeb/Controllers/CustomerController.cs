@@ -12,11 +12,11 @@ namespace MbcaAdminWeb.Controllers
     public class CustomerController : Controller
     {
 
-        private readonly HttpClient _client;
 
         private readonly IHttpClientFactory _clientFactory;
         private HttpClient Client => _clientFactory.CreateClient("api");
-        //private HttpClient TokenClient => _clientFactory.CreateClient("security");
+        //private readonly string Token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImE4ZDE3ZDA2LTg5MTEtNDZmZC05NGY5LTY2ODNlOTk2MmYzMSIsInN1YiI6ImFkbWluIiwiZW1haWwiOiJhZG1pbiIsImp0aSI6ImNmOGRjMTg2LTRkMTItNGUxMC1hZTk3LWFiMjQ3ZTM4Y2EyMiIsIm5iZiI6MTcwNjUyMjYyMiwiZXhwIjoxNzA2NTIyOTIyLCJpYXQiOjE3MDY1MjI2MjIsImlzcyI6Ikdyb3VwOSIsImF1ZCI6ImxvY2FsaG9zdDo1MDA3In0.HxjBxXg_fqakD0HGkwYZf1SAxSIPbH7n9k9IaCB9uqOs0hX1bajt3iMnQppvL3VsNcuistd3uWBqOCllP-jKaw";
+        public string Token;
 
         private readonly ILogger<CustomerController> _logger; // Add logger definition
 
@@ -78,14 +78,17 @@ namespace MbcaAdminWeb.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var jwtToken = await GetJwtToken(UserLogin.UserName, UserLogin.Password); // Use actual admin credentials
-            var jwtToken = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImE4ZDE3ZDA2LTg5MTEtNDZmZC05NGY5LTY2ODNlOTk2MmYzMSIsInN1YiI6ImFkbWluIiwiZW1haWwiOiJhZG1pbiIsImp0aSI6ImNmOGRjMTg2LTRkMTItNGUxMC1hZTk3LWFiMjQ3ZTM4Y2EyMiIsIm5iZiI6MTcwNjUyMjYyMiwiZXhwIjoxNzA2NTIyOTIyLCJpYXQiOjE3MDY1MjI2MjIsImlzcyI6Ikdyb3VwOSIsImF1ZCI6ImxvY2FsaG9zdDo1MDA3In0.HxjBxXg_fqakD0HGkwYZf1SAxSIPbH7n9k9IaCB9uqOs0hX1bajt3iMnQppvL3VsNcuistd3uWBqOCllP-jKaw";
-            if (string.IsNullOrEmpty(jwtToken))
+            Token = await GetJwtToken(UserLogin.UserName, UserLogin.Password); // Assuming GetJwtToken returns the JWT token
+            if (string.IsNullOrEmpty(Token))
             {
                 return Unauthorized(); // Or redirect to a login page
             }
 
-            Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+            Console.WriteLine(Token);
+
+            // Add the token as a Bearer token in the Authorization header
+            Client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token);
+
             try
             {
                 var response = await Client.GetAsync("api/customers");
@@ -106,6 +109,7 @@ namespace MbcaAdminWeb.Controllers
                 _logger.LogError(ex, "Exception occurred while retrieving customers.");
                 return View("Error"); // Or any other error handling
             }
+
         }
 
 
