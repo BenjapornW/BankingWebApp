@@ -4,7 +4,7 @@ using DataModelLibrary.Data;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace Assignment2.Data
+namespace DataModelLibrary.Data
 {
     public static class SeedData
     {
