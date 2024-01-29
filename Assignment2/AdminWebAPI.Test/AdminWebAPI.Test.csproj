@@ -13,5 +13,10 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.1" />
+    <PackageReference Include="Moq" Version="4.20.70" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataModelLibrary\DataModelLibrary.csproj" />
+    <ProjectReference Include="..\AdminWebAPI\AdminWebAPI.csproj" />
   </ItemGroup>
 </Project>
