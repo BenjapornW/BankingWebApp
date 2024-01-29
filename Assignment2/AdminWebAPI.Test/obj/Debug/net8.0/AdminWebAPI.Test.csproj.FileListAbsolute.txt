@@ -1,0 +1,12 @@
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/bin/Debug/net8.0/AdminWebAPI.Test.deps.json
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/bin/Debug/net8.0/AdminWebAPI.Test.dll
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/bin/Debug/net8.0/AdminWebAPI.Test.pdb
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/obj/Debug/net8.0/AdminWebAPI.Test.GeneratedMSBuildEditorConfig.editorconfig
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/obj/Debug/net8.0/AdminWebAPI.Test.AssemblyInfoInputs.cache
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/obj/Debug/net8.0/AdminWebAPI.Test.AssemblyInfo.cs
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/obj/Debug/net8.0/AdminWebAPI.Test.csproj.CoreCompileInputs.cache
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/obj/Debug/net8.0/AdminWebAPI.Test.sourcelink.json
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/obj/Debug/net8.0/AdminWebAPI.Test.dll
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/obj/Debug/net8.0/refint/AdminWebAPI.Test.dll
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/obj/Debug/net8.0/AdminWebAPI.Test.pdb
+/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI.Test/obj/Debug/net8.0/ref/AdminWebAPI.Test.dll
