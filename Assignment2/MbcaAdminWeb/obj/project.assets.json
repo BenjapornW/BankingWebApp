@@ -4063,19 +4063,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/xiaohanqin/.nuget/packages/": {}
+    "/Users/oilxgriffon/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/MbcaAdminWeb.csproj",
+      "projectUniqueName": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/MbcaAdminWeb.csproj",
       "projectName": "MbcaAdminWeb",
-      "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/MbcaAdminWeb.csproj",
-      "packagesPath": "/Users/xiaohanqin/.nuget/packages/",
-      "outputPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/obj/",
+      "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/MbcaAdminWeb.csproj",
+      "packagesPath": "/Users/oilxgriffon/.nuget/packages/",
+      "outputPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/xiaohanqin/.nuget/NuGet/NuGet.Config"
+        "/Users/oilxgriffon/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4087,8 +4087,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {
-              "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj"
+            "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {
+              "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj"
             }
           }
         }
