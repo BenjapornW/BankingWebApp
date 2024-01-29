@@ -5,6 +5,7 @@ using Assignment2.ViewModels;
 using Xunit;
 using Microsoft.Extensions.Logging;
 using Moq;
+using Microsoft.AspNetCore.Http;
 
 namespace Assignment2.Test;
 
@@ -43,18 +44,26 @@ public class HomeControllerTests
         Assert.IsType<ViewResult>(result);
     }
 
-    //[Fact]
-    //public void Error_ReturnsAViewResult_WithAViewModel()
-    //{
-    //    // Arrange
-    //    var controller = new HomeController(_mockLogger.Object);
+    [Fact]
+    public void Error_ReturnsAViewResult_WithAViewModel()
+    {
+        // Arrange
+        var controller = new HomeController(_mockLogger.Object);
+        var controllerContext = new ControllerContext();
+        controller.ControllerContext = controllerContext;
 
-    //    // Act
-    //    var result = controller.Error();
+        // Simulate setting TraceIdentifier for the HttpContext
+        controller.ControllerContext.HttpContext = new DefaultHttpContext();
+        controller.ControllerContext.HttpContext.TraceIdentifier = "TestTraceId";
 
-    //    // Assert
-    //    var viewResult = Assert.IsType<ViewResult>(result);
-    //    var model = Assert.IsAssignableFrom<ErrorViewModel>(viewResult.ViewData.Model);
-    //    Assert.NotNull(model.RequestId);
-    //}
+        // Act
+        var result = controller.Error();
+
+        // Assert
+        var viewResult = Assert.IsType<ViewResult>(result);
+        var model = Assert.IsAssignableFrom<ErrorViewModel>(viewResult.ViewData.Model);
+        Assert.NotNull(model.RequestId);
+        Assert.Equal("TestTraceId", model.RequestId);
+    }
+
 }

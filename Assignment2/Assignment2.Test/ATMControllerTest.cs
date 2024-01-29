@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using Moq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Assignment2.Controllers;
 using Assignment2.ViewModels;
 using DataModelLibrary.Data;
-using DataModelLibrary.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment2.Test;
 
@@ -18,27 +15,25 @@ public class ATMControllerTests
 {
     private readonly McbaContext _context;
     private readonly ATMController _controller;
+    private readonly HttpContext _mockHttpContext;
 
     public ATMControllerTests()
     {
         var options = new DbContextOptionsBuilder<McbaContext>()
-            .UseInMemoryDatabase(databaseName: "TestDb") // Use a unique name for each test method
-            .Options;
+            .UseInMemoryDatabase(databaseName: "TestDb").Options;
 
         _context = new McbaContext(options);
 
-        // Seed the in-memory database with test data if necessary
-
-        var mockHttpContext = new Mock<HttpContext>();
-        var session = new Mock<ISession>();
-        session.Setup(s => s.GetInt32(It.IsAny<string>())).Returns(1); // Example of setting up a session
-        mockHttpContext.Setup(c => c.Session).Returns(session.Object);
+        // Create a fake HttpContext with a fake session
+        _mockHttpContext = new DefaultHttpContext();
+        _mockHttpContext.Session = new FakeSession();
+        _mockHttpContext.Session.SetInt32("CustomerID", 1); // Example of setting a session value
 
         _controller = new ATMController(_context)
         {
             ControllerContext = new ControllerContext
             {
-                HttpContext = mockHttpContext.Object
+                HttpContext = _mockHttpContext
             }
         };
     }
@@ -60,4 +55,40 @@ public class ATMControllerTests
         Assert.Equal(actionType, model.ActionType);
     }
 
+    public class FakeSession : ISession
+    {
+        private readonly Dictionary<string, byte[]> _sessionStorage = new Dictionary<string, byte[]>();
+        public bool IsAvailable => true;
+        public string Id => Guid.NewGuid().ToString();
+        public IEnumerable<string> Keys => _sessionStorage.Keys;
+
+        public void Clear() => _sessionStorage.Clear();
+
+        public Task CommitAsync(CancellationToken cancellationToken = default) => Task.CompletedTask;
+
+        public Task LoadAsync(CancellationToken cancellationToken = default) => Task.CompletedTask;
+
+        public void Remove(string key) => _sessionStorage.Remove(key);
+
+        public void Set(string key, byte[] value) => _sessionStorage[key] = value;
+
+        public bool TryGetValue(string key, out byte[] value) => _sessionStorage.TryGetValue(key, out value);
+
+        // Helper methods for int
+        public void SetInt32(string key, int value)
+        {
+            var bytes = BitConverter.GetBytes(value);
+            Set(key, bytes);
+        }
+
+        public int? GetInt32(string key)
+        {
+            if (TryGetValue(key, out var bytes) && bytes.Length == 4)
+            {
+                return BitConverter.ToInt32(bytes, 0);
+            }
+            return null;
+        }
+
+    }
 }
