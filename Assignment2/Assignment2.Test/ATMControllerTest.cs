@@ -55,6 +55,27 @@ public class ATMControllerTests
         Assert.Equal(actionType, model.ActionType);
     }
 
+    [Fact]
+    public async Task ConfirmTransaction_ReturnsViewWithModel()
+    {
+        // Arrange
+        var testAccountId = 1; // Assuming this account is seeded in the in-memory database
+        var viewModel = new TransactionFormViewModel
+        {
+            AccountNumber = testAccountId,
+            ActionType = "Deposit",
+            Amount = 100, 
+            Comment = "Test transaction",
+        };
+        // Act
+        var result = await _controller.ConfirmTransaction(viewModel);
+
+        // Assert
+        var viewResult = Assert.IsType<ViewResult>(result);
+        var resultViewModel = Assert.IsType<TransactionFormViewModel>(viewResult.Model);
+    }
+
+
     public class FakeSession : ISession
     {
         private readonly Dictionary<string, byte[]> _sessionStorage = new Dictionary<string, byte[]>();
