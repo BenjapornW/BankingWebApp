@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj": {}
+    "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj": {}
   },
   "projects": {
-    "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj": {
+    "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj",
+        "projectUniqueName": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj",
         "projectName": "AdminWebAPI",
-        "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj",
-        "packagesPath": "/Users/xiaohanqin/.nuget/packages/",
-        "outputPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/obj/",
+        "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/AdminWebAPI.csproj",
+        "packagesPath": "/Users/oilxgriffon/.nuget/packages/",
+        "outputPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/xiaohanqin/.nuget/NuGet/NuGet.Config"
+          "/Users/oilxgriffon/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {
-                "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj"
+              "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {
+                "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj"
               }
             }
           }
@@ -88,17 +88,17 @@
         }
       }
     },
-    "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {
+    "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj",
+        "projectUniqueName": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj",
         "projectName": "DataModelLibrary",
-        "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj",
-        "packagesPath": "/Users/xiaohanqin/.nuget/packages/",
-        "outputPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/obj/",
+        "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj",
+        "packagesPath": "/Users/oilxgriffon/.nuget/packages/",
+        "outputPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/xiaohanqin/.nuget/NuGet/NuGet.Config"
+          "/Users/oilxgriffon/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

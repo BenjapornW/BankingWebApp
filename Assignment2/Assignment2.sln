@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MbcaAdminWeb", "MbcaAdminWe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminWebAPI.Test", "AdminWebAPI.Test\AdminWebAPI.Test.csproj", "{4F4AEFDE-D8D6-4B71-93C1-059E074E6AD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment2.Test", "Assignment2.Test\Assignment2.Test.csproj", "{D76D0555-25C4-4343-9777-07A27C0EEAF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{4F4AEFDE-D8D6-4B71-93C1-059E074E6AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F4AEFDE-D8D6-4B71-93C1-059E074E6AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F4AEFDE-D8D6-4B71-93C1-059E074E6AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D76D0555-25C4-4343-9777-07A27C0EEAF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D76D0555-25C4-4343-9777-07A27C0EEAF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D76D0555-25C4-4343-9777-07A27C0EEAF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D76D0555-25C4-4343-9777-07A27C0EEAF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

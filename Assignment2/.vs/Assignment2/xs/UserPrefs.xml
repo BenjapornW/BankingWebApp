@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{6904AD24-92EE-4EA5-BA4F-CB49ABF0BC96}|http">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.MbcaAdminWeb PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/Program.cs" relfile="AdminWebAPI/Program.cs" line="9" column="1" />
-    </BreakpointStore>
+    <Breakpoint file="/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/Program.cs" relfile="AdminWebAPI/Program.cs" line="9" column="1" />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assignment2.Test FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.MbcaAdminWeb PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.AdminWebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="AdminWebAPI/Controllers/CustomersController.cs">
     <Files>
@@ -131,6 +132,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
