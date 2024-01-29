@@ -1,0 +1,19 @@
+﻿@model List<DataModelLibrary.Models.Customer>
+
+<h2>Customer List</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <!-- Other columns as needed -->
+    </tr>
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@customer.CustomerID</td>
+            <td>@customer.Name</td>
+            <!-- Other columns as needed -->
+        </tr>
+    }
+</table>

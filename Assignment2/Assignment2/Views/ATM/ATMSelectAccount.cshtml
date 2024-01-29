@@ -1,0 +1,59 @@
+﻿@using DataModelLibrary.Models
+@model Assignment2.ViewModels.ATMViewModel
+
+@{
+    var action = Model.ActionType;
+    var buttonStyle = "btn-primary";
+    if (action == "Withdraw")
+        buttonStyle = "btn-warning";
+    else if (action == "Transfer")
+        buttonStyle = "btn-info";
+}
+<div class="border-style border-corner">
+    <h2 class="display-6 subheading border-corner mb-3">Select Account for @Model.ActionType</h2>
+
+    <p>Please select an account:</p>
+
+    @if (Model.Accounts.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Account Number</th>
+                    <th>Type</th>
+                    <th>Balance</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var account in Model.Accounts)
+                {
+                    <tr>
+                        <td>@account.AccountNumber</td>
+                        <td>@(account.AccountType == AccountType.Saving ? "Saving" : "Checking")</td>
+                        <td>@account.Balance.ToString("C")</td>
+                        <td>
+                            @if (action == "Statement")
+                            {
+                                <a asp-action="Statement"
+                                   asp-route-accountNumber="@account.AccountNumber"
+                                   class="btn @buttonStyle">View Statement</a>
+                            }
+                            else
+                            {
+                                <a asp-action="TransactionForm" asp-route-id="@account.AccountNumber" asp-route-actionType="@action"
+                                   class="btn btn-primary">@action</a>
+                            }
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>You do not have any accounts.</p>
+    }
+</div>
+
