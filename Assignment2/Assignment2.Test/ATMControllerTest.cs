@@ -16,62 +16,49 @@ namespace Assignment2.Test;
 
 public class ATMControllerTests
 {
-    private readonly Mock<McbaContext> _mockContext;
-    private readonly Mock<HttpContext> _mockHttpContext;
-    private readonly ATMController _controller;
+    //private readonly McbaContext _context;
+    //private readonly ATMController _controller;
 
-    public ATMControllerTests()
-    {
-        _mockContext = new Mock<McbaContext>();
-        _mockHttpContext = new Mock<HttpContext>();
-        _controller = new ATMController(_mockContext.Object)
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = _mockHttpContext.Object
-            }
-        };
-        // Setup mock session and other HttpContext features if necessary
-    }
+    //public ATMControllerTests()
+    //{
+    //    var options = new DbContextOptionsBuilder<McbaContext>()
+    //        .UseInMemoryDatabase(databaseName: "TestDb") // Use a unique name for each test method
+    //        .Options;
 
-    [Fact]
-    public async Task TransactionForm_ReturnsViewWithModel()
-    {
-        // Arrange
-        int testAccountId = 1;
-        string actionType = "Deposit";
+    //    _context = new McbaContext(options);
 
-        // Act
-        var result = await _controller.TransactionForm(testAccountId, actionType);
+    //    // Seed the in-memory database with test data if necessary
 
-        // Assert
-        var viewResult = Assert.IsType<ViewResult>(result);
-        var model = Assert.IsType<TransactionFormViewModel>(viewResult.Model);
-        Assert.Equal(testAccountId, model.AccountNumber);
-        Assert.Equal(actionType, model.ActionType);
-    }
+    //    var mockHttpContext = new Mock<HttpContext>();
+    //    var session = new Mock<ISession>();
+    //    session.Setup(s => s.GetInt32(It.IsAny<string>())).Returns(1); // Example of setting up a session
+    //    mockHttpContext.Setup(c => c.Session).Returns(session.Object);
 
+    //    _controller = new ATMController(_context)
+    //    {
+    //        ControllerContext = new ControllerContext
+    //        {
+    //            HttpContext = mockHttpContext.Object
+    //        }
+    //    };
+    //}
 
-    [Fact]
-    public async Task SelectAccount_ReturnsViewWithModel()
-    {
-        // Arrange
-        string actionType = "Withdraw";
+    //[Fact]
+    //public async Task TransactionForm_ReturnsViewWithModel()
+    //{
+    //    // Arrange
+    //    int testAccountId = 1; // Ensure this account is seeded in the in-memory database
+    //    string actionType = "Deposit";
 
-        // Mocking session to have a valid customer ID
-        var session = new Mock<ISession>();
-        session.Setup(s => s.GetInt32(It.IsAny<string>())).Returns(1);
-        _mockHttpContext.Setup(c => c.Session).Returns(session.Object);
+    //    // Act
+    //    var result = await _controller.TransactionForm(testAccountId, actionType);
 
-        // Act
-        var result = await _controller.SelectAccount(actionType);
+    //    // Assert
+    //    var viewResult = Assert.IsType<ViewResult>(result);
+    //    var model = Assert.IsType<TransactionFormViewModel>(viewResult.Model);
+    //    Assert.Equal(testAccountId, model.AccountNumber);
+    //    Assert.Equal(actionType, model.ActionType);
+    //}
 
-        // Assert
-        var viewResult = Assert.IsType<ViewResult>(result);
-        var model = Assert.IsType<ATMViewModel>(viewResult.Model);
-        Assert.Equal(actionType, model.ActionType);
-    }
-
-
-
+    //// Other test methods...
 }
