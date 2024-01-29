@@ -1,4 +1,4 @@
-﻿@model DataModelLibrary.Models.Login
+﻿@model DataModelLibrary.Models.User
 @{
     ViewData["Title"] = "Login";
 }
@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-5 login-col">
             <div class="border-style border-corner login-form">
-                <h1 class="display-6 subheading border-corner center-heading mb-3">Admin Sign in</h1>
+                <h1 class="display-6 subheading border-corner center-heading mb-3">Admin Login</h1>
                 @if (ViewData.ModelState["LoginFailed"]?.Errors.Count > 0)
                 {
                     <div class="text-danger mb-1">
@@ -19,13 +19,13 @@
                 }
                 <form asp-action="Login">
                     <div class="form-group mb-3">
-                        <label asp-for="LoginID" class="control-label mb-1">Login ID</label>
-                        <input asp-for="LoginID" class="form-control" data-val="true" data-val-required="The Login ID is required." />
-                        @Html.ValidationMessage("LoginID", new { @class = "text-danger" })
+                        <label asp-for="UserName" class="control-label mb-1">Username</label>
+                        <input asp-for="UserName" name="username" class="form-control mb-1" data-val="true" data-val-required="The Username is required." />
+                        @Html.ValidationMessage("UserName", new { @class = "text-danger" })
                     </div>
                     <div class="form-group mb-3">
-                        <label for="Password" class="control-label mb-1">Password</label>
-                        <input id="Password" name="Password" type="password" class="form-control"
+                        <label asp-for="Password" class="control-label mb-1">Password</label>
+                        <input asp-for="Password" name="Password" type="password" class="form-control mb-1"
                                data-val="true" data-val-required="The Password is required." />
                         @Html.ValidationMessage("Password", new { @class = "text-danger" })
                     </div>
