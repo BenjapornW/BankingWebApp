@@ -8,8 +8,6 @@ using DataModelLibrary.Models;
 using Microsoft.AspNetCore.Authorization;
 
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace AdminWebAPI.Controllers
 {
     // pass the authentication token as header when calling from api/customers
@@ -51,18 +49,6 @@ namespace AdminWebAPI.Controllers
             return Ok(customer);
         }
 
-        // HTTP Method: POST
-        // Url: api/customers
-        // Insert a new customer into database
-        [HttpPost]
-        [Authorize]
-        public IActionResult Post([FromBody] Customer customer)
-        {
-            if (customer == null)
-                return BadRequest("Customer object is null."); // Return 400 Bad Request if customer object is null
-            _repo.Add(customer);
-            return Ok();
-        }
 
         // HTTP Method: PUT
         // Url: api/customers/{id}
@@ -90,18 +76,6 @@ namespace AdminWebAPI.Controllers
             return Ok();
         }
 
-        // HTTP Method:DELETE
-        // Url: api/customers/{id}
-        // Delete a customer by customer ID
-        [HttpDelete("{id}")]
-        [Authorize]
-        public IActionResult Delete(int id)
-        {
-            var deletedCustomerId = _repo.Delete(id);
-            if (deletedCustomerId == 0)
-                return NotFound(); // Return 404 Not Found if customer not found
-            return Ok(deletedCustomerId);
-        }
     }
 }
 
