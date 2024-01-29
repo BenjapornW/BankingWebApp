@@ -44,24 +44,6 @@ namespace Assignment2.Services
             }
         }
 
-        //public async Task UpdateMonthlyBillStatus()
-        //{
-        //    using (IServiceScope scope = _serviceProvider.CreateScope())
-        //    using (var context = scope.ServiceProvider.GetRequiredService<McbaContext>())
-        //    {
-        //        Console.WriteLine("Update Monthly paid test");
-        //        var billPays = context.BillPays.Where(bill => bill.Status == StatusType.Paid).ToList();
-        //        if (billPays.Count != 0)
-        //        {
-        //            foreach (var bill in billPays)
-        //            {
-        //                bill.Status = StatusType.Scheduled;
-        //            }
-        //            await context.SaveChangesAsync();
-        //        }
-        //    }
-        //}
-
     }
 }
 

@@ -10086,19 +10086,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/oilxgriffon/.nuget/packages/": {}
+    "/Users/xiaohanqin/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/Assignment2.Test.csproj",
+      "projectUniqueName": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/Assignment2.Test.csproj",
       "projectName": "Assignment2.Test",
-      "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/Assignment2.Test.csproj",
-      "packagesPath": "/Users/oilxgriffon/.nuget/packages/",
-      "outputPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/obj/",
+      "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/Assignment2.Test.csproj",
+      "packagesPath": "/Users/xiaohanqin/.nuget/packages/",
+      "outputPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2.Test/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/oilxgriffon/.nuget/NuGet/NuGet.Config"
+        "/Users/xiaohanqin/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -10110,8 +10110,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/Assignment2.csproj": {
-              "projectPath": "/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/Assignment2.csproj"
+            "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/Assignment2.csproj": {
+              "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/Assignment2.csproj"
             }
           }
         }
