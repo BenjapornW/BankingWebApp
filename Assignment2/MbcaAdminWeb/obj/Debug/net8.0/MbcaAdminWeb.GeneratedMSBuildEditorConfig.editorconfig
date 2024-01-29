@@ -9,51 +9,51 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MbcaAdminWeb
 build_property.RootNamespace = MbcaAdminWeb
-build_property.ProjectDir = /Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/
+build_property.ProjectDir = /Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb
+build_property.MSBuildProjectDirectory = /Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Customer/EditCustDetail.cshtml]
+[/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Customer/EditCustDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvRWRpdEN1c3REZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Customer/LockCustomer.cshtml]
+[/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Customer/LockCustomer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvTG9ja0N1c3RvbWVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Home/Index.cshtml]
+[/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Home/Privacy.cshtml]
+[/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Login/Login.cshtml]
+[/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Login/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW4vTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Shared/Error.cshtml]
+[/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/_ViewImports.cshtml]
+[/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/_ViewStart.cshtml]
+[/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/oilxgriffon/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Shared/_Layout.cshtml]
+[/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/MbcaAdminWeb/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-xyxe901jek
