@@ -62,141 +62,6 @@
           }
         }
       },
-      "Hangfire/1.8.9": {
-        "type": "package",
-        "dependencies": {
-          "Hangfire.AspNetCore": "[1.8.9]",
-          "Hangfire.Core": "[1.8.9]",
-          "Hangfire.SqlServer": "[1.8.9]"
-        }
-      },
-      "Hangfire.AspNetCore/1.8.9": {
-        "type": "package",
-        "dependencies": {
-          "Hangfire.NetCore": "[1.8.9]"
-        },
-        "compile": {
-          "lib/netcoreapp3.0/Hangfire.AspNetCore.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/Hangfire.AspNetCore.dll": {
-            "related": ".xml"
-          }
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "Hangfire.Core/1.8.9": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/Hangfire.Core.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Hangfire.Core.dll": {
-            "related": ".xml"
-          }
-        },
-        "resource": {
-          "lib/netstandard2.0/ca/Hangfire.Core.resources.dll": {
-            "locale": "ca"
-          },
-          "lib/netstandard2.0/de/Hangfire.Core.resources.dll": {
-            "locale": "de"
-          },
-          "lib/netstandard2.0/es/Hangfire.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/netstandard2.0/fa/Hangfire.Core.resources.dll": {
-            "locale": "fa"
-          },
-          "lib/netstandard2.0/fr/Hangfire.Core.resources.dll": {
-            "locale": "fr"
-          },
-          "lib/netstandard2.0/nb/Hangfire.Core.resources.dll": {
-            "locale": "nb"
-          },
-          "lib/netstandard2.0/nl/Hangfire.Core.resources.dll": {
-            "locale": "nl"
-          },
-          "lib/netstandard2.0/pt-BR/Hangfire.Core.resources.dll": {
-            "locale": "pt-BR"
-          },
-          "lib/netstandard2.0/pt-PT/Hangfire.Core.resources.dll": {
-            "locale": "pt-PT"
-          },
-          "lib/netstandard2.0/pt/Hangfire.Core.resources.dll": {
-            "locale": "pt"
-          },
-          "lib/netstandard2.0/sv/Hangfire.Core.resources.dll": {
-            "locale": "sv"
-          },
-          "lib/netstandard2.0/tr-TR/Hangfire.Core.resources.dll": {
-            "locale": "tr-TR"
-          },
-          "lib/netstandard2.0/zh-TW/Hangfire.Core.resources.dll": {
-            "locale": "zh-TW"
-          },
-          "lib/netstandard2.0/zh/Hangfire.Core.resources.dll": {
-            "locale": "zh"
-          }
-        }
-      },
-      "Hangfire.NetCore/1.8.9": {
-        "type": "package",
-        "dependencies": {
-          "Hangfire.Core": "[1.8.9]",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0",
-          "Microsoft.Extensions.Hosting.Abstractions": "3.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "3.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.1/Hangfire.NetCore.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.1/Hangfire.NetCore.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Hangfire.SqlServer/1.8.9": {
-        "type": "package",
-        "dependencies": {
-          "Hangfire.Core": "[1.8.9]"
-        },
-        "compile": {
-          "lib/netstandard2.0/Hangfire.SqlServer.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Hangfire.SqlServer.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "JetBrains.Annotations/2022.3.1": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/JetBrains.Annotations.dll": {
-            "related": ".deps.json;.xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/JetBrains.Annotations.dll": {
-            "related": ".deps.json;.xml"
-          }
-        }
-      },
       "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.1": {
         "type": "package",
         "dependencies": {
@@ -357,23 +222,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/_._": {}
-        }
-      },
-      "Microsoft.EntityFrameworkCore.Proxies/8.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Castle.Core": "5.1.1",
-          "Microsoft.EntityFrameworkCore": "8.0.1"
-        },
-        "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Proxies.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Proxies.dll": {
-            "related": ".xml"
-          }
         }
       },
       "Microsoft.EntityFrameworkCore.Relational/8.0.1": {
@@ -564,41 +412,6 @@
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
-        }
-      },
-      "Microsoft.Extensions.FileProviders.Abstractions/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "3.0.0"
-        },
-        "compile": {
-          "lib/netcoreapp3.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Microsoft.Extensions.Hosting.Abstractions/3.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "3.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0",
-          "Microsoft.Extensions.FileProviders.Abstractions": "3.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "3.0.0"
-        },
-        "compile": {
-          "lib/netcoreapp3.0/Microsoft.Extensions.Hosting.Abstractions.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/Microsoft.Extensions.Hosting.Abstractions.dll": {
-            "related": ".xml"
-          }
         }
       },
       "Microsoft.Extensions.Logging/8.0.0": {
@@ -1161,15 +974,6 @@
           "lib/netstandard2.0/NuGet.Frameworks.dll": {}
         }
       },
-      "SimpleHashing.Net/2.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/SimpleHashing.Net.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/SimpleHashing.Net.dll": {}
-        }
-      },
       "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
         "type": "package",
         "dependencies": {
@@ -1301,30 +1105,30 @@
           "lib/net6.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
-      "Swashbuckle.AspNetCore/6.4.0": {
+      "Swashbuckle.AspNetCore/6.5.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
-          "Swashbuckle.AspNetCore.Swagger": "6.4.0",
-          "Swashbuckle.AspNetCore.SwaggerGen": "6.4.0",
-          "Swashbuckle.AspNetCore.SwaggerUI": "6.4.0"
+          "Swashbuckle.AspNetCore.Swagger": "6.5.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "6.5.0",
+          "Swashbuckle.AspNetCore.SwaggerUI": "6.5.0"
         },
         "build": {
           "build/_._": {}
         }
       },
-      "Swashbuckle.AspNetCore.Swagger/6.4.0": {
+      "Swashbuckle.AspNetCore.Swagger/6.5.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.OpenApi": "1.2.3"
         },
         "compile": {
-          "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll": {
+          "lib/net7.0/Swashbuckle.AspNetCore.Swagger.dll": {
             "related": ".pdb;.xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll": {
+          "lib/net7.0/Swashbuckle.AspNetCore.Swagger.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -1332,31 +1136,31 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Swashbuckle.AspNetCore.SwaggerGen/6.4.0": {
+      "Swashbuckle.AspNetCore.SwaggerGen/6.5.0": {
         "type": "package",
         "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "6.4.0"
+          "Swashbuckle.AspNetCore.Swagger": "6.5.0"
         },
         "compile": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
+          "lib/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
             "related": ".pdb;.xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
+          "lib/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
             "related": ".pdb;.xml"
           }
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerUI/6.4.0": {
+      "Swashbuckle.AspNetCore.SwaggerUI/6.5.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+          "lib/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
             "related": ".pdb;.xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+          "lib/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -1783,33 +1587,6 @@
           }
         }
       },
-      "X.PagedList/8.4.7": {
-        "type": "package",
-        "dependencies": {
-          "JetBrains.Annotations": "2022.3.1"
-        },
-        "compile": {
-          "lib/net7.0/X.PagedList.dll": {}
-        },
-        "runtime": {
-          "lib/net7.0/X.PagedList.dll": {}
-        }
-      },
-      "X.PagedList.Mvc.Core/8.4.7": {
-        "type": "package",
-        "dependencies": {
-          "X.PagedList": "8.4.7"
-        },
-        "compile": {
-          "lib/net7.0/X.PagedList.Mvc.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net7.0/X.PagedList.Mvc.Core.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
       "xunit/2.6.6": {
         "type": "package",
         "dependencies": {
@@ -1910,39 +1687,17 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Assignment2": "1.0.0",
           "DataModelLibrary": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.1",
-          "Swashbuckle.AspNetCore": "6.4.0"
+          "Swashbuckle.AspNetCore": "6.5.0",
+          "Swashbuckle.AspNetCore.Swagger": "6.5.0"
         },
         "compile": {
           "bin/placeholder/AdminWebAPI.dll": {}
         },
         "runtime": {
           "bin/placeholder/AdminWebAPI.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "Assignment2/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "DataModelLibrary": "1.0.0",
-          "Hangfire": "1.8.9",
-          "Microsoft.EntityFrameworkCore.Proxies": "8.0.1",
-          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.1",
-          "Newtonsoft.Json": "13.0.3",
-          "SimpleHashing.Net": "2.1.0",
-          "X.PagedList.Mvc.Core": "8.4.7"
-        },
-        "compile": {
-          "bin/placeholder/Assignment2.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Assignment2.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -1952,7 +1707,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.1"
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.1",
+          "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
           "bin/placeholder/DataModelLibrary.dll": {}
@@ -2024,200 +1780,6 @@
         "lib/netstandard2.1/Castle.Core.dll",
         "lib/netstandard2.1/Castle.Core.xml",
         "readme.txt"
-      ]
-    },
-    "Hangfire/1.8.9": {
-      "sha512": "vBKaCu2AWaol8C5SanXZGZzkPTchlFyY8XdrccbAGj2uZpyTNMUslMReQaxEBVvmqsBkuguzubsywMVSHAkKsw==",
-      "type": "package",
-      "path": "hangfire/1.8.9",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "hangfire.1.8.9.nupkg.sha512",
-        "hangfire.nuspec",
-        "readme.txt"
-      ]
-    },
-    "Hangfire.AspNetCore/1.8.9": {
-      "sha512": "JL4bRGQDPr77boIbbVccWJxdvgRtCk9Dyv583QLNyJ7GkX+IuUQ2SuMCAwhpaASMUKfAvzpsfjsrK2tr7fqmeA==",
-      "type": "package",
-      "path": "hangfire.aspnetcore/1.8.9",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "COPYING",
-        "COPYING.LESSER",
-        "LICENSE.md",
-        "LICENSE_ROYALTYFREE",
-        "LICENSE_STANDARD",
-        "NOTICES",
-        "hangfire.aspnetcore.1.8.9.nupkg.sha512",
-        "hangfire.aspnetcore.nuspec",
-        "lib/net451/Hangfire.AspNetCore.dll",
-        "lib/net451/Hangfire.AspNetCore.xml",
-        "lib/net461/Hangfire.AspNetCore.dll",
-        "lib/net461/Hangfire.AspNetCore.xml",
-        "lib/netcoreapp3.0/Hangfire.AspNetCore.dll",
-        "lib/netcoreapp3.0/Hangfire.AspNetCore.xml",
-        "lib/netstandard1.3/Hangfire.AspNetCore.dll",
-        "lib/netstandard1.3/Hangfire.AspNetCore.xml",
-        "lib/netstandard2.0/Hangfire.AspNetCore.dll",
-        "lib/netstandard2.0/Hangfire.AspNetCore.xml"
-      ]
-    },
-    "Hangfire.Core/1.8.9": {
-      "sha512": "BGVEyOfBgWR1WvpDGGh0nlRTIf5JMOHBmsYq70ektjQAlwa/hto2esVv5vCKWXOFE2x8GnuGoDksQVvAbnhRUA==",
-      "type": "package",
-      "path": "hangfire.core/1.8.9",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "COPYING",
-        "COPYING.LESSER",
-        "LICENSE.md",
-        "LICENSE_ROYALTYFREE",
-        "LICENSE_STANDARD",
-        "NOTICES",
-        "hangfire.core.1.8.9.nupkg.sha512",
-        "hangfire.core.nuspec",
-        "lib/net451/Hangfire.Core.dll",
-        "lib/net451/Hangfire.Core.xml",
-        "lib/net451/ca/Hangfire.Core.resources.dll",
-        "lib/net451/de/Hangfire.Core.resources.dll",
-        "lib/net451/es/Hangfire.Core.resources.dll",
-        "lib/net451/fa/Hangfire.Core.resources.dll",
-        "lib/net451/fr/Hangfire.Core.resources.dll",
-        "lib/net451/nb/Hangfire.Core.resources.dll",
-        "lib/net451/nl/Hangfire.Core.resources.dll",
-        "lib/net451/pt-BR/Hangfire.Core.resources.dll",
-        "lib/net451/pt-PT/Hangfire.Core.resources.dll",
-        "lib/net451/pt/Hangfire.Core.resources.dll",
-        "lib/net451/sv/Hangfire.Core.resources.dll",
-        "lib/net451/tr-TR/Hangfire.Core.resources.dll",
-        "lib/net451/zh-TW/Hangfire.Core.resources.dll",
-        "lib/net451/zh/Hangfire.Core.resources.dll",
-        "lib/net46/Hangfire.Core.dll",
-        "lib/net46/Hangfire.Core.xml",
-        "lib/net46/ca/Hangfire.Core.resources.dll",
-        "lib/net46/de/Hangfire.Core.resources.dll",
-        "lib/net46/es/Hangfire.Core.resources.dll",
-        "lib/net46/fa/Hangfire.Core.resources.dll",
-        "lib/net46/fr/Hangfire.Core.resources.dll",
-        "lib/net46/nb/Hangfire.Core.resources.dll",
-        "lib/net46/nl/Hangfire.Core.resources.dll",
-        "lib/net46/pt-BR/Hangfire.Core.resources.dll",
-        "lib/net46/pt-PT/Hangfire.Core.resources.dll",
-        "lib/net46/pt/Hangfire.Core.resources.dll",
-        "lib/net46/sv/Hangfire.Core.resources.dll",
-        "lib/net46/tr-TR/Hangfire.Core.resources.dll",
-        "lib/net46/zh-TW/Hangfire.Core.resources.dll",
-        "lib/net46/zh/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/Hangfire.Core.dll",
-        "lib/netstandard1.3/Hangfire.Core.xml",
-        "lib/netstandard1.3/ca/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/de/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/es/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/fa/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/fr/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/nb/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/nl/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/pt-BR/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/pt-PT/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/pt/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/sv/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/tr-TR/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/zh-TW/Hangfire.Core.resources.dll",
-        "lib/netstandard1.3/zh/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/Hangfire.Core.dll",
-        "lib/netstandard2.0/Hangfire.Core.xml",
-        "lib/netstandard2.0/ca/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/de/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/es/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/fa/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/fr/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/nb/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/nl/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/pt-BR/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/pt-PT/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/pt/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/sv/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/tr-TR/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/zh-TW/Hangfire.Core.resources.dll",
-        "lib/netstandard2.0/zh/Hangfire.Core.resources.dll"
-      ]
-    },
-    "Hangfire.NetCore/1.8.9": {
-      "sha512": "i0plMCJU+4h2OUpQEfFOFDp2ViTB/2c/Ksc1f+4k+g49hCHscOSpaE3Kl/ChrHu3jjvlAM1ydT6lpnHWfK2rkQ==",
-      "type": "package",
-      "path": "hangfire.netcore/1.8.9",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "COPYING",
-        "COPYING.LESSER",
-        "LICENSE.md",
-        "LICENSE_ROYALTYFREE",
-        "LICENSE_STANDARD",
-        "NOTICES",
-        "hangfire.netcore.1.8.9.nupkg.sha512",
-        "hangfire.netcore.nuspec",
-        "lib/net451/Hangfire.NetCore.dll",
-        "lib/net451/Hangfire.NetCore.xml",
-        "lib/net461/Hangfire.NetCore.dll",
-        "lib/net461/Hangfire.NetCore.xml",
-        "lib/netstandard1.3/Hangfire.NetCore.dll",
-        "lib/netstandard1.3/Hangfire.NetCore.xml",
-        "lib/netstandard2.0/Hangfire.NetCore.dll",
-        "lib/netstandard2.0/Hangfire.NetCore.xml",
-        "lib/netstandard2.1/Hangfire.NetCore.dll",
-        "lib/netstandard2.1/Hangfire.NetCore.xml"
-      ]
-    },
-    "Hangfire.SqlServer/1.8.9": {
-      "sha512": "DGnvf70iXnpzOorKUAvwXoBWR2DKpRyP3Xxff7fUb4z8QE8ok93itiERDEn9Pi+BF1nZxKzVTsRbKly+CyfPEw==",
-      "type": "package",
-      "path": "hangfire.sqlserver/1.8.9",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "COPYING",
-        "COPYING.LESSER",
-        "LICENSE.md",
-        "LICENSE_ROYALTYFREE",
-        "LICENSE_STANDARD",
-        "NOTICES",
-        "hangfire.sqlserver.1.8.9.nupkg.sha512",
-        "hangfire.sqlserver.nuspec",
-        "lib/net451/Hangfire.SqlServer.dll",
-        "lib/net451/Hangfire.SqlServer.xml",
-        "lib/netstandard1.3/Hangfire.SqlServer.dll",
-        "lib/netstandard1.3/Hangfire.SqlServer.xml",
-        "lib/netstandard2.0/Hangfire.SqlServer.dll",
-        "lib/netstandard2.0/Hangfire.SqlServer.xml",
-        "tools/install.sql"
-      ]
-    },
-    "JetBrains.Annotations/2022.3.1": {
-      "sha512": "11nsS3+lFICGkztVs9PP2NRItxf9fF+qD6xEW/T0YGto52zj07wseUeBdMAU1ah9HNVTDZyRC1u4NWdtJScwhw==",
-      "type": "package",
-      "path": "jetbrains.annotations/2022.3.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "icon.png",
-        "jetbrains.annotations.2022.3.1.nupkg.sha512",
-        "jetbrains.annotations.nuspec",
-        "lib/net20/JetBrains.Annotations.dll",
-        "lib/net20/JetBrains.Annotations.xml",
-        "lib/netstandard1.0/JetBrains.Annotations.deps.json",
-        "lib/netstandard1.0/JetBrains.Annotations.dll",
-        "lib/netstandard1.0/JetBrains.Annotations.xml",
-        "lib/netstandard2.0/JetBrains.Annotations.deps.json",
-        "lib/netstandard2.0/JetBrains.Annotations.dll",
-        "lib/netstandard2.0/JetBrains.Annotations.xml",
-        "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.dll",
-        "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.xml"
       ]
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.1": {
@@ -2462,20 +2024,6 @@
         "lib/netstandard2.0/_._",
         "microsoft.entityframeworkcore.analyzers.8.0.1.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.Proxies/8.0.1": {
-      "sha512": "Ejwl7XXNaqMen7No1mkuf9b74kdQHY15JTCGURy7EIw12ms7+INkT1aRIYyWln3hSPV1vlSB7Z0sW9+gSDa5Bg==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.proxies/8.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "lib/net8.0/Microsoft.EntityFrameworkCore.Proxies.dll",
-        "lib/net8.0/Microsoft.EntityFrameworkCore.Proxies.xml",
-        "microsoft.entityframeworkcore.proxies.8.0.1.nupkg.sha512",
-        "microsoft.entityframeworkcore.proxies.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/8.0.1": {
@@ -2946,36 +2494,6 @@
         "microsoft.extensions.dependencymodel.8.0.0.nupkg.sha512",
         "microsoft.extensions.dependencymodel.nuspec",
         "useSharedDesignerContext.txt"
-      ]
-    },
-    "Microsoft.Extensions.FileProviders.Abstractions/3.0.0": {
-      "sha512": "kahEeykb6FyQytoZNNXuz74X85B4weIEt8Kd+0klK48bkXDWOIHAOvNjlGsPMcS9CL935Te8QGQS83JqCbpdHA==",
-      "type": "package",
-      "path": "microsoft.extensions.fileproviders.abstractions/3.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netcoreapp3.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
-        "lib/netcoreapp3.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
-        "microsoft.extensions.fileproviders.abstractions.3.0.0.nupkg.sha512",
-        "microsoft.extensions.fileproviders.abstractions.nuspec"
-      ]
-    },
-    "Microsoft.Extensions.Hosting.Abstractions/3.0.0": {
-      "sha512": "qeDWS5ErmkUN96BdQqpmeCmLk5HJWQ/SPw3ux5v5/Qb0hKZS5wojBMulnBC7JUEiBwg7Ir71Yjf1lFiRT5MdtQ==",
-      "type": "package",
-      "path": "microsoft.extensions.hosting.abstractions/3.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netcoreapp3.0/Microsoft.Extensions.Hosting.Abstractions.dll",
-        "lib/netcoreapp3.0/Microsoft.Extensions.Hosting.Abstractions.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.xml",
-        "microsoft.extensions.hosting.abstractions.3.0.0.nupkg.sha512",
-        "microsoft.extensions.hosting.abstractions.nuspec"
       ]
     },
     "Microsoft.Extensions.Logging/8.0.0": {
@@ -3674,18 +3192,6 @@
         "nuget.frameworks.nuspec"
       ]
     },
-    "SimpleHashing.Net/2.1.0": {
-      "sha512": "mx9W9YjQxEP8Lma/RVbDsS0dHKV5lEb3vldWdxgvD4o625To0XtxWroNcDR8cPdtANgTTo9QKjryZzHDjbonhg==",
-      "type": "package",
-      "path": "simplehashing.net/2.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/SimpleHashing.Net.dll",
-        "simplehashing.net.2.1.0.nupkg.sha512",
-        "simplehashing.net.nuspec"
-      ]
-    },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
       "sha512": "BmAf6XWt4TqtowmiWe4/5rRot6GerAeklmOPfviOvwLoF5WwgxcJHAxZtySuyW9r9w+HLILnm8VfJFLCUJYW8A==",
       "type": "package",
@@ -3775,22 +3281,22 @@
         "sqlitepclraw.provider.e_sqlite3.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore/6.4.0": {
-      "sha512": "eUBr4TW0up6oKDA5Xwkul289uqSMgY0xGN4pnbOIBqCcN9VKGGaPvHX3vWaG/hvocfGDP+MGzMA0bBBKz2fkmQ==",
+    "Swashbuckle.AspNetCore/6.5.0": {
+      "sha512": "FK05XokgjgwlCI6wCT+D4/abtQkL1X1/B9Oas6uIwHFmYrIO9WUD5aLC9IzMs9GnHfUXOtXZ2S43gN1mhs5+aA==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore/6.4.0",
+      "path": "swashbuckle.aspnetcore/6.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/Swashbuckle.AspNetCore.props",
-        "swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.Swagger/6.4.0": {
-      "sha512": "nl4SBgGM+cmthUcpwO/w1lUjevdDHAqRvfUoe4Xp/Uvuzt9mzGUwyFCqa3ODBAcZYBiFoKvrYwz0rabslJvSmQ==",
+    "Swashbuckle.AspNetCore.Swagger/6.5.0": {
+      "sha512": "XWmCmqyFmoItXKFsQSwQbEAsjDKcxlNf1l+/Ki42hcb6LjKL8m5Db69OTvz5vLonMSRntYO1XLqz0OP+n3vKnA==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swagger/6.4.0",
+      "path": "swashbuckle.aspnetcore.swagger/6.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3800,20 +3306,23 @@
         "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll",
         "lib/net6.0/Swashbuckle.AspNetCore.Swagger.pdb",
         "lib/net6.0/Swashbuckle.AspNetCore.Swagger.xml",
+        "lib/net7.0/Swashbuckle.AspNetCore.Swagger.dll",
+        "lib/net7.0/Swashbuckle.AspNetCore.Swagger.pdb",
+        "lib/net7.0/Swashbuckle.AspNetCore.Swagger.xml",
         "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.dll",
         "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.pdb",
         "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.xml",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.dll",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.pdb",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.xml",
-        "swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swagger.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.SwaggerGen/6.4.0": {
-      "sha512": "lXhcUBVqKrPFAQF7e/ZeDfb5PMgE8n5t6L5B6/BQSpiwxgHzmBcx8Msu42zLYFTvR5PIqE9Q9lZvSQAcwCxJjw==",
+    "Swashbuckle.AspNetCore.SwaggerGen/6.5.0": {
+      "sha512": "Y/qW8Qdg9OEs7V013tt+94OdPxbRdbhcEbw4NiwGvf4YBcfhL/y7qp/Mjv/cENsQ2L3NqJ2AOu94weBy/h4KvA==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swaggergen/6.4.0",
+      "path": "swashbuckle.aspnetcore.swaggergen/6.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3823,20 +3332,23 @@
         "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll",
         "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.pdb",
         "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
+        "lib/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll",
+        "lib/net7.0/Swashbuckle.AspNetCore.SwaggerGen.pdb",
+        "lib/net7.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
         "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.dll",
         "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.pdb",
         "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.dll",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.pdb",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
-        "swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggergen.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.SwaggerUI/6.4.0": {
-      "sha512": "1Hh3atb3pi8c+v7n4/3N80Jj8RvLOXgWxzix6w3OZhB7zBGRwsy7FWr4e3hwgPweSBpwfElqj4V4nkjYabH9nQ==",
+    "Swashbuckle.AspNetCore.SwaggerUI/6.5.0": {
+      "sha512": "OvbvxX+wL8skxTBttcBsVxdh73Fag4xwqEU2edh4JMn7Ws/xJHnY/JB1e9RoCb6XpDxUF3hD9A0Z1lEUx40Pfw==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swaggerui/6.4.0",
+      "path": "swashbuckle.aspnetcore.swaggerui/6.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3846,13 +3358,16 @@
         "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
         "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
         "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
+        "lib/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
+        "lib/net7.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
+        "lib/net7.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
         "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
         "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
         "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
-        "swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
@@ -4626,34 +4141,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "X.PagedList/8.4.7": {
-      "sha512": "ZA1WcyNviMUhivCgwKAm/5/YsNP3Yf/n81SzrPaHSJOcFzavA9MrXTT8M+ZX4fvHwLCL1bY6BPXvwZF5pRtgTg==",
-      "type": "package",
-      "path": "x.pagedlist/8.4.7",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net6.0/X.PagedList.dll",
-        "lib/net7.0/X.PagedList.dll",
-        "lib/netstandard2.0/X.PagedList.dll",
-        "lib/netstandard2.1/X.PagedList.dll",
-        "x.pagedlist.8.4.7.nupkg.sha512",
-        "x.pagedlist.nuspec"
-      ]
-    },
-    "X.PagedList.Mvc.Core/8.4.7": {
-      "sha512": "dS8sJr/aT3AoV9ePaqmF4wijh/2vqS9rxpOvzjPPStkQcR8rUaGPVezPgY/kJwWCZ2hdgKNralbU08So0otNxw==",
-      "type": "package",
-      "path": "x.pagedlist.mvc.core/8.4.7",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net6.0/X.PagedList.Mvc.Core.dll",
-        "lib/net7.0/X.PagedList.Mvc.Core.dll",
-        "x.pagedlist.mvc.core.8.4.7.nupkg.sha512",
-        "x.pagedlist.mvc.core.nuspec"
-      ]
-    },
     "xunit/2.6.6": {
       "sha512": "MAbOOMtZIKyn2lrAmMlvhX0BhDOX/smyrTB+8WTXnSKkrmTGBS2fm8g1PZtHBPj91Dc5DJA7fY+/81TJ/yUFZw==",
       "type": "package",
@@ -4810,11 +4297,6 @@
       "type": "project",
       "path": "../AdminWebAPI/AdminWebAPI.csproj",
       "msbuildProject": "../AdminWebAPI/AdminWebAPI.csproj"
-    },
-    "Assignment2/1.0.0": {
-      "type": "project",
-      "path": "../Assignment2/Assignment2.csproj",
-      "msbuildProject": "../Assignment2/Assignment2.csproj"
     },
     "DataModelLibrary/1.0.0": {
       "type": "project",

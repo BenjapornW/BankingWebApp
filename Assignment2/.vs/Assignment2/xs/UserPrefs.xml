@@ -1,21 +1,23 @@
-﻿<Properties StartupConfiguration="{9B526C51-A8A0-412B-8A24-66DD1D82F6D8}|http">
+﻿<Properties StartupConfiguration="{6904AD24-92EE-4EA5-BA4F-CB49ABF0BC96}|http">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MbcaAdminWeb PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.ItemProperties.Assignment2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/AdminWebAPI/Program.cs" relfile="AdminWebAPI/Program.cs" line="9" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.AdminWebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AdminWebAPI.Test/CustomersControllerTests.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AdminWebAPI/Controllers/CustomersController.cs">
     <Files>
       <File FileName="Assignment2/.gitignore" />
       <File FileName="Assignment2/appsettings.json" />
-      <File FileName="Assignment2/Program.cs" />
-      <File FileName="Assignment2/Controllers/HomeController.cs" />
+      <File FileName="Assignment2/Program.cs" Line="24" Column="28" />
+      <File FileName="Assignment2/Controllers/HomeController.cs" Line="1" Column="1" />
       <File FileName="Assignment2/Views/Home/Index.cshtml" />
       <File FileName="Assignment2/Views/Home/Privacy.cshtml" />
       <File FileName="Assignment2/Views/Shared/_ValidationScriptsPartial.cshtml" />
-      <File FileName="Assignment2/Data/SeedData.cs" />
-      <File FileName="Assignment2/Controllers/CustomerController.cs" />
+      <File FileName="Assignment2/Controllers/CustomerController.cs" Line="1" Column="1" />
       <File FileName="Assignment2/Views/Customer/Index.cshtml" />
       <File FileName="Assignment2/Views/Login/Login.cshtml" />
       <File FileName="Assignment2/Controllers/ATMController.cs" />
@@ -24,7 +26,7 @@
       <File FileName="Assignment2/Views/_ViewStart.cshtml" />
       <File FileName="Assignment2/ViewModels/ATMViewModel.cs" />
       <File FileName="Assignment2/Views/Shared/Error.cshtml" />
-      <File FileName="Assignment2/Controllers/LoginController.cs" />
+      <File FileName="Assignment2/Controllers/LoginController.cs" Line="1" Column="1" />
       <File FileName="Assignment2/Filters/AuthorizeCustomerAttribute.cs" />
       <File FileName="Assignment2/Properties/launchSettings.json" />
       <File FileName="Assignment2/Views/ATM/TransactionForm.cshtml" />
@@ -38,7 +40,7 @@
       <File FileName="Assignment2/ViewModels/ValidAmounts.cs" />
       <File FileName="../../../../.nuget/packages/hangfire/1.8.9/readme.txt" />
       <File FileName="Assignment2/Services/BillPayService.cs" />
-      <File FileName="Assignment2/Controllers/BillPayController.cs" />
+      <File FileName="Assignment2/Controllers/BillPayController.cs" Line="1" Column="1" />
       <File FileName="Assignment2/Views/BillPay/BillPaySummary.cshtml" />
       <File FileName="Assignment2/Views/BillPay/Create.cshtml" />
       <File FileName="Assignment2/Views/ATM/Statement.cshtml" />
@@ -46,75 +48,85 @@
       <File FileName="Assignment2/ViewModels/BillPaySummaryViewmodel.cs" />
       <File FileName="DataModelLibrary/Models/Account.cs" />
       <File FileName="DataModelLibrary/Models/BillPay.cs" />
-      <File FileName="DataModelLibrary/Models/Customer.cs" />
+      <File FileName="DataModelLibrary/Models/Customer.cs" Line="13" Column="37" />
       <File FileName="DataModelLibrary/Models/Login.cs" />
       <File FileName="DataModelLibrary/Models/Payee.cs" />
-      <File FileName="DataModelLibrary/Models/Transaction.cs" />
+      <File FileName="DataModelLibrary/Models/Transaction.cs" Line="4" Column="11" />
       <File FileName="Assignment2/Assignment2.csproj" />
       <File FileName="Assignment2/ViewModels/MessageViewModel.cs" />
       <File FileName="Assignment2/Views/Shared/Message.cshtml" />
       <File FileName="Assignment2/appsettings.Development.json" />
-      <File FileName="AdminWebAPI/appsettings.json" />
-      <File FileName="AdminWebAPI/Controllers/CustomersController.cs" Line="1" Column="1" />
-      <File FileName="AdminWebAPI/Models/DataManager/CustomerManager.cs" Line="1" Column="1" />
-      <File FileName="AdminWebAPI/Models/Repository/IDataRepository.cs" />
+      <File FileName="AdminWebAPI/appsettings.json" Line="16" Column="78" />
+      <File FileName="AdminWebAPI/Models/Repository/IDataRepository.cs" Line="13" Column="1" />
       <File FileName="AdminWebAPI/AdminWebAPI.http" />
-      <File FileName="AdminWebAPI/Program.cs" />
+      <File FileName="AdminWebAPI/Program.cs" Line="8" Column="1" />
       <File FileName="AdminWebAPI/AdminWebAPI.csproj" />
-      <File FileName="DataModelLibrary/Data/McbaContext.cs" />
+      <File FileName="DataModelLibrary/Data/McbaContext.cs" Line="1" Column="1" />
       <File FileName="DataModelLibrary/DataModelLibrary.csproj" />
       <File FileName="AdminWebAPI/appsettings.Development.json" />
       <File FileName="AdminWebAPI/Properties/launchSettings.json" />
       <File FileName="../../../../../../usr/local/share/dotnet/sdk/8.0.100/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" />
-      <File FileName="AdminWebAPI/Controllers/TokenController.cs" />
-      <File FileName="MbcaAdminWeb/Controllers/CustomerController.cs" />
-      <File FileName="MbcaAdminWeb/Controllers/HomeController.cs" />
-      <File FileName="MbcaAdminWeb/wwwroot/css/site.css" />
+      <File FileName="AdminWebAPI/Controllers/TokenController.cs" Line="50" Column="33" />
+      <File FileName="MbcaAdminWeb/Controllers/CustomerController.cs" Line="60" Column="62" />
+      <File FileName="MbcaAdminWeb/Controllers/HomeController.cs" Line="16" Column="1" />
       <File FileName="AdminWebAPI.Test/CustomersControllerClassTests.cs" />
-      <File FileName="AdminWebAPI.Test/Class1.cs" Line="1" Column="1" />
-
-      <File FileName="AdminWebAPI.Test/CustomersControllerTests.cs" Line="9" Column="4" />
+      <File FileName="AdminWebAPI.Test/CustomersControllerTests.cs" Line="10" Column="31" />
       <File FileName="DataModelLibrary/.gitignore" Line="1" Column="1" />
-
+      <File FileName="MbcaAdminWeb/Controllers/LoginController.cs" Line="46" Column="14" />
+      <File FileName="MbcaAdminWeb/Views/Login/Login.cshtml" Line="32" Column="1" />
+      <File FileName="MbcaAdminWeb/Views/Shared/_Layout.cshtml" Line="13" Column="8" />
+      <File FileName="MbcaAdminWeb/Views/Customer/LockCustomer.cshtml" Line="1" Column="1" />
+      <File FileName="MbcaAdminWeb/Views/Customer/EditCustDetail.cshtml" Line="1" Column="1" />
+      <File FileName="MbcaAdminWeb/Views/Customer/Index.cshtml" Line="8" Column="20" />
+      <File FileName="AdminWebAPI.Test/TokenControllerTest.cs" Line="55" Column="55" />
+      <File FileName="AdminWebAPI.Test/CustomerManagerTests.cs" Line="7" Column="27" />
+      <File FileName="DataModelLibrary/Data/SeedData.cs" Line="7" Column="32" />
+      <File FileName="DataModelLibrary/Models/User.cs" Line="2" Column="34" NotebookId="1" />
+      <File FileName="AdminWebAPI/Models/DataManager/CustomerManager.cs" Line="27" Column="10" NotebookId="1" />
+      <File FileName="AdminWebAPI/Controllers/CustomersController.cs" Line="13" Column="1" NotebookId="1" />
+      <File FileName="MbcaAdminWeb/wwwroot/css/site.css" Line="414" Column="14" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Assignment2">
-
-            <Node name="AdminWebAPI" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="DataManager" expanded="True" />
-                <Node name="Repository" expanded="True" />
+            <Node name="AdminWebAPI">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Controllers" expanded="True">
+                <Node name="CustomersController.cs" selected="True" />
               </Node>
             </Node>
-            <Node name="AdminWebAPI.Test" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-              <Node name="CustomersControllerTests.cs" selected="True" />
-            </Node>
-            <Node name="Assignment2" expanded="True">
+            <Node name="Assignment2">
               <Node name="Controllers" expanded="True" />
-              <Node name="Services" expanded="True" />
-              <Node name="Utilities" expanded="True" />
+              <Node name="wwwroot" expanded="True" />
+            </Node>
+            <Node name="DataModelLibrary">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
+            </Node>
+            <Node name="MbcaAdminWeb">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="Customer" expanded="True" />
+                <Node name="Login" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
               </Node>
             </Node>
-            <Node name="DataModelLibrary" expanded="True">
-              <Node name="Data" expanded="True" />
-              <Node name="Models" expanded="True" />
-
-            </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
         <State name="__root__">
-          <Node name="Assignment2" expanded="True" />
+          <Node name="Assignment2" selected="True" />
         </State>
       </Pad>
     </Pads>

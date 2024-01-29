@@ -110,9 +110,6 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/Assignment2.csproj": {
-                "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/Assignment2.csproj"
-              },
               "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {
                 "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj"
               }
@@ -145,99 +142,11 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
+              "version": "[6.5.0, )"
             },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/Assignment2.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/Assignment2.csproj",
-        "projectName": "Assignment2",
-        "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/Assignment2.csproj",
-        "packagesPath": "/Users/xiaohanqin/.nuget/packages/",
-        "outputPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/Assignment2/obj/",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/Users/xiaohanqin/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {
-              "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj": {
-                "projectPath": "/Users/xiaohanqin/Documents/GitHub/s3959666-s3961136-a2/Assignment2/DataModelLibrary/DataModelLibrary.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "dependencies": {
-            "Hangfire": {
+            "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",
-              "version": "[1.8.9, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
-            "Microsoft.EntityFrameworkCore.Proxies": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.3, )"
-            },
-            "SimpleHashing.Net": {
-              "target": "Package",
-              "version": "[2.1.0, )"
-            },
-            "X.PagedList.Mvc.Core": {
-              "target": "Package",
-              "version": "[8.4.7, )"
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -312,6 +221,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [

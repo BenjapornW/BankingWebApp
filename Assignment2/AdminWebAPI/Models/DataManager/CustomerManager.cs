@@ -26,22 +26,6 @@ namespace AdminWebAPI.Models.DataManager
             return _context.Customers.ToList();
         }
 
-        public int Add(Customer customer)
-        {
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
-
-            return customer.CustomerID;
-        }
-
-        public int Delete(int id)
-        {
-            _context.Customers.Remove(_context.Customers.Find(id));
-            _context.SaveChanges();
-
-            return id;
-        }
-
         public int Update(int id, Customer customer)
         {
             var selectCustomer = _context.Customers.Find(id);

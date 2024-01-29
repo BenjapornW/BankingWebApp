@@ -1,7 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<h3>All customer</h3>
 
-<h3>All customer</h3>
+
+<h2>Customer List</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+
+    </tr>
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@customer.CustomerID</td>
+            <td>@customer.Name</td>
+            Other columns as needed
+        </tr>
+    }
+</table>
+
+
+}

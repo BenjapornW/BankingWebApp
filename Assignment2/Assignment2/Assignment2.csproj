@@ -19,7 +19,6 @@
 
     <None Remove="Views\BillPay\" />
 
-    <None Remove="Data\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Login\" />
@@ -34,7 +33,6 @@
 
     <Folder Include="Views\BillPay\" />
 
-    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />

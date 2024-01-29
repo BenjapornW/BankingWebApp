@@ -6,7 +6,6 @@ using AdminWebAPI.Models.DataManager;
 using DataModelLibrary.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Assignment2.Data;
 using Xunit;
 using DataModelLibrary.Models;
 using Moq;
