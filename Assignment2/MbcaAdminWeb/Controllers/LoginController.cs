@@ -1,79 +1,68 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SimpleHashing.Net;
-using DataModelLibrary.Models;
-using DataModelLibrary.Data;
+using AdminWebAPI.Models;
+
 
 namespace MbcaAdminWeb.Controllers
 {
     [Route("/Mcba/SecureLogin")]
     public class LoginController : Controller
     {
-        private static readonly ISimpleHash s_simpleHash = new SimpleHash();
 
-        //private readonly McbaContext _context;
         private readonly HttpClient _client;
-
-        //public LoginController(McbaContext context)
-        //{
-        //    _context = context;
-        //}
 
         public LoginController(IHttpClientFactory clientFactory)
         {
             _client = clientFactory.CreateClient("api");
         }
 
-        public IActionResult Login() => View();
+        public IActionResult Login()
+        {
+            // If the user is already logged in, redirect to the index.
+            if (HttpContext.Session.GetString("JWTToken") != null)
+            {
+                return RedirectToAction("Index", "Home"); // Adjust the "Home" to your dashboard controller if different
+            }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Login(string loginID, string password)
-        //{
-        //    var login = await _context.Logins.FindAsync(loginID);
-        //    //if (login == null || string.IsNullOrEmpty(password) || !s_simpleHash.Verify(password, login.PasswordHash))
-        //    //{
-        //    //    ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
-        //    //    return View(new Login { LoginID = loginID });
-        //    //}
-        //    // Check if loginID is invalid.
+            return View();
+        }
 
-        //    if (login == null)
-        //    {
-        //        ModelState.AddModelError("LoginFailed", "Login failed, invalid loginID.");
-        //        return View();
-        //    }
-        //    //var customer = await _context.Customers.FindAsync(login.)
-        //    if (login.Customer.Locked)
-        //    {
-        //        ModelState.AddModelError("LoginFailed", "Your account has been locked by admin");
-        //        return View();
-        //    }
 
-        //    // Check if password is invalid.
-        //    if (string.IsNullOrEmpty(password) || !s_simpleHash.Verify(password, login.PasswordHash))
-        //    {
-        //        ModelState.AddModelError("LoginFailed", "Login failed, invalid Password.");
-        //        return View(new Login { LoginID = loginID });
-        //    }
+        [HttpPost]
+        public async Task<IActionResult> Login(string loginID, string password)
+        {
+            // Replace "User" with the appropriate model that has UserName and Password properties.
+            // Since the username and password are hardcoded as "admin", "admin", you can directly check them here.
+            if (loginID == "admin" && password == "admin")
+            {
+                var response = await _client.PostAsJsonAsync("/security/token/create", new { UserName = loginID, Password = password });
 
-        //    // Login customer.
-        //    HttpContext.Session.SetInt32(nameof(Customer.CustomerID), login.CustomerID);
-        //    HttpContext.Session.SetString(nameof(Customer.Name), login.Customer.Name);
+                if (response.IsSuccessStatusCode)
+                {
+                    var token = await response.Content.ReadAsStringAsync();
+                    // Store the token in a secure place (e.g., in session or cookie) for future requests.
+                    HttpContext.Session.SetString("JWTToken", token);
 
-        //    return RedirectToAction("Index", "Customer");
-        //}
+                    // After successful login, redirect to a main dashboard or customer list page.
+                    return RedirectToAction("Index");
+                }
+            }
 
-        //[Route("LogoutNow")]
-        //public IActionResult Logout()
-        //{
-        //    // Logout customer.
-        //    HttpContext.Session.Clear();
+            // If credentials are not valid, display a login error.
+            ModelState.AddModelError("LoginFailed", "Invalid username or password.");
+            return View();
+        }
 
-        //    return RedirectToAction("Index", "Home");
-        //}
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear(); // Clear the session.
+            return RedirectToAction("Login");
+        }
+
+
+
     }
 }
-
-
-
 
 

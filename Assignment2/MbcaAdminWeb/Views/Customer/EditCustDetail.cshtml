@@ -1,11 +1,143 @@
-﻿using System;
-namespace MbcaAdminWeb.Views.Customer
-{
-	public class EditCustDetail
-	{
-		public EditCustDetail()
-		{
-		}
-	}
+﻿@model DataModelLibrary.Models.Customer
+
+
+<h2 class="display-5 subheading border-corner mb-3">My Profile</h2>
+<div class="border-style border-corner mb-3">
+    <div class="tabs mb-3">
+        <button class="tab-btn active" id="details-btn">Details</button>
+        <button class="tab-btn" id="security-btn">Change Password</button>
+    </div>
+    <div class="tab-content display border-corner" id="details-form">
+        <form class="center-form" asp-action="UpdateProfile" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row mb-2">
+                <label asp-for="Name" class="col-sm-4 col-form-label fw-bold mb-1">Name</label>
+                <div class="col-sm-8">
+                    <input asp-for="Name" readonly class="form-control-plaintext" data-original-value="@Model.Name"
+                           value="@Model.Name" data-val="true" data-val-required="The Name is required.">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="form-group row mb-2">
+                <label asp-for="TFN" class="col-sm-4 col-form-label fw-bold mb-1">TFN</label>
+                <div class="col-sm-8">
+                    <input asp-for="TFN" readonly class="form-control-plaintext" data-original-value="@Model.TFN" value="@Model.TFN"
+                           data-val="true" />
+                    <span asp-validation-for="TFN" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="form-group row mb-2">
+                <label asp-for="Address" class="col-sm-4 col-form-label fw-bold mb-1">Address</label>
+                <div class="col-sm-8">
+                    <input asp-for="Address" readonly class="form-control-plaintext" data-original-value="@Model.Address" value="@Model.Address" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label asp-for="City" class="col-sm-4 col-form-label fw-bold mb-1">City</label>
+                <div class="col-sm-8">
+                    <input asp-for="City" readonly class="form-control-plaintext" data-original-value="@Model.City" value="@Model.City" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label asp-for="State" class="col-sm-4 col-form-label fw-bold mb-1">State</label>
+                <div class="col-sm-8">
+                    <input asp-for="State" readonly class="form-control-plaintext" data-original-value="@Model.State" value="@Model.State"
+                           data-val="true" />
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label asp-for="PostCode" class="col-sm-4 col-form-label fw-bold mb-1">PostCode</label>
+                <div class="col-sm-8">
+                    <input asp-for="PostCode" readonly class="form-control-plaintext" data-original-value="@Model.PostCode" value="@Model.PostCode"
+                           data-val="true" />
+                    <span asp-validation-for="PostCode" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label asp-for="PostCode" class="col-sm-4 col-form-label fw-bold mb-1">Mobile</label>
+                <div class="col-sm-8">
+                    <input asp-for="Mobile" readonly class="form-control-plaintext" data-original-value="@Model.Mobile" value="@Model.Mobile"
+                           data-val="true" />
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                </div>
+            </div>
+            <input type="hidden" asp-for="CustomerID" value="@Model.CustomerID" />
+
+            <div class="form-group mb-3 profile-btns">
+                <button type="button" id="cancel-btn" class="cancel-button" style="display: none;">Cancel</button>
+                <button type="button" id="edit-btn" class="form-btn">Edit</button>
+                <input type="submit" data-original-value="Update" value="Update" class="form-btn profile-update-btn" style="display: none;" />
+            </div>
+        </form>
+
+    </div>
+
+    
+
+</div>
+
+
+<div class="button-container">
+    <a asp-controller="Customer" asp-action="Index" class="btn btn-primary">Back to Home</a>
+</div>
+
+@section Scripts {
+    <script>$(document).ready(function () {
+        // Click event for the Details button
+        $("#details-btn").click(function () {
+            $(this).addClass("active");
+            $("#security-btn").removeClass("active");
+            $("#details-form").addClass("display");
+            $("#security-form").removeClass("display");
+        });
+
+        // Click event for the Security button
+        $("#security-btn").click(function () {
+            $(this).addClass("active");
+            $("#details-btn").removeClass("active");
+            $("#security-form").addClass("display");
+            $("#details-form").removeClass("display");
+        });
+
+        $("#edit-btn").click(function () {
+            $("#details-form input[readonly]").toggleClass("form-control-plaintext form-control");
+            // Toggle readonly attribute for input fields
+            $("#details-form input[readonly]").prop("readonly", false);
+            // Show the Update and Cancel button
+            $("#cancel-btn").show();
+            $("input[type='submit']").show();
+            $(this).hide();
+        });
+
+    $("#cancel-btn").click(function () {
+        // Remove validation error messages
+        $("#details-form .text-danger").html('');
+        // Toggle readonly attribute for input fields
+        $("#details-form input").prop("readonly", true);
+        // Reset input fields to their original values
+        $("#details-form input").each(function () {
+            $(this).val($(this).data("original-value"));
+        });
+
+        // Toggle input class name
+        $("#details-form input").toggleClass("form-control-plaintext form-control");
+        // Hide the Update and Cancel button
+        $("#cancel-btn").hide();
+        $("input[type='submit']").hide();
+        $("#edit-btn").show();
+    });
+            
+    });</script>
+    <partial name="_ValidationScriptsPartial" />
 }
+
 

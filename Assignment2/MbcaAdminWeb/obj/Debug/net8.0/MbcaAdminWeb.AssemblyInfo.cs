@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MbcaAdminWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b337d6cd8320b8aed651f84b5e97599c1b8f1b5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dfe90f841969a38ee093395eab692fe5b56fb62b")]
 [assembly: System.Reflection.AssemblyProductAttribute("MbcaAdminWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MbcaAdminWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
