@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DataModelLibrary.Models;
 using DataModelLibrary.Data;
+using Newtonsoft.Json;
 
 namespace MbcaAdminWeb.Controllers
 {
@@ -18,7 +19,31 @@ namespace MbcaAdminWeb.Controllers
             _clientFactory = clientFactory;
         }
 
-        
+        public async Task<IActionResult> CustomerList()
+        {
+            try
+            {
+                var response = await Client.GetAsync("api/customers");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    // Log the error or handle it as needed
+                    return View("Error"); // Return to an error view or a view that indicates the issue
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var customers = JsonConvert.DeserializeObject<List<Customer>>(result);
+
+                return View(customers); // Ensure you have a view named CustomerList that expects a list of Customer objects
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                return View("Error"); // Return to an error view
+            }
+        }
+
+
 
         [HttpPost]
         public async Task<IActionResult> EditCustDetail(int id, Customer customer)

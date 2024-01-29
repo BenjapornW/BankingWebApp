@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Configure api client.
 builder.Services.AddHttpClient("api", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5000");
+    client.BaseAddress = new Uri("http://localhost:5163");
     client.DefaultRequestHeaders.Accept.Add(
         new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
 });

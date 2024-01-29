@@ -21,7 +21,7 @@ namespace MbcaAdminWeb.Controllers
             // If already logged in, redirect to the dashboard
             if (HttpContext.Session.GetString("AdminLoggedIn") == "true")
             {
-                return RedirectToAction("Index", "Dashboard"); // Replace "Dashboard" with your dashboard controller's name
+                return RedirectToAction("Index", "CustomerList"); // Replace "Dashboard" with your dashboard controller's name
             }
 
             return View();
