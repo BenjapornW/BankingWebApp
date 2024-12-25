@@ -6,12 +6,14 @@ Group 9
 
 # 💸 MCBA (Most Common Bank of Australia)
 <p align="center">
-  <li> Client Website </li>
-  <img src="img/Landing_Page_v1.png" alt="client_website"/>
-  <br>
-  <li> Admin Portal Website </li>
-  <img src="img/adminportal.png" alt="admin_portal"/>
+  <h3>Client Website</h3>
+  <img src="img/Landing_Page_v1.png" alt="client_website" />
+  <img src="https://s7.gifyu.com/images/SPZIQ.gif" alt="Client Website" width="500" height="500" />
+  <br><br>
+  <h3>Admin Portal Website</h3>
+  <img src="img/adminportal.png" alt="admin_portal" />
 </p>
+
 
 
 ## 🔗 Table of Contents
